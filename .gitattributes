@@ -1,0 +1,8 @@
+* text=auto eol=lf
+# Preserve evidence bytes, including existing Windows line endings.
+dist/data/** -text whitespace=cr-at-eol
+datasets/** -text whitespace=cr-at-eol
+tests/fixtures/** -text whitespace=cr-at-eol
+*.png binary
+*.jpg binary
+*.jpeg binary

@@ -1,0 +1,56 @@
+/* Focused challenge page. Demonstrations are authored content, never model runs. */
+body.published-mode .dynamic-page{max-width:900px;padding-top:8px}
+body.published-mode .dynamic-page .season-breadcrumb{min-height:32px}
+body.published-mode .dynamic-challenge{border:0;background:transparent;overflow:visible;margin:0}
+body.published-mode .dynamic-challenge>header{padding:12px 0 18px;border:0}
+body.published-mode .dynamic-intro h1{font-size:clamp(29px,4vw,44px);line-height:1.3;letter-spacing:-.03em;margin:8px 0 10px;font-weight:500}
+body.published-mode .dynamic-mobile-break{display:none}
+body.published-mode .dynamic-intro>p:not(.season-eyebrow){font-size:16px;line-height:1.7;color:var(--muted);margin:0 0 14px}
+body.published-mode .dynamic-status{font-size:12px;border:1px solid var(--line);border-radius:4px;padding:3px 7px;margin-left:10px;color:var(--muted)}
+body.published-mode .dynamic-actions{display:flex;gap:10px;flex-wrap:wrap}
+body.published-mode .dynamic-actions button,body.published-mode .pelican-player button,body.published-mode .pelican-player select{min-height:44px;border:1px solid var(--control-line);border-radius:5px;padding:8px 14px;background:var(--panel);color:var(--ink);font-size:15px;line-height:1.3}
+body.published-mode .dynamic-actions .dynamic-copy{background:#2457cf;border-color:#2457cf;color:#fff}
+body.published-mode .pelican-player{border:1px solid var(--line);border-radius:8px;background:var(--panel);overflow:hidden}
+body.published-mode .pelican-player-heading{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;padding:12px 16px 8px;font-size:13px;color:var(--muted)}
+body.published-mode .pelican-player-heading strong{font-weight:500;color:var(--ink)}
+body.published-mode .pelican-modes{display:flex;gap:8px;padding:0 16px 10px}
+body.published-mode .pelican-modes button{font-size:14px;min-height:44px;padding:7px 12px}
+body.published-mode .pelican-modes button[aria-pressed="true"]{border-color:var(--accent);color:var(--accent);background:var(--soft)}
+body.published-mode .pelican-scene{display:block;width:100%;height:auto;max-height:400px;background:#edf6fb}
+body.published-mode .pelican-mode-note{font-size:14px;line-height:1.65;min-height:24px;margin:10px 16px;color:var(--muted)}
+body.published-mode .pelican-controls{display:flex;gap:8px;flex-wrap:wrap;align-items:center;padding:0 16px}
+body.published-mode .pelican-controls>label{display:flex;gap:8px;align-items:center;font-size:14px;color:var(--muted);margin-left:auto}
+body.published-mode .pelican-controls select{font-size:14px;padding:8px}
+body.published-mode .pelican-timeline{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:13px;color:var(--muted);padding:10px 16px 14px}
+body.published-mode .pelican-timeline output{font-variant-numeric:tabular-nums;margin-left:auto}
+body.published-mode .pelican-timeline input{flex-basis:100%;width:100%;min-height:30px;padding:0;accent-color:var(--accent)}
+body.published-mode .dynamic-score-summary,body.published-mode .dynamic-rules,body.published-mode .dynamic-results{padding:28px 0 4px}
+body.published-mode .dynamic-challenge h2{font-size:23px;line-height:1.5;margin:0 0 16px}
+body.published-mode .dynamic-check-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+body.published-mode .dynamic-check-grid>div{padding:16px;border:1px solid var(--line);border-radius:5px;background:var(--panel);min-width:0}
+body.published-mode .dynamic-check-grid h3{font-size:17px;line-height:1.6;margin:0 0 6px}
+body.published-mode .dynamic-check-grid p{font-size:15px;line-height:1.8;margin:0;color:var(--muted)}
+body.published-mode .pelican-evidence-link{display:inline-flex;align-items:center;min-height:44px;line-height:1.6;margin-top:12px;padding:8px 0;border:0;background:transparent;color:var(--accent);text-align:left}
+body.published-mode .dynamic-score-split{font-size:15px;line-height:1.8;color:var(--muted);margin:0}
+body.published-mode .dynamic-challenge .dynamic-protocol{padding-bottom:24px;font-size:14px;color:var(--muted)}
+body.published-mode .dynamic-protocol .season-link{display:flex;font-size:14px}
+body.published-mode .dynamic-challenge details>div.season-prompt{margin-top:12px}
+@media(max-width:500px){
+ body.published-mode .dynamic-mobile-break{display:initial}
+ body.published-mode .dynamic-intro h1{font-size:29px}
+ body.published-mode .pelican-player-heading{padding:10px 12px 8px;font-size:12px}
+ body.published-mode .pelican-modes{padding:0 12px 8px}
+ body.published-mode .pelican-modes button{min-height:44px}
+ body.published-mode .pelican-controls{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));padding:0 12px}
+ body.published-mode .pelican-controls>button{padding:8px 6px;font-size:14px}
+ body.published-mode .pelican-controls>label{grid-column:1/-1;margin:0;justify-content:space-between}
+ body.published-mode .pelican-controls select{flex:1;max-width:180px}
+ body.published-mode .pelican-mode-note{margin:8px 12px;font-size:13px;min-height:43px}
+ body.published-mode .pelican-timeline{padding:8px 12px 10px}
+ body.published-mode .dynamic-check-grid{gap:10px}
+ body.published-mode .dynamic-check-grid>div{padding:12px}
+ body.published-mode .dynamic-check-grid h3{font-size:16px}
+ body.published-mode .dynamic-check-grid p{font-size:14px}
+}
+
+body.published-mode .dynamic-page .season-copy-status{position:static;transform:none;max-width:none;background:transparent;color:var(--muted);padding:0;box-shadow:none;font-size:14px}

@@ -1,0 +1,5 @@
+import test from 'node:test';import assert from 'node:assert/strict';import fs from 'node:fs';import {createHash} from 'node:crypto';
+import {gradeReceiptAnswer,validateReceiptTask,receiptView} from '../dist/receipt-test.js';
+const t=JSON.parse(fs.readFileSync(new URL('../dist/data/receipt-test.json',import.meta.url),'utf8'));
+test('receipt is original supplied image and defined task with original image',()=>{validateReceiptTask(t);assert.equal(createHash('sha256').update(fs.readFileSync(new URL('../dist/'+t.image,import.meta.url))).digest('hex'),t.imageSha256);assert.equal(t.status,'defined');assert.match(receiptView(t,[{id:'test',name:'测试型号'}]),/待测/);assert.match(receiptView(t,[]),/八项百分制/);});
+test('quantity grading accepts one and rejects two without guessing ambiguous prose',()=>{for(const a of ['1份','一份','有1份。','辣椒炒肉一共１份'])assert.equal(gradeReceiptAnswer(a).score,20);for(const a of ['2份','两份','3份'])assert.equal(gradeReceiptAnswer(a).score,0);for(const a of ['不是2份，是1份','1份或2份','无法看图','图里有两行辣椒炒肉',''])assert.equal(gradeReceiptAnswer(a).score,null);});

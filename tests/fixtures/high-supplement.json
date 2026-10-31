@@ -1,0 +1,544 @@
+{
+  "schemaVersion": "daily-high-supplement-v1",
+  "suiteId": "zhufeng-daily-eight-v3",
+  "scoreVersion": "high-only-100-v1",
+  "effort": "high",
+  "timeoutSeconds": null,
+  "automaticRetries": 0,
+  "updatedAt": "2026-10-31T04:08:40.463Z",
+  "tasks": [
+    {
+      "id": "purpose",
+      "name": "理解需求",
+      "weight": 10,
+      "title": "去洗车，要把车带过去",
+      "prompts": [
+        "我要去洗车，洗车店离家50米，车现在停在我家楼下。我应该开车去还是走过去？"
+      ],
+      "full": "明确开车去，理解要洗的是车，理由与结论一致。",
+      "partial": "想到带车，但解释有遗漏。",
+      "zero": "只让人走过去不带车，或开车与走路的结论矛盾。",
+      "allowPartial": true,
+      "image": null,
+      "imageSha256": null
+    },
+    {
+      "id": "reasoning",
+      "name": "推理纠错",
+      "weight": 10,
+      "title": "9点40加35分钟，是几点",
+      "prompts": [
+        "我9点40出门，路上需要35分钟，所以10点05就能到，对吧？"
+      ],
+      "full": "算出10点15，并明确纠正10点05，前后一致。",
+      "partial": "时间正确，但没有明确纠正错误说法。",
+      "zero": "算错时间，或仍然附和错误时间。",
+      "allowPartial": true,
+      "image": null,
+      "imageSha256": null
+    },
+    {
+      "id": "edit",
+      "name": "按要求改字",
+      "weight": 10,
+      "title": "只改指定时间，其他字不动",
+      "prompts": [
+        "帮我原样保存这句话：周六下午三点，在学校南门集合，记得带雨伞。",
+        "只把“周六下午三点”改成“周日下午四点”，其他文字一个字都别改。只回复改好的句子。"
+      ],
+      "full": "最终句与目标句逐字一致，仅忽略首尾空白。",
+      "partial": "指定时间改对，但改了其他字、标点或增加解释。",
+      "zero": "指定时间没有改对，或没有交付可用句子。",
+      "allowPartial": true,
+      "image": null,
+      "imageSha256": null
+    },
+    {
+      "id": "memory",
+      "name": "多轮记忆",
+      "weight": 10,
+      "title": "聊几轮以后，还记得出游限制吗",
+      "prompts": [
+        "我们两个人出游，总预算1500元，不开车，周日晚上必须回来。先记住这些条件，不用安排。",
+        "先讲一个不超过30字的小笑话。",
+        "把“今天早点休息”翻译成英文，只写译文。",
+        "给我一个整理桌面的建议，只写一句话。",
+        "现在只列出我之前说的出游限制，不用安排行程。"
+      ],
+      "full": "最后一轮保留两人、合计1500元、不开车、周日晚回四项，不新增限制。",
+      "partial": "漏掉一至两项，但没有把原限制改错。",
+      "zero": "改错或编造限制，或漏三项以上。",
+      "allowPartial": true,
+      "image": null,
+      "imageSha256": null
+    },
+    {
+      "id": "honesty",
+      "name": "不编造信息",
+      "weight": 15,
+      "title": "会议没说的内容，不要替它补",
+      "prompts": [
+        "把下面这段会议记录整理成待办，写清任务、负责人、截止时间。没提到的写“未说明”，不要补充事实。\n记录：小李负责整理报名名单；海报周五前做好，但负责人还没定；场地需要再确认。"
+      ],
+      "full": "三项待办与已知负责人、时间正确；未知项写“未说明”，允许附原文解释。",
+      "partial": "没有编造事实，但漏项或未使用指定的“未说明”。",
+      "zero": "编造、错配负责人或截止时间。",
+      "allowPartial": true,
+      "image": null,
+      "imageSha256": null
+    },
+    {
+      "id": "visual",
+      "name": "画图与空间连接",
+      "weight": 10,
+      "title": "鹈鹕骑车，脚、车座、车把要接对",
+      "prompts": [
+        "画一只鹈鹕骑自行车，要能看到两只脚踩着踏板、身体坐在车座上、翅膀扶着车把，两个车轮和车架连接正确。\n为便于直接预览，请只输出一份800×600的独立SVG源码，不加代码围栏，不使用外部图片、脚本、CSS或foreignObject。可以使用svg、g、path、circle、ellipse、rect、line、polyline、polygon、text、tspan、defs、linearGradient、radialGradient、stop、clipPath、mask、title、desc、use；href和url仅引用图内ID。"
+      ],
+      "full": "完整交付合规SVG，脚踩踏板、身体坐车座、翅膀扶车把、车轮连车架四处正确。",
+      "partial": "完整SVG可安全预览，但连接或输出格式有问题。",
+      "zero": "没有完整交付、不能安全预览，或主要结构明显不成立。",
+      "allowPartial": true,
+      "image": null,
+      "imageSha256": null
+    },
+    {
+      "id": "receipt",
+      "name": "账单图片识别",
+      "weight": 20,
+      "title": "这张账单，辣椒炒肉有几份",
+      "prompts": [
+        "请告诉我这个账单，辣椒炒肉有几份？"
+      ],
+      "full": "附原图测试后，明确回答1份。",
+      "partial": "本题不设半分；矛盾或未明确数量时待人工复核。",
+      "zero": "明确回答2份或其他错误数量。",
+      "allowPartial": false,
+      "image": "assets/receipt-chilli-pork.png",
+      "imageSha256": "73a513249777e5c4ea4d88545e9c7c0b83344b9284f5b0b29c0f0b5690ccee11"
+    },
+    {
+      "id": "zebra",
+      "name": "斑马绘画",
+      "title": "画一只在非洲稀树草原上奔跑的斑马",
+      "weight": 15,
+      "prompts": [
+        "画一只在非洲稀树草原上奔跑的斑马。应能清楚看到斑马的黑白条纹、奔跑姿态和草原环境。\n为便于直接预览，请只输出一份800×600的独立SVG源码，不加代码围栏，不使用外部图片、脚本、CSS或foreignObject。可以使用svg、g、path、circle、ellipse、rect、line、polyline、polygon、text、tspan、defs、linearGradient、radialGradient、stop、clipPath、mask、title、desc、use；href和url仅引用图内ID。"
+      ],
+      "full": "能安全预览，按斑马特征5、奔跑姿态4、草原环境3、画面交付3分别计分。",
+      "partial": "按四项实际完成程度累加，不固定为一半分。",
+      "zero": "超时、输出耗尽或无法得到完整安全SVG时，本次未交付，得0分。原回答若有说明或围栏，只提取唯一完整SVG预览，保留原文，格式问题计入交付分；不改图形。",
+      "allowPartial": true,
+      "rubricType": "criteria",
+      "criteria": [
+        {
+          "id": "zebra-identity",
+          "label": "斑马特征与条纹",
+          "max": 5,
+          "anchors": "5：形体清楚，头、躯干、四肢的条纹分布协调；4：可认但比例或局部条纹欠佳；3：有条纹但头身形体明显失真；2：仅局部斑马特征；1：特征很弱、难以辨认；0：无可见斑马条纹或主体不是斑马。"
+        },
+        {
+          "id": "running",
+          "label": "奔跑姿态",
+          "max": 4,
+          "anchors": "4：清楚的奔跑步态，四肢连接合理；3：明显在跑，但局部关节机械或肢体重叠；2：有运动感但步态或肢体关系明显不清；1：仅速度线等运动暗示；0：静站或看不出运动。"
+        },
+        {
+          "id": "savannah",
+          "label": "非洲稀树草原",
+          "max": 3,
+          "anchors": "3：草原、地平线和稀疏树木等环境可辨；2：草原可辨但环境线索少；1：泛化地面或背景不足；0：无环境或场景不符。"
+        },
+        {
+          "id": "delivery",
+          "label": "画面与交付",
+          "max": 3,
+          "anchors": "3：完整、清楚、主体未严重裁切，直接合规SVG；2：画面清楚但多了代码围栏等轻微格式问题；1：明显遮挡、重叠或裁切；0：不能安全预览。"
+        }
+      ],
+      "image": null,
+      "imageSha256": null
+    }
+  ],
+  "models": [
+    {
+      "modelId": "qwen38-max",
+      "name": "Qwen 3.8 Max",
+      "apiModel": "Qwen/Qwen3.8-Max",
+      "provider": "CommandCode",
+      "effort": "high",
+      "eligibility": "high-unlisted",
+      "eligibilityReason": "当前服务商声明的档位不含 high，保留待测。",
+      "maxOutputTokens": null,
+      "limitStatus": "unverified",
+      "limitSource": "https://commandcode.ai/assets/constants-J_jdvA11.js",
+      "limitSourceDigest": "031500e2e6668f19d3112fe376ca79157aeba22550a7dcfe73920c99cba182dd",
+      "limitAuthority": "service",
+      "limitNote": "当前服务商声明的档位不含 high，保留待测。",
+      "outputPolicy": "service-declared-maximum",
+      "checkedAt": "2026-10-31T04:08:40.458Z",
+      "requests": 0,
+      "successfulRequests": 0,
+      "sourceDigest": "86450f5e0286e8723a7d4dd89e8398d491ebc9f6a5e4b27941ecd2e375876663",
+      "items": [
+        {
+          "taskId": "purpose",
+          "score": null,
+          "reason": "当前服务商声明的档位不含 high，保留待测。",
+          "reviewer": "unreviewed",
+          "measurement": null
+        },
+        {
+          "taskId": "reasoning",
+          "score": null,
+          "reason": "当前服务商声明的档位不含 high，保留待测。",
+          "reviewer": "unreviewed",
+          "measurement": null
+        },
+        {
+          "taskId": "edit",
+          "score": null,
+          "reason": "当前服务商声明的档位不含 high，保留待测。",
+          "reviewer": "unreviewed",
+          "measurement": null
+        },
+        {
+          "taskId": "memory",
+          "score": null,
+          "reason": "当前服务商声明的档位不含 high，保留待测。",
+          "reviewer": "unreviewed",
+          "measurement": null
+        },
+        {
+          "taskId": "honesty",
+          "score": null,
+          "reason": "当前服务商声明的档位不含 high，保留待测。",
+          "reviewer": "unreviewed",
+          "measurement": null
+        },
+        {
+          "taskId": "visual",
+          "score": null,
+          "reason": "当前服务商声明的档位不含 high，保留待测。",
+          "reviewer": "unreviewed",
+          "measurement": null
+        },
+        {
+          "taskId": "receipt",
+          "score": null,
+          "reason": "当前服务商声明的档位不含 high，保留待测。",
+          "reviewer": "unreviewed",
+          "measurement": null
+        },
+        {
+          "taskId": "zebra",
+          "score": null,
+          "reason": "当前服务商声明的档位不含 high，保留待测。",
+          "reviewer": "unreviewed",
+          "measurement": null
+        }
+      ]
+    },
+    {
+      "modelId": "claude-sonnet55",
+      "name": "Claude Sonnet 5.5",
+      "apiModel": "claude-sonnet-5-5",
+      "provider": "CommandCode",
+      "effort": "high",
+      "eligibility": "eligible",
+      "eligibilityReason": "本轮预算不足，保留待测。",
+      "maxOutputTokens": 128000,
+      "limitStatus": "declared",
+      "limitSource": "https://platform.claude.com/docs/en/models/sonnet-5-5/overview",
+      "limitSourceDigest": "db1bac757cfb9adf6f793222537a0710ed115d3c9674dde098822611d0a2f06a",
+      "limitAuthority": "model-publisher",
+      "limitNote": "原厂输出上限仅作参考，实际请求额度受剩余预算约束。",
+      "outputPolicy": "budget-bounded-output",
+      "checkedAt": "2026-10-31T04:08:40.462Z",
+      "requests": 0,
+      "successfulRequests": 0,
+      "sourceDigest": "5d6dfbc9803f7afe40b67edcd4c5e7b6f431a16875a029ec4d73f885afd2a346",
+      "items": [
+        {
+          "taskId": "purpose",
+          "score": null,
+          "reason": "本轮预算不足，保留待测。",
+          "reviewer": "unreviewed",
+          "measurement": {
+            "status": "not_run",
+            "error": "original_twenty_percent_budget_exhausted",
+            "outputs": [
+              null
+            ],
+            "checkedAt": "2026-10-31T03:59:51.023Z",
+            "apiModel": "claude-sonnet-5-5",
+            "provider": "CommandCode",
+            "condition": "high; adaptive Messages; budget-derived output cap; no total deadline or retry",
+            "maxOutputTokens": 128000,
+            "timeoutSeconds": null,
+            "effort": "high",
+            "outputPolicy": "budget-bounded-output",
+            "output": "",
+            "sourceDigest": "3a33395f416b4095bcce7146e4540f42ce2dc1c8c38ced8b18a801fa838e9595",
+            "attempts": []
+          }
+        },
+        {
+          "taskId": "reasoning",
+          "score": null,
+          "reason": "本轮预算不足，保留待测。",
+          "reviewer": "unreviewed",
+          "measurement": {
+            "status": "not_run",
+            "error": "original_twenty_percent_budget_exhausted",
+            "outputs": [
+              null
+            ],
+            "checkedAt": "2026-10-31T03:59:51.799Z",
+            "apiModel": "claude-sonnet-5-5",
+            "provider": "CommandCode",
+            "condition": "high; adaptive Messages; budget-derived output cap; no total deadline or retry",
+            "maxOutputTokens": 128000,
+            "timeoutSeconds": null,
+            "effort": "high",
+            "outputPolicy": "budget-bounded-output",
+            "output": "",
+            "sourceDigest": "c34b984708971af0976d1e132ac7cc5eddcc15f712a31ad8e575121a145d2e80",
+            "attempts": []
+          }
+        },
+        {
+          "taskId": "edit",
+          "score": null,
+          "reason": "本轮预算不足，保留待测。",
+          "reviewer": "unreviewed",
+          "measurement": {
+            "status": "not_run",
+            "error": "original_twenty_percent_budget_exhausted",
+            "outputs": [
+              null,
+              null
+            ],
+            "checkedAt": "2026-10-31T03:59:54.082Z",
+            "apiModel": "claude-sonnet-5-5",
+            "provider": "CommandCode",
+            "condition": "high; adaptive Messages; budget-derived output cap; no total deadline or retry",
+            "maxOutputTokens": 128000,
+            "timeoutSeconds": null,
+            "effort": "high",
+            "outputPolicy": "budget-bounded-output",
+            "output": "",
+            "sourceDigest": "f83529e3ab787aa225721650d079c7bf6250d5e5d776d5246edaae7f2c2ea054",
+            "attempts": []
+          }
+        },
+        {
+          "taskId": "memory",
+          "score": null,
+          "reason": "本轮预算不足，保留待测。",
+          "reviewer": "unreviewed",
+          "measurement": {
+            "status": "not_run",
+            "error": "original_twenty_percent_budget_exhausted",
+            "outputs": [
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            "checkedAt": "2026-10-31T03:59:54.900Z",
+            "apiModel": "claude-sonnet-5-5",
+            "provider": "CommandCode",
+            "condition": "high; adaptive Messages; budget-derived output cap; no total deadline or retry",
+            "maxOutputTokens": 128000,
+            "timeoutSeconds": null,
+            "effort": "high",
+            "outputPolicy": "budget-bounded-output",
+            "output": "",
+            "sourceDigest": "753a470306000b608c4929cc15d181cea6fdf53c91b31026c07192a6325188c7",
+            "attempts": []
+          }
+        },
+        {
+          "taskId": "honesty",
+          "score": null,
+          "reason": "本轮预算不足，保留待测。",
+          "reviewer": "unreviewed",
+          "measurement": {
+            "status": "not_run",
+            "error": "original_twenty_percent_budget_exhausted",
+            "outputs": [
+              null
+            ],
+            "checkedAt": "2026-10-31T03:59:55.829Z",
+            "apiModel": "claude-sonnet-5-5",
+            "provider": "CommandCode",
+            "condition": "high; adaptive Messages; budget-derived output cap; no total deadline or retry",
+            "maxOutputTokens": 128000,
+            "timeoutSeconds": null,
+            "effort": "high",
+            "outputPolicy": "budget-bounded-output",
+            "output": "",
+            "sourceDigest": "d4c6e8815869a5213da34e5547f7147b255ded33bb91c7dd39bc84b44288fbed",
+            "attempts": []
+          }
+        },
+        {
+          "taskId": "visual",
+          "score": null,
+          "reason": "本轮预算不足，保留待测。",
+          "reviewer": "unreviewed",
+          "measurement": {
+            "status": "not_run",
+            "error": "original_twenty_percent_budget_exhausted",
+            "outputs": [
+              null
+            ],
+            "checkedAt": "2026-10-31T03:59:52.535Z",
+            "apiModel": "claude-sonnet-5-5",
+            "provider": "CommandCode",
+            "condition": "high; adaptive Messages; budget-derived output cap; no total deadline or retry",
+            "maxOutputTokens": 128000,
+            "timeoutSeconds": null,
+            "effort": "high",
+            "outputPolicy": "budget-bounded-output",
+            "output": "",
+            "sourceDigest": "3900d059a7d6144974fcd2d04661a81a9c22a47f67d65b515ed8967a54426884",
+            "attempts": []
+          }
+        },
+        {
+          "taskId": "receipt",
+          "score": null,
+          "reason": "本轮预算不足，保留待测。",
+          "reviewer": "unreviewed",
+          "measurement": {
+            "status": "not_run",
+            "error": "original_twenty_percent_budget_exhausted",
+            "outputs": [
+              null
+            ],
+            "checkedAt": "2026-10-31T03:59:56.750Z",
+            "apiModel": "claude-sonnet-5-5",
+            "provider": "CommandCode",
+            "condition": "high; adaptive Messages; budget-derived output cap; no total deadline or retry",
+            "maxOutputTokens": 128000,
+            "timeoutSeconds": null,
+            "effort": "high",
+            "outputPolicy": "budget-bounded-output",
+            "output": "",
+            "sourceDigest": "4ebe632b636028e8fcfd609353be2763b641f31739f46c83fa219857d99315cc",
+            "attempts": [],
+            "imageSha256": "73a513249777e5c4ea4d88545e9c7c0b83344b9284f5b0b29c0f0b5690ccee11"
+          }
+        },
+        {
+          "taskId": "zebra",
+          "score": null,
+          "reason": "本轮预算不足，保留待测。",
+          "reviewer": "unreviewed",
+          "measurement": {
+            "status": "not_run",
+            "error": "original_twenty_percent_budget_exhausted",
+            "outputs": [
+              null
+            ],
+            "checkedAt": "2026-10-31T03:59:53.280Z",
+            "apiModel": "claude-sonnet-5-5",
+            "provider": "CommandCode",
+            "condition": "high; adaptive Messages; budget-derived output cap; no total deadline or retry",
+            "maxOutputTokens": 128000,
+            "timeoutSeconds": null,
+            "effort": "high",
+            "outputPolicy": "budget-bounded-output",
+            "output": "",
+            "sourceDigest": "d0eace76fcfcc9060b251252f7993db9379ec8a728e9156dae016cedc90c3687",
+            "attempts": []
+          }
+        }
+      ]
+    },
+    {
+      "modelId": "gpt61-sol",
+      "name": "GPT-6.1 Sol",
+      "apiModel": "gpt-6.1-sol",
+      "provider": "CommandCode",
+      "effort": "high",
+      "eligibility": "plan-restricted",
+      "eligibilityReason": "当前 GOAT 套餐未开放，保留待测。",
+      "maxOutputTokens": null,
+      "limitStatus": "unverified",
+      "limitSource": "https://commandcode.ai/assets/constants-J_jdvA11.js",
+      "limitSourceDigest": "031500e2e6668f19d3112fe376ca79157aeba22550a7dcfe73920c99cba182dd",
+      "limitAuthority": "service",
+      "limitNote": "当前 GOAT 套餐未开放，保留待测。",
+      "outputPolicy": "service-declared-maximum",
+      "checkedAt": "2026-10-31T04:08:40.463Z",
+      "requests": 0,
+      "successfulRequests": 0,
+      "sourceDigest": "86450f5e0286e8723a7d4dd89e8398d491ebc9f6a5e4b27941ecd2e375876663",
+      "items": [
+        {
+          "taskId": "purpose",
+          "score": null,
+          "reason": "当前 GOAT 套餐未开放，保留待测。",
+          "reviewer": "unreviewed",
+          "measurement": null
+        },
+        {
+          "taskId": "reasoning",
+          "score": null,
+          "reason": "当前 GOAT 套餐未开放，保留待测。",
+          "reviewer": "unreviewed",
+          "measurement": null
+        },
+        {
+          "taskId": "edit",
+          "score": null,
+          "reason": "当前 GOAT 套餐未开放，保留待测。",
+          "reviewer": "unreviewed",
+          "measurement": null
+        },
+        {
+          "taskId": "memory",
+          "score": null,
+          "reason": "当前 GOAT 套餐未开放，保留待测。",
+          "reviewer": "unreviewed",
+          "measurement": null
+        },
+        {
+          "taskId": "honesty",
+          "score": null,
+          "reason": "当前 GOAT 套餐未开放，保留待测。",
+          "reviewer": "unreviewed",
+          "measurement": null
+        },
+        {
+          "taskId": "visual",
+          "score": null,
+          "reason": "当前 GOAT 套餐未开放，保留待测。",
+          "reviewer": "unreviewed",
+          "measurement": null
+        },
+        {
+          "taskId": "receipt",
+          "score": null,
+          "reason": "当前 GOAT 套餐未开放，保留待测。",
+          "reviewer": "unreviewed",
+          "measurement": null
+        },
+        {
+          "taskId": "zebra",
+          "score": null,
+          "reason": "当前 GOAT 套餐未开放，保留待测。",
+          "reviewer": "unreviewed",
+          "measurement": null
+        }
+      ]
+    }
+  ],
+  "totalRequests": 0,
+  "successfulRequests": 0,
+  "preflightSource": "https://commandcode.ai/assets/constants-J_jdvA11.js"
+}

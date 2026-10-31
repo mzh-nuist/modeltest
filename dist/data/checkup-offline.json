@@ -1,0 +1,143 @@
+{
+  "schemaVersion": "daily-checkup-offline-v1",
+  "kind": "demo",
+  "suiteId": "zhufeng-daily-six-v1",
+  "modelApiCalls": 0,
+  "tasks": 6,
+  "cases": [
+    {
+      "case": "previous-purpose",
+      "expected": "normal",
+      "actual": "normal",
+      "passed": true
+    },
+    {
+      "case": "previous-reasoning",
+      "expected": "normal",
+      "actual": "normal",
+      "passed": true
+    },
+    {
+      "case": "previous-edit",
+      "expected": "normal",
+      "actual": "normal",
+      "passed": true
+    },
+    {
+      "case": "previous-memory",
+      "expected": "normal",
+      "actual": "normal",
+      "passed": true
+    },
+    {
+      "case": "previous-honesty",
+      "expected": "normal",
+      "actual": "normal",
+      "passed": true
+    },
+    {
+      "case": "previous-visual",
+      "expected": "not_run",
+      "actual": "not_run",
+      "passed": true
+    },
+    {
+      "case": "current-purpose",
+      "expected": "normal",
+      "actual": "normal",
+      "passed": true
+    },
+    {
+      "case": "current-reasoning",
+      "expected": "wrong",
+      "actual": "wrong",
+      "passed": true
+    },
+    {
+      "case": "current-edit",
+      "expected": "missed",
+      "actual": "missed",
+      "passed": true
+    },
+    {
+      "case": "current-memory",
+      "expected": "missed",
+      "actual": "missed",
+      "passed": true
+    },
+    {
+      "case": "current-honesty",
+      "expected": "review",
+      "actual": "review",
+      "passed": true
+    },
+    {
+      "case": "current-visual",
+      "expected": "not_run",
+      "actual": "not_run",
+      "passed": true
+    },
+    {
+      "case": "final-answer-without-full-memory-history",
+      "expected": "review",
+      "actual": "review",
+      "passed": true
+    },
+    {
+      "case": "uncertain-human-check",
+      "expected": "review",
+      "actual": "review",
+      "passed": true
+    },
+    {
+      "case": "invented-owner",
+      "expected": "wrong",
+      "actual": "wrong",
+      "passed": true
+    },
+    {
+      "case": "edit-history-preserved",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "case": "memory-history-preserved",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "case": "interrupted-history-not-invented",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "case": "svg-safe-preview",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "case": "svg-script-blocked",
+      "expected": false,
+      "actual": false,
+      "passed": true
+    },
+    {
+      "case": "svg-external-blocked",
+      "expected": false,
+      "actual": false,
+      "passed": true
+    },
+    {
+      "case": "svg-malformed-blocked",
+      "expected": false,
+      "actual": false,
+      "passed": true
+    }
+  ],
+  "passed": 22,
+  "note": "这些是预设回答和预设人工判断，只验收程序；没有测试真实模型。"
+}

@@ -1,0 +1,69 @@
+{
+  "schemaVersion": "daily-checkup-report-v1",
+  "suiteId": "zhufeng-daily-six-v1",
+  "kind": "demo",
+  "modelLabel": "本机模拟接口（自动采集演示）",
+  "checkedAt": "2026-10-25T10:25:18.086+00:00",
+  "conditions": "本机loopback模拟接口；固定预设回答；没有真实模型API",
+  "runs": [
+    {
+      "taskId": "purpose",
+      "status": "complete",
+      "outputs": [
+        "开车去，因为要把家楼下这辆车送去洗。"
+      ],
+      "review": null,
+      "note": ""
+    },
+    {
+      "taskId": "reasoning",
+      "status": "complete",
+      "outputs": [
+        "不是10点05，是10点15。9点40加35分钟等于10点15。"
+      ],
+      "review": null,
+      "note": ""
+    },
+    {
+      "taskId": "edit",
+      "status": "complete",
+      "outputs": [
+        "周六下午三点，在学校南门集合，记得带雨伞。",
+        "周日下午四点，在学校南门集合，记得带雨伞。"
+      ],
+      "review": null,
+      "note": ""
+    },
+    {
+      "taskId": "memory",
+      "status": "complete",
+      "outputs": [
+        "记住了：两个人、总预算1500元、不开车、周日晚上回来。",
+        "铅笔笑橡皮：你怎么总在擦过去？",
+        "Get some rest early today.",
+        "先把桌上的物品分成要用和暂时不用两堆。",
+        "两个人；总预算1500元；不开车；周日晚上必须回来。"
+      ],
+      "review": null,
+      "note": ""
+    },
+    {
+      "taskId": "honesty",
+      "status": "complete",
+      "outputs": [
+        "整理报名名单｜小李｜未说明\n制作海报｜未说明｜周五前\n确认场地｜未说明｜未说明"
+      ],
+      "review": null,
+      "note": ""
+    },
+    {
+      "taskId": "visual",
+      "status": "complete",
+      "outputs": [
+        "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 800 600\"><rect width=\"800\" height=\"600\" fill=\"#f7f6ee\"/><text x=\"80\" y=\"120\" font-size=\"26\">本机预设图形，仅验收显示，不是模型画作</text><circle cx=\"260\" cy=\"370\" r=\"80\" fill=\"none\" stroke=\"#285c50\" stroke-width=\"7\"/><circle cx=\"550\" cy=\"370\" r=\"80\" fill=\"none\" stroke=\"#285c50\" stroke-width=\"7\"/><path d=\"M260 370 L360 220 L450 370 Z M360 220 L500 220 L550 370 M450 370 L500 220\" fill=\"none\" stroke=\"#285c50\" stroke-width=\"7\"/></svg>"
+      ],
+      "review": null,
+      "note": ""
+    }
+  ]
+}

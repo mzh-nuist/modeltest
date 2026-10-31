@@ -1,0 +1,31 @@
+{
+  "suiteId": "zhufeng-daily-six-v1",
+  "title": "六项日常体检（先核实服务商配置）",
+  "simulation": false,
+  "includeVisual": false,
+  "budgetUsd": 0,
+  "repeats": 1,
+  "maxRetries": 0,
+  "timeoutSeconds": 60,
+  "region": "填写客户端区域",
+  "models": [
+    {
+      "id": "replace-with-verified-model",
+      "name": "填写模型名称",
+      "provider": "填写服务商",
+      "adapter": "openai-compatible",
+      "endpoint": "https://api.openai.com/v1/chat/completions",
+      "apiModel": "REPLACE_WITH_VERIFIED_API_MODEL",
+      "apiKeyEnv": "ZHUFENG_EVAL_API_KEY",
+      "temperature": null,
+      "reasoningEffort": null,
+      "maxInputTokens": 32768,
+      "maxOutputTokens": 4096,
+      "outputLimitIncludesReasoning": false,
+      "usageSemantics": "includes_reasoning",
+      "inputPrice": null,
+      "outputPrice": null,
+      "currency": "USD"
+    }
+  ]
+}

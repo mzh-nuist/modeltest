@@ -1,0 +1,91 @@
+{
+  "schemaVersion": "service-output-limits-v1",
+  "checkedAt": "2026-10-26T03:43:27.174636Z",
+  "source": "https://commandcode.ai/assets/constants-CMRL4Ro5.js",
+  "sourceDigest": "8c7a748a3b7927ab78d98059249870bcfb5c96e36eaa848d5941eeae7757ef2a",
+  "models": [
+    {
+      "modelId": "deepseek-v41-flash",
+      "name": "DeepSeek V4.1 Flash",
+      "apiModel": "deepseek/deepseek-v4.1-flash",
+      "maxOutputTokens": 393216,
+      "limitStatus": "declared",
+      "documentedEfforts": [
+        "off",
+        "low",
+        "high",
+        "max"
+      ],
+      "note": "原厂文档声明的最大输出量；CommandCode未另列独立上限。本轮按原厂上限请求，接口接受不代表独立验证了上游配置。",
+      "limitSource": "https://api-docs.deepseek.com/api/create-chat-completion/",
+      "limitSourceDigest": "4c7a7bace2d358827b182180b0a90c20adda914150637335c4b79e25bbd4244c",
+      "limitAuthority": "model-publisher"
+    },
+    {
+      "modelId": "kimi-k31-pro",
+      "name": "Kimi K3.1 Pro",
+      "apiModel": "moonshotai/Kimi-K3.1-Pro",
+      "maxOutputTokens": 1048576,
+      "limitStatus": "declared",
+      "documentedEfforts": [
+        "low",
+        "high",
+        "max"
+      ],
+      "note": "原厂文档声明的能力上限；实际请求额度另见答卷。CommandCode未另列独立最大值，接口接受参数不代表验证了内部配置。",
+      "limitSource": "https://platform.kimi.ai/docs/guide/kimi-k3-1-pro-quickstart",
+      "limitSourceDigest": "a71a3733d4d93bb19ce67e8b30307b971a03965b45ca9c8552f04f1f1409c9ce",
+      "limitAuthority": "model-publisher"
+    },
+    {
+      "modelId": "kimi-k3",
+      "name": "Kimi K3",
+      "apiModel": "moonshotai/Kimi-K3",
+      "maxOutputTokens": 1048576,
+      "limitStatus": "declared",
+      "documentedEfforts": [
+        "low",
+        "high",
+        "max"
+      ],
+      "note": "原厂文档声明的能力上限；实际请求额度另见答卷。CommandCode未另列独立最大值，接口接受参数不代表验证了内部配置。",
+      "limitSource": "https://platform.kimi.ai/docs/guide/kimi-k3-quickstart",
+      "limitSourceDigest": "81361c447a57db3cbe8acfd9b1a581b441029b48a13fc5c2c9b75fa317f9c5a0",
+      "limitAuthority": "model-publisher"
+    },
+    {
+      "modelId": "glm53-flash",
+      "name": "GLM-5.3 Flash",
+      "apiModel": "z-ai/glm-5.3-flash",
+      "maxOutputTokens": 131072,
+      "limitStatus": "declared",
+      "documentedEfforts": [
+        "low",
+        "high",
+        "max"
+      ],
+      "note": "服务商公开客户端声明上限；high测试须按此上限发送。",
+      "limitSource": "https://commandcode.ai/assets/constants-CMRL4Ro5.js",
+      "limitSourceDigest": "8c7a748a3b7927ab78d98059249870bcfb5c96e36eaa848d5941eeae7757ef2a",
+      "limitAuthority": "service"
+    },
+    {
+      "modelId": "minimax-m31-flash",
+      "name": "MiniMax M3.1 Flash",
+      "apiModel": "minimax/minimax-m3.1-flash",
+      "maxOutputTokens": 524288,
+      "limitStatus": "declared",
+      "documentedEfforts": [
+        "low",
+        "medium",
+        "high",
+        "xhigh",
+        "max"
+      ],
+      "note": "原厂文档声明的最大输出量；CommandCode未另列独立上限。本轮按原厂上限请求，接口接受不代表独立验证了上游配置。",
+      "limitSource": "https://platform.minimaxi.com/docs/api-reference/text/api/openapi-chat-openai.json",
+      "limitSourceDigest": "d5e160d5b98b7aec7ca3bfc6c6060adeba36e5c49507bce3451db387b21f3903",
+      "limitAuthority": "model-publisher"
+    }
+  ]
+}

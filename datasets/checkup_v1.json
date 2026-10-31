@@ -1,0 +1,93 @@
+{
+  "schemaVersion": "daily-checkup-bank-v1",
+  "suiteId": "zhufeng-daily-six-v1",
+  "title": "今天的 AI，还好用吗？",
+  "tasks": [
+    {
+      "id": "purpose",
+      "title": "懂不懂你要干什么",
+      "category": "理解目的",
+      "optional": false,
+      "mode": "guided",
+      "prompts": ["我要去洗车，洗车店离家50米，车现在停在我家楼下。我应该开车去还是走过去？"],
+      "expected": "应该把车开过去，因为要洗的是这辆车。重点是理解洗车目的，而不是只比较走路和开车的距离。",
+      "checks": [
+        {"id": "bring-car", "label": "想到把家楼下的车送去洗", "essential": true},
+        {"id": "explain-purpose", "label": "理由围绕洗车目的，没有只顾着谈距离和环保", "essential": false}
+      ],
+      "exactAnswer": null
+    },
+    {
+      "id": "reasoning",
+      "title": "会不会顺着错误说",
+      "category": "推理和纠错",
+      "optional": false,
+      "mode": "guided",
+      "prompts": ["我9点40出门，路上需要35分钟，所以10点05就能到，对吧？"],
+      "expected": "应该是10点15分。不能附和10点05，也不能在一份回答里给出互相矛盾的结论。",
+      "checks": [
+        {"id": "right-time", "label": "算出10点15分", "essential": true},
+        {"id": "correct-error", "label": "明确纠正10点05，没有前后矛盾地附和", "essential": true}
+      ],
+      "exactAnswer": null
+    },
+    {
+      "id": "edit",
+      "title": "能不能只改指定的字",
+      "category": "听指令",
+      "optional": false,
+      "mode": "exact",
+      "prompts": ["帮我原样保存这句话：周六下午三点，在学校南门集合，记得带雨伞。", "只把“周六下午三点”改成“周日下午四点”，其他文字一个字都别改。只回复改好的句子。"],
+      "expected": "周日下午四点，在学校南门集合，记得带雨伞。",
+      "checks": [],
+      "exactAnswer": "周日下午四点，在学校南门集合，记得带雨伞。"
+    },
+    {
+      "id": "memory",
+      "title": "聊几轮还记不记得",
+      "category": "上下文记忆",
+      "optional": false,
+      "mode": "guided",
+      "prompts": ["我们两个人出游，总预算1500元，不开车，周日晚上必须回来。先记住这些条件，不用安排。", "先讲一个不超过30字的小笑话。", "把“今天早点休息”翻译成英文，只写译文。", "给我一个整理桌面的建议，只写一句话。", "现在只列出我之前说的出游限制，不用安排行程。"],
+      "expected": "两个人；两人合计预算1500元；不开车；周日晚上必须回来。不能把总预算写成人均预算。五条消息需要在同一个会话里依次发送，每一轮都保留真实回答。",
+      "checks": [
+        {"id": "people", "label": "记得是两个人", "essential": false},
+        {"id": "budget", "label": "记得1500元是两个人的总预算", "essential": true},
+        {"id": "transport", "label": "记得不开车", "essential": false},
+        {"id": "return", "label": "记得周日晚上必须回来", "essential": false}
+      ],
+      "exactAnswer": null
+    },
+    {
+      "id": "honesty",
+      "title": "没说的信息会不会编",
+      "category": "诚实与信息整理",
+      "optional": false,
+      "mode": "guided",
+      "prompts": ["把下面这段会议记录整理成待办，写清任务、负责人、截止时间。没提到的写“未说明”，不要补充事实。\n记录：小李负责整理报名名单；海报周五前做好，但负责人还没定；场地需要再确认。"],
+      "expected": "整理报名名单：小李，截止时间未说明；制作海报：负责人未说明，周五前；确认场地：负责人和截止时间都未说明。",
+      "checks": [
+        {"id": "tasks", "label": "名单、海报、场地三项都整理出来", "essential": false},
+        {"id": "owners", "label": "只把小李分配给名单，没有编海报或场地负责人", "essential": true},
+        {"id": "deadlines", "label": "只给海报写周五前，其他截止时间保留未说明", "essential": true}
+      ],
+      "exactAnswer": null
+    },
+    {
+      "id": "visual",
+      "title": "图里的东西连得对吗",
+      "category": "视觉与空间",
+      "optional": true,
+      "mode": "guided",
+      "prompts": ["画一只鹈鹕骑自行车，要能看到两只脚踩着踏板、身体坐在车座上、翅膀扶着车把，两个车轮和车架连接正确。\n为便于直接预览，请只输出一份800×600的独立SVG源码，不加代码围栏，不使用外部图片、脚本、CSS或foreignObject。可以使用svg、g、path、circle、ellipse、rect、line、polyline、polygon、text、tspan、defs、linearGradient、radialGradient、stop、clipPath、mask、title、desc、use；href和url仅引用图内ID。"],
+      "expected": "直接看画面：两只脚踩在踏板上，身体坐在车座上，翅膀扶着车把，车轮和车架连得上。能预览只代表文件可以显示，画得对不对仍需看图。此项可跳过；当前流程支持SVG，不把它当作原生图片生成能力测试。",
+      "checks": [
+        {"id": "feet", "label": "两只脚踩着踏板，没有悬空", "essential": true},
+        {"id": "seat", "label": "身体坐在车座上", "essential": true},
+        {"id": "wings", "label": "翅膀扶着车把", "essential": false},
+        {"id": "bike", "label": "车轮和车架连接合理", "essential": false}
+      ],
+      "exactAnswer": null
+    }
+  ]
+}

@@ -1,0 +1,689 @@
+{
+  "schemaVersion": "1.0",
+  "meta": {
+    "title": "逐风官方资料目录",
+    "updatedAt": "2026-10-23T23:00:00+08:00",
+    "kind": "catalog",
+    "description": "6 个示例目录条目；仅核对官方公开资料，无本站模型实测，非全量当前模型清单。"
+  },
+  "models": [
+    {
+      "id": "deepseek-flash",
+      "name": "DeepSeek V4.1 Flash",
+      "family": "DeepSeek",
+      "provider": "DeepSeek 官方",
+      "endpoint": "https://api.deepseek.com",
+      "version": "DeepSeek-V4.1-Flash-1017",
+      "reasoning": "未实测 / 待指定",
+      "contextWindow": 1000000,
+      "maxOutputTokens": 384000,
+      "inputPrice": 0.3,
+      "outputPrice": 1.2,
+      "cachedInputPrice": 0.006,
+      "currency": "USD",
+      "sourceUrl": "https://api-docs.deepseek.com/quick_start/pricing/",
+      "sourceDate": "2026-10-23",
+      "tags": [
+        "DeepSeek",
+        "官方资料"
+      ],
+      "status": "catalog",
+      "description": "官方文档列出的 Flash 配置，支持思考与非思考模式。",
+      "priceNote": "展示峰时、缓存未命中报价；离峰为半价，时段与节假日条件见官方来源。"
+    },
+    {
+      "id": "deepseek-v4-pro",
+      "name": "DeepSeek V4 Pro",
+      "family": "DeepSeek",
+      "provider": "DeepSeek 官方",
+      "endpoint": "https://api.deepseek.com",
+      "version": "DeepSeek-V4-Pro-0813",
+      "reasoning": "未实测 / 待指定",
+      "contextWindow": 1000000,
+      "maxOutputTokens": 384000,
+      "inputPrice": 1.32,
+      "outputPrice": 3.96,
+      "cachedInputPrice": 0.044,
+      "currency": "USD",
+      "sourceUrl": "https://api-docs.deepseek.com/quick_start/pricing/",
+      "sourceDate": "2026-10-23",
+      "tags": [
+        "DeepSeek",
+        "官方资料"
+      ],
+      "status": "catalog",
+      "description": "官方文档列出的 Pro 配置。",
+      "priceNote": "展示峰时、缓存未命中报价；离峰为半价，时段与节假日条件见官方来源。"
+    },
+    {
+      "id": "claude-sonnet-4-6",
+      "name": "Claude Sonnet 4.6",
+      "family": "Claude",
+      "provider": "Anthropic 官方",
+      "endpoint": null,
+      "version": "claude-sonnet-4-6",
+      "reasoning": "未实测 / 待指定",
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "inputPrice": 3,
+      "outputPrice": 15,
+      "cachedInputPrice": 0.3,
+      "currency": "USD",
+      "sourceUrl": "https://platform.claude.com/docs/en/models/sonnet-4-6/overview",
+      "sourceDate": "2026-10-23",
+      "tags": [
+        "Claude",
+        "官方资料"
+      ],
+      "status": "catalog",
+      "description": "官方文档列为 Legacy，仍可用；新项目应核实当前型号。",
+      "priceNote": "标准输入输出价；缓存写入、批处理等条件另计。"
+    },
+    {
+      "id": "claude-sonnet-5-5-catalog",
+      "name": "Claude Sonnet 5.5",
+      "family": "Claude",
+      "provider": "Anthropic 官方",
+      "endpoint": null,
+      "version": "Sonnet 5.5 · API ID待接入核实",
+      "reasoning": "未实测 / 待指定",
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "inputPrice": 2,
+      "outputPrice": 10,
+      "cachedInputPrice": null,
+      "currency": "USD",
+      "sourceUrl": "https://platform.claude.com/docs/en/models/sonnet-4-6/overview",
+      "sourceDate": "2026-10-23",
+      "tags": [
+        "Claude",
+        "官方资料"
+      ],
+      "status": "catalog",
+      "description": "来源页面当前型号比较表所列规格；尚未核验具体 API 接入。",
+      "priceNote": "来源比较表中的标准价；具体使用条件以型号文档为准。"
+    },
+    {
+      "id": "claude-opus-5-5-catalog",
+      "name": "Claude Opus 5.5",
+      "family": "Claude",
+      "provider": "Anthropic 官方",
+      "endpoint": null,
+      "version": "Opus 5.5 · API ID待接入核实",
+      "reasoning": "未实测 / 待指定",
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "inputPrice": 4,
+      "outputPrice": 20,
+      "cachedInputPrice": null,
+      "currency": "USD",
+      "sourceUrl": "https://platform.claude.com/docs/en/models/sonnet-4-6/overview",
+      "sourceDate": "2026-10-23",
+      "tags": [
+        "Claude",
+        "官方资料"
+      ],
+      "status": "catalog",
+      "description": "来源页面当前型号比较表所列规格；尚未核验具体 API 接入。",
+      "priceNote": "来源比较表中的标准价；具体使用条件以型号文档为准。"
+    },
+    {
+      "id": "gemini-2-5-pro",
+      "name": "Gemini 2.5 Pro",
+      "family": "Gemini",
+      "provider": "Google 官方",
+      "endpoint": null,
+      "version": "gemini-2.5-pro",
+      "reasoning": "未实测 / 待指定",
+      "contextWindow": 1048576,
+      "maxOutputTokens": 65536,
+      "inputPrice": null,
+      "outputPrice": null,
+      "cachedInputPrice": null,
+      "currency": "USD",
+      "sourceUrl": "https://ai.google.dev/gemini-api/docs/models/gemini-2.5-pro",
+      "sourceDate": "2026-10-23",
+      "tags": [
+        "Gemini",
+        "官方资料"
+      ],
+      "status": "catalog",
+      "description": "官方页面说明限已有使用记录的用户接入；新项目应查看当前型号。",
+      "priceNote": "本次未核对计价页面，报价留空。"
+    }
+  ],
+  "tasks": [
+    {
+      "id": "math-01",
+      "category": "math",
+      "title": "独立事件的条件概率",
+      "prompt": "A、B 独立，P(A)=0.4，P(B)=0.5。只输出 P(A|B) 的十进制数。",
+      "reference": "0.4",
+      "difficulty": "easy",
+      "rubric": [
+        "回答符合题目条件",
+        "结果与参考一致；开放性题目需人工检查论证"
+      ],
+      "maxOutputTokens": 1200,
+      "grader": {
+        "type": "exact",
+        "expected": "0.4"
+      },
+      "source": "逐风起步题库 v1 · 原创设计，待扩大校核"
+    },
+    {
+      "id": "math-02",
+      "category": "math",
+      "title": "交换极限的漏洞",
+      "prompt": "对 f_n(x)=n·1_(0,1/n)(x)，定义域 [0,1]。有人由逐点趋于0推出积分趋于0。指出错误并计算各积分。",
+      "reference": "逐点趋于0，但积分均为1；缺少支配收敛等可交换条件。",
+      "difficulty": "medium",
+      "rubric": [
+        "回答符合题目条件",
+        "结果与参考一致；开放性题目需人工检查论证"
+      ],
+      "maxOutputTokens": 1200,
+      "grader": {
+        "type": "manual"
+      },
+      "source": "逐风起步题库 v1 · 原创设计，待扩大校核"
+    },
+    {
+      "id": "math-03",
+      "category": "math",
+      "title": "矩阵行列式",
+      "prompt": "矩阵 [[1,2],[3,4]] 的行列式是多少？只输出整数。",
+      "reference": "-2",
+      "difficulty": "easy",
+      "rubric": [
+        "回答符合题目条件",
+        "结果与参考一致；开放性题目需人工检查论证"
+      ],
+      "maxOutputTokens": 1200,
+      "grader": {
+        "type": "exact",
+        "expected": "-2"
+      },
+      "source": "逐风起步题库 v1 · 原创设计，待扩大校核"
+    },
+    {
+      "id": "math-04",
+      "category": "math",
+      "title": "连续与一致连续",
+      "prompt": "给出一个在实数集上连续但不一致连续的函数，并用定义或序列证明。",
+      "reference": "例如 x²，取 x_n=n、y_n=n+1/n，距离趋于0而函数差趋于2。",
+      "difficulty": "medium",
+      "rubric": [
+        "回答符合题目条件",
+        "结果与参考一致；开放性题目需人工检查论证"
+      ],
+      "maxOutputTokens": 1200,
+      "grader": {
+        "type": "manual"
+      },
+      "source": "逐风起步题库 v1 · 原创设计，待扩大校核"
+    },
+    {
+      "id": "math-05",
+      "category": "math",
+      "title": "贝叶斯基率",
+      "prompt": "患病率1%，灵敏度90%，假阳性率9%。阳性者患病概率是多少？给出分式与计算。",
+      "reference": "0.009/(0.009+0.0891)=10/109≈9.1743%。",
+      "difficulty": "medium",
+      "rubric": [
+        "回答符合题目条件",
+        "结果与参考一致；开放性题目需人工检查论证"
+      ],
+      "maxOutputTokens": 1200,
+      "grader": {
+        "type": "manual"
+      },
+      "source": "逐风起步题库 v1 · 原创设计，待扩大校核"
+    },
+    {
+      "id": "math-06",
+      "category": "math",
+      "title": "图的最短路径",
+      "prompt": "有向图边 A→B=3，A→C=10，B→C=2，C→D=4，B→D=12。A 到 D 最短距离？只输出整数。",
+      "reference": "9",
+      "difficulty": "easy",
+      "rubric": [
+        "回答符合题目条件",
+        "结果与参考一致；开放性题目需人工检查论证"
+      ],
+      "maxOutputTokens": 1200,
+      "grader": {
+        "type": "exact",
+        "expected": "9"
+      },
+      "source": "逐风起步题库 v1 · 原创设计，待扩大校核"
+    },
+    {
+      "id": "math-07",
+      "category": "math",
+      "title": "凸性条件",
+      "prompt": "有人声称 f″(x)≥0 蕴含 f 严格凸。判断并给出反例，说明正确关系。",
+      "reference": "二阶导非负在相应光滑区间条件下保证凸，不保证严格凸；仿射函数是反例。",
+      "difficulty": "medium",
+      "rubric": [
+        "回答符合题目条件",
+        "结果与参考一致；开放性题目需人工检查论证"
+      ],
+      "maxOutputTokens": 1200,
+      "grader": {
+        "type": "manual"
+      },
+      "source": "逐风起步题库 v1 · 原创设计，待扩大校核"
+    },
+    {
+      "id": "math-08",
+      "category": "math",
+      "title": "抽样方差",
+      "prompt": "样本 [1,2,3] 的无偏样本方差是多少？只输出整数。",
+      "reference": "1",
+      "difficulty": "easy",
+      "rubric": [
+        "回答符合题目条件",
+        "结果与参考一致；开放性题目需人工检查论证"
+      ],
+      "maxOutputTokens": 1200,
+      "grader": {
+        "type": "exact",
+        "expected": "1"
+      },
+      "source": "逐风起步题库 v1 · 原创设计，待扩大校核"
+    },
+    {
+      "id": "data-01",
+      "category": "data",
+      "title": "去重后的收入",
+      "prompt": "订单数据：a,10；b,20；a,10；c,5。按订单ID去重后总收入？只输出整数。",
+      "reference": "35",
+      "difficulty": "easy",
+      "rubric": [
+        "回答符合题目条件",
+        "结果与参考一致；开放性题目需人工检查论证"
+      ],
+      "maxOutputTokens": 1200,
+      "grader": {
+        "type": "exact",
+        "expected": "35"
+      },
+      "source": "逐风起步题库 v1 · 原创设计，待扩大校核"
+    },
+    {
+      "id": "data-02",
+      "category": "data",
+      "title": "加权转化率",
+      "prompt": "渠道 A：10/100 转化；渠道 B：90/300 转化。合并后的转化率是多少？只输出小数。",
+      "reference": "0.25",
+      "difficulty": "easy",
+      "rubric": [
+        "回答符合题目条件",
+        "结果与参考一致；开放性题目需人工检查论证"
+      ],
+      "maxOutputTokens": 1200,
+      "grader": {
+        "type": "exact",
+        "expected": "0.25"
+      },
+      "source": "逐风起步题库 v1 · 原创设计，待扩大校核"
+    },
+    {
+      "id": "data-03",
+      "category": "data",
+      "title": "平均数与中位数",
+      "prompt": "数据 [1,2,2,3,100]。请只输出 JSON，键 mean 和 median，值为数值。",
+      "reference": "{\"mean\":21.6,\"median\":2}",
+      "difficulty": "medium",
+      "rubric": [
+        "回答符合题目条件",
+        "结果与参考一致；开放性题目需人工检查论证"
+      ],
+      "maxOutputTokens": 1200,
+      "grader": {
+        "type": "json_fields",
+        "expected": {
+          "mean": 21.6,
+          "median": 2
+        }
+      },
+      "source": "逐风起步题库 v1 · 原创设计，待扩大校核"
+    },
+    {
+      "id": "data-04",
+      "category": "data",
+      "title": "缺失值的解释",
+      "prompt": "表中用户甲收入0，用户乙收入缺失。分析时能否都填0？说明何时可填、需要保留什么信息。",
+      "reference": "零与未知不同；需依据缺失机制和业务定义处理，保留缺失标志和处理假设。",
+      "difficulty": "medium",
+      "rubric": [
+        "回答符合题目条件",
+        "结果与参考一致；开放性题目需人工检查论证"
+      ],
+      "maxOutputTokens": 1200,
+      "grader": {
+        "type": "manual"
+      },
+      "source": "逐风起步题库 v1 · 原创设计，待扩大校核"
+    },
+    {
+      "id": "data-05",
+      "category": "data",
+      "title": "同比增长",
+      "prompt": "去年收入80，今年收入100。同比增长率是多少？只输出小数。",
+      "reference": "0.25",
+      "difficulty": "easy",
+      "rubric": [
+        "回答符合题目条件",
+        "结果与参考一致；开放性题目需人工检查论证"
+      ],
+      "maxOutputTokens": 1200,
+      "grader": {
+        "type": "exact",
+        "expected": "0.25"
+      },
+      "source": "逐风起步题库 v1 · 原创设计，待扩大校核"
+    },
+    {
+      "id": "data-06",
+      "category": "data",
+      "title": "分组聚合",
+      "prompt": "记录 [{\"g\":\"A\",\"v\":2},{\"g\":\"B\",\"v\":3},{\"g\":\"A\",\"v\":5}]。按组求和，只输出 JSON。",
+      "reference": "{\"A\":7,\"B\":3}",
+      "difficulty": "medium",
+      "rubric": [
+        "回答符合题目条件",
+        "结果与参考一致；开放性题目需人工检查论证"
+      ],
+      "maxOutputTokens": 1200,
+      "grader": {
+        "type": "json_fields",
+        "expected": {
+          "A": 7,
+          "B": 3
+        }
+      },
+      "source": "逐风起步题库 v1 · 原创设计，待扩大校核"
+    },
+    {
+      "id": "data-07",
+      "category": "data",
+      "title": "相关性与干预",
+      "prompt": "观察到使用新工具的人绩效更高。能否得出工具使绩效提高？提出至少两种替代解释和一种验证设计。",
+      "reference": "可能有自选择、资历或任务差异；需随机实验或明确识别假设的准实验。",
+      "difficulty": "medium",
+      "rubric": [
+        "回答符合题目条件",
+        "结果与参考一致；开放性题目需人工检查论证"
+      ],
+      "maxOutputTokens": 1200,
+      "grader": {
+        "type": "manual"
+      },
+      "source": "逐风起步题库 v1 · 原创设计，待扩大校核"
+    },
+    {
+      "id": "data-08",
+      "category": "data",
+      "title": "重复运行与样本量",
+      "prompt": "同一道题运行100次，与100道不同题各运行1次，能否作为相同证据来比较模型整体能力？解释独立性和覆盖差异。",
+      "reference": "不能；前者衡量该题稳定性，题目覆盖与有效独立样本不同。",
+      "difficulty": "medium",
+      "rubric": [
+        "回答符合题目条件",
+        "结果与参考一致；开放性题目需人工检查论证"
+      ],
+      "maxOutputTokens": 1200,
+      "grader": {
+        "type": "manual"
+      },
+      "source": "逐风起步题库 v1 · 原创设计，待扩大校核"
+    },
+    {
+      "id": "chinese-01",
+      "category": "chinese",
+      "title": "忠实提取会议结论",
+      "prompt": "材料：团队计划下周测试新界面。预算尚未批准。小林负责整理问卷；上线日期未定。仅列出已确定事项，不补充安排。",
+      "reference": "已确定小林整理问卷；下周测试是计划。不得把预算或上线日期写为已确定。",
+      "difficulty": "medium",
+      "rubric": [
+        "回答符合题目条件",
+        "结果与参考一致；开放性题目需人工检查论证"
+      ],
+      "maxOutputTokens": 1200,
+      "grader": {
+        "type": "manual"
+      },
+      "source": "逐风起步题库 v1 · 原创设计，待扩大校核"
+    },
+    {
+      "id": "chinese-02",
+      "category": "chinese",
+      "title": "保留原稿中的不确定性",
+      "prompt": "把“我试了一次，觉得它好像更适合整理材料，复杂推理还没测”改得简洁自然，保留事实范围与不确定性。",
+      "reference": "保留一次体验、材料整理印象和复杂推理未测，不扩大成普遍性能结论。",
+      "difficulty": "medium",
+      "rubric": [
+        "回答符合题目条件",
+        "结果与参考一致；开放性题目需人工检查论证"
+      ],
+      "maxOutputTokens": 1200,
+      "grader": {
+        "type": "manual"
+      },
+      "source": "逐风起步题库 v1 · 原创设计，待扩大校核"
+    },
+    {
+      "id": "chinese-03",
+      "category": "chinese",
+      "title": "按材料回答并承认未知",
+      "prompt": "材料：产品A支持导出TXT和Markdown。材料未提及PDF。用户问是否支持PDF。只根据材料回答。",
+      "reference": "根据材料无法确认PDF支持；不能从未提及推断一定不支持。",
+      "difficulty": "medium",
+      "rubric": [
+        "回答符合题目条件",
+        "结果与参考一致；开放性题目需人工检查论证"
+      ],
+      "maxOutputTokens": 1200,
+      "grader": {
+        "type": "manual"
+      },
+      "source": "逐风起步题库 v1 · 原创设计，待扩大校核"
+    },
+    {
+      "id": "chinese-04",
+      "category": "chinese",
+      "title": "结构化信息提取",
+      "prompt": "材料：订单 ZF-17，商品笔记本，数量2，单价18元。只输出 JSON，字段 orderId、quantity、total。",
+      "reference": "{\"orderId\":\"ZF-17\",\"quantity\":2,\"total\":36}",
+      "difficulty": "medium",
+      "rubric": [
+        "回答符合题目条件",
+        "结果与参考一致；开放性题目需人工检查论证"
+      ],
+      "maxOutputTokens": 1200,
+      "grader": {
+        "type": "json_fields",
+        "expected": {
+          "orderId": "ZF-17",
+          "quantity": 2,
+          "total": 36
+        }
+      },
+      "source": "逐风起步题库 v1 · 原创设计，待扩大校核"
+    },
+    {
+      "id": "chinese-05",
+      "category": "chinese",
+      "title": "辨认比较口径",
+      "prompt": "甲模型用官方API在上海测，乙模型用转发接口在海外测。甲更慢。写一段严谨的测评结论，指出还能验证什么。",
+      "reference": "结论限定于当前端点和环境，需控制网络、服务商、输入长度等，不能直接断言模型本体更慢。",
+      "difficulty": "medium",
+      "rubric": [
+        "回答符合题目条件",
+        "结果与参考一致；开放性题目需人工检查论证"
+      ],
+      "maxOutputTokens": 1200,
+      "grader": {
+        "type": "manual"
+      },
+      "source": "逐风起步题库 v1 · 原创设计，待扩大校核"
+    },
+    {
+      "id": "chinese-06",
+      "category": "chinese",
+      "title": "不虚构第一人称经历",
+      "prompt": "用户只提供“我想试试用AI写学习笔记”，请写一条中文短帖，不虚构已完成测试、收益或读者反馈。",
+      "reference": "表达计划、疑问或预期；不得写成已经测试成功。",
+      "difficulty": "medium",
+      "rubric": [
+        "回答符合题目条件",
+        "结果与参考一致；开放性题目需人工检查论证"
+      ],
+      "maxOutputTokens": 1200,
+      "grader": {
+        "type": "manual"
+      },
+      "source": "逐风起步题库 v1 · 原创设计，待扩大校核"
+    },
+    {
+      "id": "chinese-07",
+      "category": "chinese",
+      "title": "多条件摘要",
+      "prompt": "材料：试验有20人参加，持续两周，未设置对照组，15人自报满意。写不超过80字的摘要，保留样本、时长和限制。",
+      "reference": "含20人、两周、15人自报满意及无对照组；不推出效果因果。",
+      "difficulty": "medium",
+      "rubric": [
+        "回答符合题目条件",
+        "结果与参考一致；开放性题目需人工检查论证"
+      ],
+      "maxOutputTokens": 1200,
+      "grader": {
+        "type": "manual"
+      },
+      "source": "逐风起步题库 v1 · 原创设计，待扩大校核"
+    },
+    {
+      "id": "chinese-08",
+      "category": "chinese",
+      "title": "冲突信息处理",
+      "prompt": "材料1写发布时间周三，材料2写周五，两份都没有版本号。用户问哪天发布。请回答并说明最小核实动作。",
+      "reference": "指出冲突，不能自行选定；核实最新负责人确认或权威版本。",
+      "difficulty": "medium",
+      "rubric": [
+        "回答符合题目条件",
+        "结果与参考一致；开放性题目需人工检查论证"
+      ],
+      "maxOutputTokens": 1200,
+      "grader": {
+        "type": "manual"
+      },
+      "source": "逐风起步题库 v1 · 原创设计，待扩大校核"
+    },
+    {
+      "id": "code-01",
+      "category": "code",
+      "title": "稳定去重函数",
+      "prompt": "用 Python 实现 stable_unique(items)，保持第一次出现顺序。输入是可哈希元素；提供空列表、重复值和混合元素的测试。",
+      "reference": "可用集合记录已见并按输入顺序追加；空列表返回[]。人工检查代码与测试。",
+      "difficulty": "medium",
+      "rubric": [
+        "回答符合题目条件",
+        "结果与参考一致；开放性题目需人工检查论证"
+      ],
+      "maxOutputTokens": 1200,
+      "grader": {
+        "type": "manual"
+      },
+      "source": "逐风起步题库 v1 · 原创设计，待扩大校核"
+    },
+    {
+      "id": "code-02",
+      "category": "code",
+      "title": "修复可变默认参数",
+      "prompt": "修复 Python：def append_item(x, items=[]): items.append(x); return items。解释跨调用问题并给出验证示例。",
+      "reference": "默认参数使用None，在函数体内创建列表；独立调用不共享历史。",
+      "difficulty": "medium",
+      "rubric": [
+        "回答符合题目条件",
+        "结果与参考一致；开放性题目需人工检查论证"
+      ],
+      "maxOutputTokens": 1200,
+      "grader": {
+        "type": "manual"
+      },
+      "source": "逐风起步题库 v1 · 原创设计，待扩大校核"
+    },
+    {
+      "id": "code-03",
+      "category": "code",
+      "title": "正确处理分母为零",
+      "prompt": "实现 conversion_rate(success,total)，要求 0≤success≤total，total为0时返回None，非法输入抛ValueError。提供边界测试。",
+      "reference": "检查范围、负数和零分母；人工验证实现是否满足契约。",
+      "difficulty": "medium",
+      "rubric": [
+        "回答符合题目条件",
+        "结果与参考一致；开放性题目需人工检查论证"
+      ],
+      "maxOutputTokens": 1200,
+      "grader": {
+        "type": "manual"
+      },
+      "source": "逐风起步题库 v1 · 原创设计，待扩大校核"
+    },
+    {
+      "id": "code-04",
+      "category": "code",
+      "title": "防止SQL注入",
+      "prompt": "Python sqlite3 查询 users 表的name字段，用户输入不可拼接到SQL。写查询函数并解释参数绑定。",
+      "reference": "使用 SELECT ... WHERE name = ? 和独立参数元组。",
+      "difficulty": "medium",
+      "rubric": [
+        "回答符合题目条件",
+        "结果与参考一致；开放性题目需人工检查论证"
+      ],
+      "maxOutputTokens": 1200,
+      "grader": {
+        "type": "manual"
+      },
+      "source": "逐风起步题库 v1 · 原创设计，待扩大校核"
+    },
+    {
+      "id": "code-05",
+      "category": "code",
+      "title": "流式解析边界",
+      "prompt": "SSE数据可能跨网络块分割，一个块也可能包含多条事件。描述正确解析过程，并解释为何不能按chunk数计算token数。",
+      "reference": "按行和空行事件边界缓冲，处理UTF-8与data多行；chunk不是token。",
+      "difficulty": "medium",
+      "rubric": [
+        "回答符合题目条件",
+        "结果与参考一致；开放性题目需人工检查论证"
+      ],
+      "maxOutputTokens": 1200,
+      "grader": {
+        "type": "manual"
+      },
+      "source": "逐风起步题库 v1 · 原创设计，待扩大校核"
+    },
+    {
+      "id": "code-06",
+      "category": "code",
+      "title": "缺失费用不能计作免费",
+      "prompt": "实现 sum_cost(costs)，列表中任一元素为None则返回None，否则求和。输入为非负数或None；给出测试。",
+      "reference": "[0,1]→1；[1,None]→None；[]的契约须明确。",
+      "difficulty": "medium",
+      "rubric": [
+        "回答符合题目条件",
+        "结果与参考一致；开放性题目需人工检查论证"
+      ],
+      "maxOutputTokens": 1200,
+      "grader": {
+        "type": "manual"
+      },
+      "source": "逐风起步题库 v1 · 原创设计，待扩大校核"
+    }
+  ],
+  "runs": [],
+  "batches": []
+}

@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "zebra-drawing-v1",
+  "taskId": "zebra",
+  "title": "画一只在非洲稀树草原上奔跑的斑马",
+  "prompt": "画一只在非洲稀树草原上奔跑的斑马。应能清楚看到斑马的黑白条纹、奔跑姿态和草原环境。\n为便于直接预览，请只输出一份800×600的独立SVG源码，不加代码围栏，不使用外部图片、脚本、CSS或foreignObject。可以使用svg、g、path、circle、ellipse、rect、line、polyline、polygon、text、tspan、defs、linearGradient、radialGradient、stop、clipPath、mask、title、desc、use；href和url仅引用图内ID。",
+  "maxScore": 15,
+  "criteria": [
+    {
+      "id": "zebra-identity",
+      "label": "斑马特征与条纹",
+      "max": 5,
+      "anchors": "5：形体清楚，头、躯干、四肢的条纹分布协调；4：可认但比例或局部条纹欠佳；3：有条纹但头身形体明显失真；2：仅局部斑马特征；1：特征很弱、难以辨认；0：无可见斑马条纹或主体不是斑马。"
+    },
+    {
+      "id": "running",
+      "label": "奔跑姿态",
+      "max": 4,
+      "anchors": "4：清楚的奔跑步态，四肢连接合理；3：明显在跑，但局部关节机械或肢体重叠；2：有运动感但步态或肢体关系明显不清；1：仅速度线等运动暗示；0：静站或看不出运动。"
+    },
+    {
+      "id": "savannah",
+      "label": "非洲稀树草原",
+      "max": 3,
+      "anchors": "3：草原、地平线和稀疏树木等环境可辨；2：草原可辨但环境线索少；1：泛化地面或背景不足；0：无环境或场景不符。"
+    },
+    {
+      "id": "delivery",
+      "label": "画面与交付",
+      "max": 3,
+      "anchors": "3：完整、清楚、主体未严重裁切，直接合规SVG；2：画面清楚但多了代码围栏等轻微格式问题；1：明显遮挡、重叠或裁切；0：不能安全预览。"
+    }
+  ],
+  "deliveryGate": "超时、输出耗尽或无法得到完整安全SVG时，本次未交付，得0分。原回答若有说明或围栏，只提取唯一完整SVG预览，保留原文，格式问题计入交付分；不改图形。",
+  "conditions": {
+    "reasoningEffort": "low",
+    "maxOutputTokens": 16384,
+    "timeoutSeconds": 180,
+    "retries": 0
+  },
+  "note": "助手按实际渲染画面初评，不冒充站长确认。本题测SVG画面构造，不等同于原生图片生成能力。"
+}

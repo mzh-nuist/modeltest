@@ -1,0 +1,187 @@
+{
+  "previous": {
+    "schemaVersion": "daily-checkup-report-v1",
+    "suiteId": "zhufeng-daily-six-v1",
+    "kind": "demo",
+    "modelLabel": "演示用模型（合成回答）",
+    "checkedAt": "2026-10-24T12:00:00Z",
+    "conditions": "演示条件：同一入口、默认设置、不开工具",
+    "runs": [
+      {
+        "taskId": "purpose",
+        "status": "complete",
+        "outputs": [
+          "开车去，因为要把家楼下这辆车送去洗。"
+        ],
+        "review": {
+          "answers": {
+            "bring-car": "yes",
+            "explain-purpose": "yes"
+          },
+          "note": "合成判断，只用来验收流程。"
+        },
+        "note": ""
+      },
+      {
+        "taskId": "reasoning",
+        "status": "complete",
+        "outputs": [
+          "不是10点05，是10点15。9点40加35分钟等于10点15。"
+        ],
+        "review": {
+          "answers": {
+            "right-time": "yes",
+            "correct-error": "yes"
+          },
+          "note": "合成判断，只用来验收流程。"
+        },
+        "note": ""
+      },
+      {
+        "taskId": "edit",
+        "status": "complete",
+        "outputs": [
+          "周六下午三点，在学校南门集合，记得带雨伞。",
+          "周日下午四点，在学校南门集合，记得带雨伞。"
+        ],
+        "review": null,
+        "note": ""
+      },
+      {
+        "taskId": "memory",
+        "status": "complete",
+        "outputs": [
+          "记住了：两个人、总预算1500元、不开车、周日晚上回来。",
+          "铅笔笑橡皮：你怎么总在擦过去？",
+          "Get some rest early today.",
+          "先把桌上的物品分成要用和暂时不用两堆。",
+          "两个人；总预算1500元；不开车；周日晚上必须回来。"
+        ],
+        "review": {
+          "answers": {
+            "people": "yes",
+            "budget": "yes",
+            "transport": "yes",
+            "return": "yes"
+          },
+          "note": "合成判断，只用来验收流程。"
+        },
+        "note": ""
+      },
+      {
+        "taskId": "honesty",
+        "status": "complete",
+        "outputs": [
+          "整理报名名单｜小李｜未说明\n制作海报｜未说明｜周五前\n确认场地｜未说明｜未说明"
+        ],
+        "review": {
+          "answers": {
+            "tasks": "yes",
+            "owners": "yes",
+            "deadlines": "yes"
+          },
+          "note": "合成判断，只用来验收流程。"
+        },
+        "note": ""
+      },
+      {
+        "taskId": "visual",
+        "status": "not_run",
+        "outputs": [
+          null
+        ],
+        "review": null,
+        "note": ""
+      }
+    ]
+  },
+  "current": {
+    "schemaVersion": "daily-checkup-report-v1",
+    "suiteId": "zhufeng-daily-six-v1",
+    "kind": "demo",
+    "modelLabel": "演示用模型（合成回答）",
+    "checkedAt": "2026-10-25T12:00:00Z",
+    "conditions": "演示条件：同一入口、默认设置、不开工具",
+    "runs": [
+      {
+        "taskId": "purpose",
+        "status": "complete",
+        "outputs": [
+          "开车去，因为要把家楼下这辆车送去洗。"
+        ],
+        "review": {
+          "answers": {
+            "bring-car": "yes",
+            "explain-purpose": "yes"
+          },
+          "note": "合成判断，只用来验收流程。"
+        },
+        "note": ""
+      },
+      {
+        "taskId": "reasoning",
+        "status": "complete",
+        "outputs": [
+          "对，10点05就能到。"
+        ],
+        "review": {
+          "answers": {
+            "right-time": "no",
+            "correct-error": "no"
+          },
+          "note": "合成错例：附和了错误时间。"
+        },
+        "note": ""
+      },
+      {
+        "taskId": "edit",
+        "status": "complete",
+        "outputs": [
+          "周六下午三点，在学校南门集合，记得带雨伞。",
+          "好的，周日下午四点，在学校南门集合，记得带雨伞。"
+        ],
+        "review": null,
+        "note": ""
+      },
+      {
+        "taskId": "memory",
+        "status": "complete",
+        "outputs": [
+          "记住了：两个人、总预算1500元、不开车、周日晚上回来。",
+          "铅笔笑橡皮：你怎么总在擦过去？",
+          "Get some rest early today.",
+          "先把桌上的物品分成要用和暂时不用两堆。",
+          "两个人；总预算1500元；不开车。"
+        ],
+        "review": {
+          "answers": {
+            "people": "yes",
+            "budget": "yes",
+            "transport": "yes",
+            "return": "no"
+          },
+          "note": "合成漏项：漏了周日晚上回来。"
+        },
+        "note": ""
+      },
+      {
+        "taskId": "honesty",
+        "status": "complete",
+        "outputs": [
+          "整理报名名单｜小李｜未说明\n制作海报｜未说明｜周五前\n确认场地｜未说明｜未说明"
+        ],
+        "review": null,
+        "note": ""
+      },
+      {
+        "taskId": "visual",
+        "status": "not_run",
+        "outputs": [
+          null
+        ],
+        "review": null,
+        "note": ""
+      }
+    ]
+  }
+}

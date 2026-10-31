@@ -1,0 +1,646 @@
+{
+  "schemaVersion": "published-daily-v1",
+  "suiteId": "zhufeng-daily-six-v1",
+  "publishedAt": "2026-10-25T14:44:33.894+00:00",
+  "origin": "publisher-local-api-collection",
+  "reviewer": "assistant-first-pass",
+  "totalRequests": 60,
+  "successfulRequests": 54,
+  "models": [
+    {
+      "id": "deepseek-v41-flash",
+      "name": "DeepSeek V4.1 Flash",
+      "apiModel": "deepseek/deepseek-v4.1-flash",
+      "provider": "CommandCode",
+      "checkedAt": "2026-10-25T13:27:46.817+00:00",
+      "report": {
+        "schemaVersion": "daily-checkup-report-v1",
+        "suiteId": "zhufeng-daily-six-v1",
+        "kind": "imported",
+        "modelLabel": "DeepSeek V4.1 Flash",
+        "checkedAt": "2026-10-25T13:27:46.817+00:00",
+        "conditions": "入口https://api.commandcode.ai/provider/v1/chat/completions；模型deepseek/deepseek-v4.1-flash；温度None；推理None；输出上限8192；地区本机 Windows 客户端；网络出口位置未独立核验",
+        "runs": [
+          {
+            "taskId": "purpose",
+            "status": "complete",
+            "outputs": [
+              "应该**开车去**：因为要洗的是停在楼下的车，得先把车弄到洗车店。50米很近，开过去交给店里后，你再**步行回家**；洗完后再走过去取车。\n\n如果你只是去问价/预约，不洗车，那可以走过去。"
+            ],
+            "review": null,
+            "note": ""
+          },
+          {
+            "taskId": "reasoning",
+            "status": "complete",
+            "outputs": [
+              "不对。9点40分加35分钟是 **10点15分**，不是10点05分。"
+            ],
+            "review": null,
+            "note": ""
+          },
+          {
+            "taskId": "edit",
+            "status": "complete",
+            "outputs": [
+              "周六下午三点，在学校南门集合，记得带雨伞。",
+              "周日下午四点，在学校南门集合，记得带雨伞。"
+            ],
+            "review": null,
+            "note": ""
+          },
+          {
+            "taskId": "memory",
+            "status": "complete",
+            "outputs": [
+              "已记住：  \n- 两人出游  \n- 总预算 1500 元  \n- 不开车  \n- 周日晚上必须回来  \n- 现在先不安排行程  \n\n后续你给出发地或偏好后，我再帮你规划。",
+              "蜗牛嫌打车贵，决定背房出游。",
+              "Get some rest early today.",
+              "按“常用—偶尔用—不用”分三区，只留常用物品在桌面，其余收进抽屉或柜子。",
+              "- 两人出游\n- 总预算 1500 元\n- 不开车\n- 周日晚上必须回来"
+            ],
+            "review": null,
+            "note": ""
+          },
+          {
+            "taskId": "honesty",
+            "status": "complete",
+            "outputs": [
+              "| 任务 | 负责人 | 截止时间 |\n|---|---|---|\n| 整理报名名单 | 小李 | 未说明 |\n| 做好海报 | 未定（记录称负责人还没定） | 周五前 |\n| 再确认场地 | 未说明 | 未说明 |"
+            ],
+            "review": null,
+            "note": ""
+          },
+          {
+            "taskId": "visual",
+            "status": "incomplete",
+            "outputs": [
+              null
+            ],
+            "review": null,
+            "note": "第1轮未完成（invalid_or_incomplete_stream）；未重试，后续轮次未补写。"
+          }
+        ]
+      },
+      "defaultRequests": 11,
+      "defaultSuccessfulRequests": 10,
+      "sourceDigest": "47108983b7a6630e7191f7e52c7898f1c98a1d19a4bd529c929860491f3de44a",
+      "checks": [
+        {
+          "taskId": "purpose",
+          "label": "主要内容通过",
+          "note": "",
+          "origin": "assistant"
+        },
+        {
+          "taskId": "reasoning",
+          "label": "主要内容通过",
+          "note": "",
+          "origin": "assistant"
+        },
+        {
+          "taskId": "edit",
+          "label": "主要内容通过",
+          "note": "最终回复逐字一致。",
+          "origin": "rule"
+        },
+        {
+          "taskId": "memory",
+          "label": "主要内容通过",
+          "note": "",
+          "origin": "assistant"
+        },
+        {
+          "taskId": "honesty",
+          "label": "主要内容通过",
+          "note": "",
+          "origin": "assistant"
+        },
+        {
+          "taskId": "visual",
+          "label": "未完成",
+          "note": "返回finish_reason=length，输出上限耗尽，没有完整正文。",
+          "origin": "assistant"
+        }
+      ],
+      "textNote": "五项主要内容通过；会议整理把海报负责人写为“未定”，没有严格用指定的“未说明”。",
+      "supplement": {
+        "status": "success",
+        "error": null,
+        "output": "```svg\n<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 800 600\" width=\"800\" height=\"600\">\n  <defs>\n    <linearGradient id=\"skyGrad\" x1=\"0%\" y1=\"0%\" x2=\"0%\" y2=\"100%\">\n      <stop offset=\"0%\" stop-color=\"#bae6fd\"/>\n      <stop offset=\"100%\" stop-color=\"#f0f9ff\"/>\n    </linearGradient>\n    <linearGradient id=\"groundGrad\" x1=\"0%\" y1=\"0%\" x2=\"0%\" y2=\"100%\">\n      <stop offset=\"0%\" stop-color=\"#e2e8f0\"/>\n      <stop offset=\"100%\" stop-color=\"#cbd5e1\"/>\n    </linearGradient>\n    <linearGradient id=\"beakGrad\" x1=\"0%\" y1=\"0%\" x2=\"100%\" y2=\"0%\">\n      <stop offset=\"0%\" stop-color=\"#f4a261\"/>\n      <stop offset=\"100%\" stop-color=\"#e76f51\"/>\n    </linearGradient>\n    \n    <!-- 自行车后轮 -->\n    <g id=\"back-wheel\">\n      <circle cx=\"220\" cy=\"420\" r=\"80\" stroke=\"#333\" stroke-width=\"14\" fill=\"none\"/>\n      <circle cx=\"220\" cy=\"420\" r=\"70\" stroke=\"#ccc\" stroke-width=\"2\" fill=\"none\"/>\n      <line x1=\"220\" y1=\"340\" x2=\"220\" y2=\"500\" stroke=\"#94a3b8\" stroke-width=\"2\"/>\n      <line x1=\"140\" y1=\"420\" x2=\"300\" y2=\"420\" stroke=\"#94a3b8\" stroke-width=\"2\"/>\n      <line x1=\"163\" y1=\"363\" x2=\"277\" y2=\"477\" stroke=\"#94a3b8\" stroke-width=\"2\"/>\n      <line x1=\"277\" y1=\"363\" x2=\"163\" y2=\"477\" stroke=\"#94a3b8\" stroke-width=\"2\"/>\n      <circle cx=\"220\" cy=\"420\" r=\"10\" fill=\"#333\"/>\n    </g>\n\n    <!-- 自行车前轮 -->\n    <g id=\"front-wheel\">\n      <circle cx=\"580\" cy=\"420\" r=\"80\" stroke=\"#333\" stroke-width=\"14\" fill=\"none\"/>\n      <circle cx=\"580\" cy=\"420\" r=\"70\" stroke=\"#ccc\" stroke-width=\"2\" fill=\"none\"/>\n      <line x1=\"580\" y1=\"340\" x2=\"580\" y2=\"500\" stroke=\"#94a3b8\" stroke-width=\"2\"/>\n      <line x1=\"500\" y1=\"420\" x2=\"660\" y2=\"420\" stroke=\"#94a3b8\" stroke-width=\"2\"/>\n      <line x1=\"523\" y1=\"363\" x2=\"637\" y2=\"477\" stroke=\"#94a3b8\" stroke-width=\"2\"/>\n      <line x1=\"637\" y1=\"363\" x2=\"523\" y2=\"477\" stroke=\"#94a3b8\" stroke-width=\"2\"/>\n      <circle cx=\"580\" cy=\"420\" r=\"10\" fill=\"#333\"/>\n    </g>\n  </defs>\n\n  <!-- 背景 -->\n  <rect width=\"800\" height=\"600\" fill=\"url(#skyGrad)\"/>\n  \n  <!-- 太阳和云朵 -->\n  <circle cx=\"700\" cy=\"100\" r=\"50\" fill=\"#fde047\" opacity=\"0.9\"/>\n  <path d=\"M100,120 Q120,90 150,110 Q180,80 210,110 Q240,110 220,130 L100,130 Z\" fill=\"white\" opacity=\"0.8\"/>\n  <path d=\"M500,80 Q520,50 550,70 Q580,40 610,70 Q640,70 620,90 L500,90 Z\" fill=\"white\" opacity=\"0.6\"/>\n\n  <!-- 地面 -->\n  <rect y=\"480\" width=\"800\" height=\"120\" fill=\"url(#groundGrad)\"/>\n  <line x1=\"0\" y1=\"520\" x2=\"800\" y2=\"520\" stroke=\"#94a3b8\" stroke-width=\"6\" stroke-dasharray=\"30,20\"/>\n  \n  <!-- 地面阴影 -->\n  <ellipse cx=\"220\" cy=\"500\" rx=\"60\" ry=\"10\" fill=\"#94a3b8\" opacity=\"0.4\"/>\n  <ellipse cx=\"580\" cy=\"500\" rx=\"60\" ry=\"10\" fill=\"#94a3b8\" opacity=\"0.4\"/>\n\n  <!-- 速度线 -->\n  <line x1=\"80\" y1=\"380\" x2=\"130\" y2=\"380\" stroke=\"#94a3b8\" stroke-width=\"4\" stroke-linecap=\"round\"/>\n  <line x1=\"60\" y1=\"420\" x2=\"120\" y2=\"420\" stroke=\"#94a3b8\" stroke-width=\"4\" stroke-linecap=\"round\"/>\n  <line x1=\"100\" y1=\"460\" x2=\"140\" y2=\"460\" stroke=\"#94a3b8\" stroke-width=\"4\" stroke-linecap=\"round\"/>\n\n  <!-- 自行车后轮 -->\n  <use href=\"#back-wheel\"/>\n\n  <!-- 自行车车架后部 -->\n  <g id=\"bike-frame-back\">\n    <!-- 后下叉 -->\n    <line x1=\"220\" y1=\"420\" x2=\"400\" y2=\"420\" stroke=\"#e63946\" stroke-width=\"12\" stroke-linecap=\"round\"/>\n    <!-- 后上叉 -->\n    <line x1=\"220\" y1=\"420\" x2=\"300\" y2=\"300\" stroke=\"#e63946\" stroke-width=\"12\" stroke-linecap=\"round\"/>\n    <!-- 立管 -->\n    <line x1=\"300\" y1=\"300\" x2=\"400\" y2=\"420\" stroke=\"#e63946\" stroke-width=\"12\" stroke-linecap=\"round\"/>\n  </g>\n\n  <!-- 链条 -->\n  <line x1=\"220\" y1=\"420\" x2=\"400\" y2=\"420\" stroke=\"#555\" stroke-width=\"4\" stroke-dasharray=\"6,3\"/>\n\n  <!-- 中轴和牙盘 -->\n  <circle cx=\"400\" cy=\"420\" r=\"35\" fill=\"none\" stroke=\"#333\" stroke-width=\"8\"/>\n  <circle cx=\"400\" cy=\"420\" r=\"15\" fill=\"#333\"/>\n  \n  <!-- 左脚踏和曲柄（后面） -->\n  <line x1=\"400\" y1=\"420\" x2=\"380\" y2=\"460\" stroke=\"#333\" stroke-width=\"10\" stroke-linecap=\"round\"/>\n  <rect x=\"370\" y=\"455\" width=\"20\" height=\"10\" rx=\"3\" fill=\"#555\"/>\n\n  <!-- 鹈鹕左侧部件（在车架和身体后面） -->\n  <g id=\"pelican-left-side\">\n    <!-- 左腿 -->\n    <path d=\"M320,290 L350,370 L380,450\" stroke=\"#d1d5db\" stroke-width=\"16\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n    <path d=\"M320,290 L350,370 L380,450\" stroke=\"#f4a261\" stroke-width=\"12\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n    <!-- 左脚 -->\n    <path d=\"M370,460 L385,460 L390,450 L375,450 Z\" fill=\"#f4a261\" stroke=\"#e76f51\" stroke-width=\"2\"/>\n    <!-- 左翼 -->\n    <path d=\"M270,210 C300,190 340,200 350,230 C320,240 280,230 270,210 Z\" fill=\"#d1d5db\" stroke=\"#9ca3af\" stroke-width=\"2\"/>\n  </g>\n\n  <!-- 鹈鹕身体、脖子、头部 -->\n  <g id=\"pelican-body\">\n    <!-- 身体 -->\n    <ellipse cx=\"300\" cy=\"240\" rx=\"70\" ry=\"60\" fill=\"#f8f9fa\" stroke=\"#d1d5db\" stroke-width=\"3\"/>\n    <ellipse cx=\"310\" cy=\"260\" rx=\"60\" ry=\"40\" fill=\"#e5e7eb\" opacity=\"0.5\"/>\n    \n    <!-- 脖子轮廓和填充 -->\n    <path d=\"M320,210 C360,140 400,90 440,100\" stroke=\"#d1d5db\" stroke-width=\"39\" fill=\"none\" stroke-linecap=\"round\"/>\n    <path d=\"M320,210 C360,140 400,90 440,100\" stroke=\"#f8f9fa\" stroke-width=\"35\" fill=\"none\" stroke-linecap=\"round\"/>\n    \n    <!-- 头部 -->\n    <circle cx=\"440\" cy=\"100\" r=\"30\" fill=\"#f8f9fa\" stroke=\"#d1d5db\" stroke-width=\"3\"/>\n    \n    <!-- 眼睛 -->\n    <circle cx=\"455\" cy=\"95\" r=\"6\" fill=\"#1f2937\"/>\n    <circle cx=\"457\" cy=\"93\" r=\"2\" fill=\"white\"/>\n    \n    <!-- 上喙 -->\n    <path d=\"M460,100 Q560,90 600,120 Q550,130 460,115 Z\" fill=\"url(#beakGrad)\" stroke=\"#e76f51\" stroke-width=\"3\"/>\n    <!-- 下喙 / 喉囊 -->\n    <path d=\"M460,115 Q480,190 560,150 L600,120 Q540,140 460,115 Z\" fill=\"#e9c46a\" stroke=\"#e76f51\" stroke-width=\"3\"/>\n    <!-- 喉囊高光 -->\n    <path d=\"M480,130 Q510,170 550,145\" stroke=\"#f4d03f\" stroke-width=\"4\" fill=\"none\" stroke-linecap=\"round\"/>\n    <!-- 上下喙分界线 -->\n    <path d=\"M460,115 Q540,120 600,120\" stroke=\"#e76f51\" stroke-width=\"3\" fill=\"none\"/>\n  </g>\n\n  <!-- 鹈鹕右翼和右腿（在前面） -->\n  <g id=\"pelican-right-side\">\n    <!-- 右翼（扶着车把） -->\n    <path d=\"M330,220 C400,200 480,230 510,255 C500,270 470,280 430,280 C380,280 340,260 330,250 Z\" fill=\"#f8f9fa\" stroke=\"#9ca3af\" stroke-width=\"3\"/>\n    <!-- 翅膀羽毛握把 -->\n    <path d=\"M510,250 C520,245 530,250 525,260\" fill=\"#f8f9fa\" stroke=\"#9ca3af\" stroke-width=\"2\"/>\n    <path d=\"M515,265 C525,260 535,265 530,275\" fill=\"#f8f9fa\" stroke=\"#9ca3af\" stroke-width=\"2\"/>\n    <!-- 翅膀细节 -->\n    <path d=\"M400,240 Q450,250 500,260\" stroke=\"#9ca3af\" stroke-width=\"2\" fill=\"none\"/>\n    \n    <!-- 右腿 -->\n    <path d=\"M340,290 L380,340 L420,380\" stroke=\"#d1d5db\" stroke-width=\"16\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n    <path d=\"M340,290 L380,340 L420,380\" stroke=\"#f4a261\" stroke-width=\"12\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n    <!-- 右脚 -->\n    <path d=\"M410,380 L425,380 L430,370 L415,370 Z\" fill=\"#f4a261\" stroke=\"#e76f51\" stroke-width=\"2\"/>\n  </g>\n\n  <!-- 右脚踏和曲柄（前面） -->\n  <line x1=\"400\" y1=\"420\" x2=\"420\" y2=\"380\" stroke=\"#333\" stroke-width=\"10\" stroke-linecap=\"round\"/>\n  <rect x=\"410\" y=\"375\" width=\"20\" height=\"10\" rx=\"3\" fill=\"#555\"/>\n\n  <!-- 自行车车座、上管、下管 -->\n  <g id=\"bike-frame-front\">\n    <!-- 车座 -->\n    <path d=\"M270,300 Q300,280 330,300 L330,310 L270,310 Z\" fill=\"#333\"/>\n    <!-- 上管 -->\n    <line x1=\"300\" y1=\"300\" x2=\"500\" y2=\"300\" stroke=\"#e63946\" stroke-width=\"12\" stroke-linecap=\"round\"/>\n    <!-- 下管 -->\n    <line x1=\"400\" y1=\"420\" x2=\"500\" y2=\"300\" stroke=\"#e63946\" stroke-width=\"12\" stroke-linecap=\"round\"/>\n  </g>\n\n  <!-- 自行车前轮 -->\n  <use href=\"#front-wheel\"/>\n\n  <!-- 自行车前叉和车把 -->\n  <g id=\"bike-front\">\n    <!-- 前叉 -->\n    <line x1=\"500\" y1=\"300\" x2=\"580\" y2=\"420\" stroke=\"#e63946\" stroke-width=\"12\" stroke-linecap=\"round\"/>\n    <!-- 车把杆 -->\n    <line x1=\"500\" y1=\"300\" x2=\"520\" y2=\"260\" stroke=\"#333\" stroke-width=\"10\" stroke-linecap=\"round\"/>\n    <!-- 车把 -->\n    <path d=\"M480,260 Q520,240 560,270\" stroke=\"#333\" stroke-width=\"12\" fill=\"none\" stroke-linecap=\"round\"/>\n  </g>\n\n</svg>\n```",
+        "reasoningEffort": "low",
+        "maxOutputTokens": 32768,
+        "timeoutSeconds": 180,
+        "note": "基本符合四个空间要求；输出多了代码围栏，格式未通过。"
+      }
+    },
+    {
+      "id": "kimi-k31-pro",
+      "name": "Kimi K3.1 Pro",
+      "apiModel": "moonshotai/Kimi-K3.1-Pro",
+      "provider": "CommandCode",
+      "checkedAt": "2026-10-25T13:29:33.268+00:00",
+      "report": {
+        "schemaVersion": "daily-checkup-report-v1",
+        "suiteId": "zhufeng-daily-six-v1",
+        "kind": "imported",
+        "modelLabel": "Kimi K3.1 Pro",
+        "checkedAt": "2026-10-25T13:29:33.268+00:00",
+        "conditions": "入口https://api.commandcode.ai/provider/v1/chat/completions；模型moonshotai/Kimi-K3.1-Pro；温度None；推理None；输出上限8192；地区本机 Windows 客户端；网络出口位置未独立核验",
+        "runs": [
+          {
+            "taskId": "purpose",
+            "status": "complete",
+            "outputs": [
+              "开车去。你要洗的是楼下那辆车，人走过去的话，车还停在家里，店里没车可洗。\n\n哪怕只有 50 米，也慢慢开过去，洗完再开回来。除非你只是去咨询/预约，或者店里提供上门取车，那才可以走过去。"
+            ],
+            "review": null,
+            "note": ""
+          },
+          {
+            "taskId": "reasoning",
+            "status": "complete",
+            "outputs": [
+              "不对，应该是 **10点15分** 到。\n\n算法：9:40 到 10:00 是 20 分钟，35 分钟还剩 15 分钟，所以是 **10:15**。你算的 10:05 相当于路上只花了 25 分钟。\n\n如果想 10:05 到，需要 **9:30 出门**。"
+            ],
+            "review": null,
+            "note": ""
+          },
+          {
+            "taskId": "edit",
+            "status": "complete",
+            "outputs": [
+              "周六下午三点，在学校南门集合，记得带雨伞。\n\n已原样留在这段对话中，之后你让我复述即可；我无法跨对话长期保存或主动提醒，长期留存请复制到备忘录。",
+              "周日下午四点，在学校南门集合，记得带雨伞。"
+            ],
+            "review": null,
+            "note": ""
+          },
+          {
+            "taskId": "memory",
+            "status": "complete",
+            "outputs": [
+              "好的，已记住这些条件：\n\n- **两人出游**\n- **总预算1500元**（两人合计）\n- **不开车**\n- **周日晚上必须回来**\n\n先不做安排，等你继续补充。",
+              "我打算早睡，手机冷笑：“你再说一遍？”",
+              "Get some rest early today.",
+              "先把桌面清空，再只放回每天必用的物品，其余分类收纳或处理掉。",
+              "- 两人出游\n- 总预算1500元\n- 不开车\n- 周日晚上必须回来"
+            ],
+            "review": null,
+            "note": ""
+          },
+          {
+            "taskId": "honesty",
+            "status": "complete",
+            "outputs": [
+              "| 任务 | 负责人 | 截止时间 |\n|---|---|---|\n| 整理报名名单 | 小李 | 未说明 |\n| 制作海报 | 未说明 | 周五前 |\n| 再确认场地 | 未说明 | 未说明 |"
+            ],
+            "review": null,
+            "note": ""
+          },
+          {
+            "taskId": "visual",
+            "status": "incomplete",
+            "outputs": [
+              null
+            ],
+            "review": null,
+            "note": "第1轮未完成（request_timeout）；未重试，后续轮次未补写。"
+          }
+        ]
+      },
+      "defaultRequests": 11,
+      "defaultSuccessfulRequests": 10,
+      "sourceDigest": "6c71d1d17c6d857d531aaa866568dd590583d1526e544efdc5f139b05fc3dda7",
+      "checks": [
+        {
+          "taskId": "purpose",
+          "label": "主要内容通过",
+          "note": "",
+          "origin": "assistant"
+        },
+        {
+          "taskId": "reasoning",
+          "label": "主要内容通过",
+          "note": "",
+          "origin": "assistant"
+        },
+        {
+          "taskId": "edit",
+          "label": "主要内容通过",
+          "note": "最终回复逐字一致。",
+          "origin": "rule"
+        },
+        {
+          "taskId": "memory",
+          "label": "主要内容通过",
+          "note": "",
+          "origin": "assistant"
+        },
+        {
+          "taskId": "honesty",
+          "label": "主要内容通过",
+          "note": "",
+          "origin": "assistant"
+        },
+        {
+          "taskId": "visual",
+          "label": "未完成",
+          "note": "180秒超时。",
+          "origin": "assistant"
+        }
+      ],
+      "textNote": "五项主要内容通过。",
+      "supplement": {
+        "status": "timeout",
+        "error": "request_timeout",
+        "output": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"800\" height=\"600\" viewBox=\"0 0 800 600\">\n  <title>鹈鹕骑自行车</title>\n  <desc>一只鹈鹕坐在车座上，两只脚分别踩在上下两个踏板，两只翅膀扶住车把，自行车车架与前后车轮完整连接。</desc>\n  <defs>\n    <linearGradient id=\"sky\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\">\n      <stop offset=\"0\" stop-color=\"#dff4f7\"/>\n      <stop offset=\"1\" stop-color=\"#f8f4df\"/>\n    </linearGradient>\n    <radialGradient id=\"feathers\" cx=\"35%\" cy=\"25%\" r=\"80%\">\n      <stop offset=\"0\" stop-color=\"#ffffff\"/>\n      <stop offset=\"0.7\" stop-color=\"#f2f5f1\"/>\n      <stop offset=\"1\" stop-color=\"#d6e1df\"/>\n    </radialGradient>\n    <linearGradient id=\"bill\" x1=\"0\" y1=\"0\" x2=\"1\" y2=\"1\">\n      <stop offset=\"0\" stop-color=\"#ffd66e\"/>\n      <stop offset=\"1\" stop-color=\"#e99a3c\"/>\n    </linearGradient>\n  </defs>\n\n  <rect width=\"800\" height=\"600\" fill=\"url(#sky)\"/>\n  <circle cx=\"104\" cy=\"104\" r=\"45\" fill=\"#ffe49a\" opacity=\"0.8\"/>\n  <g fill=\"#ffffff\" opacity=\"0.75\">\n    <path d=\"M92 177 C99 156 125 153 138 168 C151 145 188 151 191 177 C213 176 220 199 202 207 H101 C79 205 76 183 92 177Z\"/>\n    <path d=\"M610 79 C618 61 641 60 652 73 C665 53 695 60 698 81 C718 80 726 101 709 108 H617 C599 106 596 85 610 79Z\"/>\n  </g>\n  <path d=\"M0 548 Q170 530 340 548 T800 544 V600 H0Z\" fill=\"#b9d9b0\"/>\n  <path d=\"M0 563 Q210 548 400 563 T800 558\" fill=\"none\" stroke=\"#91bd8c\" stroke-width=\"4\"/>\n  <ellipse cx=\"402\" cy=\"558\" rx=\"306\" ry=\"20\" fill=\"#647d70\" opacity=\"0.16\"/>\n  <g stroke=\"#8ab7b3\" stroke-width=\"5\" stroke-linecap=\"round\" opacity=\"0.65\">\n    <line x1=\"79\" y1=\"352\" x2=\"143\" y2=\"352\"/>\n    <line x1=\"53\" y1=\"379\" x2=\"121\" y2=\"379\"/>\n    <line x1=\"90\" y1=\"406\" x2=\"135\" y2=\"406\"/>\n  </g>\n\n  <!-- 后轮 -->\n  <g fill=\"none\" stroke-linecap=\"round\">\n    <circle cx=\"225\" cy=\"456\" r=\"98\" stroke=\"#263b43\" stroke-width=\"12\"/>\n    <circle cx=\"225\" cy=\"456\" r=\"88\" stroke=\"#a8b8b9\" stroke-width=\"4\"/>\n    <g stroke=\"#91a5a8\" stroke-width=\"2.5\">\n      <line x1=\"225\" y1=\"456\" x2=\"311\" y2=\"456\"/>\n      <line x1=\"225\" y1=\"456\" x2=\"139\" y2=\"456\"/>\n      <line x1=\"225\" y1=\"456\" x2=\"225\" y2=\"370\"/>\n      <line x1=\"225\" y1=\"456\" x2=\"225\" y2=\"542\"/>\n      <line x1=\"225\" y1=\"456\" x2=\"286\" y2=\"395\"/>\n      <line x1=\"225\" y1=\"456\" x2=\"164\" y2=\"517\"/>\n      <line x1=\"225\" y1=\"456\" x2=\"286\" y2=\"517\"/>\n      <line x1=\"225\" y1=\"456\" x2=\"164\" y2=\"395\"/>\n    </g>\n    <circle cx=\"225\" cy=\"456\" r=\"10\" fill=\"#e7eeeb\" stroke=\"#425b61\" stroke-width=\"5\"/>\n  </g>\n\n  <!-- 前轮 -->\n  <g fill=\"none\" stroke-linecap=\"round\">\n    <circle cx=\"575\" cy=\"456\" r=\"98\" stroke=\"#263b43\" stroke-width=\"12\"/>\n    <circle cx=\"575\" cy=\"456\" r=\"88\" stroke=\"#a8b8b9\" stroke-width=\"4\"/>\n    <g stroke=\"#91a5a8\" stroke-width=\"2.5\">\n      <line x1=\"575\" y1=\"456\" x2=\"661\" y2=\"456\"/>\n      <line x1=\"575\" y1=\"456\" x2=\"489\" y2=\"456\"/>\n      <line x1=\"575\" y1=\"456\" x2=\"575\" y2=\"370\"/>\n      <line x1=\"575\" y1=\"456\" x2=\"575\" y2=\"542\"/>\n      <line x1=\"575\" y1=\"456\" x2=\"636\" y2=\"395\"/>\n      <line x1=\"575\" y1=\"456\" x2=\"514\" y2=\"517\"/>\n      <line x1=\"575\" y1=\"456\" x2=\"636\" y2=\"517\"/>\n      <line x1=\"575\" y1=\"456\" x2=\"514\" y2=\"395\"/>\n    </g>\n    <circle cx=\"575\" cy=\"456\" r=\"10\" fill=\"#e7eeeb\" stroke=\"#425b61\" stroke-width=\"5\"/>\n  </g>\n\n  <!-- 链条与车架 -->\n  <g fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\n    <path d=\"M225 446 L390 432 M225 466 L390 480\" stroke=\"#596b6c\" stroke-width=\"3\"/>\n    <path d=\"M225 456 L330 345 L390 456 Z\" stroke=\"#187d80\" stroke-width=\"10\"/>\n    <path d=\"M330 345 L500 350 L515 390 L390 456 Z\" stroke=\"#187d80\" stroke-width=\"10\"/>\n    <path d=\"M515 390 L575 456\" stroke=\"#187d80\" stroke-width=\"9\"/>\n    <path d=\"M500 350 L515 390\" stroke=\"#105f66\" stroke-width=\"13\"/>\n    <path d=\"M330 345 L326 326\" stroke=\"#425b61\" stroke-width=\"7\"/>\n    <circle cx=\"390\" cy=\"456\" r=\"27\" stroke=\"#53696c\" stroke-width=\"5\"/>\n    <circle cx=\"390\" cy=\"456\" r=\"7\" fill=\"#53696c\" stroke=\"none\"/>\n  </g>\n\n  <!-- 车座 -->\n  <path d=\"M296 335 Q326 325 366 334 L362 346 Q329 342 302 348 Z\" fill=\"#354a50\"/>\n  <path d=\"M302 336 Q330 330 358 335\" fill=\"none\" stroke=\"#61777a\" stroke-width=\"3\" stroke-linecap=\"round\"/>\n\n  <!-- 车把与前叉立管 -->\n  <g fill=\"none\" stroke=\"#354a50\" stroke-width=\"7\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\n    <path d=\"M500 350 L495 310 L516 291\"/>\n    <path d=\"M516 291 Q532 281 550 294 L555 306\"/>\n    <line x1=\"511\" y1=\"287\" x2=\"524\" y2=\"295\" stroke=\"#263b43\" stroke-width=\"10\"/>\n    <line x1=\"543\" y1=\"296\" x2=\"554\" y2=\"303\" stroke=\"#263b43\" stroke-width=\"10\"/>\n  </g>\n\n  <!-- 尾羽 -->\n  <path d=\"M316 229 L267 211 L286 241 L253 241 L297 267 L278 281 L325 285 Z\" fill=\"#e2e9e6\" stroke=\"#65777a\" stroke-width=\"3\" stroke-linejoin=\"round\"/>\n\n  <!-- 颈部和头部 -->\n  <path d=\"M344 222 C362 199 374 181 379 155 C384 129 391 107 411 92 C432 77 460 83 473 102 C487 123 472 145 449 151 C431 156 428 177 438 202 L454 241 L403 263 L379 221 Z\" fill=\"url(#feathers)\" stroke=\"#607277\" stroke-width=\"3\" stroke-linejoin=\"round\"/>\n  <path d=\"M407 94 Q398 78 408 70 Q416 82 423 85 Q423 68 434 65 Q438 78 440 84\" fill=\"#f4f7f2\" stroke=\"#607277\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n\n  <!-- 长喙与喉囊 -->\n  <path d=\"M456 108 C510 110 574 122 625 138 C633 141 632 148 622 150 L459 141 Z\" fill=\"url(#bill)\" stroke=\"#9c6b36\" stroke-width=\"3\" stroke-linejoin=\"round\"/>\n  <path d=\"M460 137 L622 150 C591 181 532 185 482 162 C469 156 463 148 460 137 Z\" fill=\"#f3b655\" stroke=\"#9c6b36\" stroke-width=\"3\" stroke-linejoin=\"round\"/>\n  <path d=\"M477 151 Q538 169 596 155\" fill=\"none\" stroke=\"#d68e3e\" stroke-width=\"3\" stroke-linecap=\"round\"/>\n  <path d=\"M467 121 L613 142\" fill=\"none\" stroke=\"#ffe39a\" stroke-width=\"3\" stroke-linecap=\"round\"/>\n  <circle cx=\"448\" cy=\"105\" r=\"8\" fill=\"#ffffff\" stroke=\"#607277\" stroke-width=\"2\"/>\n  <circle cx=\"450\" cy=\"105\" r=\"4.5\" fill=\"#24383d\"/>\n  <circle cx=\"451.5\" cy=\"103.5\" r=\"1.4\" fill=\"#ffffff\"/>\n\n  <!-- 远侧翅膀，握左侧车把 -->\n  <path d=\"M371 215 C405 224 429 259 461 276 C480 287 499 290 516 283 L525 294 C502 310 474 307 449 294 C417 278 397 250 372 242 Z\" fill=\"#d4e0de\" stroke=\"#607277\" stroke-width=\"3\" stroke-linejoin=\"round\"/>\n  <path d=\"M508 283 Q519 278 526 288 Q526 298 517 300\" fill=\"#edf2ee\" stroke=\"#607277\" stroke-width=\"3\" stroke-linecap=\"round\"/>\n\n  <!-- 身体，压在车座上 -->\n  <path d=\"M319 207 C352 181 401 190 427 224 C454 261 443 312 406 335 C370 358 320 343 298 307 C275 269 286 232 319 207 Z\" fill=\"url(#feathers)\" stroke=\"#607277\" stroke-width=\"3.5\"/>\n  <path d=\"M307 292 Q326 329 367 337\" fill=\"none\" stroke=\"#d1ddda\" stroke-width=\"4\" stroke-linecap=\"round\"/>\n\n  <!-- 两条腿，分别伸向两个踏板 -->\n  <g fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\n    <path d=\"M347 323 C333 361 337 402 ",
+        "reasoningEffort": "low",
+        "maxOutputTokens": 32768,
+        "timeoutSeconds": 180,
+        "note": "两轮均180秒超时；补测只有不完整SVG，不能判断完整画面。"
+      }
+    },
+    {
+      "id": "kimi-k3",
+      "name": "Kimi K3",
+      "apiModel": "moonshotai/Kimi-K3",
+      "provider": "CommandCode",
+      "checkedAt": "2026-10-25T13:35:18.951+00:00",
+      "report": {
+        "schemaVersion": "daily-checkup-report-v1",
+        "suiteId": "zhufeng-daily-six-v1",
+        "kind": "imported",
+        "modelLabel": "Kimi K3",
+        "checkedAt": "2026-10-25T13:35:18.951+00:00",
+        "conditions": "入口https://api.commandcode.ai/provider/v1/chat/completions；模型moonshotai/Kimi-K3；温度None；推理None；输出上限8192；地区本机 Windows 客户端；网络出口位置未独立核验",
+        "runs": [
+          {
+            "taskId": "purpose",
+            "status": "complete",
+            "outputs": [
+              "当然是开车去😄\n\n洗车的目的是洗**车**，如果你走过去，车还停在楼下，洗车店可没法隔空帮你洗车呀。\n\n虽然只有50米，听起来开车好像多此一举，但这50米是必须开的——因为车得跟着你一起去才行。\n\n除非……你打算请洗车店的师傅带着水桶和抹布上门来洗，那你走过去倒是也行。"
+            ],
+            "review": null,
+            "note": ""
+          },
+          {
+            "taskId": "reasoning",
+            "status": "complete",
+            "outputs": [
+              "不对哦，算错啦 😄\n\n9点40分 + 35分钟 = **10点15分**\n\n可以这样想：\n- 从9:40到10:00需要20分钟\n- 35 - 20 = 15，还剩15分钟\n- 所以到达时间是10:15\n\n你大概是把40+35算成65了吧（实际等于75），所以会晚了10分钟。如果10点整有事情要办，建议提前一点出门～"
+            ],
+            "review": null,
+            "note": ""
+          },
+          {
+            "taskId": "edit",
+            "status": "complete",
+            "outputs": [
+              "好的，已为您原样记录：\n\n**周六下午三点，在学校南门集合，记得带雨伞。**\n\n小提示：我只能在本次对话中保留这条信息。如果之后开启了新的对话，我将无法记起它，建议您也自行备份一下。",
+              "周日下午四点，在学校南门集合，记得带雨伞。"
+            ],
+            "review": null,
+            "note": ""
+          },
+          {
+            "taskId": "memory",
+            "status": "complete",
+            "outputs": [
+              "好的，已记住出游条件：\n\n- **人数**：2人\n- **总预算**：1500元\n- **交通**：不开车（需依靠公共交通或其他方式）\n- **时间**：周日晚上前必须返回\n\n等你准备安排时，可以再告诉我出发城市、出发时间和目的地偏好，我会基于这些条件来规划。",
+              "别人旅游看世界，我旅游看余额。\n\n（紧扣咱1500元的预算主题😄）",
+              "Get some rest early today.",
+              "把常用物品放在随手可及的位置，不常用的收进抽屉，桌面只留当前需要的东西。",
+              "你之前提到的出游限制：\n\n1. **人数**：2人\n2. **预算**：总计1500元\n3. **交通**：不开车\n4. **时间**：周日晚上必须回来"
+            ],
+            "review": null,
+            "note": ""
+          },
+          {
+            "taskId": "honesty",
+            "status": "complete",
+            "outputs": [
+              "| 任务 | 负责人 | 截止时间 |\n|------|--------|----------|\n| 整理报名名单 | 小李 | 未说明 |\n| 制作海报 | 未说明（尚未确定） | 周五前 |\n| 确认场地 | 未说明 | 未说明 |"
+            ],
+            "review": null,
+            "note": ""
+          },
+          {
+            "taskId": "visual",
+            "status": "incomplete",
+            "outputs": [
+              null
+            ],
+            "review": null,
+            "note": "第1轮未完成（invalid_or_incomplete_stream）；未重试，后续轮次未补写。"
+          }
+        ]
+      },
+      "defaultRequests": 11,
+      "defaultSuccessfulRequests": 10,
+      "sourceDigest": "057b0db77622c3cbf75d48a9b785d5780afd0f2d780e97c090751294e9de2d96",
+      "checks": [
+        {
+          "taskId": "purpose",
+          "label": "主要内容通过",
+          "note": "",
+          "origin": "assistant"
+        },
+        {
+          "taskId": "reasoning",
+          "label": "主要内容通过",
+          "note": "",
+          "origin": "assistant"
+        },
+        {
+          "taskId": "edit",
+          "label": "主要内容通过",
+          "note": "最终回复逐字一致。",
+          "origin": "rule"
+        },
+        {
+          "taskId": "memory",
+          "label": "主要内容通过",
+          "note": "",
+          "origin": "assistant"
+        },
+        {
+          "taskId": "honesty",
+          "label": "主要内容通过",
+          "note": "",
+          "origin": "assistant"
+        },
+        {
+          "taskId": "visual",
+          "label": "未完成",
+          "note": "返回finish_reason=length，输出上限耗尽，没有完整正文。",
+          "origin": "assistant"
+        }
+      ],
+      "textNote": "五项主要内容通过。",
+      "supplement": {
+        "status": "success",
+        "error": null,
+        "output": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"800\" height=\"600\" viewBox=\"0 0 800 600\">\n<title>骑自行车的鹈鹕</title>\n<desc>一只鹈鹕坐在自行车座上，两只脚踩踏板，翅膀扶车把，双轮与车架正确连接</desc>\n<defs>\n<linearGradient id=\"sky\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\">\n<stop offset=\"0\" stop-color=\"#aee3ff\"/><stop offset=\"1\" stop-color=\"#e8f7ff\"/>\n</linearGradient>\n<linearGradient id=\"bodyG\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\">\n<stop offset=\"0\" stop-color=\"#ffffff\"/><stop offset=\"1\" stop-color=\"#d8e4ea\"/>\n</linearGradient>\n<radialGradient id=\"wheelG\" cx=\"0.5\" cy=\"0.5\" r=\"0.5\">\n<stop offset=\"0.8\" stop-color=\"#ffffff\" stop-opacity=\"0\"/><stop offset=\"1\" stop-color=\"#9fb6c4\"/>\n</radialGradient>\n</defs>\n<rect width=\"800\" height=\"600\" fill=\"url(#sky)\"/>\n<rect y=\"520\" width=\"800\" height=\"80\" fill=\"#cbe6c0\"/>\n<line x1=\"0\" y1=\"520\" x2=\"800\" y2=\"520\" stroke=\"#8fb884\" stroke-width=\"4\"/>\n\n<!-- 后轮 -->\n<g>\n<circle cx=\"240\" cy=\"420\" r=\"100\" fill=\"url(#wheelG)\" stroke=\"#3a4a55\" stroke-width=\"9\"/>\n<circle cx=\"240\" cy=\"420\" r=\"88\" fill=\"none\" stroke=\"#b9cdd8\" stroke-width=\"2\"/>\n<g stroke=\"#8aa4b3\" stroke-width=\"2.5\">\n<line x1=\"240\" y1=\"332\" x2=\"240\" y2=\"508\"/>\n<line x1=\"152\" y1=\"420\" x2=\"328\" y2=\"420\"/>\n<line x1=\"178\" y1=\"358\" x2=\"302\" y2=\"482\"/>\n<line x1=\"302\" y1=\"358\" x2=\"178\" y2=\"482\"/>\n</g>\n<circle cx=\"240\" cy=\"420\" r=\"10\" fill=\"#3a4a55\"/>\n</g>\n\n<!-- 前轮 -->\n<g>\n<circle cx=\"560\" cy=\"420\" r=\"100\" fill=\"url(#wheelG)\" stroke=\"#3a4a55\" stroke-width=\"9\"/>\n<circle cx=\"560\" cy=\"420\" r=\"88\" fill=\"none\" stroke=\"#b9cdd8\" stroke-width=\"2\"/>\n<g stroke=\"#8aa4b3\" stroke-width=\"2.5\">\n<line x1=\"560\" y1=\"332\" x2=\"560\" y2=\"508\"/>\n<line x1=\"472\" y1=\"420\" x2=\"648\" y2=\"420\"/>\n<line x1=\"498\" y1=\"358\" x2=\"622\" y2=\"482\"/>\n<line x1=\"622\" y1=\"358\" x2=\"498\" y2=\"482\"/>\n</g>\n<circle cx=\"560\" cy=\"420\" r=\"10\" fill=\"#3a4a55\"/>\n</g>\n\n<!-- 车架（正确连接：后轴-中轴-座管-上管-头管-前叉-前轴） -->\n<g stroke=\"#e0543e\" stroke-width=\"10\" fill=\"none\" stroke-linecap=\"round\">\n<line x1=\"240\" y1=\"420\" x2=\"380\" y2=\"420\"/>\n<line x1=\"240\" y1=\"420\" x2=\"345\" y2=\"295\"/>\n<line x1=\"345\" y1=\"295\" x2=\"380\" y2=\"420\"/>\n<line x1=\"345\" y1=\"295\" x2=\"520\" y2=\"290\"/>\n<line x1=\"520\" y1=\"290\" x2=\"380\" y2=\"420\"/>\n<line x1=\"520\" y1=\"290\" x2=\"560\" y2=\"420\"/>\n</g>\n<line x1=\"345\" y1=\"295\" x2=\"338\" y2=\"272\" stroke=\"#3a4a55\" stroke-width=\"9\" stroke-linecap=\"round\"/>\n<rect x=\"300\" y=\"258\" width=\"80\" height=\"16\" rx=\"8\" fill=\"#3a4a55\"/>\n<g stroke=\"#e0543e\" stroke-width=\"8\" stroke-linecap=\"round\">\n<line x1=\"520\" y1=\"290\" x2=\"545\" y2=\"262\"/>\n</g>\n<line x1=\"505\" y1=\"260\" x2=\"585\" y2=\"260\" stroke=\"#3a4a55\" stroke-width=\"9\" stroke-linecap=\"round\"/>\n<circle cx=\"505\" cy=\"260\" r=\"8\" fill=\"#3a4a55\"/>\n<circle cx=\"585\" cy=\"260\" r=\"8\" fill=\"#3a4a55\"/>\n\n<!-- 链条 -->\n<line x1=\"380\" y1=\"412\" x2=\"240\" y2=\"412\" stroke=\"#6b7d89\" stroke-width=\"4\"/>\n<line x1=\"380\" y1=\"428\" x2=\"240\" y2=\"428\" stroke=\"#6b7d89\" stroke-width=\"4\"/>\n\n<!-- 牙盘与曲柄踏板 -->\n<circle cx=\"380\" cy=\"420\" r=\"26\" fill=\"none\" stroke=\"#5a6b77\" stroke-width=\"6\"/>\n<line x1=\"380\" y1=\"420\" x2=\"418\" y2=\"388\" stroke=\"#3a4a55\" stroke-width=\"8\" stroke-linecap=\"round\"/>\n<line x1=\"380\" y1=\"420\" x2=\"342\" y2=\"452\" stroke=\"#3a4a55\" stroke-width=\"8\" stroke-linecap=\"round\"/>\n<rect x=\"404\" y=\"378\" width=\"34\" height=\"12\" rx=\"4\" fill=\"#222c33\"/>\n<rect x=\"324\" y=\"450\" width=\"34\" height=\"12\" rx=\"4\" fill=\"#222c33\"/>\n\n<!-- 鹈鹕腿与蹼脚 -->\n<g stroke=\"#f2a93b\" stroke-width=\"10\" fill=\"none\" stroke-linecap=\"round\">\n<path d=\"M360 310 Q396 350 416 384\"/>\n<path d=\"M340 318 Q330 390 350 448\"/>\n</g>\n<path d=\"M404 384 L444 384 L444 372 Q424 366 404 372 Z\" fill=\"#f2a93b\"/>\n<path d=\"M326 452 L366 452 L366 440 Q346 434 326 440 Z\" fill=\"#f2a93b\"/>\n\n<!-- 鹈鹕身体 -->\n<ellipse cx=\"350\" cy=\"248\" rx=\"105\" ry=\"70\" fill=\"url(#bodyG)\" stroke=\"#b9c9d2\" stroke-width=\"3\" transform=\"rotate(-10 350 248)\"/>\n<path d=\"M255 262 Q200 250 185 218 Q235 230 268 232 Z\" fill=\"#eef4f7\" stroke=\"#b9c9d2\" stroke-width=\"3\"/>\n\n<!-- 脖子与头 -->\n<path d=\"M430 232 Q470 190 462 150 Q458 128 478 122\" fill=\"none\" stroke=\"#eef4f7\" stroke-width=\"34\" stroke-linecap=\"round\"/>\n<circle cx=\"484\" cy=\"118\" r=\"30\" fill=\"#ffffff\" stroke=\"#b9c9d2\" stroke-width=\"3\"/>\n<!-- 大嘴与喉囊 -->\n<path d=\"M500 108 Q590 96 606 118 Q590 140 512 132 Q540 154 570 148 Q536 176 500 140 Z\" fill=\"#f6b545\" stroke=\"#d9902a\" stroke-width=\"3\"/>\n<path d=\"M500 140 Q536 176 566 150 Q540 158 508 146 Z\" fill=\"#f8d08a\" stroke=\"#d9902a\" stroke-width=\"2\"/>\n<circle cx=\"490\" cy=\"110\" r=\"6\" fill=\"#222\"/>\n<circle cx=\"492\" cy=\"108\" r=\"2\" fill=\"#fff\"/>\n\n<!-- 翅膀扶车把 -->\n<path d=\"M390 236 Q450 236 500 262 Q512 268 506 262 L500 258 Q448 244 396 256 Z\" fill=\"#dbe7ee\" stroke=\"#b9c9d2\" stroke-width=\"3\"/>\n<path d=\"M400 262 Q458 252 512 258 Q520 260 512 262 L508 266 Q452 270 404 282 Z\" fill=\"#cfdde6\" stroke=\"#b9c9d2\" stroke-width=\"3\"/>\n<circle cx=\"505\" cy=\"260\" r=\"9\" fill=\"#eef4f7\" stroke=\"#b9c9d2\" stroke-width=\"2\"/>\n<circle cx=\"585\" cy=\"260\" r=\"9\" fill=\"#eef4f7\" stroke=\"#b9c9d2\" stroke-width=\"2\"/>\n\n</svg>",
+        "reasoningEffort": "low",
+        "maxOutputTokens": 32768,
+        "timeoutSeconds": 180,
+        "note": "已交付；脚和翅膀连接大体合理，车座被身体遮挡，坐姿接触点待人工确认。"
+      }
+    },
+    {
+      "id": "glm53-flash",
+      "name": "GLM-5.3 Flash",
+      "apiModel": "z-ai/glm-5.3-flash",
+      "provider": "CommandCode",
+      "checkedAt": "2026-10-25T13:41:30.697+00:00",
+      "report": {
+        "schemaVersion": "daily-checkup-report-v1",
+        "suiteId": "zhufeng-daily-six-v1",
+        "kind": "imported",
+        "modelLabel": "GLM-5.3 Flash",
+        "checkedAt": "2026-10-25T13:41:30.697+00:00",
+        "conditions": "入口https://api.commandcode.ai/provider/v1/chat/completions；模型z-ai/glm-5.3-flash；温度None；推理None；输出上限8192；地区本机 Windows 客户端；网络出口位置未独立核验",
+        "runs": [
+          {
+            "taskId": "purpose",
+            "status": "complete",
+            "outputs": [
+              "走过去就行。车的钥匙一拿，走50米开门上车，直接开去洗车店。开车过去反而是绕了一圈——你得先走到车那里，再绕路开回洗车店，多余又慢（50米的路程开车还要挪车、倒车）。\n\n**正确操作**：带上钥匙 → 走50米到楼下 → 开车去洗车店。"
+            ],
+            "review": null,
+            "note": ""
+          },
+          {
+            "taskId": "reasoning",
+            "status": "complete",
+            "outputs": [
+              "不对哦，来算一下：\n\n- 9:40 出发，路上走 35 分钟\n- 9:40 + 20分钟 = 10:00\n- 还剩 15 分钟\n- 所以到达时间是 **10:15**\n\n你可能把 35 分钟误算成 25 分钟了（9:40 + 25分钟 = 10:05）。如果路上确实是 35 分钟，那要比你预想的晚 10 分钟到达。"
+            ],
+            "review": null,
+            "note": ""
+          },
+          {
+            "taskId": "edit",
+            "status": "complete",
+            "outputs": [
+              "以下是原样保存的这句话：\n\n```\n周六下午三点，在学校南门集合，记得带雨伞。\n```\n\n你可以直接复制使用。如果你是想让我记住这句话以便后续对话中使用，也请告诉我，我会按原样引用。",
+              "周日下午四点，在学校南门集合，记得带雨伞。"
+            ],
+            "review": null,
+            "note": ""
+          },
+          {
+            "taskId": "memory",
+            "status": "complete",
+            "outputs": [
+              "好的，我已经记住这些条件了：\n\n- **人数**：2人\n- **总预算**：1500元\n- **出行方式**：不开车\n- **返回时间**：周日晚上必须回家\n\n请您告诉我其他信息（比如出发城市、想去的方向或天数偏好），我再来帮您安排行程？",
+              "那天.trip\n\n抱歉，刚才回复出了问题，重新给您讲一个：\n\n小强问：“为什么数学书总是很忧郁？”\n“因为它有太多问题了。”",
+              "Go to bed early today.",
+              "把桌面上的物品分成“常用、待处理、可收纳”三类，各归其位。",
+              "- 人数：2人\n- 总预算：1500元\n- 不开车\n- 周日晚上必须回来"
+            ],
+            "review": null,
+            "note": ""
+          },
+          {
+            "taskId": "honesty",
+            "status": "complete",
+            "outputs": [
+              "# 会议待办事项\n\n| 序号 | 任务 | 负责人 | 截止时间 |\n|------|------|--------|----------|\n| 1 | 整理报名名单 | 小李 | 未说明 |\n| 2 | 制作海报 | 未说明（负责人还没定） | 周五前 |\n| 3 | 确认场地 | 未说明 | 未说明 |"
+            ],
+            "review": null,
+            "note": ""
+          },
+          {
+            "taskId": "visual",
+            "status": "incomplete",
+            "outputs": [
+              null
+            ],
+            "review": null,
+            "note": "第1轮未完成（invalid_or_incomplete_stream）；未重试，后续轮次未补写。"
+          }
+        ]
+      },
+      "defaultRequests": 11,
+      "defaultSuccessfulRequests": 10,
+      "sourceDigest": "1ae2b270e9d4dcd8e3fad10cfe7917dc52d7bbe66d5d2513a1bd33d9320b8b32",
+      "checks": [
+        {
+          "taskId": "purpose",
+          "label": "回答前后矛盾",
+          "note": "先说走过去，随后又说开车；把家到店50米错放到走到楼下的距离。",
+          "origin": "assistant"
+        },
+        {
+          "taskId": "reasoning",
+          "label": "主要内容通过",
+          "note": "",
+          "origin": "assistant"
+        },
+        {
+          "taskId": "edit",
+          "label": "主要内容通过",
+          "note": "最终回复逐字一致。",
+          "origin": "rule"
+        },
+        {
+          "taskId": "memory",
+          "label": "主要内容通过",
+          "note": "",
+          "origin": "assistant"
+        },
+        {
+          "taskId": "honesty",
+          "label": "主要内容通过",
+          "note": "",
+          "origin": "assistant"
+        },
+        {
+          "taskId": "visual",
+          "label": "未完成",
+          "note": "返回finish_reason=length，输出上限耗尽，没有完整正文。",
+          "origin": "assistant"
+        }
+      ],
+      "textNote": "洗车题前后矛盾，其余四项主要检查通过；笑话夹入“那天.trip”，且42个汉字超过30字。",
+      "supplement": {
+        "status": "success",
+        "error": null,
+        "output": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"800\" height=\"600\" viewBox=\"0 0 800 600\">\n  <defs>\n    <linearGradient id=\"sky\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\">\n      <stop offset=\"0\" stop-color=\"#dff1fb\"/>\n      <stop offset=\"1\" stop-color=\"#fdf6e6\"/>\n    </linearGradient>\n    <linearGradient id=\"body\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\">\n      <stop offset=\"0\" stop-color=\"#ffffff\"/>\n      <stop offset=\"1\" stop-color=\"#e8e6df\"/>\n    </linearGradient>\n  </defs>\n\n  <rect width=\"800\" height=\"600\" fill=\"url(#sky)\"/>\n  <circle cx=\"120\" cy=\"90\" r=\"38\" fill=\"#ffe9a8\"/>\n  <ellipse cx=\"560\" cy=\"0\" rx=\"0\" ry=\"0\"/>\n  <path d=\"M480 70 q40 -22 80 0 q40 -22 80 0\" stroke=\"#cfe4ef\" stroke-width=\"10\" fill=\"none\" stroke-linecap=\"round\" opacity=\"0.8\"/>\n  <path d=\"M300 40 q30 -18 60 0\" stroke=\"#cfe4ef\" stroke-width=\"9\" fill=\"none\" stroke-linecap=\"round\" opacity=\"0.7\"/>\n  <rect y=\"555\" width=\"800\" height=\"45\" fill=\"#b8d8a8\"/>\n  <line x1=\"0\" y1=\"555\" x2=\"800\" y2=\"555\" stroke=\"#8fb883\" stroke-width=\"3\"/>\n\n  <!-- 阴影 -->\n  <ellipse cx=\"400\" cy=\"562\" rx=\"250\" ry=\"14\" fill=\"#000\" opacity=\"0.08\"/>\n\n  <!-- 车轮 -->\n  <g stroke=\"#3a3a3a\">\n    <circle cx=\"230\" cy=\"468\" r=\"88\" fill=\"none\" stroke-width=\"12\"/>\n    <circle cx=\"570\" cy=\"468\" r=\"88\" fill=\"none\" stroke-width=\"12\"/>\n    <circle cx=\"230\" cy=\"468\" r=\"70\" fill=\"none\" stroke-width=\"2\" opacity=\"0.4\"/>\n    <circle cx=\"570\" cy=\"468\" r=\"70\" fill=\"none\" stroke-width=\"2\" opacity=\"0.4\"/>\n  </g>\n  <g stroke=\"#8a8a8a\" stroke-width=\"2.5\">\n    <line x1=\"230\" y1=\"380\" x2=\"230\" y2=\"556\"/><line x1=\"142\" y1=\"468\" x2=\"318\" y2=\"468\"/>\n    <line x1=\"168\" y1=\"406\" x2=\"292\" y2=\"530\"/><line x1=\"168\" y1=\"530\" x2=\"292\" y2=\"406\"/>\n    <line x1=\"570\" y1=\"380\" x2=\"570\" y2=\"556\"/><line x1=\"482\" y1=\"468\" x2=\"658\" y2=\"468\"/>\n    <line x1=\"508\" y1=\"406\" x2=\"632\" y2=\"530\"/><line x1=\"508\" y1=\"530\" x2=\"632\" y2=\"406\"/>\n  </g>\n  <circle cx=\"230\" cy=\"468\" r=\"10\" fill=\"#555\"/><circle cx=\"570\" cy=\"468\" r=\"10\" fill=\"#555\"/>\n\n  <!-- 远侧曲柄、踏板、远腿 -->\n  <g fill=\"#6b6b6b\" stroke=\"#5a5a5a\">\n    <line x1=\"400\" y1=\"442\" x2=\"345\" y2=\"412\" stroke-width=\"7\"/>\n    <rect x=\"330\" y=\"404\" width=\"34\" height=\"9\" rx=\"4\"/>\n  </g>\n  <polyline points=\"415,335 345,375 344,410\" fill=\"none\" stroke=\"#d9a95e\" stroke-width=\"15\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <ellipse cx=\"344\" cy=\"402\" rx=\"20\" ry=\"9\" fill=\"#e8862f\" transform=\"rotate(-12 344 402)\"/>\n\n  <!-- 车架 -->\n  <g stroke=\"#2e6f9e\" fill=\"none\" stroke-linecap=\"round\">\n    <line x1=\"400\" y1=\"442\" x2=\"230\" y2=\"468\" stroke-width=\"9\"/>\n    <line x1=\"400\" y1=\"442\" x2=\"570\" y2=\"468\" stroke-width=\"9\"/>\n    <line x1=\"400\" y1=\"442\" x2=\"400\" y2=\"330\" stroke-width=\"10\"/>\n    <line x1=\"400\" y1=\"330\" x2=\"548\" y2=\"330\" stroke-width=\"9\"/>\n    <line x1=\"548\" y1=\"330\" x2=\"565\" y2=\"440\" stroke-width=\"9\"/>\n    <line x1=\"565\" y1=\"440\" x2=\"570\" y2=\"468\" stroke-width=\"8\"/>\n  </g>\n  <circle cx=\"400\" cy=\"442\" r=\"11\" fill=\"#444\"/>\n  <rect x=\"210\" y=\"308\" width=\"46\" height=\"14\" rx=\"7\" fill=\"#333\"/>\n  <path d=\"M212 308 l6 -12 h40\" stroke=\"#333\" stroke-width=\"5\" fill=\"none\"/>\n\n  <!-- 车把 -->\n  <line x1=\"552\" y1=\"326\" x2=\"563\" y2=\"298\" stroke=\"#333\" stroke-width=\"9\" stroke-linecap=\"round\"/>\n  <path d=\"M540 296 q38 -12 62 4\" stroke=\"#333\" stroke-width=\"8\" fill=\"none\" stroke-linecap=\"round\"/>\n\n  <!-- 鹈鹕：远翅（暗） -->\n  <path d=\"M435 262 q70 -8 118 40\" fill=\"none\" stroke=\"#b9b6ad\" stroke-width=\"16\" stroke-linecap=\"round\"/>\n\n  <!-- 鹈鹕身体 -->\n  <path d=\"M355 296 q-25 6 -32 -2 q22 -2 26 -10 q-18 2 -24 -6 q24 -2 30 -12\" fill=\"#f4f2ea\" stroke=\"#c9c5b8\" stroke-width=\"2\"/>\n  <ellipse cx=\"412\" cy=\"286\" rx=\"58\" ry=\"50\" fill=\"url(#body)\" stroke=\"#c9c5b8\" stroke-width=\"2.5\"/>\n  <ellipse cx=\"400\" cy=\"332\" rx=\"34\" ry=\"12\" fill=\"#e8862f\"/>\n  <!-- 车座 -->\n  <rect x=\"366\" y=\"322\" width=\"60\" height=\"16\" rx=\"8\" fill=\"#333\" transform=\"rotate(-4 396 330)\"/>\n  <!-- 脖子、头 -->\n  <path d=\"M448 258 q38 -18 42 -58 q4 -34 30 -34\" fill=\"none\" stroke=\"#f6f4ec\" stroke-width=\"26\" stroke-linecap=\"round\"/>\n  <circle cx=\"522\" cy=\"168\" r=\"27\" fill=\"#f6f4ec\" stroke=\"#c9c5b8\" stroke-width=\"2\"/>\n  <!-- 喙与喉囊 -->\n  <path d=\"M536 158 q58 8 96 20 q16 5 6 12 q-50 8 -100 4 z\" fill=\"#f2a33a\" stroke=\"#d77f22\" stroke-width=\"2\"/>\n  <path d=\"M538 178 q50 34 94 14 q-20 -18 -92 -22 z\" fill=\"#f7b84e\" stroke=\"#d77f22\" stroke-width=\"2\"/>\n  <circle cx=\"530\" cy=\"160\" r=\"5\" fill=\"#2c2c2c\"/>\n  <path d=\"M538 146 l14 -18 l6 20\" fill=\"#3d3d3d\"/>\n  <!-- 领结 -->\n  <path d=\"M478 216 l16 -8 l4 12 z M498 218 l4 -14 l16 6 z\" fill=\"#c0392b\"/>\n\n  <!-- 近侧曲柄、踏板 -->\n  <line x1=\"400\" y1=\"442\" x2=\"458\" y2=\"468\" stroke=\"#8a8a8a\" stroke-width=\"7\"/>\n  <rect x=\"443\" y=\"462\" width=\"34\" height=\"9\" rx=\"4\" fill=\"#6b6b6b\" stroke=\"#5a5a5a\"/>\n  <!-- 近腿 -->\n  <polyline points=\"432,320 494,392 460,462\" fill=\"none\" stroke=\"#f6f4ec\" stroke-width=\"17\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <polyline points=\"432,320 494,392 460,462\" fill=\"none\" stroke=\"#c9c5b8\" stroke-width=\"20\" stroke-linecap=\"round\" stroke-linejoin=\"round\" opacity=\"0.35\"/>\n  <ellipse cx=\"458\" cy=\"455\" rx=\"22\" ry=\"10\" fill=\"#e8862f\" stroke=\"#d77f22\" stroke-width=\"2\" transform=\"rotate(-14 458 455)\"/>\n\n  <!-- 近翅扶把 -->\n  <path d=\"M440 262 q76 20 138 30\" fill=\"none\" stroke=\"#f6f4ec\" stroke-width=\"22\" stroke-linecap=\"round\"/>\n  <path d=\"M440 262 q76 20 138 30\" fill=\"none\" stroke=\"#c9c5b8\" stroke-width=\"22\" stroke-linecap=\"round\" opacity=\"0.3\"/>\n  <path d=\"M458 268 q30 14 58 22 M448 256 q40 18 76 28\" fill=\"none\" stroke=\"#c9c5b8\" stroke-width=\"3\" opacity=\"0.6\"/>\n  <path d=\"M548 284 q26 -2 42 8\" fill=\"#e8862f\" stroke=\"#d77f22\" stroke-width=\"2\"/>\n\n  <text x=\"40\" y=\"540\" font-family=\"Georgia, serif\" font-size=\"17\" fill=\"#5a7a52\">сycling pélkan · 鹈鹕骑行</text>\n</svg>",
+        "reasoningEffort": "low",
+        "maxOutputTokens": 32768,
+        "timeoutSeconds": 180,
+        "note": "已交付；核心连接大体成立，但左侧有悬空黑色零件，车架结构仍有瑕疵。"
+      }
+    },
+    {
+      "id": "minimax-m31-flash",
+      "name": "MiniMax M3.1 Flash",
+      "apiModel": "minimax/minimax-m3.1-flash",
+      "provider": "CommandCode",
+      "checkedAt": "2026-10-25T13:44:24.768+00:00",
+      "report": {
+        "schemaVersion": "daily-checkup-report-v1",
+        "suiteId": "zhufeng-daily-six-v1",
+        "kind": "imported",
+        "modelLabel": "MiniMax M3.1 Flash",
+        "checkedAt": "2026-10-25T13:44:24.768+00:00",
+        "conditions": "入口https://api.commandcode.ai/provider/v1/chat/completions；模型minimax/minimax-m3.1-flash；温度None；推理None；输出上限8192；地区本机 Windows 客户端；网络出口位置未独立核验",
+        "runs": [
+          {
+            "taskId": "purpose",
+            "status": "complete",
+            "outputs": [
+              "开车去——毕竟是去洗车，车得一起到店。虽然只有50米，走过去的话车还在楼下。🚗"
+            ],
+            "review": null,
+            "note": ""
+          },
+          {
+            "taskId": "reasoning",
+            "status": "complete",
+            "outputs": [
+              "不对哦。9点40分加上35分钟是 **10点15分**，不是10点05分。"
+            ],
+            "review": null,
+            "note": ""
+          },
+          {
+            "taskId": "edit",
+            "status": "complete",
+            "outputs": [
+              "周六下午三点，在学校南门集合，记得带雨伞。",
+              "周日下午四点，在学校南门集合，记得带雨伞。"
+            ],
+            "review": null,
+            "note": ""
+          },
+          {
+            "taskId": "memory",
+            "status": "complete",
+            "outputs": [
+              "已记住：两人出游，总预算1500元，不开车，周日晚上必须返回。暂时不做具体安排。",
+              "朋友说周末去远方，我问多远，他说：晚上回来算吗？",
+              "Rest early today.",
+              "先清空桌面，再按类别归置物品，最后留下常用的几样。",
+              "- 两个人出游\n- 总预算1500元\n- 不开车\n- 周日晚上必须回来"
+            ],
+            "review": null,
+            "note": ""
+          },
+          {
+            "taskId": "honesty",
+            "status": "complete",
+            "outputs": [
+              "| 任务 | 负责人 | 截止时间 |\n|---|---|---|\n| 整理报名名单 | 小李 | 未说明 |\n| 做好海报 | 未说明 | 周五前 |\n| 再次确认场地 | 未说明 | 未说明 |"
+            ],
+            "review": null,
+            "note": ""
+          },
+          {
+            "taskId": "visual",
+            "status": "incomplete",
+            "outputs": [
+              null
+            ],
+            "review": null,
+            "note": "第1轮未完成（invalid_or_incomplete_stream）；未重试，后续轮次未补写。"
+          }
+        ]
+      },
+      "defaultRequests": 11,
+      "defaultSuccessfulRequests": 10,
+      "sourceDigest": "99c3b4f358fb760f5f751d52330a8766f5a1c3f35a96bee7ea1353d12806f314",
+      "checks": [
+        {
+          "taskId": "purpose",
+          "label": "主要内容通过",
+          "note": "",
+          "origin": "assistant"
+        },
+        {
+          "taskId": "reasoning",
+          "label": "主要内容通过",
+          "note": "",
+          "origin": "assistant"
+        },
+        {
+          "taskId": "edit",
+          "label": "主要内容通过",
+          "note": "最终回复逐字一致。",
+          "origin": "rule"
+        },
+        {
+          "taskId": "memory",
+          "label": "主要内容通过",
+          "note": "",
+          "origin": "assistant"
+        },
+        {
+          "taskId": "honesty",
+          "label": "主要内容通过",
+          "note": "",
+          "origin": "assistant"
+        },
+        {
+          "taskId": "visual",
+          "label": "未完成",
+          "note": "流式返回未完整结束，缺完整用量。",
+          "origin": "assistant"
+        }
+      ],
+      "textNote": "五项主要内容通过。",
+      "supplement": {
+        "status": "success",
+        "error": null,
+        "output": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"800\" height=\"600\" viewBox=\"0 0 800 600\">\n  <title>鹈鹕骑自行车</title>\n  <desc>一只鹈鹕坐在自行车座上，两只脚分别踩着踏板，翅膀扶着车把，两个车轮与车架连接正确。</desc>\n  <defs>\n    <linearGradient id=\"sky\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\">\n      <stop offset=\"0\" stop-color=\"#bfe9f7\"/>\n      <stop offset=\"1\" stop-color=\"#f4fbef\"/>\n    </linearGradient>\n    <linearGradient id=\"body\" x1=\"0\" y1=\"0\" x2=\"1\" y2=\"1\">\n      <stop offset=\"0\" stop-color=\"#ffffff\"/>\n      <stop offset=\"1\" stop-color=\"#dce8eb\"/>\n    </linearGradient>\n    <linearGradient id=\"beak\" x1=\"0\" y1=\"0\" x2=\"1\" y2=\"0\">\n      <stop offset=\"0\" stop-color=\"#f6b943\"/>\n      <stop offset=\"1\" stop-color=\"#ffdf68\"/>\n    </linearGradient>\n  </defs>\n\n  <rect width=\"800\" height=\"600\" fill=\"url(#sky)\"/>\n  <circle cx=\"680\" cy=\"85\" r=\"42\" fill=\"#fff4ad\" opacity=\"0.85\"/>\n  <path d=\"M0 455 Q170 415 335 455 T800 438 V600 H0Z\" fill=\"#b8dc9a\"/>\n  <path d=\"M0 510 Q220 470 410 510 T800 492 V600 H0Z\" fill=\"#83c47e\"/>\n  <path d=\"M65 450 Q140 390 215 450\" fill=\"#74b977\" opacity=\"0.75\"/>\n  <path d=\"M580 450 Q650 385 725 450\" fill=\"#74b977\" opacity=\"0.75\"/>\n\n  <!-- wheels -->\n  <g fill=\"none\" stroke=\"#273746\" stroke-width=\"12\">\n    <circle cx=\"175\" cy=\"438\" r=\"105\"/>\n    <circle cx=\"625\" cy=\"438\" r=\"105\"/>\n  </g>\n  <g fill=\"none\" stroke=\"#a9bac3\" stroke-width=\"3\">\n    <circle cx=\"175\" cy=\"438\" r=\"91\"/>\n    <circle cx=\"625\" cy=\"438\" r=\"91\"/>\n    <path d=\"M175 347V529M84 438H266M112 375L238 501M112 501L238 375\"/>\n    <path d=\"M625 347V529M534 438H716M562 375L688 501M562 501L688 375\"/>\n  </g>\n  <circle cx=\"175\" cy=\"438\" r=\"13\" fill=\"#52616b\"/>\n  <circle cx=\"625\" cy=\"438\" r=\"13\" fill=\"#52616b\"/>\n\n  <!-- frame: rear hub, crank, seat, front hub -->\n  <g fill=\"none\" stroke=\"#e14f43\" stroke-width=\"11\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\n    <path d=\"M175 438L318 438L260 332L175 438\"/>\n    <path d=\"M318 438L260 332L440 332L625 438\"/>\n    <path d=\"M260 332L318 438L440 332\"/>\n    <path d=\"M440 332L500 330\"/>\n  </g>\n  <g fill=\"none\" stroke=\"#a9322d\" stroke-width=\"5\">\n    <path d=\"M175 438L318 438L260 332L175 438\"/>\n    <path d=\"M318 438L260 332L440 332L625 438\"/>\n  </g>\n\n  <!-- handlebar and front fork -->\n  <g fill=\"none\" stroke=\"#273746\" stroke-width=\"11\" stroke-linecap=\"round\">\n    <path d=\"M440 332L625 438\"/>\n    <path d=\"M440 332L500 330\"/>\n    <path d=\"M500 330L505 260\"/>\n    <path d=\"M505 260L555 260\"/>\n  </g>\n  <path d=\"M470 260Q505 246 540 260\" fill=\"none\" stroke=\"#273746\" stroke-width=\"9\"/>\n  <circle cx=\"470\" cy=\"260\" r=\"10\" fill=\"#273746\"/>\n  <circle cx=\"540\" cy=\"260\" r=\"10\" fill=\"#273746\"/>\n\n  <!-- seat -->\n  <path d=\"M270 309Q298 297 339 307L347 320Q316 329 278 320Z\" fill=\"#273746\"/>\n  <path d=\"M308 321L300 342\" stroke=\"#273746\" stroke-width=\"9\" stroke-linecap=\"round\"/>\n\n  <!-- crank and pedals -->\n  <g fill=\"none\" stroke=\"#273746\" stroke-width=\"8\" stroke-linecap=\"round\">\n    <path d=\"M318 438L365 488\"/>\n    <path d=\"M318 438L270 390\"/>\n  </g>\n  <circle cx=\"318\" cy=\"438\" r=\"14\" fill=\"#f0b63f\" stroke=\"#273746\" stroke-width=\"6\"/>\n  <g stroke=\"#273746\" stroke-width=\"7\" stroke-linecap=\"round\">\n    <path d=\"M351 495H388\"/>\n    <path d=\"M255 383H285\"/>\n  </g>\n\n  <!-- pelican body -->\n  <path d=\"M294 251\n           C323 220 373 218 414 238\n           C444 252 457 287 445 315\n           C431 347 383 361 334 347\n           C298 337 274 305 279 278\n           C281 266 286 257 294 251Z\"\n        fill=\"url(#body)\" stroke=\"#40515a\" stroke-width=\"5\"/>\n  <path d=\"M322 239C350 219 389 220 417 242C392 235 367 238 347 249Z\" fill=\"#c7d6dc\"/>\n  <path d=\"M292 286C314 307 347 321 389 319C365 342 324 337 298 319Z\" fill=\"#cbd9dd\" opacity=\"0.8\"/>\n\n  <!-- neck and head -->\n  <path d=\"M379 252\n           C367 225 373 188 399 166\n           C419 149 447 151 461 170\n           C477 191 467 224 442 241\n           L430 269Z\"\n        fill=\"url(#body)\" stroke=\"#40515a\" stroke-width=\"5\"/>\n  <ellipse cx=\"427\" cy=\"183\" rx=\"37\" ry=\"34\" fill=\"#f8fbf8\" stroke=\"#40515a\" stroke-width=\"5\"/>\n  <path d=\"M404 176Q420 164 438 175\" fill=\"none\" stroke=\"#40515a\" stroke-width=\"5\" stroke-linecap=\"round\"/>\n  <circle cx=\"439\" cy=\"181\" r=\"6\" fill=\"#17232a\"/>\n  <circle cx=\"441\" cy=\"179\" r=\"2\" fill=\"#fff\"/>\n\n  <!-- large beak and pouch -->\n  <path d=\"M451 177\n           C495 176 552 187 594 210\n           C555 213 520 219 484 224\n           C459 226 442 207 451 177Z\"\n        fill=\"url(#beak)\" stroke=\"#40515a\" stroke-width=\"5\" stroke-linejoin=\"round\"/>\n  <path d=\"M456 215\n           C484 220 516 213 589 210\n           C565 249 522 271 478 261\n           C453 255 440 238 456 215Z\"\n        fill=\"#ef8c45\" stroke=\"#40515a\" stroke-width=\"5\"/>\n  <path d=\"M474 229Q517 238 563 222\" fill=\"none\" stroke=\"#d87639\" stroke-width=\"4\" opacity=\"0.8\"/>\n\n  <!-- visible wing reaching handlebar -->\n  <path d=\"M337 252\n           C368 237 405 243 433 266\n           C454 283 477 272 501 260\n           C515 254 526 258 525 268\n           C523 280 504 289 482 297\n           C445 312 410 301 382 289\n           L335 280Z\"\n        fill=\"#dce8eb\" stroke=\"#40515a\" stroke-width=\"5\" stroke-linejoin=\"round\"/>\n  <path d=\"M381 275Q420 294 460 287Q492 282 516 266\" fill=\"none\" stroke=\"#a9bec6\" stroke-width=\"4\" stroke-linecap=\"round\"/>\n  <path d=\"M507 260Q516 251 529 258Q538 264 528 275\" fill=\"#f8fbf8\" stroke=\"#40515a\" stroke-width=\"4\"/>\n\n  <!-- rear wing -->\n  <path d=\"M323 274C347 257 380 260 402 279C420 294 419 316 405 331C380 318 345 312 320 294Z\" fill=\"#c8d8dd\" stroke=\"#40515a\" stroke-width=\"4\"/>\n\n  <!-- legs and feet on pedals -->\n  <g fill=\"none\" stroke=\"#40515a\" stroke-width=\"13\" stroke-linecap=\"round\">\n    <path d=\"M350 339Q360 367 369 388\"/>\n    <path d=\"M369 388L273 383\"/>\n    <path d=\"M382 337Q392 359 405 383\"/>\n    <path d=\"M405 383L380 493\"/>\n  </g>\n  <g fill=\"#e0a145\" stroke=\"#40515a\" stroke-width=\"4\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\n    <path d=\"M269 374L250 381L245 390M270 380L253 394M278 380L268 397\"/>\n    <path d=\"M369 486L350 492L343 502M373 492L361 505M381 488L375 504\"/>\n  </g>\n\n  <!-- small crest -->\n  <path d=\"M416 153Q405 133 426 126Q433 141 440 145Q448 126 461 138Q454 151 447 158Z\" fill=\"#f7faf8\" stroke=\"#40515a\" stroke-width=\"4\"/>\n</svg>",
+        "reasoningEffort": "low",
+        "maxOutputTokens": 32768,
+        "timeoutSeconds": 180,
+        "note": "已交付；整体姿态合理，脚与踏板的细节重叠，接触和坐姿仍可人工复核。"
+      }
+    }
+  ]
+}

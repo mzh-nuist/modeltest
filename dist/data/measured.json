@@ -1,0 +1,5065 @@
+{
+  "schemaVersion": "1.0",
+  "meta": {
+    "title": "CommandCode 端点 · 首批真实小样本",
+    "updatedAt": "2026-10-23T16:58:47.902375Z",
+    "kind": "measured",
+    "description": "90次真实请求，5个不同目的批次；重复次数详见各批次配置，不增加独立题目数。包含免费与GOAT计价端点，错误、超时及速率不可测项全部保留。请按批次和相同任务比较，不是总体模型排名。服务商默认推理；上游模型身份未独立核验；费用按服务商报价名义估算，非账单回读。"
+  },
+  "models": [
+    {
+      "id": "glyph-free-cap1024",
+      "name": "Glyph Cluster (free) · 上限1024",
+      "family": "CommandCode 声明模型",
+      "provider": "CommandCode GOAT",
+      "endpoint": "https://api.commandcode.ai/provider/v1/chat/completions",
+      "version": "stealth/glyph-cluster:free · 服务商别名",
+      "reasoning": "服务商默认，未指定推理档位",
+      "contextWindow": 256000,
+      "maxOutputTokens": 1024,
+      "inputPrice": 0,
+      "outputPrice": 0,
+      "cachedInputPrice": 0,
+      "currency": "USD",
+      "sourceUrl": "https://commandcode.ai/docs/provider",
+      "sourceDate": "2026-10-23",
+      "tags": [
+        "首次采集",
+        "免费端点",
+        "第三方服务商"
+      ],
+      "status": "measured",
+      "description": "服务商当前文档声明不消耗 credits；客户端测量，尚未独立验证上游模型身份。 输出上限为本次请求配置，不代表模型标称最大输出。"
+    },
+    {
+      "id": "beam-free-cap1024",
+      "name": "Beam (free) · 上限1024",
+      "family": "CommandCode 声明模型",
+      "provider": "CommandCode GOAT",
+      "endpoint": "https://api.commandcode.ai/provider/v1/chat/completions",
+      "version": "reflection/beam:free · 服务商别名",
+      "reasoning": "服务商默认，未指定推理档位",
+      "contextWindow": 1048576,
+      "maxOutputTokens": 1024,
+      "inputPrice": 0,
+      "outputPrice": 0,
+      "cachedInputPrice": 0,
+      "currency": "USD",
+      "sourceUrl": "https://commandcode.ai/docs/provider",
+      "sourceDate": "2026-10-23",
+      "tags": [
+        "首次采集",
+        "免费端点",
+        "第三方服务商"
+      ],
+      "status": "measured",
+      "description": "服务商当前文档声明不消耗 credits；客户端测量，尚未独立验证上游模型身份。 输出上限为本次请求配置，不代表模型标称最大输出。"
+    },
+    {
+      "id": "laguna-free-cap1024",
+      "name": "Laguna S 2.1 (free) · 上限1024",
+      "family": "CommandCode 声明模型",
+      "provider": "CommandCode GOAT",
+      "endpoint": "https://api.commandcode.ai/provider/v1/chat/completions",
+      "version": "poolside/laguna-s-2.1-free · 服务商别名",
+      "reasoning": "服务商默认，未指定推理档位",
+      "contextWindow": 256000,
+      "maxOutputTokens": 1024,
+      "inputPrice": 0,
+      "outputPrice": 0,
+      "cachedInputPrice": 0,
+      "currency": "USD",
+      "sourceUrl": "https://commandcode.ai/docs/provider",
+      "sourceDate": "2026-10-23",
+      "tags": [
+        "首次采集",
+        "免费端点",
+        "第三方服务商"
+      ],
+      "status": "measured",
+      "description": "服务商当前文档声明不消耗 credits；客户端测量，尚未独立验证上游模型身份。 输出上限为本次请求配置，不代表模型标称最大输出。"
+    },
+    {
+      "id": "glyph-free-cap2048",
+      "name": "Glyph Cluster (free) · 上限2048",
+      "family": "CommandCode 声明模型",
+      "provider": "CommandCode GOAT",
+      "endpoint": "https://api.commandcode.ai/provider/v1/chat/completions",
+      "version": "stealth/glyph-cluster:free · 服务商别名",
+      "reasoning": "服务商默认，未指定推理档位",
+      "contextWindow": 256000,
+      "maxOutputTokens": 2048,
+      "inputPrice": 0,
+      "outputPrice": 0,
+      "cachedInputPrice": 0,
+      "currency": "USD",
+      "sourceUrl": "https://commandcode.ai/docs/provider",
+      "sourceDate": "2026-10-23",
+      "tags": [
+        "首次采集",
+        "免费端点",
+        "第三方服务商"
+      ],
+      "status": "measured",
+      "description": "服务商当前文档声明不消耗 credits；客户端测量，尚未独立验证上游模型身份。 输出上限为本次请求配置，不代表模型标称最大输出。"
+    },
+    {
+      "id": "beam-free-cap2048",
+      "name": "Beam (free) · 上限2048",
+      "family": "CommandCode 声明模型",
+      "provider": "CommandCode GOAT",
+      "endpoint": "https://api.commandcode.ai/provider/v1/chat/completions",
+      "version": "reflection/beam:free · 服务商别名",
+      "reasoning": "服务商默认，未指定推理档位",
+      "contextWindow": 1048576,
+      "maxOutputTokens": 2048,
+      "inputPrice": 0,
+      "outputPrice": 0,
+      "cachedInputPrice": 0,
+      "currency": "USD",
+      "sourceUrl": "https://commandcode.ai/docs/provider",
+      "sourceDate": "2026-10-23",
+      "tags": [
+        "首次采集",
+        "免费端点",
+        "第三方服务商"
+      ],
+      "status": "measured",
+      "description": "服务商当前文档声明不消耗 credits；客户端测量，尚未独立验证上游模型身份。 输出上限为本次请求配置，不代表模型标称最大输出。"
+    },
+    {
+      "id": "laguna-free-cap2048",
+      "name": "Laguna S 2.1 (free) · 上限2048",
+      "family": "CommandCode 声明模型",
+      "provider": "CommandCode GOAT",
+      "endpoint": "https://api.commandcode.ai/provider/v1/chat/completions",
+      "version": "poolside/laguna-s-2.1-free · 服务商别名",
+      "reasoning": "服务商默认，未指定推理档位",
+      "contextWindow": 256000,
+      "maxOutputTokens": 2048,
+      "inputPrice": 0,
+      "outputPrice": 0,
+      "cachedInputPrice": 0,
+      "currency": "USD",
+      "sourceUrl": "https://commandcode.ai/docs/provider",
+      "sourceDate": "2026-10-23",
+      "tags": [
+        "首次采集",
+        "免费端点",
+        "第三方服务商"
+      ],
+      "status": "measured",
+      "description": "服务商当前文档声明不消耗 credits；客户端测量，尚未独立验证上游模型身份。 输出上限为本次请求配置，不代表模型标称最大输出。"
+    },
+    {
+      "id": "goat-claude-sonnet55-cap1536",
+      "name": "Claude Sonnet 5.5 · 上限1536",
+      "family": "Claude",
+      "provider": "CommandCode GOAT",
+      "endpoint": "https://api.commandcode.ai/provider/v1/messages",
+      "version": "claude-sonnet-5-5 · 服务商别名",
+      "reasoning": "服务商默认，未指定推理档位",
+      "contextWindow": 1000000,
+      "maxOutputTokens": 1536,
+      "inputPrice": 2,
+      "outputPrice": 10,
+      "cachedInputPrice": null,
+      "currency": "USD",
+      "sourceUrl": "https://commandcode.ai/docs/plans/goat",
+      "sourceDate": "2026-10-24",
+      "tags": [
+        "起步实测",
+        "第三方端点",
+        "起步样本"
+      ],
+      "status": "measured",
+      "description": "当前服务商声明型号；未独立核验上游身份。最大输出为请求上限。DeepSeek采用当前离峰报价；其他为该页标准报价，均非账单。 输出上限为本次请求配置，不代表模型标称最大输出。"
+    },
+    {
+      "id": "goat-deepseek-flash-cap1536",
+      "name": "DeepSeek V4 Flash · 上限1536",
+      "family": "DeepSeek",
+      "provider": "CommandCode GOAT",
+      "endpoint": "https://api.commandcode.ai/provider/v1/chat/completions",
+      "version": "deepseek/deepseek-v4-flash · 服务商别名",
+      "reasoning": "服务商默认，未指定推理档位",
+      "contextWindow": 1000000,
+      "maxOutputTokens": 1536,
+      "inputPrice": 0.15,
+      "outputPrice": 0.6,
+      "cachedInputPrice": null,
+      "currency": "USD",
+      "sourceUrl": "https://commandcode.ai/docs/plans/goat",
+      "sourceDate": "2026-10-24",
+      "tags": [
+        "起步实测",
+        "第三方端点",
+        "起步样本"
+      ],
+      "status": "measured",
+      "description": "当前服务商声明型号；未独立核验上游身份。最大输出为请求上限。DeepSeek采用当前离峰报价；其他为该页标准报价，均非账单。 输出上限为本次请求配置，不代表模型标称最大输出。"
+    },
+    {
+      "id": "goat-qwen38-max-cap1536",
+      "name": "Qwen 3.8 Max · 上限1536",
+      "family": "Qwen",
+      "provider": "CommandCode GOAT",
+      "endpoint": "https://api.commandcode.ai/provider/v1/chat/completions",
+      "version": "Qwen/Qwen3.8-Max · 服务商别名",
+      "reasoning": "服务商默认，未指定推理档位",
+      "contextWindow": 1000000,
+      "maxOutputTokens": 1536,
+      "inputPrice": 2,
+      "outputPrice": 6,
+      "cachedInputPrice": null,
+      "currency": "USD",
+      "sourceUrl": "https://commandcode.ai/docs/plans/goat",
+      "sourceDate": "2026-10-24",
+      "tags": [
+        "起步实测",
+        "第三方端点",
+        "起步样本"
+      ],
+      "status": "measured",
+      "description": "当前服务商声明型号；未独立核验上游身份。最大输出为请求上限。DeepSeek采用当前离峰报价；其他为该页标准报价，均非账单。 输出上限为本次请求配置，不代表模型标称最大输出。"
+    },
+    {
+      "id": "goat-gemini38-flash-cap1536",
+      "name": "Gemini 3.8 Flash · 上限1536",
+      "family": "Gemini",
+      "provider": "CommandCode GOAT",
+      "endpoint": "https://api.commandcode.ai/provider/v1/chat/completions",
+      "version": "google/gemini-3.8-flash · 服务商别名",
+      "reasoning": "服务商默认，未指定推理档位",
+      "contextWindow": 1000000,
+      "maxOutputTokens": 1536,
+      "inputPrice": 1.5,
+      "outputPrice": 7.5,
+      "cachedInputPrice": null,
+      "currency": "USD",
+      "sourceUrl": "https://commandcode.ai/docs/plans/goat",
+      "sourceDate": "2026-10-24",
+      "tags": [
+        "起步实测",
+        "第三方端点",
+        "起步样本"
+      ],
+      "status": "measured",
+      "description": "当前服务商声明型号；未独立核验上游身份。最大输出为请求上限。DeepSeek采用当前离峰报价；其他为该页标准报价，均非账单。 输出上限为本次请求配置，不代表模型标称最大输出。"
+    },
+    {
+      "id": "goat-glm53-cap1536",
+      "name": "GLM 5.3 · 上限1536",
+      "family": "GLM",
+      "provider": "CommandCode GOAT",
+      "endpoint": "https://api.commandcode.ai/provider/v1/chat/completions",
+      "version": "zai-org/GLM-5.3 · 服务商别名",
+      "reasoning": "服务商默认，未指定推理档位",
+      "contextWindow": 1000000,
+      "maxOutputTokens": 1536,
+      "inputPrice": 1.4,
+      "outputPrice": 4.4,
+      "cachedInputPrice": null,
+      "currency": "USD",
+      "sourceUrl": "https://commandcode.ai/docs/plans/goat",
+      "sourceDate": "2026-10-24",
+      "tags": [
+        "起步实测",
+        "第三方端点",
+        "起步样本"
+      ],
+      "status": "measured",
+      "description": "当前服务商声明型号；未独立核验上游身份。最大输出为请求上限。DeepSeek采用当前离峰报价；其他为该页标准报价，均非账单。 输出上限为本次请求配置，不代表模型标称最大输出。"
+    },
+    {
+      "id": "goat-mistral4-cap1536",
+      "name": "Mistral Large 4 · 上限1536",
+      "family": "Mistral",
+      "provider": "CommandCode GOAT",
+      "endpoint": "https://api.commandcode.ai/provider/v1/chat/completions",
+      "version": "mistral/mistral-large-4 · 服务商别名",
+      "reasoning": "服务商默认，未指定推理档位",
+      "contextWindow": 524288,
+      "maxOutputTokens": 1536,
+      "inputPrice": 1.36,
+      "outputPrice": 4.18,
+      "cachedInputPrice": null,
+      "currency": "USD",
+      "sourceUrl": "https://commandcode.ai/docs/plans/goat",
+      "sourceDate": "2026-10-24",
+      "tags": [
+        "起步实测",
+        "第三方端点",
+        "起步样本"
+      ],
+      "status": "measured",
+      "description": "当前服务商声明型号；未独立核验上游身份。最大输出为请求上限。DeepSeek采用当前离峰报价；其他为该页标准报价，均非账单。 输出上限为本次请求配置，不代表模型标称最大输出。"
+    }
+  ],
+  "tasks": [
+    {
+      "id": "math-01",
+      "title": "独立事件的条件概率",
+      "category": "math",
+      "difficulty": "easy",
+      "prompt": "A、B 独立，P(A)=0.4，P(B)=0.5。只输出 P(A|B) 的十进制数。",
+      "reference": "0.4",
+      "rubric": [
+        "回答符合题目条件",
+        "结果与参考一致；开放性题目需人工检查论证"
+      ],
+      "maxOutputTokens": 1200,
+      "grader": {
+        "type": "exact",
+        "expected": "0.4"
+      },
+      "source": "逐风起步题库 v1 · 原创设计，待扩大校核"
+    },
+    {
+      "id": "data-01",
+      "title": "去重后的收入",
+      "category": "data",
+      "difficulty": "easy",
+      "prompt": "订单数据：a,10；b,20；a,10；c,5。按订单ID去重后总收入？只输出整数。",
+      "reference": "35",
+      "rubric": [
+        "回答符合题目条件",
+        "结果与参考一致；开放性题目需人工检查论证"
+      ],
+      "maxOutputTokens": 1200,
+      "grader": {
+        "type": "exact",
+        "expected": "35"
+      },
+      "source": "逐风起步题库 v1 · 原创设计，待扩大校核"
+    },
+    {
+      "id": "chinese-04",
+      "title": "结构化信息提取",
+      "category": "chinese",
+      "difficulty": "medium",
+      "prompt": "材料：订单 ZF-17，商品笔记本，数量2，单价18元。只输出 JSON，字段 orderId、quantity、total。",
+      "reference": "{\"orderId\":\"ZF-17\",\"quantity\":2,\"total\":36}",
+      "rubric": [
+        "回答符合题目条件",
+        "结果与参考一致；开放性题目需人工检查论证"
+      ],
+      "maxOutputTokens": 1200,
+      "grader": {
+        "type": "json_fields",
+        "expected": {
+          "orderId": "ZF-17",
+          "quantity": 2,
+          "total": 36
+        }
+      },
+      "source": "逐风起步题库 v1 · 原创设计，待扩大校核"
+    },
+    {
+      "id": "speed-copy",
+      "title": "长文本逐字复现",
+      "category": "chinese",
+      "difficulty": "medium",
+      "prompt": "请逐字输出下方材料，保留段落和标点，不要解释，不要加代码块或引号。\n\n第1段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第2段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第3段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第4段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第5段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第6段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。",
+      "reference": "第1段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第2段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第3段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第4段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第5段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第6段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。",
+      "rubric": [
+        "与给定材料逐字一致",
+        "完整输出六个段落"
+      ],
+      "maxOutputTokens": 2048,
+      "grader": {
+        "type": "exact",
+        "expected": "第1段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第2段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第3段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第4段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第5段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第6段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。"
+      },
+      "source": "逐风原创速度采样 v1；材料为虚构"
+    },
+    {
+      "id": "speed-json",
+      "title": "较长结构化输出",
+      "category": "data",
+      "difficulty": "medium",
+      "prompt": "只输出一个JSON对象，键 squares，值为按升序排列的1至100这100个整数的平方数组。不要解释，不要加代码块。",
+      "reference": "{\"squares\": [1, 4, 9, 16, 25, 36, 49, 64, 81, 100, 121, 144, 169, 196, 225, 256, 289, 324, 361, 400, 441, 484, 529, 576, 625, 676, 729, 784, 841, 900, 961, 1024, 1089, 1156, 1225, 1296, 1369, 1444, 1521, 1600, 1681, 1764, 1849, 1936, 2025, 2116, 2209, 2304, 2401, 2500, 2601, 2704, 2809, 2916, 3025, 3136, 3249, 3364, 3481, 3600, 3721, 3844, 3969, 4096, 4225, 4356, 4489, 4624, 4761, 4900, 5041, 5184, 5329, 5476, 5625, 5776, 5929, 6084, 6241, 6400, 6561, 6724, 6889, 7056, 7225, 7396, 7569, 7744, 7921, 8100, 8281, 8464, 8649, 8836, 9025, 9216, 9409, 9604, 9801, 10000]}",
+      "rubric": [
+        "严格JSON对象",
+        "数组100项均正确且顺序一致"
+      ],
+      "maxOutputTokens": 2048,
+      "grader": {
+        "type": "json_fields",
+        "expected": {
+          "squares": [
+            1,
+            4,
+            9,
+            16,
+            25,
+            36,
+            49,
+            64,
+            81,
+            100,
+            121,
+            144,
+            169,
+            196,
+            225,
+            256,
+            289,
+            324,
+            361,
+            400,
+            441,
+            484,
+            529,
+            576,
+            625,
+            676,
+            729,
+            784,
+            841,
+            900,
+            961,
+            1024,
+            1089,
+            1156,
+            1225,
+            1296,
+            1369,
+            1444,
+            1521,
+            1600,
+            1681,
+            1764,
+            1849,
+            1936,
+            2025,
+            2116,
+            2209,
+            2304,
+            2401,
+            2500,
+            2601,
+            2704,
+            2809,
+            2916,
+            3025,
+            3136,
+            3249,
+            3364,
+            3481,
+            3600,
+            3721,
+            3844,
+            3969,
+            4096,
+            4225,
+            4356,
+            4489,
+            4624,
+            4761,
+            4900,
+            5041,
+            5184,
+            5329,
+            5476,
+            5625,
+            5776,
+            5929,
+            6084,
+            6241,
+            6400,
+            6561,
+            6724,
+            6889,
+            7056,
+            7225,
+            7396,
+            7569,
+            7744,
+            7921,
+            8100,
+            8281,
+            8464,
+            8649,
+            8836,
+            9025,
+            9216,
+            9409,
+            9604,
+            9801,
+            10000
+          ]
+        }
+      },
+      "source": "逐风原创速度采样 v1；材料为虚构"
+    },
+    {
+      "id": "speed-writing",
+      "title": "中文长输出与约束",
+      "category": "chinese",
+      "difficulty": "medium",
+      "prompt": "写一篇400至500个汉字的虚构短故事，分成五段，讲一个修理钟表的人发现自己的钟慢了三分钟。结尾保留疑问，不要道德说教，不要写标题。只给故事正文。",
+      "reference": "开放性写作：需人工复核字数、五段、主题与结尾约束；没有唯一标准答案。",
+      "rubric": [
+        "400至500汉字，分五段",
+        "故事围绕修钟人和慢三分钟展开",
+        "结尾保留疑问且无说教"
+      ],
+      "maxOutputTokens": 2048,
+      "grader": {
+        "type": "manual"
+      },
+      "source": "逐风原创速度采样 v1；材料为虚构"
+    },
+    {
+      "id": "math-02",
+      "title": "交换极限的漏洞",
+      "category": "math",
+      "difficulty": "medium",
+      "prompt": "对 f_n(x)=n·1_(0,1/n)(x)，定义域 [0,1]。有人由逐点趋于0推出积分趋于0。指出错误并计算各积分。",
+      "reference": "逐点趋于0，但积分均为1；缺少支配收敛等可交换条件。",
+      "rubric": [
+        "回答符合题目条件",
+        "结果与参考一致；开放性题目需人工检查论证"
+      ],
+      "maxOutputTokens": 1200,
+      "grader": {
+        "type": "manual"
+      },
+      "source": "逐风起步题库 v1 · 原创设计，待扩大校核"
+    },
+    {
+      "id": "math-06",
+      "title": "图的最短路径",
+      "category": "math",
+      "difficulty": "easy",
+      "prompt": "有向图边 A→B=3，A→C=10，B→C=2，C→D=4，B→D=12。A 到 D 最短距离？只输出整数。",
+      "reference": "9",
+      "rubric": [
+        "回答符合题目条件",
+        "结果与参考一致；开放性题目需人工检查论证"
+      ],
+      "maxOutputTokens": 1200,
+      "grader": {
+        "type": "exact",
+        "expected": "9"
+      },
+      "source": "逐风起步题库 v1 · 原创设计，待扩大校核"
+    },
+    {
+      "id": "data-03",
+      "title": "平均数与中位数",
+      "category": "data",
+      "difficulty": "medium",
+      "prompt": "数据 [1,2,2,3,100]。请只输出 JSON，键 mean 和 median，值为数值。",
+      "reference": "{\"mean\":21.6,\"median\":2}",
+      "rubric": [
+        "回答符合题目条件",
+        "结果与参考一致；开放性题目需人工检查论证"
+      ],
+      "maxOutputTokens": 1200,
+      "grader": {
+        "type": "json_fields",
+        "expected": {
+          "mean": 21.6,
+          "median": 2
+        }
+      },
+      "source": "逐风起步题库 v1 · 原创设计，待扩大校核"
+    },
+    {
+      "id": "chinese-03",
+      "title": "按材料回答并承认未知",
+      "category": "chinese",
+      "difficulty": "medium",
+      "prompt": "材料：产品A支持导出TXT和Markdown。材料未提及PDF。用户问是否支持PDF。只根据材料回答。",
+      "reference": "根据材料无法确认PDF支持；不能从未提及推断一定不支持。",
+      "rubric": [
+        "回答符合题目条件",
+        "结果与参考一致；开放性题目需人工检查论证"
+      ],
+      "maxOutputTokens": 1200,
+      "grader": {
+        "type": "manual"
+      },
+      "source": "逐风起步题库 v1 · 原创设计，待扩大校核"
+    },
+    {
+      "id": "code-02",
+      "title": "修复可变默认参数",
+      "category": "code",
+      "difficulty": "medium",
+      "prompt": "修复 Python：def append_item(x, items=[]): items.append(x); return items。解释跨调用问题并给出验证示例。",
+      "reference": "默认参数使用None，在函数体内创建列表；独立调用不共享历史。",
+      "rubric": [
+        "回答符合题目条件",
+        "结果与参考一致；开放性题目需人工检查论证"
+      ],
+      "maxOutputTokens": 1200,
+      "grader": {
+        "type": "manual"
+      },
+      "source": "逐风起步题库 v1 · 原创设计，待扩大校核"
+    }
+  ],
+  "runs": [
+    {
+      "id": "batch-17a57b45155b-00001-1",
+      "batchId": "batch-17a57b45155b",
+      "modelId": "glyph-free-cap1024",
+      "taskId": "math-01",
+      "status": "error",
+      "dataKind": "measured",
+      "timestamp": "2026-10-23T15:52:59.630621Z",
+      "output": "",
+      "error": "http_429",
+      "metrics": {
+        "ttftMs": null,
+        "ttfaMs": null,
+        "durationMs": 1285.408,
+        "outputTps": null,
+        "charsPerSec": null,
+        "inputTokens": null,
+        "outputTokens": null,
+        "reasoningTokens": null,
+        "cost": null
+      },
+      "grading": {
+        "status": "not_applicable",
+        "score": null,
+        "reason": "请求未成功，不对不完整答案评分。"
+      },
+      "config": {
+        "region": "本机 Windows 客户端；网络出口位置未核验",
+        "concurrency": 1,
+        "temperature": null,
+        "reasoning": "服务商默认，未指定推理档位",
+        "cacheState": "unknown",
+        "repeatIndex": 0,
+        "attemptIndex": 0
+      },
+      "provenance": {
+        "adapter": "openai-compatible",
+        "tokenCountSource": "unavailable",
+        "timingSource": "client_monotonic_sse",
+        "tpsMethod": "client first-to-last chunk estimate with >=500ms, >=3 chunks, >=64 visible tokens; otherwise unavailable",
+        "charsMethod": "Unicode code points after first visible chunk / first-to-last visible chunk interval; includes punctuation and whitespace",
+        "costSource": "unavailable",
+        "usageComplete": false,
+        "ratePolicy": "client-sse-v2-min500ms-3chunks-64units",
+        "rateSampleSeconds": null,
+        "answerChunkCount": 0
+      }
+    },
+    {
+      "id": "batch-17a57b45155b-00002-1",
+      "batchId": "batch-17a57b45155b",
+      "modelId": "beam-free-cap1024",
+      "taskId": "math-01",
+      "status": "success",
+      "dataKind": "measured",
+      "timestamp": "2026-10-23T15:53:00.918658Z",
+      "output": "0.4",
+      "error": null,
+      "metrics": {
+        "ttftMs": 1055.859,
+        "ttfaMs": 1331.228,
+        "durationMs": 1365.805,
+        "outputTps": null,
+        "charsPerSec": null,
+        "inputTokens": 81,
+        "outputTokens": 78,
+        "reasoningTokens": 67,
+        "cost": 0.0
+      },
+      "grading": {
+        "status": "passed",
+        "score": 1,
+        "reason": "去除首尾空白后与预设答案逐字比较。"
+      },
+      "config": {
+        "region": "本机 Windows 客户端；网络出口位置未核验",
+        "concurrency": 1,
+        "temperature": null,
+        "reasoning": "服务商默认，未指定推理档位",
+        "cacheState": "unknown",
+        "repeatIndex": 0,
+        "attemptIndex": 0
+      },
+      "provenance": {
+        "adapter": "openai-compatible",
+        "tokenCountSource": "provider_usage",
+        "timingSource": "client_monotonic_sse",
+        "tpsMethod": "client first-to-last chunk estimate with >=500ms, >=3 chunks, >=64 visible tokens; otherwise unavailable",
+        "charsMethod": "Unicode code points after first visible chunk / first-to-last visible chunk interval; includes punctuation and whitespace",
+        "costSource": "nominal_uncached_price_estimate",
+        "usageComplete": true,
+        "ratePolicy": "client-sse-v2-min500ms-3chunks-64units",
+        "rateSampleSeconds": 8.500000000011276e-05,
+        "answerChunkCount": 2
+      }
+    },
+    {
+      "id": "batch-17a57b45155b-00003-1",
+      "batchId": "batch-17a57b45155b",
+      "modelId": "laguna-free-cap1024",
+      "taskId": "math-01",
+      "status": "error",
+      "dataKind": "measured",
+      "timestamp": "2026-10-23T15:53:02.288626Z",
+      "output": "",
+      "error": "http_429",
+      "metrics": {
+        "ttftMs": null,
+        "ttfaMs": null,
+        "durationMs": 871.204,
+        "outputTps": null,
+        "charsPerSec": null,
+        "inputTokens": null,
+        "outputTokens": null,
+        "reasoningTokens": null,
+        "cost": null
+      },
+      "grading": {
+        "status": "not_applicable",
+        "score": null,
+        "reason": "请求未成功，不对不完整答案评分。"
+      },
+      "config": {
+        "region": "本机 Windows 客户端；网络出口位置未核验",
+        "concurrency": 1,
+        "temperature": null,
+        "reasoning": "服务商默认，未指定推理档位",
+        "cacheState": "unknown",
+        "repeatIndex": 0,
+        "attemptIndex": 0
+      },
+      "provenance": {
+        "adapter": "openai-compatible",
+        "tokenCountSource": "unavailable",
+        "timingSource": "client_monotonic_sse",
+        "tpsMethod": "client first-to-last chunk estimate with >=500ms, >=3 chunks, >=64 visible tokens; otherwise unavailable",
+        "charsMethod": "Unicode code points after first visible chunk / first-to-last visible chunk interval; includes punctuation and whitespace",
+        "costSource": "unavailable",
+        "usageComplete": false,
+        "ratePolicy": "client-sse-v2-min500ms-3chunks-64units",
+        "rateSampleSeconds": null,
+        "answerChunkCount": 0
+      }
+    },
+    {
+      "id": "batch-17a57b45155b-00004-1",
+      "batchId": "batch-17a57b45155b",
+      "modelId": "beam-free-cap1024",
+      "taskId": "data-01",
+      "status": "success",
+      "dataKind": "measured",
+      "timestamp": "2026-10-23T15:53:03.163715Z",
+      "output": "35",
+      "error": null,
+      "metrics": {
+        "ttftMs": 1028.598,
+        "ttfaMs": 1714.046,
+        "durationMs": 1714.633,
+        "outputTps": null,
+        "charsPerSec": null,
+        "inputTokens": 81,
+        "outputTokens": 164,
+        "reasoningTokens": 159,
+        "cost": 0.0
+      },
+      "grading": {
+        "status": "passed",
+        "score": 1,
+        "reason": "去除首尾空白后与预设答案逐字比较。"
+      },
+      "config": {
+        "region": "本机 Windows 客户端；网络出口位置未核验",
+        "concurrency": 1,
+        "temperature": null,
+        "reasoning": "服务商默认，未指定推理档位",
+        "cacheState": "unknown",
+        "repeatIndex": 0,
+        "attemptIndex": 0
+      },
+      "provenance": {
+        "adapter": "openai-compatible",
+        "tokenCountSource": "provider_usage",
+        "timingSource": "client_monotonic_sse",
+        "tpsMethod": "client first-to-last chunk estimate with >=500ms, >=3 chunks, >=64 visible tokens; otherwise unavailable",
+        "charsMethod": "Unicode code points after first visible chunk / first-to-last visible chunk interval; includes punctuation and whitespace",
+        "costSource": "nominal_uncached_price_estimate",
+        "usageComplete": true,
+        "ratePolicy": "client-sse-v2-min500ms-3chunks-64units",
+        "rateSampleSeconds": null,
+        "answerChunkCount": 1
+      }
+    },
+    {
+      "id": "batch-17a57b45155b-00005-1",
+      "batchId": "batch-17a57b45155b",
+      "modelId": "laguna-free-cap1024",
+      "taskId": "data-01",
+      "status": "error",
+      "dataKind": "measured",
+      "timestamp": "2026-10-23T15:53:04.881823Z",
+      "output": "",
+      "error": "http_429",
+      "metrics": {
+        "ttftMs": null,
+        "ttfaMs": null,
+        "durationMs": 878.0,
+        "outputTps": null,
+        "charsPerSec": null,
+        "inputTokens": null,
+        "outputTokens": null,
+        "reasoningTokens": null,
+        "cost": null
+      },
+      "grading": {
+        "status": "not_applicable",
+        "score": null,
+        "reason": "请求未成功，不对不完整答案评分。"
+      },
+      "config": {
+        "region": "本机 Windows 客户端；网络出口位置未核验",
+        "concurrency": 1,
+        "temperature": null,
+        "reasoning": "服务商默认，未指定推理档位",
+        "cacheState": "unknown",
+        "repeatIndex": 0,
+        "attemptIndex": 0
+      },
+      "provenance": {
+        "adapter": "openai-compatible",
+        "tokenCountSource": "unavailable",
+        "timingSource": "client_monotonic_sse",
+        "tpsMethod": "client first-to-last chunk estimate with >=500ms, >=3 chunks, >=64 visible tokens; otherwise unavailable",
+        "charsMethod": "Unicode code points after first visible chunk / first-to-last visible chunk interval; includes punctuation and whitespace",
+        "costSource": "unavailable",
+        "usageComplete": false,
+        "ratePolicy": "client-sse-v2-min500ms-3chunks-64units",
+        "rateSampleSeconds": null,
+        "answerChunkCount": 0
+      }
+    },
+    {
+      "id": "batch-17a57b45155b-00006-1",
+      "batchId": "batch-17a57b45155b",
+      "modelId": "glyph-free-cap1024",
+      "taskId": "data-01",
+      "status": "error",
+      "dataKind": "measured",
+      "timestamp": "2026-10-23T15:53:05.773954Z",
+      "output": "",
+      "error": "http_429",
+      "metrics": {
+        "ttftMs": null,
+        "ttfaMs": null,
+        "durationMs": 1034.564,
+        "outputTps": null,
+        "charsPerSec": null,
+        "inputTokens": null,
+        "outputTokens": null,
+        "reasoningTokens": null,
+        "cost": null
+      },
+      "grading": {
+        "status": "not_applicable",
+        "score": null,
+        "reason": "请求未成功，不对不完整答案评分。"
+      },
+      "config": {
+        "region": "本机 Windows 客户端；网络出口位置未核验",
+        "concurrency": 1,
+        "temperature": null,
+        "reasoning": "服务商默认，未指定推理档位",
+        "cacheState": "unknown",
+        "repeatIndex": 0,
+        "attemptIndex": 0
+      },
+      "provenance": {
+        "adapter": "openai-compatible",
+        "tokenCountSource": "unavailable",
+        "timingSource": "client_monotonic_sse",
+        "tpsMethod": "client first-to-last chunk estimate with >=500ms, >=3 chunks, >=64 visible tokens; otherwise unavailable",
+        "charsMethod": "Unicode code points after first visible chunk / first-to-last visible chunk interval; includes punctuation and whitespace",
+        "costSource": "unavailable",
+        "usageComplete": false,
+        "ratePolicy": "client-sse-v2-min500ms-3chunks-64units",
+        "rateSampleSeconds": null,
+        "answerChunkCount": 0
+      }
+    },
+    {
+      "id": "batch-17a57b45155b-00007-1",
+      "batchId": "batch-17a57b45155b",
+      "modelId": "laguna-free-cap1024",
+      "taskId": "chinese-04",
+      "status": "error",
+      "dataKind": "measured",
+      "timestamp": "2026-10-23T15:53:06.817142Z",
+      "output": "",
+      "error": "http_429",
+      "metrics": {
+        "ttftMs": null,
+        "ttfaMs": null,
+        "durationMs": 868.488,
+        "outputTps": null,
+        "charsPerSec": null,
+        "inputTokens": null,
+        "outputTokens": null,
+        "reasoningTokens": null,
+        "cost": null
+      },
+      "grading": {
+        "status": "not_applicable",
+        "score": null,
+        "reason": "请求未成功，不对不完整答案评分。"
+      },
+      "config": {
+        "region": "本机 Windows 客户端；网络出口位置未核验",
+        "concurrency": 1,
+        "temperature": null,
+        "reasoning": "服务商默认，未指定推理档位",
+        "cacheState": "unknown",
+        "repeatIndex": 0,
+        "attemptIndex": 0
+      },
+      "provenance": {
+        "adapter": "openai-compatible",
+        "tokenCountSource": "unavailable",
+        "timingSource": "client_monotonic_sse",
+        "tpsMethod": "client first-to-last chunk estimate with >=500ms, >=3 chunks, >=64 visible tokens; otherwise unavailable",
+        "charsMethod": "Unicode code points after first visible chunk / first-to-last visible chunk interval; includes punctuation and whitespace",
+        "costSource": "unavailable",
+        "usageComplete": false,
+        "ratePolicy": "client-sse-v2-min500ms-3chunks-64units",
+        "rateSampleSeconds": null,
+        "answerChunkCount": 0
+      }
+    },
+    {
+      "id": "batch-17a57b45155b-00008-1",
+      "batchId": "batch-17a57b45155b",
+      "modelId": "glyph-free-cap1024",
+      "taskId": "chinese-04",
+      "status": "success",
+      "dataKind": "measured",
+      "timestamp": "2026-10-23T15:53:07.689870Z",
+      "output": "{\n  \"orderId\": \"ZF-17\",\n  \"quantity\": 2,\n  \"total\": 36\n}",
+      "error": null,
+      "metrics": {
+        "ttftMs": 4542.195,
+        "ttfaMs": 4542.195,
+        "durationMs": 4869.125,
+        "outputTps": null,
+        "charsPerSec": null,
+        "inputTokens": 158,
+        "outputTokens": 165,
+        "reasoningTokens": 132,
+        "cost": 0.0
+      },
+      "grading": {
+        "status": "passed",
+        "score": 1,
+        "reason": "严格 JSON 解析并比较预设字段和值，允许额外字段。"
+      },
+      "config": {
+        "region": "本机 Windows 客户端；网络出口位置未核验",
+        "concurrency": 1,
+        "temperature": null,
+        "reasoning": "服务商默认，未指定推理档位",
+        "cacheState": "unknown",
+        "repeatIndex": 0,
+        "attemptIndex": 0
+      },
+      "provenance": {
+        "adapter": "openai-compatible",
+        "tokenCountSource": "provider_usage",
+        "timingSource": "client_monotonic_sse",
+        "tpsMethod": "client first-to-last chunk estimate with >=500ms, >=3 chunks, >=64 visible tokens; otherwise unavailable",
+        "charsMethod": "Unicode code points after first visible chunk / first-to-last visible chunk interval; includes punctuation and whitespace",
+        "costSource": "nominal_uncached_price_estimate",
+        "usageComplete": true,
+        "ratePolicy": "client-sse-v2-min500ms-3chunks-64units",
+        "rateSampleSeconds": 0.254143,
+        "answerChunkCount": 7
+      }
+    },
+    {
+      "id": "batch-17a57b45155b-00009-1",
+      "batchId": "batch-17a57b45155b",
+      "modelId": "beam-free-cap1024",
+      "taskId": "chinese-04",
+      "status": "success",
+      "dataKind": "measured",
+      "timestamp": "2026-10-23T15:53:12.567877Z",
+      "output": "{\"orderId\":\"ZF-17\",\"quantity\":2,\"total\":36}",
+      "error": null,
+      "metrics": {
+        "ttftMs": 4332.039,
+        "ttfaMs": 4701.533,
+        "durationMs": 4701.835,
+        "outputTps": null,
+        "charsPerSec": null,
+        "inputTokens": 77,
+        "outputTokens": 96,
+        "reasoningTokens": 72,
+        "cost": 0.0
+      },
+      "grading": {
+        "status": "passed",
+        "score": 1,
+        "reason": "严格 JSON 解析并比较预设字段和值，允许额外字段。"
+      },
+      "config": {
+        "region": "本机 Windows 客户端；网络出口位置未核验",
+        "concurrency": 1,
+        "temperature": null,
+        "reasoning": "服务商默认，未指定推理档位",
+        "cacheState": "unknown",
+        "repeatIndex": 0,
+        "attemptIndex": 0
+      },
+      "provenance": {
+        "adapter": "openai-compatible",
+        "tokenCountSource": "provider_usage",
+        "timingSource": "client_monotonic_sse",
+        "tpsMethod": "client first-to-last chunk estimate with >=500ms, >=3 chunks, >=64 visible tokens; otherwise unavailable",
+        "charsMethod": "Unicode code points after first visible chunk / first-to-last visible chunk interval; includes punctuation and whitespace",
+        "costSource": "nominal_uncached_price_estimate",
+        "usageComplete": true,
+        "ratePolicy": "client-sse-v2-min500ms-3chunks-64units",
+        "rateSampleSeconds": 3.399999999942338e-05,
+        "answerChunkCount": 2
+      }
+    },
+    {
+      "id": "batch-71b065dc9835-00001-1",
+      "batchId": "batch-71b065dc9835",
+      "modelId": "glyph-free-cap2048",
+      "taskId": "speed-copy",
+      "status": "success",
+      "dataKind": "measured",
+      "timestamp": "2026-10-23T16:13:46.130874Z",
+      "output": "第1段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第2段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第3段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第4段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第5段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第6段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。",
+      "error": null,
+      "metrics": {
+        "ttftMs": 16282.496,
+        "ttfaMs": 16282.496,
+        "durationMs": 37030.591,
+        "outputTps": 19.206,
+        "charsPerSec": 26.801,
+        "inputTokens": 542,
+        "outputTokens": 946,
+        "reasoningTokens": 549,
+        "cost": 0.0
+      },
+      "grading": {
+        "status": "passed",
+        "score": 1,
+        "reason": "去除首尾空白后与预设答案逐字比较。"
+      },
+      "config": {
+        "region": "本机 Windows 客户端；网络出口位置未核验",
+        "concurrency": 1,
+        "temperature": null,
+        "reasoning": "服务商默认，未指定推理档位",
+        "cacheState": "unknown",
+        "repeatIndex": 0,
+        "attemptIndex": 0
+      },
+      "provenance": {
+        "adapter": "openai-compatible",
+        "tokenCountSource": "provider_usage",
+        "timingSource": "client_monotonic_sse",
+        "tpsMethod": "visible tokens / first-to-last visible chunk interval; chunk-boundary estimate, >=500ms, >=3 chunks, >=64 visible tokens",
+        "charsMethod": "Unicode code points after first visible chunk / first-to-last visible chunk interval; includes punctuation and whitespace",
+        "costSource": "nominal_uncached_price_estimate",
+        "usageComplete": true,
+        "ratePolicy": "client-sse-v2-min500ms-3chunks-64units",
+        "rateSampleSeconds": 20.67076799995266,
+        "answerChunkCount": 145
+      }
+    },
+    {
+      "id": "batch-71b065dc9835-00002-1",
+      "batchId": "batch-71b065dc9835",
+      "modelId": "beam-free-cap2048",
+      "taskId": "speed-copy",
+      "status": "success",
+      "dataKind": "measured",
+      "timestamp": "2026-10-23T16:14:23.177230Z",
+      "output": "第1段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第2段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第3段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第4段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第5段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第6段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。",
+      "error": null,
+      "metrics": {
+        "ttftMs": 1852.736,
+        "ttfaMs": 2137.919,
+        "durationMs": 2839.771,
+        "outputTps": 556.678,
+        "charsPerSec": 845.152,
+        "inputTokens": 425,
+        "outputTokens": 405,
+        "reasoningTokens": 48,
+        "cost": 0.0
+      },
+      "grading": {
+        "status": "passed",
+        "score": 1,
+        "reason": "去除首尾空白后与预设答案逐字比较。"
+      },
+      "config": {
+        "region": "本机 Windows 客户端；网络出口位置未核验",
+        "concurrency": 1,
+        "temperature": null,
+        "reasoning": "服务商默认，未指定推理档位",
+        "cacheState": "unknown",
+        "repeatIndex": 0,
+        "attemptIndex": 0
+      },
+      "provenance": {
+        "adapter": "openai-compatible",
+        "tokenCountSource": "provider_usage",
+        "timingSource": "client_monotonic_sse",
+        "tpsMethod": "visible tokens / first-to-last visible chunk interval; chunk-boundary estimate, >=500ms, >=3 chunks, >=64 visible tokens",
+        "charsMethod": "Unicode code points after first visible chunk / first-to-last visible chunk interval; includes punctuation and whitespace",
+        "costSource": "nominal_uncached_price_estimate",
+        "usageComplete": true,
+        "ratePolicy": "client-sse-v2-min500ms-3chunks-64units",
+        "rateSampleSeconds": 0.6413046999368817,
+        "answerChunkCount": 33
+      }
+    },
+    {
+      "id": "batch-71b065dc9835-00003-1",
+      "batchId": "batch-71b065dc9835",
+      "modelId": "laguna-free-cap2048",
+      "taskId": "speed-copy",
+      "status": "error",
+      "dataKind": "measured",
+      "timestamp": "2026-10-23T16:14:26.023911Z",
+      "output": "",
+      "error": "http_429",
+      "metrics": {
+        "ttftMs": null,
+        "ttfaMs": null,
+        "durationMs": 972.392,
+        "outputTps": null,
+        "charsPerSec": null,
+        "inputTokens": null,
+        "outputTokens": null,
+        "reasoningTokens": null,
+        "cost": null
+      },
+      "grading": {
+        "status": "not_applicable",
+        "score": null,
+        "reason": "请求未成功，不对不完整答案评分。"
+      },
+      "config": {
+        "region": "本机 Windows 客户端；网络出口位置未核验",
+        "concurrency": 1,
+        "temperature": null,
+        "reasoning": "服务商默认，未指定推理档位",
+        "cacheState": "unknown",
+        "repeatIndex": 0,
+        "attemptIndex": 0
+      },
+      "provenance": {
+        "adapter": "openai-compatible",
+        "tokenCountSource": "unavailable",
+        "timingSource": "client_monotonic_sse",
+        "tpsMethod": "unavailable: insufficient rate sample or inseparable token counts",
+        "charsMethod": "Unicode code points after first visible chunk / first-to-last visible chunk interval; includes punctuation and whitespace",
+        "costSource": "unavailable",
+        "usageComplete": false,
+        "ratePolicy": "client-sse-v2-min500ms-3chunks-64units",
+        "rateSampleSeconds": null,
+        "answerChunkCount": 0
+      }
+    },
+    {
+      "id": "batch-71b065dc9835-00004-1",
+      "batchId": "batch-71b065dc9835",
+      "modelId": "beam-free-cap2048",
+      "taskId": "speed-json",
+      "status": "success",
+      "dataKind": "measured",
+      "timestamp": "2026-10-23T16:14:27.001492Z",
+      "output": "{\"squares\":[1,4,9,16,25,36,49,64,81,100,121,144,169,196,225,256,289,324,361,400,441,484,529,576,625,676,729,784,841,900,961,1024,1089,1156,1225,1296,1369,1444,1521,1600,1681,1764,1849,1936,2025,2116,2209,2304,2401,2500,2601,2704,2809,2916,3025,3136,3249,3364,3481,3600,3721,3844,3969,4096,4225,4356,4489,4624,4761,4900,5041,5184,5329,5476,5625,5776,5929,6084,6241,6400,6561,6724,6889,7056,7225,7396,7569,7744,7921,8100,8281,8464,8649,8836,9025,9216,9409,9604,9801,10000]}",
+      "error": null,
+      "metrics": {
+        "ttftMs": 1032.316,
+        "ttfaMs": 3010.514,
+        "durationMs": 4011.154,
+        "outputTps": 599.22,
+        "charsPerSec": 577.547,
+        "inputTokens": 86,
+        "outputTokens": 1356,
+        "reasoningTokens": 886,
+        "cost": 0.0
+      },
+      "grading": {
+        "status": "passed",
+        "score": 1,
+        "reason": "严格 JSON 解析并比较预设字段和值，允许额外字段。"
+      },
+      "config": {
+        "region": "本机 Windows 客户端；网络出口位置未核验",
+        "concurrency": 1,
+        "temperature": null,
+        "reasoning": "服务商默认，未指定推理档位",
+        "cacheState": "unknown",
+        "repeatIndex": 0,
+        "attemptIndex": 0
+      },
+      "provenance": {
+        "adapter": "openai-compatible",
+        "tokenCountSource": "provider_usage",
+        "timingSource": "client_monotonic_sse",
+        "tpsMethod": "visible tokens / first-to-last visible chunk interval; chunk-boundary estimate, >=500ms, >=3 chunks, >=64 visible tokens",
+        "charsMethod": "Unicode code points after first visible chunk / first-to-last visible chunk interval; includes punctuation and whitespace",
+        "costSource": "nominal_uncached_price_estimate",
+        "usageComplete": true,
+        "ratePolicy": "client-sse-v2-min500ms-3chunks-64units",
+        "rateSampleSeconds": 0.7843523999908939,
+        "answerChunkCount": 21
+      }
+    },
+    {
+      "id": "batch-71b065dc9835-00005-1",
+      "batchId": "batch-71b065dc9835",
+      "modelId": "laguna-free-cap2048",
+      "taskId": "speed-json",
+      "status": "error",
+      "dataKind": "measured",
+      "timestamp": "2026-10-23T16:14:31.021936Z",
+      "output": "",
+      "error": "http_429",
+      "metrics": {
+        "ttftMs": null,
+        "ttfaMs": null,
+        "durationMs": 1074.339,
+        "outputTps": null,
+        "charsPerSec": null,
+        "inputTokens": null,
+        "outputTokens": null,
+        "reasoningTokens": null,
+        "cost": null
+      },
+      "grading": {
+        "status": "not_applicable",
+        "score": null,
+        "reason": "请求未成功，不对不完整答案评分。"
+      },
+      "config": {
+        "region": "本机 Windows 客户端；网络出口位置未核验",
+        "concurrency": 1,
+        "temperature": null,
+        "reasoning": "服务商默认，未指定推理档位",
+        "cacheState": "unknown",
+        "repeatIndex": 0,
+        "attemptIndex": 0
+      },
+      "provenance": {
+        "adapter": "openai-compatible",
+        "tokenCountSource": "unavailable",
+        "timingSource": "client_monotonic_sse",
+        "tpsMethod": "unavailable: insufficient rate sample or inseparable token counts",
+        "charsMethod": "Unicode code points after first visible chunk / first-to-last visible chunk interval; includes punctuation and whitespace",
+        "costSource": "unavailable",
+        "usageComplete": false,
+        "ratePolicy": "client-sse-v2-min500ms-3chunks-64units",
+        "rateSampleSeconds": null,
+        "answerChunkCount": 0
+      }
+    },
+    {
+      "id": "batch-71b065dc9835-00006-1",
+      "batchId": "batch-71b065dc9835",
+      "modelId": "glyph-free-cap2048",
+      "taskId": "speed-json",
+      "status": "success",
+      "dataKind": "measured",
+      "timestamp": "2026-10-23T16:14:32.116752Z",
+      "output": "{\"squares\": [1,4,9,16,25,36,49,64,81,100,121,144,169,196,225,256,289,324,361,400,441,484,529,576,625,676,729,784,841,900,961,1024,1089,1156,1225,1296,1369,1444,1521,1600,1681,1764,1849,1936,2025,2116,2209,2304,2401,2500,2601,2704,2809,2916,3025,3136,3249,3364,3481,3600,3721,3844,3969,4096,4225,4356,4489,4624,4761,4900,5041,5184,5329,5476,5625,5776,5929,6084,6241,6400,6561,6724,6889,7056,7225,7396,7569,7744,7921,8100,8281,8464,8649,8836,9025,9216,9409,9604,9801,10000]}",
+      "error": null,
+      "metrics": {
+        "ttftMs": 8718.846,
+        "ttfaMs": 8718.846,
+        "durationMs": 12330.925,
+        "outputTps": 79.079,
+        "charsPerSec": 129.735,
+        "inputTokens": 160,
+        "outputTokens": 642,
+        "reasoningTokens": 361,
+        "cost": 0.0
+      },
+      "grading": {
+        "status": "passed",
+        "score": 1,
+        "reason": "严格 JSON 解析并比较预设字段和值，允许额外字段。"
+      },
+      "config": {
+        "region": "本机 Windows 客户端；网络出口位置未核验",
+        "concurrency": 1,
+        "temperature": null,
+        "reasoning": "服务商默认，未指定推理档位",
+        "cacheState": "unknown",
+        "repeatIndex": 0,
+        "attemptIndex": 0
+      },
+      "provenance": {
+        "adapter": "openai-compatible",
+        "tokenCountSource": "provider_usage",
+        "timingSource": "client_monotonic_sse",
+        "tpsMethod": "visible tokens / first-to-last visible chunk interval; chunk-boundary estimate, >=500ms, >=3 chunks, >=64 visible tokens",
+        "charsMethod": "Unicode code points after first visible chunk / first-to-last visible chunk interval; includes punctuation and whitespace",
+        "costSource": "nominal_uncached_price_estimate",
+        "usageComplete": true,
+        "ratePolicy": "client-sse-v2-min500ms-3chunks-64units",
+        "rateSampleSeconds": 3.5534099999349564,
+        "answerChunkCount": 99
+      }
+    },
+    {
+      "id": "batch-71b065dc9835-00007-1",
+      "batchId": "batch-71b065dc9835",
+      "modelId": "laguna-free-cap2048",
+      "taskId": "speed-writing",
+      "status": "error",
+      "dataKind": "measured",
+      "timestamp": "2026-10-23T16:14:44.459221Z",
+      "output": "",
+      "error": "http_429",
+      "metrics": {
+        "ttftMs": null,
+        "ttfaMs": null,
+        "durationMs": 1595.362,
+        "outputTps": null,
+        "charsPerSec": null,
+        "inputTokens": null,
+        "outputTokens": null,
+        "reasoningTokens": null,
+        "cost": null
+      },
+      "grading": {
+        "status": "not_applicable",
+        "score": null,
+        "reason": "请求未成功，不对不完整答案评分。"
+      },
+      "config": {
+        "region": "本机 Windows 客户端；网络出口位置未核验",
+        "concurrency": 1,
+        "temperature": null,
+        "reasoning": "服务商默认，未指定推理档位",
+        "cacheState": "unknown",
+        "repeatIndex": 0,
+        "attemptIndex": 0
+      },
+      "provenance": {
+        "adapter": "openai-compatible",
+        "tokenCountSource": "unavailable",
+        "timingSource": "client_monotonic_sse",
+        "tpsMethod": "unavailable: insufficient rate sample or inseparable token counts",
+        "charsMethod": "Unicode code points after first visible chunk / first-to-last visible chunk interval; includes punctuation and whitespace",
+        "costSource": "unavailable",
+        "usageComplete": false,
+        "ratePolicy": "client-sse-v2-min500ms-3chunks-64units",
+        "rateSampleSeconds": null,
+        "answerChunkCount": 0
+      }
+    },
+    {
+      "id": "batch-71b065dc9835-00008-1",
+      "batchId": "batch-71b065dc9835",
+      "modelId": "glyph-free-cap2048",
+      "taskId": "speed-writing",
+      "status": "timeout",
+      "dataKind": "measured",
+      "timestamp": "2026-10-23T16:14:46.061774Z",
+      "output": "",
+      "error": "request_timeout",
+      "metrics": {
+        "ttftMs": null,
+        "ttfaMs": null,
+        "durationMs": 61006.031,
+        "outputTps": null,
+        "charsPerSec": null,
+        "inputTokens": null,
+        "outputTokens": null,
+        "reasoningTokens": null,
+        "cost": null
+      },
+      "grading": {
+        "status": "not_applicable",
+        "score": null,
+        "reason": "请求未成功，不对不完整答案评分。"
+      },
+      "config": {
+        "region": "本机 Windows 客户端；网络出口位置未核验",
+        "concurrency": 1,
+        "temperature": null,
+        "reasoning": "服务商默认，未指定推理档位",
+        "cacheState": "unknown",
+        "repeatIndex": 0,
+        "attemptIndex": 0
+      },
+      "provenance": {
+        "adapter": "openai-compatible",
+        "tokenCountSource": "unavailable",
+        "timingSource": "client_monotonic_sse",
+        "tpsMethod": "unavailable: insufficient rate sample or inseparable token counts",
+        "charsMethod": "Unicode code points after first visible chunk / first-to-last visible chunk interval; includes punctuation and whitespace",
+        "costSource": "unavailable",
+        "usageComplete": false,
+        "ratePolicy": "client-sse-v2-min500ms-3chunks-64units",
+        "rateSampleSeconds": null,
+        "answerChunkCount": 0
+      }
+    },
+    {
+      "id": "batch-71b065dc9835-00009-1",
+      "batchId": "batch-71b065dc9835",
+      "modelId": "beam-free-cap2048",
+      "taskId": "speed-writing",
+      "status": "error",
+      "dataKind": "measured",
+      "timestamp": "2026-10-23T16:15:47.073965Z",
+      "output": "",
+      "error": "invalid_or_incomplete_stream",
+      "metrics": {
+        "ttftMs": 2155.066,
+        "ttfaMs": null,
+        "durationMs": 10390.871,
+        "outputTps": null,
+        "charsPerSec": null,
+        "inputTokens": 98,
+        "outputTokens": 2048,
+        "reasoningTokens": 2047,
+        "cost": 0.0
+      },
+      "grading": {
+        "status": "not_applicable",
+        "score": null,
+        "reason": "请求未成功，不对不完整答案评分。"
+      },
+      "config": {
+        "region": "本机 Windows 客户端；网络出口位置未核验",
+        "concurrency": 1,
+        "temperature": null,
+        "reasoning": "服务商默认，未指定推理档位",
+        "cacheState": "unknown",
+        "repeatIndex": 0,
+        "attemptIndex": 0
+      },
+      "provenance": {
+        "adapter": "openai-compatible",
+        "tokenCountSource": "provider_usage",
+        "timingSource": "client_monotonic_sse",
+        "tpsMethod": "unavailable: insufficient rate sample or inseparable token counts",
+        "charsMethod": "Unicode code points after first visible chunk / first-to-last visible chunk interval; includes punctuation and whitespace",
+        "costSource": "nominal_uncached_price_estimate",
+        "usageComplete": true,
+        "ratePolicy": "client-sse-v2-min500ms-3chunks-64units",
+        "rateSampleSeconds": null,
+        "answerChunkCount": 0
+      }
+    },
+    {
+      "id": "batch-f71f40297546-00001-1",
+      "batchId": "batch-f71f40297546",
+      "modelId": "goat-claude-sonnet55-cap1536",
+      "taskId": "math-01",
+      "status": "success",
+      "dataKind": "measured",
+      "timestamp": "2026-10-23T16:26:29.699133Z",
+      "output": "0.4",
+      "error": null,
+      "metrics": {
+        "ttftMs": 1885.827,
+        "ttfaMs": 1885.827,
+        "durationMs": 1901.995,
+        "outputTps": null,
+        "charsPerSec": null,
+        "inputTokens": 50,
+        "outputTokens": 5,
+        "reasoningTokens": null,
+        "cost": 0.00015
+      },
+      "grading": {
+        "status": "passed",
+        "score": 1,
+        "reason": "去除首尾空白后与预设答案逐字比较。"
+      },
+      "config": {
+        "region": "本机Windows客户端；网络出口位置未独立核验",
+        "concurrency": 1,
+        "temperature": null,
+        "reasoning": "服务商默认，未指定推理档位",
+        "cacheState": "unknown",
+        "repeatIndex": 0,
+        "attemptIndex": 0
+      },
+      "provenance": {
+        "adapter": "anthropic-messages",
+        "tokenCountSource": "provider_usage",
+        "timingSource": "client_monotonic_sse",
+        "tpsMethod": "unavailable: insufficient rate sample or inseparable token counts",
+        "charsMethod": "Unicode code points after first visible chunk / first-to-last visible chunk interval; includes punctuation and whitespace",
+        "costSource": "nominal_uncached_price_estimate",
+        "usageComplete": true,
+        "ratePolicy": "client-sse-v2-min500ms-3chunks-64units",
+        "rateSampleSeconds": null,
+        "answerChunkCount": 1
+      }
+    },
+    {
+      "id": "batch-f71f40297546-00002-1",
+      "batchId": "batch-f71f40297546",
+      "modelId": "goat-deepseek-flash-cap1536",
+      "taskId": "math-01",
+      "status": "success",
+      "dataKind": "measured",
+      "timestamp": "2026-10-23T16:26:31.605276Z",
+      "output": "0.4",
+      "error": null,
+      "metrics": {
+        "ttftMs": 2849.111,
+        "ttfaMs": 3101.763,
+        "durationMs": 3118.568,
+        "outputTps": null,
+        "charsPerSec": null,
+        "inputTokens": 62,
+        "outputTokens": 46,
+        "reasoningTokens": 43,
+        "cost": 3.6899999999999996e-05
+      },
+      "grading": {
+        "status": "passed",
+        "score": 1,
+        "reason": "去除首尾空白后与预设答案逐字比较。"
+      },
+      "config": {
+        "region": "本机Windows客户端；网络出口位置未独立核验",
+        "concurrency": 1,
+        "temperature": null,
+        "reasoning": "服务商默认，未指定推理档位",
+        "cacheState": "unknown",
+        "repeatIndex": 0,
+        "attemptIndex": 0
+      },
+      "provenance": {
+        "adapter": "openai-compatible",
+        "tokenCountSource": "provider_usage",
+        "timingSource": "client_monotonic_sse",
+        "tpsMethod": "unavailable: insufficient rate sample or inseparable token counts",
+        "charsMethod": "Unicode code points after first visible chunk / first-to-last visible chunk interval; includes punctuation and whitespace",
+        "costSource": "nominal_uncached_price_estimate",
+        "usageComplete": true,
+        "ratePolicy": "client-sse-v2-min500ms-3chunks-64units",
+        "rateSampleSeconds": 0.012633900041691959,
+        "answerChunkCount": 3
+      }
+    },
+    {
+      "id": "batch-f71f40297546-00003-1",
+      "batchId": "batch-f71f40297546",
+      "modelId": "goat-qwen38-max-cap1536",
+      "taskId": "math-01",
+      "status": "success",
+      "dataKind": "measured",
+      "timestamp": "2026-10-23T16:26:34.727885Z",
+      "output": "0.4",
+      "error": null,
+      "metrics": {
+        "ttftMs": 1761.956,
+        "ttfaMs": 3551.51,
+        "durationMs": 3792.294,
+        "outputTps": null,
+        "charsPerSec": null,
+        "inputTokens": 94,
+        "outputTokens": 81,
+        "reasoningTokens": 75,
+        "cost": 0.000674
+      },
+      "grading": {
+        "status": "passed",
+        "score": 1,
+        "reason": "去除首尾空白后与预设答案逐字比较。"
+      },
+      "config": {
+        "region": "本机Windows客户端；网络出口位置未独立核验",
+        "concurrency": 1,
+        "temperature": null,
+        "reasoning": "服务商默认，未指定推理档位",
+        "cacheState": "unknown",
+        "repeatIndex": 0,
+        "attemptIndex": 0
+      },
+      "provenance": {
+        "adapter": "openai-compatible",
+        "tokenCountSource": "provider_usage",
+        "timingSource": "client_monotonic_sse",
+        "tpsMethod": "unavailable: insufficient rate sample or inseparable token counts",
+        "charsMethod": "Unicode code points after first visible chunk / first-to-last visible chunk interval; includes punctuation and whitespace",
+        "costSource": "nominal_uncached_price_estimate",
+        "usageComplete": true,
+        "ratePolicy": "client-sse-v2-min500ms-3chunks-64units",
+        "rateSampleSeconds": 0.24031599995214492,
+        "answerChunkCount": 2
+      }
+    },
+    {
+      "id": "batch-f71f40297546-00004-1",
+      "batchId": "batch-f71f40297546",
+      "modelId": "goat-gemini38-flash-cap1536",
+      "taskId": "math-01",
+      "status": "success",
+      "dataKind": "measured",
+      "timestamp": "2026-10-23T16:26:38.525249Z",
+      "output": "0.4",
+      "error": null,
+      "metrics": {
+        "ttftMs": 2412.771,
+        "ttfaMs": 2412.771,
+        "durationMs": 2459.844,
+        "outputTps": null,
+        "charsPerSec": null,
+        "inputTokens": 35,
+        "outputTokens": 67,
+        "reasoningTokens": 64,
+        "cost": 0.000555
+      },
+      "grading": {
+        "status": "passed",
+        "score": 1,
+        "reason": "去除首尾空白后与预设答案逐字比较。"
+      },
+      "config": {
+        "region": "本机Windows客户端；网络出口位置未独立核验",
+        "concurrency": 1,
+        "temperature": null,
+        "reasoning": "服务商默认，未指定推理档位",
+        "cacheState": "unknown",
+        "repeatIndex": 0,
+        "attemptIndex": 0
+      },
+      "provenance": {
+        "adapter": "openai-compatible",
+        "tokenCountSource": "provider_usage",
+        "timingSource": "client_monotonic_sse",
+        "tpsMethod": "unavailable: insufficient rate sample or inseparable token counts",
+        "charsMethod": "Unicode code points after first visible chunk / first-to-last visible chunk interval; includes punctuation and whitespace",
+        "costSource": "nominal_uncached_price_estimate",
+        "usageComplete": true,
+        "ratePolicy": "client-sse-v2-min500ms-3chunks-64units",
+        "rateSampleSeconds": null,
+        "answerChunkCount": 1
+      }
+    },
+    {
+      "id": "batch-f71f40297546-00005-1",
+      "batchId": "batch-f71f40297546",
+      "modelId": "goat-glm53-cap1536",
+      "taskId": "math-01",
+      "status": "success",
+      "dataKind": "measured",
+      "timestamp": "2026-10-23T16:26:40.988923Z",
+      "output": "0.4",
+      "error": null,
+      "metrics": {
+        "ttftMs": 2981.718,
+        "ttfaMs": 3220.263,
+        "durationMs": 3222.513,
+        "outputTps": null,
+        "charsPerSec": null,
+        "inputTokens": 46,
+        "outputTokens": 35,
+        "reasoningTokens": 31,
+        "cost": 0.00021839999999999997
+      },
+      "grading": {
+        "status": "passed",
+        "score": 1,
+        "reason": "去除首尾空白后与预设答案逐字比较。"
+      },
+      "config": {
+        "region": "本机Windows客户端；网络出口位置未独立核验",
+        "concurrency": 1,
+        "temperature": null,
+        "reasoning": "服务商默认，未指定推理档位",
+        "cacheState": "unknown",
+        "repeatIndex": 0,
+        "attemptIndex": 0
+      },
+      "provenance": {
+        "adapter": "openai-compatible",
+        "tokenCountSource": "provider_usage",
+        "timingSource": "client_monotonic_sse",
+        "tpsMethod": "unavailable: insufficient rate sample or inseparable token counts",
+        "charsMethod": "Unicode code points after first visible chunk / first-to-last visible chunk interval; includes punctuation and whitespace",
+        "costSource": "nominal_uncached_price_estimate",
+        "usageComplete": true,
+        "ratePolicy": "client-sse-v2-min500ms-3chunks-64units",
+        "rateSampleSeconds": null,
+        "answerChunkCount": 1
+      }
+    },
+    {
+      "id": "batch-f71f40297546-00006-1",
+      "batchId": "batch-f71f40297546",
+      "modelId": "goat-mistral4-cap1536",
+      "taskId": "math-01",
+      "status": "success",
+      "dataKind": "measured",
+      "timestamp": "2026-10-23T16:26:44.254238Z",
+      "output": "0.4",
+      "error": null,
+      "metrics": {
+        "ttftMs": 4366.607,
+        "ttfaMs": 5813.172,
+        "durationMs": 5814.163,
+        "outputTps": null,
+        "charsPerSec": null,
+        "inputTokens": 34,
+        "outputTokens": 161,
+        "reasoningTokens": 66,
+        "cost": 0.0007192199999999999
+      },
+      "grading": {
+        "status": "passed",
+        "score": 1,
+        "reason": "去除首尾空白后与预设答案逐字比较。"
+      },
+      "config": {
+        "region": "本机Windows客户端；网络出口位置未独立核验",
+        "concurrency": 1,
+        "temperature": null,
+        "reasoning": "服务商默认，未指定推理档位",
+        "cacheState": "unknown",
+        "repeatIndex": 0,
+        "attemptIndex": 0
+      },
+      "provenance": {
+        "adapter": "openai-compatible",
+        "tokenCountSource": "provider_usage",
+        "timingSource": "client_monotonic_sse",
+        "tpsMethod": "unavailable: insufficient rate sample or inseparable token counts",
+        "charsMethod": "Unicode code points after first visible chunk / first-to-last visible chunk interval; includes punctuation and whitespace",
+        "costSource": "nominal_uncached_price_estimate",
+        "usageComplete": true,
+        "ratePolicy": "client-sse-v2-min500ms-3chunks-64units",
+        "rateSampleSeconds": null,
+        "answerChunkCount": 1
+      }
+    },
+    {
+      "id": "batch-f71f40297546-00007-1",
+      "batchId": "batch-f71f40297546",
+      "modelId": "goat-deepseek-flash-cap1536",
+      "taskId": "data-01",
+      "status": "success",
+      "dataKind": "measured",
+      "timestamp": "2026-10-23T16:26:50.088867Z",
+      "output": "35",
+      "error": null,
+      "metrics": {
+        "ttftMs": 2070.154,
+        "ttfaMs": 3067.94,
+        "durationMs": 3070.727,
+        "outputTps": null,
+        "charsPerSec": null,
+        "inputTokens": 61,
+        "outputTokens": 145,
+        "reasoningTokens": 143,
+        "cost": 9.615e-05
+      },
+      "grading": {
+        "status": "passed",
+        "score": 1,
+        "reason": "去除首尾空白后与预设答案逐字比较。"
+      },
+      "config": {
+        "region": "本机Windows客户端；网络出口位置未独立核验",
+        "concurrency": 1,
+        "temperature": null,
+        "reasoning": "服务商默认，未指定推理档位",
+        "cacheState": "unknown",
+        "repeatIndex": 0,
+        "attemptIndex": 0
+      },
+      "provenance": {
+        "adapter": "openai-compatible",
+        "tokenCountSource": "provider_usage",
+        "timingSource": "client_monotonic_sse",
+        "tpsMethod": "unavailable: insufficient rate sample or inseparable token counts",
+        "charsMethod": "Unicode code points after first visible chunk / first-to-last visible chunk interval; includes punctuation and whitespace",
+        "costSource": "nominal_uncached_price_estimate",
+        "usageComplete": true,
+        "ratePolicy": "client-sse-v2-min500ms-3chunks-64units",
+        "rateSampleSeconds": null,
+        "answerChunkCount": 1
+      }
+    },
+    {
+      "id": "batch-f71f40297546-00008-1",
+      "batchId": "batch-f71f40297546",
+      "modelId": "goat-qwen38-max-cap1536",
+      "taskId": "data-01",
+      "status": "success",
+      "dataKind": "measured",
+      "timestamp": "2026-10-23T16:26:53.165895Z",
+      "output": "35",
+      "error": null,
+      "metrics": {
+        "ttftMs": 2894.353,
+        "ttfaMs": 4694.045,
+        "durationMs": 4765.76,
+        "outputTps": null,
+        "charsPerSec": null,
+        "inputTokens": 95,
+        "outputTokens": 81,
+        "reasoningTokens": 76,
+        "cost": 0.000676
+      },
+      "grading": {
+        "status": "passed",
+        "score": 1,
+        "reason": "去除首尾空白后与预设答案逐字比较。"
+      },
+      "config": {
+        "region": "本机Windows客户端；网络出口位置未独立核验",
+        "concurrency": 1,
+        "temperature": null,
+        "reasoning": "服务商默认，未指定推理档位",
+        "cacheState": "unknown",
+        "repeatIndex": 0,
+        "attemptIndex": 0
+      },
+      "provenance": {
+        "adapter": "openai-compatible",
+        "tokenCountSource": "provider_usage",
+        "timingSource": "client_monotonic_sse",
+        "tpsMethod": "unavailable: insufficient rate sample or inseparable token counts",
+        "charsMethod": "Unicode code points after first visible chunk / first-to-last visible chunk interval; includes punctuation and whitespace",
+        "costSource": "nominal_uncached_price_estimate",
+        "usageComplete": true,
+        "ratePolicy": "client-sse-v2-min500ms-3chunks-64units",
+        "rateSampleSeconds": null,
+        "answerChunkCount": 1
+      }
+    },
+    {
+      "id": "batch-f71f40297546-00009-1",
+      "batchId": "batch-f71f40297546",
+      "modelId": "goat-gemini38-flash-cap1536",
+      "taskId": "data-01",
+      "status": "success",
+      "dataKind": "measured",
+      "timestamp": "2026-10-23T16:26:57.940093Z",
+      "output": "35",
+      "error": null,
+      "metrics": {
+        "ttftMs": 2821.55,
+        "ttfaMs": 2821.55,
+        "durationMs": 2842.959,
+        "outputTps": null,
+        "charsPerSec": null,
+        "inputTokens": 35,
+        "outputTokens": 130,
+        "reasoningTokens": 128,
+        "cost": 0.0010275
+      },
+      "grading": {
+        "status": "passed",
+        "score": 1,
+        "reason": "去除首尾空白后与预设答案逐字比较。"
+      },
+      "config": {
+        "region": "本机Windows客户端；网络出口位置未独立核验",
+        "concurrency": 1,
+        "temperature": null,
+        "reasoning": "服务商默认，未指定推理档位",
+        "cacheState": "unknown",
+        "repeatIndex": 0,
+        "attemptIndex": 0
+      },
+      "provenance": {
+        "adapter": "openai-compatible",
+        "tokenCountSource": "provider_usage",
+        "timingSource": "client_monotonic_sse",
+        "tpsMethod": "unavailable: insufficient rate sample or inseparable token counts",
+        "charsMethod": "Unicode code points after first visible chunk / first-to-last visible chunk interval; includes punctuation and whitespace",
+        "costSource": "nominal_uncached_price_estimate",
+        "usageComplete": true,
+        "ratePolicy": "client-sse-v2-min500ms-3chunks-64units",
+        "rateSampleSeconds": null,
+        "answerChunkCount": 1
+      }
+    },
+    {
+      "id": "batch-f71f40297546-00010-1",
+      "batchId": "batch-f71f40297546",
+      "modelId": "goat-glm53-cap1536",
+      "taskId": "data-01",
+      "status": "success",
+      "dataKind": "measured",
+      "timestamp": "2026-10-23T16:27:00.788830Z",
+      "output": "35",
+      "error": null,
+      "metrics": {
+        "ttftMs": 1446.037,
+        "ttfaMs": 2871.288,
+        "durationMs": 2873.456,
+        "outputTps": null,
+        "charsPerSec": null,
+        "inputTokens": 43,
+        "outputTokens": 138,
+        "reasoningTokens": 135,
+        "cost": 0.0006674000000000001
+      },
+      "grading": {
+        "status": "passed",
+        "score": 1,
+        "reason": "去除首尾空白后与预设答案逐字比较。"
+      },
+      "config": {
+        "region": "本机Windows客户端；网络出口位置未独立核验",
+        "concurrency": 1,
+        "temperature": null,
+        "reasoning": "服务商默认，未指定推理档位",
+        "cacheState": "unknown",
+        "repeatIndex": 0,
+        "attemptIndex": 0
+      },
+      "provenance": {
+        "adapter": "openai-compatible",
+        "tokenCountSource": "provider_usage",
+        "timingSource": "client_monotonic_sse",
+        "tpsMethod": "unavailable: insufficient rate sample or inseparable token counts",
+        "charsMethod": "Unicode code points after first visible chunk / first-to-last visible chunk interval; includes punctuation and whitespace",
+        "costSource": "nominal_uncached_price_estimate",
+        "usageComplete": true,
+        "ratePolicy": "client-sse-v2-min500ms-3chunks-64units",
+        "rateSampleSeconds": null,
+        "answerChunkCount": 1
+      }
+    },
+    {
+      "id": "batch-f71f40297546-00011-1",
+      "batchId": "batch-f71f40297546",
+      "modelId": "goat-mistral4-cap1536",
+      "taskId": "data-01",
+      "status": "success",
+      "dataKind": "measured",
+      "timestamp": "2026-10-23T16:27:03.673919Z",
+      "output": "35",
+      "error": null,
+      "metrics": {
+        "ttftMs": 2089.973,
+        "ttfaMs": 4401.621,
+        "durationMs": 4401.922,
+        "outputTps": null,
+        "charsPerSec": null,
+        "inputTokens": 35,
+        "outputTokens": 212,
+        "reasoningTokens": 78,
+        "cost": 0.00093376
+      },
+      "grading": {
+        "status": "passed",
+        "score": 1,
+        "reason": "去除首尾空白后与预设答案逐字比较。"
+      },
+      "config": {
+        "region": "本机Windows客户端；网络出口位置未独立核验",
+        "concurrency": 1,
+        "temperature": null,
+        "reasoning": "服务商默认，未指定推理档位",
+        "cacheState": "unknown",
+        "repeatIndex": 0,
+        "attemptIndex": 0
+      },
+      "provenance": {
+        "adapter": "openai-compatible",
+        "tokenCountSource": "provider_usage",
+        "timingSource": "client_monotonic_sse",
+        "tpsMethod": "unavailable: insufficient rate sample or inseparable token counts",
+        "charsMethod": "Unicode code points after first visible chunk / first-to-last visible chunk interval; includes punctuation and whitespace",
+        "costSource": "nominal_uncached_price_estimate",
+        "usageComplete": true,
+        "ratePolicy": "client-sse-v2-min500ms-3chunks-64units",
+        "rateSampleSeconds": null,
+        "answerChunkCount": 1
+      }
+    },
+    {
+      "id": "batch-f71f40297546-00012-1",
+      "batchId": "batch-f71f40297546",
+      "modelId": "goat-claude-sonnet55-cap1536",
+      "taskId": "data-01",
+      "status": "success",
+      "dataKind": "measured",
+      "timestamp": "2026-10-23T16:27:08.087269Z",
+      "output": "35",
+      "error": null,
+      "metrics": {
+        "ttftMs": 1793.323,
+        "ttfaMs": 1793.323,
+        "durationMs": 2392.141,
+        "outputTps": null,
+        "charsPerSec": null,
+        "inputTokens": 47,
+        "outputTokens": 77,
+        "reasoningTokens": null,
+        "cost": 0.000864
+      },
+      "grading": {
+        "status": "passed",
+        "score": 1,
+        "reason": "去除首尾空白后与预设答案逐字比较。"
+      },
+      "config": {
+        "region": "本机Windows客户端；网络出口位置未独立核验",
+        "concurrency": 1,
+        "temperature": null,
+        "reasoning": "服务商默认，未指定推理档位",
+        "cacheState": "unknown",
+        "repeatIndex": 0,
+        "attemptIndex": 0
+      },
+      "provenance": {
+        "adapter": "anthropic-messages",
+        "tokenCountSource": "provider_usage",
+        "timingSource": "client_monotonic_sse",
+        "tpsMethod": "unavailable: insufficient rate sample or inseparable token counts",
+        "charsMethod": "Unicode code points after first visible chunk / first-to-last visible chunk interval; includes punctuation and whitespace",
+        "costSource": "nominal_uncached_price_estimate",
+        "usageComplete": true,
+        "ratePolicy": "client-sse-v2-min500ms-3chunks-64units",
+        "rateSampleSeconds": null,
+        "answerChunkCount": 1
+      }
+    },
+    {
+      "id": "batch-f71f40297546-00013-1",
+      "batchId": "batch-f71f40297546",
+      "modelId": "goat-qwen38-max-cap1536",
+      "taskId": "speed-copy",
+      "status": "success",
+      "dataKind": "measured",
+      "timestamp": "2026-10-23T16:27:10.484220Z",
+      "output": "第1段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第2段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第3段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第4段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第5段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第6段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。",
+      "error": null,
+      "metrics": {
+        "ttftMs": 1888.538,
+        "ttfaMs": 7497.367,
+        "durationMs": 13063.694,
+        "outputTps": 60.916,
+        "charsPerSec": 99.665,
+        "inputTokens": 420,
+        "outputTokens": 589,
+        "reasoningTokens": 251,
+        "cost": 0.004374
+      },
+      "grading": {
+        "status": "passed",
+        "score": 1,
+        "reason": "去除首尾空白后与预设答案逐字比较。"
+      },
+      "config": {
+        "region": "本机Windows客户端；网络出口位置未独立核验",
+        "concurrency": 1,
+        "temperature": null,
+        "reasoning": "服务商默认，未指定推理档位",
+        "cacheState": "unknown",
+        "repeatIndex": 0,
+        "attemptIndex": 0
+      },
+      "provenance": {
+        "adapter": "openai-compatible",
+        "tokenCountSource": "provider_usage",
+        "timingSource": "client_monotonic_sse",
+        "tpsMethod": "visible tokens / first-to-last visible chunk interval; chunk-boundary estimate, >=500ms, >=3 chunks, >=64 visible tokens",
+        "charsMethod": "Unicode code points after first visible chunk / first-to-last visible chunk interval; includes punctuation and whitespace",
+        "costSource": "nominal_uncached_price_estimate",
+        "usageComplete": true,
+        "ratePolicy": "client-sse-v2-min500ms-3chunks-64units",
+        "rateSampleSeconds": 5.548579500056803,
+        "answerChunkCount": 84
+      }
+    },
+    {
+      "id": "batch-f71f40297546-00014-1",
+      "batchId": "batch-f71f40297546",
+      "modelId": "goat-gemini38-flash-cap1536",
+      "taskId": "speed-copy",
+      "status": "success",
+      "dataKind": "measured",
+      "timestamp": "2026-10-23T16:27:23.562031Z",
+      "output": "第1段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第2段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第3段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第4段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第5段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第6段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。",
+      "error": null,
+      "metrics": {
+        "ttftMs": 2766.616,
+        "ttfaMs": 2766.616,
+        "durationMs": 4084.202,
+        "outputTps": 286.878,
+        "charsPerSec": 411.846,
+        "inputTokens": 390,
+        "outputTokens": 491,
+        "reasoningTokens": 126,
+        "cost": 0.0042675
+      },
+      "grading": {
+        "status": "passed",
+        "score": 1,
+        "reason": "去除首尾空白后与预设答案逐字比较。"
+      },
+      "config": {
+        "region": "本机Windows客户端；网络出口位置未独立核验",
+        "concurrency": 1,
+        "temperature": null,
+        "reasoning": "服务商默认，未指定推理档位",
+        "cacheState": "unknown",
+        "repeatIndex": 0,
+        "attemptIndex": 0
+      },
+      "provenance": {
+        "adapter": "openai-compatible",
+        "tokenCountSource": "provider_usage",
+        "timingSource": "client_monotonic_sse",
+        "tpsMethod": "visible tokens / first-to-last visible chunk interval; chunk-boundary estimate, >=500ms, >=3 chunks, >=64 visible tokens",
+        "charsMethod": "Unicode code points after first visible chunk / first-to-last visible chunk interval; includes punctuation and whitespace",
+        "costSource": "nominal_uncached_price_estimate",
+        "usageComplete": true,
+        "ratePolicy": "client-sse-v2-min500ms-3chunks-64units",
+        "rateSampleSeconds": 1.2723189000971615,
+        "answerChunkCount": 16
+      }
+    },
+    {
+      "id": "batch-f71f40297546-00015-1",
+      "batchId": "batch-f71f40297546",
+      "modelId": "goat-glm53-cap1536",
+      "taskId": "speed-copy",
+      "status": "success",
+      "dataKind": "measured",
+      "timestamp": "2026-10-23T16:27:27.653125Z",
+      "output": "第1段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第2段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第3段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第4段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第5段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第6段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。",
+      "error": null,
+      "metrics": {
+        "ttftMs": 1632.652,
+        "ttfaMs": 4007.191,
+        "durationMs": 7172.921,
+        "outputTps": 108.359,
+        "charsPerSec": 175.017,
+        "inputTokens": 378,
+        "outputTokens": 575,
+        "reasoningTokens": 232,
+        "cost": 0.0030591999999999998
+      },
+      "grading": {
+        "status": "passed",
+        "score": 1,
+        "reason": "去除首尾空白后与预设答案逐字比较。"
+      },
+      "config": {
+        "region": "本机Windows客户端；网络出口位置未独立核验",
+        "concurrency": 1,
+        "temperature": null,
+        "reasoning": "服务商默认，未指定推理档位",
+        "cacheState": "unknown",
+        "repeatIndex": 0,
+        "attemptIndex": 0
+      },
+      "provenance": {
+        "adapter": "openai-compatible",
+        "tokenCountSource": "provider_usage",
+        "timingSource": "client_monotonic_sse",
+        "tpsMethod": "visible tokens / first-to-last visible chunk interval; chunk-boundary estimate, >=500ms, >=3 chunks, >=64 visible tokens",
+        "charsMethod": "Unicode code points after first visible chunk / first-to-last visible chunk interval; includes punctuation and whitespace",
+        "costSource": "nominal_uncached_price_estimate",
+        "usageComplete": true,
+        "ratePolicy": "client-sse-v2-min500ms-3chunks-64units",
+        "rateSampleSeconds": 3.16541060002055,
+        "answerChunkCount": 171
+      }
+    },
+    {
+      "id": "batch-f71f40297546-00016-1",
+      "batchId": "batch-f71f40297546",
+      "modelId": "goat-mistral4-cap1536",
+      "taskId": "speed-copy",
+      "status": "success",
+      "dataKind": "measured",
+      "timestamp": "2026-10-23T16:27:34.846664Z",
+      "output": "本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。",
+      "error": null,
+      "metrics": {
+        "ttftMs": 2245.319,
+        "ttfaMs": 5407.022,
+        "durationMs": 6475.426,
+        "outputTps": 535.751,
+        "charsPerSec": 506.199,
+        "inputTokens": 450,
+        "outputTokens": 646,
+        "reasoningTokens": 84,
+        "cost": 0.00331228
+      },
+      "grading": {
+        "status": "failed",
+        "score": 0,
+        "reason": "去除首尾空白后与预设答案逐字比较。"
+      },
+      "config": {
+        "region": "本机Windows客户端；网络出口位置未独立核验",
+        "concurrency": 1,
+        "temperature": null,
+        "reasoning": "服务商默认，未指定推理档位",
+        "cacheState": "unknown",
+        "repeatIndex": 0,
+        "attemptIndex": 0
+      },
+      "provenance": {
+        "adapter": "openai-compatible",
+        "tokenCountSource": "provider_usage",
+        "timingSource": "client_monotonic_sse",
+        "tpsMethod": "visible tokens / first-to-last visible chunk interval; chunk-boundary estimate, >=500ms, >=3 chunks, >=64 visible tokens",
+        "charsMethod": "Unicode code points after first visible chunk / first-to-last visible chunk interval; includes punctuation and whitespace",
+        "costSource": "nominal_uncached_price_estimate",
+        "usageComplete": true,
+        "ratePolicy": "client-sse-v2-min500ms-3chunks-64units",
+        "rateSampleSeconds": 1.048994000069797,
+        "answerChunkCount": 101
+      }
+    },
+    {
+      "id": "batch-f71f40297546-00017-1",
+      "batchId": "batch-f71f40297546",
+      "modelId": "goat-claude-sonnet55-cap1536",
+      "taskId": "speed-copy",
+      "status": "success",
+      "dataKind": "measured",
+      "timestamp": "2026-10-23T16:27:41.339238Z",
+      "output": "第1段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第2段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第3段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第4段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第5段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第6段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。",
+      "error": null,
+      "metrics": {
+        "ttftMs": 2091.71,
+        "ttfaMs": 2091.71,
+        "durationMs": 4468.401,
+        "outputTps": null,
+        "charsPerSec": 230.603,
+        "inputTokens": 612,
+        "outputTokens": 571,
+        "reasoningTokens": null,
+        "cost": 0.006934
+      },
+      "grading": {
+        "status": "passed",
+        "score": 1,
+        "reason": "去除首尾空白后与预设答案逐字比较。"
+      },
+      "config": {
+        "region": "本机Windows客户端；网络出口位置未独立核验",
+        "concurrency": 1,
+        "temperature": null,
+        "reasoning": "服务商默认，未指定推理档位",
+        "cacheState": "unknown",
+        "repeatIndex": 0,
+        "attemptIndex": 0
+      },
+      "provenance": {
+        "adapter": "anthropic-messages",
+        "tokenCountSource": "provider_usage",
+        "timingSource": "client_monotonic_sse",
+        "tpsMethod": "unavailable: insufficient rate sample or inseparable token counts",
+        "charsMethod": "Unicode code points after first visible chunk / first-to-last visible chunk interval; includes punctuation and whitespace",
+        "costSource": "nominal_uncached_price_estimate",
+        "usageComplete": true,
+        "ratePolicy": "client-sse-v2-min500ms-3chunks-64units",
+        "rateSampleSeconds": 2.3763810000382364,
+        "answerChunkCount": 72
+      }
+    },
+    {
+      "id": "batch-f71f40297546-00018-1",
+      "batchId": "batch-f71f40297546",
+      "modelId": "goat-deepseek-flash-cap1536",
+      "taskId": "speed-copy",
+      "status": "success",
+      "dataKind": "measured",
+      "timestamp": "2026-10-23T16:27:45.815720Z",
+      "output": "第1段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第2段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第3段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第4段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第5段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第6段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。",
+      "error": null,
+      "metrics": {
+        "ttftMs": 2199.021,
+        "ttfaMs": 4701.261,
+        "durationMs": 6286.122,
+        "outputTps": 217.976,
+        "charsPerSec": 352.701,
+        "inputTokens": 396,
+        "outputTokens": 721,
+        "reasoningTokens": 378,
+        "cost": 0.0004919999999999999
+      },
+      "grading": {
+        "status": "passed",
+        "score": 1,
+        "reason": "去除首尾空白后与预设答案逐字比较。"
+      },
+      "config": {
+        "region": "本机Windows客户端；网络出口位置未独立核验",
+        "concurrency": 1,
+        "temperature": null,
+        "reasoning": "服务商默认，未指定推理档位",
+        "cacheState": "unknown",
+        "repeatIndex": 0,
+        "attemptIndex": 0
+      },
+      "provenance": {
+        "adapter": "openai-compatible",
+        "tokenCountSource": "provider_usage",
+        "timingSource": "client_monotonic_sse",
+        "tpsMethod": "visible tokens / first-to-last visible chunk interval; chunk-boundary estimate, >=500ms, >=3 chunks, >=64 visible tokens",
+        "charsMethod": "Unicode code points after first visible chunk / first-to-last visible chunk interval; includes punctuation and whitespace",
+        "costSource": "nominal_uncached_price_estimate",
+        "usageComplete": true,
+        "ratePolicy": "client-sse-v2-min500ms-3chunks-64units",
+        "rateSampleSeconds": 1.5735700000077486,
+        "answerChunkCount": 61
+      }
+    },
+    {
+      "id": "batch-875439d35629-00001-1",
+      "batchId": "batch-875439d35629",
+      "modelId": "goat-claude-sonnet55-cap1536",
+      "taskId": "math-02",
+      "status": "success",
+      "dataKind": "measured",
+      "timestamp": "2026-10-23T16:34:27.717643Z",
+      "output": "**结论：** 该推断是错误的。逐点收敛本身不能保证积分的极限等于极限函数的积分，这里 ∫f_n = 1 对所有 n 成立，而极限函数的积分是 0。\n\n**1. 逐点极限**\n\n- 当 x = 0 时，x 不在 (0,1/n) 内，所以 f_n(0)=0。\n- 当 x ∈ (0,1] 时，只要 n > 1/x，就有 x ≥ 1/n，从而 f_n(x)=0。\n- 所以对每个 x∈[0,1]，f_n(x)→0，即 f = 0。\n\n**2. 各积分**\n\n∫₀¹ f_n(x)dx = n·|(0,1/n)| = n·(1/n) = 1，对每个 n 都成立。\n\n因此 lim ∫f_n = 1，而 ∫ lim f_n = ∫0 = 0。\n\n两者不等：1 ≠ 0。\n\n**3. 错在哪里**\n\n“逐点收敛 ⟹ 积分收敛”这一步不成立。交换极限与积分需要额外条件，例如：\n\n- **一致收敛**（在有限区间上）：这里 sup|f_n − 0| = n → ∞，不一致收敛。\n- **控制收敛定理**：需要存在可积函数 g，使 |f_n| ≤ g。这里 sup_n f_n(x) = n，其中 n 取满足 1/n > x 的最大值，即 n = ⌈1/x⌉ − 1，所以 sup_n f_n(x) ≈ 1/x。而 ∫₀¹ (1/x)dx = ∞，因此不存在可积的控制函数。\n- **单调收敛定理**：f_n 既不单调递增，也不是非负单调递减且积分有限的情形（f_n 并不单调递减，例如 f_1=0 而 f_2=2·1_(0,1/2)）。所以也不适用。\n\n**4. 直观解释**\n\nf_n 的“质量”（面积 1）集中在越来越窄的区间 (0,1/n) 上，高度为 n。当 n→∞ 时，这部分质量“逃逸”到 x=0 这一点，逐点极限看不到它。在测度论的意义下，f_n 在 [0,1] 上依测度收敛于 0，但不是 L¹ 收敛，因为 ‖f_n − 0‖₁ = 1 ↛ 0。Fatou 引理在此给出严格不等式：\n\n∫ liminf f_n = 0 < 1 = liminf ∫ f_n。",
+      "error": null,
+      "metrics": {
+        "ttftMs": 2496.062,
+        "ttfaMs": 2496.062,
+        "durationMs": 9101.898,
+        "outputTps": null,
+        "charsPerSec": 133.34,
+        "inputTokens": 72,
+        "outputTokens": 876,
+        "reasoningTokens": null,
+        "cost": 0.008904
+      },
+      "grading": {
+        "status": "pending",
+        "score": null,
+        "reason": "等待人工按预设 rubric 评分。"
+      },
+      "config": {
+        "region": "本机Windows客户端；网络出口位置未独立核验",
+        "concurrency": 1,
+        "temperature": null,
+        "reasoning": "服务商默认，未指定推理档位",
+        "cacheState": "unknown",
+        "repeatIndex": 0,
+        "attemptIndex": 0
+      },
+      "provenance": {
+        "adapter": "anthropic-messages",
+        "tokenCountSource": "provider_usage",
+        "timingSource": "client_monotonic_sse",
+        "tpsMethod": "unavailable: insufficient rate sample or inseparable token counts",
+        "charsMethod": "Unicode code points after first visible chunk / first-to-last visible chunk interval; includes punctuation and whitespace",
+        "costSource": "nominal_uncached_price_estimate",
+        "usageComplete": true,
+        "ratePolicy": "client-sse-v2-min500ms-3chunks-64units",
+        "rateSampleSeconds": 6.599682300002314,
+        "answerChunkCount": 185
+      }
+    },
+    {
+      "id": "batch-875439d35629-00002-1",
+      "batchId": "batch-875439d35629",
+      "modelId": "goat-deepseek-flash-cap1536",
+      "taskId": "math-02",
+      "status": "error",
+      "dataKind": "measured",
+      "timestamp": "2026-10-23T16:34:36.832432Z",
+      "output": "",
+      "error": "invalid_or_incomplete_stream",
+      "metrics": {
+        "ttftMs": 2879.184,
+        "ttfaMs": null,
+        "durationMs": 15095.156,
+        "outputTps": null,
+        "charsPerSec": null,
+        "inputTokens": 71,
+        "outputTokens": 1200,
+        "reasoningTokens": 1200,
+        "cost": 0.00073065
+      },
+      "grading": {
+        "status": "not_applicable",
+        "score": null,
+        "reason": "请求未成功，不对不完整答案评分。"
+      },
+      "config": {
+        "region": "本机Windows客户端；网络出口位置未独立核验",
+        "concurrency": 1,
+        "temperature": null,
+        "reasoning": "服务商默认，未指定推理档位",
+        "cacheState": "unknown",
+        "repeatIndex": 0,
+        "attemptIndex": 0
+      },
+      "provenance": {
+        "adapter": "openai-compatible",
+        "tokenCountSource": "provider_usage",
+        "timingSource": "client_monotonic_sse",
+        "tpsMethod": "unavailable: insufficient rate sample or inseparable token counts",
+        "charsMethod": "Unicode code points after first visible chunk / first-to-last visible chunk interval; includes punctuation and whitespace",
+        "costSource": "nominal_uncached_price_estimate",
+        "usageComplete": true,
+        "ratePolicy": "client-sse-v2-min500ms-3chunks-64units",
+        "rateSampleSeconds": null,
+        "answerChunkCount": 0
+      }
+    },
+    {
+      "id": "batch-875439d35629-00003-1",
+      "batchId": "batch-875439d35629",
+      "modelId": "goat-qwen38-max-cap1536",
+      "taskId": "math-02",
+      "status": "error",
+      "dataKind": "measured",
+      "timestamp": "2026-10-23T16:34:51.959598Z",
+      "output": "错误在于：**逐点收敛不能直接推出积分收敛**，也就是不能随意把极限移到积分号内。只有满足额外条件（例如一致收敛、勒贝格控制收敛定理等）时，才有\n\n\\[\n\\lim_{n\\to\\infty}\\int_0^1 f_n(x)\\,dx\n=\n\\int_0^1 \\lim_{n\\to\\infty} f_n(x)\\,dx.\n\\]\n\n---\n\n对\n\n\\[\nf_n(x)=n\\mathbf 1_{(0,1/n)}(x),\\qquad x\\in[0,1],\n\\]\n\n先看逐点极限。\n\n- 当 \\(x=0\\) 时，\\(0\\notin(0,",
+      "error": "output_limit_reached",
+      "metrics": {
+        "ttftMs": 1744.035,
+        "ttfaMs": 28587.672,
+        "durationMs": 31643.708,
+        "outputTps": null,
+        "charsPerSec": null,
+        "inputTokens": 103,
+        "outputTokens": 1200,
+        "reasoningTokens": 1035,
+        "cost": 0.007406
+      },
+      "grading": {
+        "status": "not_applicable",
+        "score": null,
+        "reason": "请求未成功，不对不完整答案评分。"
+      },
+      "config": {
+        "region": "本机Windows客户端；网络出口位置未独立核验",
+        "concurrency": 1,
+        "temperature": null,
+        "reasoning": "服务商默认，未指定推理档位",
+        "cacheState": "unknown",
+        "repeatIndex": 0,
+        "attemptIndex": 0
+      },
+      "provenance": {
+        "adapter": "openai-compatible",
+        "tokenCountSource": "provider_usage",
+        "timingSource": "client_monotonic_sse",
+        "tpsMethod": "unavailable: insufficient rate sample or inseparable token counts",
+        "charsMethod": "Unicode code points after first visible chunk / first-to-last visible chunk interval; includes punctuation and whitespace",
+        "costSource": "nominal_uncached_price_estimate",
+        "usageComplete": true,
+        "ratePolicy": "client-sse-v2-min500ms-3chunks-64units",
+        "rateSampleSeconds": 3.031839899951592,
+        "answerChunkCount": 44
+      }
+    },
+    {
+      "id": "batch-875439d35629-00004-1",
+      "batchId": "batch-875439d35629",
+      "modelId": "goat-gemini38-flash-cap1536",
+      "taskId": "math-02",
+      "status": "error",
+      "dataKind": "measured",
+      "timestamp": "2026-10-23T16:35:23.645189Z",
+      "output": "### 1. 指出错误原因\n\n该推理的错误在于：**极限与积分的顺序不能随意交换**。即一般情况下：\n$$ \\lim_{n \\to \\infty} \\int_0^1 f_n(x) \\, dx \\neq \\int_0^1 \\lim_{n \\to \\infty} f_n(x) \\, dx $$\n\n逐点收敛（$f_n(x) \\to f(x)$）**不足以**保证积分序列收敛到极限函数的积分。要保证积分与极限可交换，通常需要更强的条件，本例均不满足：\n1. **不满足一致收敛性**：$\\sup_{x \\in [0,1]} |f_n(x) - 0| = n \\to \\infty$，故 $f_n$ 在 $[0,1]$ 上不一致收敛到 $0$。\n2. **不满足有界收敛定理的条件**：函数列 $\\{f_n\\}$ 不是一致有界的（上确界为 $n \\to \\infty$）。\n3. **不满足勒贝格控制收敛定理**：不存在一个可积函数 $g(x)$ 使得 $|f_n(x)| \\le g(x)$ 对所有 $n$ 几乎处处成立（若存在，则必然有",
+      "error": "output_limit_reached",
+      "metrics": {
+        "ttftMs": 10198.578,
+        "ttfaMs": 10198.578,
+        "durationMs": 12194.657,
+        "outputTps": null,
+        "charsPerSec": null,
+        "inputTokens": 46,
+        "outputTokens": 1196,
+        "reasoningTokens": 902,
+        "cost": 0.009039
+      },
+      "grading": {
+        "status": "not_applicable",
+        "score": null,
+        "reason": "请求未成功，不对不完整答案评分。"
+      },
+      "config": {
+        "region": "本机Windows客户端；网络出口位置未独立核验",
+        "concurrency": 1,
+        "temperature": null,
+        "reasoning": "服务商默认，未指定推理档位",
+        "cacheState": "unknown",
+        "repeatIndex": 0,
+        "attemptIndex": 0
+      },
+      "provenance": {
+        "adapter": "openai-compatible",
+        "tokenCountSource": "provider_usage",
+        "timingSource": "client_monotonic_sse",
+        "tpsMethod": "unavailable: insufficient rate sample or inseparable token counts",
+        "charsMethod": "Unicode code points after first visible chunk / first-to-last visible chunk interval; includes punctuation and whitespace",
+        "costSource": "nominal_uncached_price_estimate",
+        "usageComplete": true,
+        "ratePolicy": "client-sse-v2-min500ms-3chunks-64units",
+        "rateSampleSeconds": 1.928093400085345,
+        "answerChunkCount": 13
+      }
+    },
+    {
+      "id": "batch-875439d35629-00005-1",
+      "batchId": "batch-875439d35629",
+      "modelId": "goat-glm53-cap1536",
+      "taskId": "math-02",
+      "status": "error",
+      "dataKind": "measured",
+      "timestamp": "2026-10-23T16:35:35.845215Z",
+      "output": "",
+      "error": "invalid_or_incomplete_stream",
+      "metrics": {
+        "ttftMs": 1399.091,
+        "ttfaMs": null,
+        "durationMs": 14572.921,
+        "outputTps": null,
+        "charsPerSec": null,
+        "inputTokens": 53,
+        "outputTokens": 1200,
+        "reasoningTokens": 1200,
+        "cost": 0.0053542
+      },
+      "grading": {
+        "status": "not_applicable",
+        "score": null,
+        "reason": "请求未成功，不对不完整答案评分。"
+      },
+      "config": {
+        "region": "本机Windows客户端；网络出口位置未独立核验",
+        "concurrency": 1,
+        "temperature": null,
+        "reasoning": "服务商默认，未指定推理档位",
+        "cacheState": "unknown",
+        "repeatIndex": 0,
+        "attemptIndex": 0
+      },
+      "provenance": {
+        "adapter": "openai-compatible",
+        "tokenCountSource": "provider_usage",
+        "timingSource": "client_monotonic_sse",
+        "tpsMethod": "unavailable: insufficient rate sample or inseparable token counts",
+        "charsMethod": "Unicode code points after first visible chunk / first-to-last visible chunk interval; includes punctuation and whitespace",
+        "costSource": "nominal_uncached_price_estimate",
+        "usageComplete": true,
+        "ratePolicy": "client-sse-v2-min500ms-3chunks-64units",
+        "rateSampleSeconds": null,
+        "answerChunkCount": 0
+      }
+    },
+    {
+      "id": "batch-875439d35629-00006-1",
+      "batchId": "batch-875439d35629",
+      "modelId": "goat-mistral4-cap1536",
+      "taskId": "math-02",
+      "status": "error",
+      "dataKind": "measured",
+      "timestamp": "2026-10-23T16:35:50.470608Z",
+      "output": "",
+      "error": "invalid_or_incomplete_stream",
+      "metrics": {
+        "ttftMs": 4141.657,
+        "ttfaMs": null,
+        "durationMs": 23472.238,
+        "outputTps": null,
+        "charsPerSec": null,
+        "inputTokens": 49,
+        "outputTokens": 1200,
+        "reasoningTokens": 515,
+        "cost": 0.00508264
+      },
+      "grading": {
+        "status": "not_applicable",
+        "score": null,
+        "reason": "请求未成功，不对不完整答案评分。"
+      },
+      "config": {
+        "region": "本机Windows客户端；网络出口位置未独立核验",
+        "concurrency": 1,
+        "temperature": null,
+        "reasoning": "服务商默认，未指定推理档位",
+        "cacheState": "unknown",
+        "repeatIndex": 0,
+        "attemptIndex": 0
+      },
+      "provenance": {
+        "adapter": "openai-compatible",
+        "tokenCountSource": "provider_usage",
+        "timingSource": "client_monotonic_sse",
+        "tpsMethod": "unavailable: insufficient rate sample or inseparable token counts",
+        "charsMethod": "Unicode code points after first visible chunk / first-to-last visible chunk interval; includes punctuation and whitespace",
+        "costSource": "nominal_uncached_price_estimate",
+        "usageComplete": true,
+        "ratePolicy": "client-sse-v2-min500ms-3chunks-64units",
+        "rateSampleSeconds": null,
+        "answerChunkCount": 0
+      }
+    },
+    {
+      "id": "batch-875439d35629-00007-1",
+      "batchId": "batch-875439d35629",
+      "modelId": "goat-deepseek-flash-cap1536",
+      "taskId": "math-06",
+      "status": "success",
+      "dataKind": "measured",
+      "timestamp": "2026-10-23T16:36:13.973974Z",
+      "output": "9",
+      "error": null,
+      "metrics": {
+        "ttftMs": 2498.445,
+        "ttfaMs": 3573.134,
+        "durationMs": 3578.23,
+        "outputTps": null,
+        "charsPerSec": null,
+        "inputTokens": 76,
+        "outputTokens": 96,
+        "reasoningTokens": 95,
+        "cost": 6.9e-05
+      },
+      "grading": {
+        "status": "passed",
+        "score": 1,
+        "reason": "去除首尾空白后与预设答案逐字比较。"
+      },
+      "config": {
+        "region": "本机Windows客户端；网络出口位置未独立核验",
+        "concurrency": 1,
+        "temperature": null,
+        "reasoning": "服务商默认，未指定推理档位",
+        "cacheState": "unknown",
+        "repeatIndex": 0,
+        "attemptIndex": 0
+      },
+      "provenance": {
+        "adapter": "openai-compatible",
+        "tokenCountSource": "provider_usage",
+        "timingSource": "client_monotonic_sse",
+        "tpsMethod": "unavailable: insufficient rate sample or inseparable token counts",
+        "charsMethod": "Unicode code points after first visible chunk / first-to-last visible chunk interval; includes punctuation and whitespace",
+        "costSource": "nominal_uncached_price_estimate",
+        "usageComplete": true,
+        "ratePolicy": "client-sse-v2-min500ms-3chunks-64units",
+        "rateSampleSeconds": null,
+        "answerChunkCount": 1
+      }
+    },
+    {
+      "id": "batch-875439d35629-00008-1",
+      "batchId": "batch-875439d35629",
+      "modelId": "goat-qwen38-max-cap1536",
+      "taskId": "math-06",
+      "status": "success",
+      "dataKind": "measured",
+      "timestamp": "2026-10-23T16:36:17.562206Z",
+      "output": "9",
+      "error": null,
+      "metrics": {
+        "ttftMs": 2634.057,
+        "ttfaMs": 5324.446,
+        "durationMs": 5349.716,
+        "outputTps": null,
+        "charsPerSec": null,
+        "inputTokens": 109,
+        "outputTokens": 129,
+        "reasoningTokens": 126,
+        "cost": 0.000992
+      },
+      "grading": {
+        "status": "passed",
+        "score": 1,
+        "reason": "去除首尾空白后与预设答案逐字比较。"
+      },
+      "config": {
+        "region": "本机Windows客户端；网络出口位置未独立核验",
+        "concurrency": 1,
+        "temperature": null,
+        "reasoning": "服务商默认，未指定推理档位",
+        "cacheState": "unknown",
+        "repeatIndex": 0,
+        "attemptIndex": 0
+      },
+      "provenance": {
+        "adapter": "openai-compatible",
+        "tokenCountSource": "provider_usage",
+        "timingSource": "client_monotonic_sse",
+        "tpsMethod": "unavailable: insufficient rate sample or inseparable token counts",
+        "charsMethod": "Unicode code points after first visible chunk / first-to-last visible chunk interval; includes punctuation and whitespace",
+        "costSource": "nominal_uncached_price_estimate",
+        "usageComplete": true,
+        "ratePolicy": "client-sse-v2-min500ms-3chunks-64units",
+        "rateSampleSeconds": null,
+        "answerChunkCount": 1
+      }
+    },
+    {
+      "id": "batch-875439d35629-00009-1",
+      "batchId": "batch-875439d35629",
+      "modelId": "goat-gemini38-flash-cap1536",
+      "taskId": "math-06",
+      "status": "success",
+      "dataKind": "measured",
+      "timestamp": "2026-10-23T16:36:22.918214Z",
+      "output": "9",
+      "error": null,
+      "metrics": {
+        "ttftMs": 3672.415,
+        "ttfaMs": 3672.415,
+        "durationMs": 3721.547,
+        "outputTps": null,
+        "charsPerSec": null,
+        "inputTokens": 47,
+        "outputTokens": 130,
+        "reasoningTokens": 129,
+        "cost": 0.0010455
+      },
+      "grading": {
+        "status": "passed",
+        "score": 1,
+        "reason": "去除首尾空白后与预设答案逐字比较。"
+      },
+      "config": {
+        "region": "本机Windows客户端；网络出口位置未独立核验",
+        "concurrency": 1,
+        "temperature": null,
+        "reasoning": "服务商默认，未指定推理档位",
+        "cacheState": "unknown",
+        "repeatIndex": 0,
+        "attemptIndex": 0
+      },
+      "provenance": {
+        "adapter": "openai-compatible",
+        "tokenCountSource": "provider_usage",
+        "timingSource": "client_monotonic_sse",
+        "tpsMethod": "unavailable: insufficient rate sample or inseparable token counts",
+        "charsMethod": "Unicode code points after first visible chunk / first-to-last visible chunk interval; includes punctuation and whitespace",
+        "costSource": "nominal_uncached_price_estimate",
+        "usageComplete": true,
+        "ratePolicy": "client-sse-v2-min500ms-3chunks-64units",
+        "rateSampleSeconds": null,
+        "answerChunkCount": 1
+      }
+    },
+    {
+      "id": "batch-875439d35629-00010-1",
+      "batchId": "batch-875439d35629",
+      "modelId": "goat-glm53-cap1536",
+      "taskId": "math-06",
+      "status": "success",
+      "dataKind": "measured",
+      "timestamp": "2026-10-23T16:36:26.647671Z",
+      "output": "9",
+      "error": null,
+      "metrics": {
+        "ttftMs": 1494.978,
+        "ttfaMs": 2499.545,
+        "durationMs": 2502.375,
+        "outputTps": null,
+        "charsPerSec": null,
+        "inputTokens": 57,
+        "outputTokens": 99,
+        "reasoningTokens": 97,
+        "cost": 0.0005154
+      },
+      "grading": {
+        "status": "passed",
+        "score": 1,
+        "reason": "去除首尾空白后与预设答案逐字比较。"
+      },
+      "config": {
+        "region": "本机Windows客户端；网络出口位置未独立核验",
+        "concurrency": 1,
+        "temperature": null,
+        "reasoning": "服务商默认，未指定推理档位",
+        "cacheState": "unknown",
+        "repeatIndex": 0,
+        "attemptIndex": 0
+      },
+      "provenance": {
+        "adapter": "openai-compatible",
+        "tokenCountSource": "provider_usage",
+        "timingSource": "client_monotonic_sse",
+        "tpsMethod": "unavailable: insufficient rate sample or inseparable token counts",
+        "charsMethod": "Unicode code points after first visible chunk / first-to-last visible chunk interval; includes punctuation and whitespace",
+        "costSource": "nominal_uncached_price_estimate",
+        "usageComplete": true,
+        "ratePolicy": "client-sse-v2-min500ms-3chunks-64units",
+        "rateSampleSeconds": null,
+        "answerChunkCount": 1
+      }
+    },
+    {
+      "id": "batch-875439d35629-00011-1",
+      "batchId": "batch-875439d35629",
+      "modelId": "goat-mistral4-cap1536",
+      "taskId": "math-06",
+      "status": "success",
+      "dataKind": "measured",
+      "timestamp": "2026-10-23T16:36:29.159665Z",
+      "output": "9",
+      "error": null,
+      "metrics": {
+        "ttftMs": 6432.39,
+        "ttfaMs": 9489.164,
+        "durationMs": 9495.721,
+        "outputTps": null,
+        "charsPerSec": null,
+        "inputTokens": 48,
+        "outputTokens": 359,
+        "reasoningTokens": 124,
+        "cost": 0.0015658999999999998
+      },
+      "grading": {
+        "status": "passed",
+        "score": 1,
+        "reason": "去除首尾空白后与预设答案逐字比较。"
+      },
+      "config": {
+        "region": "本机Windows客户端；网络出口位置未独立核验",
+        "concurrency": 1,
+        "temperature": null,
+        "reasoning": "服务商默认，未指定推理档位",
+        "cacheState": "unknown",
+        "repeatIndex": 0,
+        "attemptIndex": 0
+      },
+      "provenance": {
+        "adapter": "openai-compatible",
+        "tokenCountSource": "provider_usage",
+        "timingSource": "client_monotonic_sse",
+        "tpsMethod": "unavailable: insufficient rate sample or inseparable token counts",
+        "charsMethod": "Unicode code points after first visible chunk / first-to-last visible chunk interval; includes punctuation and whitespace",
+        "costSource": "nominal_uncached_price_estimate",
+        "usageComplete": true,
+        "ratePolicy": "client-sse-v2-min500ms-3chunks-64units",
+        "rateSampleSeconds": null,
+        "answerChunkCount": 1
+      }
+    },
+    {
+      "id": "batch-875439d35629-00012-1",
+      "batchId": "batch-875439d35629",
+      "modelId": "goat-claude-sonnet55-cap1536",
+      "taskId": "math-06",
+      "status": "success",
+      "dataKind": "measured",
+      "timestamp": "2026-10-23T16:36:38.673883Z",
+      "output": "A→B=3，B→C=2，所以 A→C 最短为 5；C→D=4，A→D=9。另一条路径 A→B→D=3+12=15，更长。\n\n**9**",
+      "error": null,
+      "metrics": {
+        "ttftMs": 1892.51,
+        "ttfaMs": 1892.51,
+        "durationMs": 2283.845,
+        "outputTps": null,
+        "charsPerSec": null,
+        "inputTokens": 60,
+        "outputTokens": 64,
+        "reasoningTokens": null,
+        "cost": 0.00076
+      },
+      "grading": {
+        "status": "failed",
+        "score": 0,
+        "reason": "去除首尾空白后与预设答案逐字比较。"
+      },
+      "config": {
+        "region": "本机Windows客户端；网络出口位置未独立核验",
+        "concurrency": 1,
+        "temperature": null,
+        "reasoning": "服务商默认，未指定推理档位",
+        "cacheState": "unknown",
+        "repeatIndex": 0,
+        "attemptIndex": 0
+      },
+      "provenance": {
+        "adapter": "anthropic-messages",
+        "tokenCountSource": "provider_usage",
+        "timingSource": "client_monotonic_sse",
+        "tpsMethod": "unavailable: insufficient rate sample or inseparable token counts",
+        "charsMethod": "Unicode code points after first visible chunk / first-to-last visible chunk interval; includes punctuation and whitespace",
+        "costSource": "nominal_uncached_price_estimate",
+        "usageComplete": true,
+        "ratePolicy": "client-sse-v2-min500ms-3chunks-64units",
+        "rateSampleSeconds": 0.3849853000137955,
+        "answerChunkCount": 13
+      }
+    },
+    {
+      "id": "batch-875439d35629-00013-1",
+      "batchId": "batch-875439d35629",
+      "modelId": "goat-qwen38-max-cap1536",
+      "taskId": "data-03",
+      "status": "success",
+      "dataKind": "measured",
+      "timestamp": "2026-10-23T16:36:40.966748Z",
+      "output": "{\n  \"mean\": 21.6,\n  \"median\": 2\n}",
+      "error": null,
+      "metrics": {
+        "ttftMs": 1822.768,
+        "ttfaMs": 4087.059,
+        "durationMs": 4439.334,
+        "outputTps": null,
+        "charsPerSec": null,
+        "inputTokens": 90,
+        "outputTokens": 140,
+        "reasoningTokens": 116,
+        "cost": 0.00102
+      },
+      "grading": {
+        "status": "passed",
+        "score": 1,
+        "reason": "严格 JSON 解析并比较预设字段和值，允许额外字段。"
+      },
+      "config": {
+        "region": "本机Windows客户端；网络出口位置未独立核验",
+        "concurrency": 1,
+        "temperature": null,
+        "reasoning": "服务商默认，未指定推理档位",
+        "cacheState": "unknown",
+        "repeatIndex": 0,
+        "attemptIndex": 0
+      },
+      "provenance": {
+        "adapter": "openai-compatible",
+        "tokenCountSource": "provider_usage",
+        "timingSource": "client_monotonic_sse",
+        "tpsMethod": "unavailable: insufficient rate sample or inseparable token counts",
+        "charsMethod": "Unicode code points after first visible chunk / first-to-last visible chunk interval; includes punctuation and whitespace",
+        "costSource": "nominal_uncached_price_estimate",
+        "usageComplete": true,
+        "ratePolicy": "client-sse-v2-min500ms-3chunks-64units",
+        "rateSampleSeconds": 0.3261517999926582,
+        "answerChunkCount": 6
+      }
+    },
+    {
+      "id": "batch-875439d35629-00014-1",
+      "batchId": "batch-875439d35629",
+      "modelId": "goat-gemini38-flash-cap1536",
+      "taskId": "data-03",
+      "status": "success",
+      "dataKind": "measured",
+      "timestamp": "2026-10-23T16:36:45.415168Z",
+      "output": "{\"mean\": 21.6, \"median\": 2}",
+      "error": null,
+      "metrics": {
+        "ttftMs": 4941.895,
+        "ttfaMs": 4941.895,
+        "durationMs": 5058.196,
+        "outputTps": null,
+        "charsPerSec": null,
+        "inputTokens": 27,
+        "outputTokens": 308,
+        "reasoningTokens": 293,
+        "cost": 0.0023505
+      },
+      "grading": {
+        "status": "passed",
+        "score": 1,
+        "reason": "严格 JSON 解析并比较预设字段和值，允许额外字段。"
+      },
+      "config": {
+        "region": "本机Windows客户端；网络出口位置未独立核验",
+        "concurrency": 1,
+        "temperature": null,
+        "reasoning": "服务商默认，未指定推理档位",
+        "cacheState": "unknown",
+        "repeatIndex": 0,
+        "attemptIndex": 0
+      },
+      "provenance": {
+        "adapter": "openai-compatible",
+        "tokenCountSource": "provider_usage",
+        "timingSource": "client_monotonic_sse",
+        "tpsMethod": "unavailable: insufficient rate sample or inseparable token counts",
+        "charsMethod": "Unicode code points after first visible chunk / first-to-last visible chunk interval; includes punctuation and whitespace",
+        "costSource": "nominal_uncached_price_estimate",
+        "usageComplete": true,
+        "ratePolicy": "client-sse-v2-min500ms-3chunks-64units",
+        "rateSampleSeconds": 7.160007953643799e-05,
+        "answerChunkCount": 2
+      }
+    },
+    {
+      "id": "batch-875439d35629-00015-1",
+      "batchId": "batch-875439d35629",
+      "modelId": "goat-glm53-cap1536",
+      "taskId": "data-03",
+      "status": "success",
+      "dataKind": "measured",
+      "timestamp": "2026-10-23T16:36:50.479988Z",
+      "output": "{\"mean\": 21.6, \"median\": 2}",
+      "error": null,
+      "metrics": {
+        "ttftMs": 1868.796,
+        "ttfaMs": 2685.441,
+        "durationMs": 2818.847,
+        "outputTps": null,
+        "charsPerSec": null,
+        "inputTokens": 37,
+        "outputTokens": 116,
+        "reasoningTokens": 101,
+        "cost": 0.0005622
+      },
+      "grading": {
+        "status": "passed",
+        "score": 1,
+        "reason": "严格 JSON 解析并比较预设字段和值，允许额外字段。"
+      },
+      "config": {
+        "region": "本机Windows客户端；网络出口位置未独立核验",
+        "concurrency": 1,
+        "temperature": null,
+        "reasoning": "服务商默认，未指定推理档位",
+        "cacheState": "unknown",
+        "repeatIndex": 0,
+        "attemptIndex": 0
+      },
+      "provenance": {
+        "adapter": "openai-compatible",
+        "tokenCountSource": "provider_usage",
+        "timingSource": "client_monotonic_sse",
+        "tpsMethod": "unavailable: insufficient rate sample or inseparable token counts",
+        "charsMethod": "Unicode code points after first visible chunk / first-to-last visible chunk interval; includes punctuation and whitespace",
+        "costSource": "nominal_uncached_price_estimate",
+        "usageComplete": true,
+        "ratePolicy": "client-sse-v2-min500ms-3chunks-64units",
+        "rateSampleSeconds": 0.09978459996636957,
+        "answerChunkCount": 6
+      }
+    },
+    {
+      "id": "batch-875439d35629-00016-1",
+      "batchId": "batch-875439d35629",
+      "modelId": "goat-mistral4-cap1536",
+      "taskId": "data-03",
+      "status": "success",
+      "dataKind": "measured",
+      "timestamp": "2026-10-23T16:36:53.317090Z",
+      "output": "{\"mean\": 21.6, \"median\": 2}",
+      "error": null,
+      "metrics": {
+        "ttftMs": 2759.509,
+        "ttfaMs": 8644.679,
+        "durationMs": 8759.567,
+        "outputTps": null,
+        "charsPerSec": null,
+        "inputTokens": 29,
+        "outputTokens": 259,
+        "reasoningTokens": 96,
+        "cost": 0.00112206
+      },
+      "grading": {
+        "status": "passed",
+        "score": 1,
+        "reason": "严格 JSON 解析并比较预设字段和值，允许额外字段。"
+      },
+      "config": {
+        "region": "本机Windows客户端；网络出口位置未独立核验",
+        "concurrency": 1,
+        "temperature": null,
+        "reasoning": "服务商默认，未指定推理档位",
+        "cacheState": "unknown",
+        "repeatIndex": 0,
+        "attemptIndex": 0
+      },
+      "provenance": {
+        "adapter": "openai-compatible",
+        "tokenCountSource": "provider_usage",
+        "timingSource": "client_monotonic_sse",
+        "tpsMethod": "unavailable: insufficient rate sample or inseparable token counts",
+        "charsMethod": "Unicode code points after first visible chunk / first-to-last visible chunk interval; includes punctuation and whitespace",
+        "costSource": "nominal_uncached_price_estimate",
+        "usageComplete": true,
+        "ratePolicy": "client-sse-v2-min500ms-3chunks-64units",
+        "rateSampleSeconds": 0.11097330006305128,
+        "answerChunkCount": 4
+      }
+    },
+    {
+      "id": "batch-875439d35629-00017-1",
+      "batchId": "batch-875439d35629",
+      "modelId": "goat-claude-sonnet55-cap1536",
+      "taskId": "data-03",
+      "status": "success",
+      "dataKind": "measured",
+      "timestamp": "2026-10-23T16:37:02.088235Z",
+      "output": "Mean = (1+2+2+3+100)/5 = 108/5 = 21.6; median = 2.\n\n```json\n{\"mean\": 21.6, \"median\": 2}\n```",
+      "error": null,
+      "metrics": {
+        "ttftMs": 1427.316,
+        "ttfaMs": 1427.316,
+        "durationMs": 2267.486,
+        "outputTps": null,
+        "charsPerSec": 124.15,
+        "inputTokens": 46,
+        "outputTokens": 59,
+        "reasoningTokens": null,
+        "cost": 0.000682
+      },
+      "grading": {
+        "status": "failed",
+        "score": 0,
+        "reason": "严格 JSON 解析并比较预设字段和值，允许额外字段。"
+      },
+      "config": {
+        "region": "本机Windows客户端；网络出口位置未独立核验",
+        "concurrency": 1,
+        "temperature": null,
+        "reasoning": "服务商默认，未指定推理档位",
+        "cacheState": "unknown",
+        "repeatIndex": 0,
+        "attemptIndex": 0
+      },
+      "provenance": {
+        "adapter": "anthropic-messages",
+        "tokenCountSource": "provider_usage",
+        "timingSource": "client_monotonic_sse",
+        "tpsMethod": "unavailable: insufficient rate sample or inseparable token counts",
+        "charsMethod": "Unicode code points after first visible chunk / first-to-last visible chunk interval; includes punctuation and whitespace",
+        "costSource": "nominal_uncached_price_estimate",
+        "usageComplete": true,
+        "ratePolicy": "client-sse-v2-min500ms-3chunks-64units",
+        "rateSampleSeconds": 0.6443796999519691,
+        "answerChunkCount": 8
+      }
+    },
+    {
+      "id": "batch-875439d35629-00018-1",
+      "batchId": "batch-875439d35629",
+      "modelId": "goat-deepseek-flash-cap1536",
+      "taskId": "data-03",
+      "status": "success",
+      "dataKind": "measured",
+      "timestamp": "2026-10-23T16:37:04.368335Z",
+      "output": "{\"mean\":21.6,\"median\":2}",
+      "error": null,
+      "metrics": {
+        "ttftMs": 2227.074,
+        "ttfaMs": 2755.951,
+        "durationMs": 2808.892,
+        "outputTps": null,
+        "charsPerSec": null,
+        "inputTokens": 56,
+        "outputTokens": 99,
+        "reasoningTokens": 87,
+        "cost": 6.78e-05
+      },
+      "grading": {
+        "status": "passed",
+        "score": 1,
+        "reason": "严格 JSON 解析并比较预设字段和值，允许额外字段。"
+      },
+      "config": {
+        "region": "本机Windows客户端；网络出口位置未独立核验",
+        "concurrency": 1,
+        "temperature": null,
+        "reasoning": "服务商默认，未指定推理档位",
+        "cacheState": "unknown",
+        "repeatIndex": 0,
+        "attemptIndex": 0
+      },
+      "provenance": {
+        "adapter": "openai-compatible",
+        "tokenCountSource": "provider_usage",
+        "timingSource": "client_monotonic_sse",
+        "tpsMethod": "unavailable: insufficient rate sample or inseparable token counts",
+        "charsMethod": "Unicode code points after first visible chunk / first-to-last visible chunk interval; includes punctuation and whitespace",
+        "costSource": "nominal_uncached_price_estimate",
+        "usageComplete": true,
+        "ratePolicy": "client-sse-v2-min500ms-3chunks-64units",
+        "rateSampleSeconds": 0.049607800086960196,
+        "answerChunkCount": 2
+      }
+    },
+    {
+      "id": "batch-875439d35629-00019-1",
+      "batchId": "batch-875439d35629",
+      "modelId": "goat-gemini38-flash-cap1536",
+      "taskId": "chinese-03",
+      "status": "success",
+      "dataKind": "measured",
+      "timestamp": "2026-10-23T16:37:07.185556Z",
+      "output": "根据材料，未提及产品A是否支持导出PDF（材料中仅明确支持导出TXT和Markdown）。",
+      "error": null,
+      "metrics": {
+        "ttftMs": 11221.784,
+        "ttfaMs": 11221.784,
+        "durationMs": 11627.49,
+        "outputTps": null,
+        "charsPerSec": null,
+        "inputTokens": 26,
+        "outputTokens": 237,
+        "reasoningTokens": 215,
+        "cost": 0.0018165
+      },
+      "grading": {
+        "status": "pending",
+        "score": null,
+        "reason": "等待人工按预设 rubric 评分。"
+      },
+      "config": {
+        "region": "本机Windows客户端；网络出口位置未独立核验",
+        "concurrency": 1,
+        "temperature": null,
+        "reasoning": "服务商默认，未指定推理档位",
+        "cacheState": "unknown",
+        "repeatIndex": 0,
+        "attemptIndex": 0
+      },
+      "provenance": {
+        "adapter": "openai-compatible",
+        "tokenCountSource": "provider_usage",
+        "timingSource": "client_monotonic_sse",
+        "tpsMethod": "unavailable: insufficient rate sample or inseparable token counts",
+        "charsMethod": "Unicode code points after first visible chunk / first-to-last visible chunk interval; includes punctuation and whitespace",
+        "costSource": "nominal_uncached_price_estimate",
+        "usageComplete": true,
+        "ratePolicy": "client-sse-v2-min500ms-3chunks-64units",
+        "rateSampleSeconds": 0.04767359991092235,
+        "answerChunkCount": 2
+      }
+    },
+    {
+      "id": "batch-875439d35629-00020-1",
+      "batchId": "batch-875439d35629",
+      "modelId": "goat-glm53-cap1536",
+      "taskId": "chinese-03",
+      "status": "success",
+      "dataKind": "measured",
+      "timestamp": "2026-10-23T16:37:18.826003Z",
+      "output": "根据材料，产品A支持导出TXT和Markdown格式。\n\n材料中未提及是否支持导出PDF，因此无法确认产品A支持PDF导出。",
+      "error": null,
+      "metrics": {
+        "ttftMs": 1579.776,
+        "ttfaMs": 3113.909,
+        "durationMs": 3382.403,
+        "outputTps": null,
+        "charsPerSec": null,
+        "inputTokens": 39,
+        "outputTokens": 200,
+        "reasoningTokens": 166,
+        "cost": 0.0009346000000000002
+      },
+      "grading": {
+        "status": "pending",
+        "score": null,
+        "reason": "等待人工按预设 rubric 评分。"
+      },
+      "config": {
+        "region": "本机Windows客户端；网络出口位置未独立核验",
+        "concurrency": 1,
+        "temperature": null,
+        "reasoning": "服务商默认，未指定推理档位",
+        "cacheState": "unknown",
+        "repeatIndex": 0,
+        "attemptIndex": 0
+      },
+      "provenance": {
+        "adapter": "openai-compatible",
+        "tokenCountSource": "provider_usage",
+        "timingSource": "client_monotonic_sse",
+        "tpsMethod": "unavailable: insufficient rate sample or inseparable token counts",
+        "charsMethod": "Unicode code points after first visible chunk / first-to-last visible chunk interval; includes punctuation and whitespace",
+        "costSource": "nominal_uncached_price_estimate",
+        "usageComplete": true,
+        "ratePolicy": "client-sse-v2-min500ms-3chunks-64units",
+        "rateSampleSeconds": 0.26811019994784147,
+        "answerChunkCount": 18
+      }
+    },
+    {
+      "id": "batch-875439d35629-00021-1",
+      "batchId": "batch-875439d35629",
+      "modelId": "goat-mistral4-cap1536",
+      "taskId": "chinese-03",
+      "status": "success",
+      "dataKind": "measured",
+      "timestamp": "2026-10-23T16:37:22.222196Z",
+      "output": "材料未提及 PDF，无法据此判断是否支持。",
+      "error": null,
+      "metrics": {
+        "ttftMs": 4275.666,
+        "ttfaMs": 6174.069,
+        "durationMs": 6261.54,
+        "outputTps": null,
+        "charsPerSec": null,
+        "inputTokens": 32,
+        "outputTokens": 125,
+        "reasoningTokens": 45,
+        "cost": 0.00056602
+      },
+      "grading": {
+        "status": "pending",
+        "score": null,
+        "reason": "等待人工按预设 rubric 评分。"
+      },
+      "config": {
+        "region": "本机Windows客户端；网络出口位置未独立核验",
+        "concurrency": 1,
+        "temperature": null,
+        "reasoning": "服务商默认，未指定推理档位",
+        "cacheState": "unknown",
+        "repeatIndex": 0,
+        "attemptIndex": 0
+      },
+      "provenance": {
+        "adapter": "openai-compatible",
+        "tokenCountSource": "provider_usage",
+        "timingSource": "client_monotonic_sse",
+        "tpsMethod": "unavailable: insufficient rate sample or inseparable token counts",
+        "charsMethod": "Unicode code points after first visible chunk / first-to-last visible chunk interval; includes punctuation and whitespace",
+        "costSource": "nominal_uncached_price_estimate",
+        "usageComplete": true,
+        "ratePolicy": "client-sse-v2-min500ms-3chunks-64units",
+        "rateSampleSeconds": 0.07185160007793456,
+        "answerChunkCount": 5
+      }
+    },
+    {
+      "id": "batch-875439d35629-00022-1",
+      "batchId": "batch-875439d35629",
+      "modelId": "goat-claude-sonnet55-cap1536",
+      "taskId": "chinese-03",
+      "status": "success",
+      "dataKind": "measured",
+      "timestamp": "2026-10-23T16:37:28.492388Z",
+      "output": "根据现有材料，无法确认产品A是否支持导出PDF。\n\n材料只说明产品A支持导出 **TXT** 和 **Markdown**，没有提到 PDF。因此我既不能说它支持，也不能说它不支持。如果需要确切答案，建议查阅官方文档或联系产品方确认。",
+      "error": null,
+      "metrics": {
+        "ttftMs": 2432.79,
+        "ttfaMs": 2432.79,
+        "durationMs": 3341.998,
+        "outputTps": null,
+        "charsPerSec": 125.465,
+        "inputTokens": 55,
+        "outputTokens": 111,
+        "reasoningTokens": null,
+        "cost": 0.00122
+      },
+      "grading": {
+        "status": "pending",
+        "score": null,
+        "reason": "等待人工按预设 rubric 评分。"
+      },
+      "config": {
+        "region": "本机Windows客户端；网络出口位置未独立核验",
+        "concurrency": 1,
+        "temperature": null,
+        "reasoning": "服务商默认，未指定推理档位",
+        "cacheState": "unknown",
+        "repeatIndex": 0,
+        "attemptIndex": 0
+      },
+      "provenance": {
+        "adapter": "anthropic-messages",
+        "tokenCountSource": "provider_usage",
+        "timingSource": "client_monotonic_sse",
+        "tpsMethod": "unavailable: insufficient rate sample or inseparable token counts",
+        "charsMethod": "Unicode code points after first visible chunk / first-to-last visible chunk interval; includes punctuation and whitespace",
+        "costSource": "nominal_uncached_price_estimate",
+        "usageComplete": true,
+        "ratePolicy": "client-sse-v2-min500ms-3chunks-64units",
+        "rateSampleSeconds": 0.9086225000210106,
+        "answerChunkCount": 27
+      }
+    },
+    {
+      "id": "batch-875439d35629-00023-1",
+      "batchId": "batch-875439d35629",
+      "modelId": "goat-deepseek-flash-cap1536",
+      "taskId": "chinese-03",
+      "status": "success",
+      "dataKind": "measured",
+      "timestamp": "2026-10-23T16:37:31.843330Z",
+      "output": "根据提供的材料，产品A支持导出TXT和Markdown，未提及PDF，因此无法确认是否支持PDF。",
+      "error": null,
+      "metrics": {
+        "ttftMs": 2327.04,
+        "ttfaMs": 3046.412,
+        "durationMs": 3201.744,
+        "outputTps": null,
+        "charsPerSec": null,
+        "inputTokens": 58,
+        "outputTokens": 128,
+        "reasoningTokens": 102,
+        "cost": 8.55e-05
+      },
+      "grading": {
+        "status": "pending",
+        "score": null,
+        "reason": "等待人工按预设 rubric 评分。"
+      },
+      "config": {
+        "region": "本机Windows客户端；网络出口位置未独立核验",
+        "concurrency": 1,
+        "temperature": null,
+        "reasoning": "服务商默认，未指定推理档位",
+        "cacheState": "unknown",
+        "repeatIndex": 0,
+        "attemptIndex": 0
+      },
+      "provenance": {
+        "adapter": "openai-compatible",
+        "tokenCountSource": "provider_usage",
+        "timingSource": "client_monotonic_sse",
+        "tpsMethod": "unavailable: insufficient rate sample or inseparable token counts",
+        "charsMethod": "Unicode code points after first visible chunk / first-to-last visible chunk interval; includes punctuation and whitespace",
+        "costSource": "nominal_uncached_price_estimate",
+        "usageComplete": true,
+        "ratePolicy": "client-sse-v2-min500ms-3chunks-64units",
+        "rateSampleSeconds": 0.15500060003250837,
+        "answerChunkCount": 8
+      }
+    },
+    {
+      "id": "batch-875439d35629-00024-1",
+      "batchId": "batch-875439d35629",
+      "modelId": "goat-qwen38-max-cap1536",
+      "taskId": "chinese-03",
+      "status": "success",
+      "dataKind": "measured",
+      "timestamp": "2026-10-23T16:37:35.060141Z",
+      "output": "根据材料，无法确认产品A是否支持导出PDF；材料仅提到支持导出TXT和Markdown，未提及PDF。",
+      "error": null,
+      "metrics": {
+        "ttftMs": 1935.964,
+        "ttfaMs": 3296.681,
+        "durationMs": 4100.183,
+        "outputTps": null,
+        "charsPerSec": null,
+        "inputTokens": 87,
+        "outputTokens": 79,
+        "reasoningTokens": 51,
+        "cost": 0.000648
+      },
+      "grading": {
+        "status": "pending",
+        "score": null,
+        "reason": "等待人工按预设 rubric 评分。"
+      },
+      "config": {
+        "region": "本机Windows客户端；网络出口位置未独立核验",
+        "concurrency": 1,
+        "temperature": null,
+        "reasoning": "服务商默认，未指定推理档位",
+        "cacheState": "unknown",
+        "repeatIndex": 0,
+        "attemptIndex": 0
+      },
+      "provenance": {
+        "adapter": "openai-compatible",
+        "tokenCountSource": "provider_usage",
+        "timingSource": "client_monotonic_sse",
+        "tpsMethod": "unavailable: insufficient rate sample or inseparable token counts",
+        "charsMethod": "Unicode code points after first visible chunk / first-to-last visible chunk interval; includes punctuation and whitespace",
+        "costSource": "nominal_uncached_price_estimate",
+        "usageComplete": true,
+        "ratePolicy": "client-sse-v2-min500ms-3chunks-64units",
+        "rateSampleSeconds": 0.5381642000284046,
+        "answerChunkCount": 7
+      }
+    },
+    {
+      "id": "batch-875439d35629-00025-1",
+      "batchId": "batch-875439d35629",
+      "modelId": "goat-glm53-cap1536",
+      "taskId": "chinese-04",
+      "status": "success",
+      "dataKind": "measured",
+      "timestamp": "2026-10-23T16:37:39.170270Z",
+      "output": "```json\n{\n  \"orderId\": \"ZF-17\",\n  \"quantity\": 2,\n  \"total\": 36\n}\n```",
+      "error": null,
+      "metrics": {
+        "ttftMs": 2270.681,
+        "ttfaMs": 4830.839,
+        "durationMs": 5046.725,
+        "outputTps": null,
+        "charsPerSec": null,
+        "inputTokens": 41,
+        "outputTokens": 305,
+        "reasoningTokens": 275,
+        "cost": 0.0013994
+      },
+      "grading": {
+        "status": "failed",
+        "score": 0,
+        "reason": "严格 JSON 解析并比较预设字段和值，允许额外字段。"
+      },
+      "config": {
+        "region": "本机Windows客户端；网络出口位置未独立核验",
+        "concurrency": 1,
+        "temperature": null,
+        "reasoning": "服务商默认，未指定推理档位",
+        "cacheState": "unknown",
+        "repeatIndex": 0,
+        "attemptIndex": 0
+      },
+      "provenance": {
+        "adapter": "openai-compatible",
+        "tokenCountSource": "provider_usage",
+        "timingSource": "client_monotonic_sse",
+        "tpsMethod": "unavailable: insufficient rate sample or inseparable token counts",
+        "charsMethod": "Unicode code points after first visible chunk / first-to-last visible chunk interval; includes punctuation and whitespace",
+        "costSource": "nominal_uncached_price_estimate",
+        "usageComplete": true,
+        "ratePolicy": "client-sse-v2-min500ms-3chunks-64units",
+        "rateSampleSeconds": 0.21533449995331466,
+        "answerChunkCount": 8
+      }
+    },
+    {
+      "id": "batch-875439d35629-00026-1",
+      "batchId": "batch-875439d35629",
+      "modelId": "goat-mistral4-cap1536",
+      "taskId": "chinese-04",
+      "status": "error",
+      "dataKind": "measured",
+      "timestamp": "2026-10-23T16:37:44.234038Z",
+      "output": "",
+      "error": "http_429",
+      "metrics": {
+        "ttftMs": null,
+        "ttfaMs": null,
+        "durationMs": 8020.742,
+        "outputTps": null,
+        "charsPerSec": null,
+        "inputTokens": null,
+        "outputTokens": null,
+        "reasoningTokens": null,
+        "cost": null
+      },
+      "grading": {
+        "status": "not_applicable",
+        "score": null,
+        "reason": "请求未成功，不对不完整答案评分。"
+      },
+      "config": {
+        "region": "本机Windows客户端；网络出口位置未独立核验",
+        "concurrency": 1,
+        "temperature": null,
+        "reasoning": "服务商默认，未指定推理档位",
+        "cacheState": "unknown",
+        "repeatIndex": 0,
+        "attemptIndex": 0
+      },
+      "provenance": {
+        "adapter": "openai-compatible",
+        "tokenCountSource": "unavailable",
+        "timingSource": "client_monotonic_sse",
+        "tpsMethod": "unavailable: insufficient rate sample or inseparable token counts",
+        "charsMethod": "Unicode code points after first visible chunk / first-to-last visible chunk interval; includes punctuation and whitespace",
+        "costSource": "unavailable",
+        "usageComplete": false,
+        "ratePolicy": "client-sse-v2-min500ms-3chunks-64units",
+        "rateSampleSeconds": null,
+        "answerChunkCount": 0
+      }
+    },
+    {
+      "id": "batch-875439d35629-00027-1",
+      "batchId": "batch-875439d35629",
+      "modelId": "goat-claude-sonnet55-cap1536",
+      "taskId": "chinese-04",
+      "status": "success",
+      "dataKind": "measured",
+      "timestamp": "2026-10-23T16:37:52.264055Z",
+      "output": "{\"orderId\":\"ZF-17\",\"quantity\":2,\"total\":36}",
+      "error": null,
+      "metrics": {
+        "ttftMs": 1753.777,
+        "ttfaMs": 1753.777,
+        "durationMs": 1906.246,
+        "outputTps": null,
+        "charsPerSec": null,
+        "inputTokens": 57,
+        "outputTokens": 26,
+        "reasoningTokens": null,
+        "cost": 0.000374
+      },
+      "grading": {
+        "status": "passed",
+        "score": 1,
+        "reason": "严格 JSON 解析并比较预设字段和值，允许额外字段。"
+      },
+      "config": {
+        "region": "本机Windows客户端；网络出口位置未独立核验",
+        "concurrency": 1,
+        "temperature": null,
+        "reasoning": "服务商默认，未指定推理档位",
+        "cacheState": "unknown",
+        "repeatIndex": 0,
+        "attemptIndex": 0
+      },
+      "provenance": {
+        "adapter": "anthropic-messages",
+        "tokenCountSource": "provider_usage",
+        "timingSource": "client_monotonic_sse",
+        "tpsMethod": "unavailable: insufficient rate sample or inseparable token counts",
+        "charsMethod": "Unicode code points after first visible chunk / first-to-last visible chunk interval; includes punctuation and whitespace",
+        "costSource": "nominal_uncached_price_estimate",
+        "usageComplete": true,
+        "ratePolicy": "client-sse-v2-min500ms-3chunks-64units",
+        "rateSampleSeconds": 0.12040050001814961,
+        "answerChunkCount": 4
+      }
+    },
+    {
+      "id": "batch-875439d35629-00028-1",
+      "batchId": "batch-875439d35629",
+      "modelId": "goat-deepseek-flash-cap1536",
+      "taskId": "chinese-04",
+      "status": "success",
+      "dataKind": "measured",
+      "timestamp": "2026-10-23T16:37:54.178182Z",
+      "output": "{\"orderId\":\"ZF-17\",\"quantity\":2,\"total\":36}",
+      "error": null,
+      "metrics": {
+        "ttftMs": 1802.206,
+        "ttfaMs": 2445.559,
+        "durationMs": 2475.916,
+        "outputTps": null,
+        "charsPerSec": null,
+        "inputTokens": 60,
+        "outputTokens": 102,
+        "reasoningTokens": 85,
+        "cost": 7.019999999999999e-05
+      },
+      "grading": {
+        "status": "passed",
+        "score": 1,
+        "reason": "严格 JSON 解析并比较预设字段和值，允许额外字段。"
+      },
+      "config": {
+        "region": "本机Windows客户端；网络出口位置未独立核验",
+        "concurrency": 1,
+        "temperature": null,
+        "reasoning": "服务商默认，未指定推理档位",
+        "cacheState": "unknown",
+        "repeatIndex": 0,
+        "attemptIndex": 0
+      },
+      "provenance": {
+        "adapter": "openai-compatible",
+        "tokenCountSource": "provider_usage",
+        "timingSource": "client_monotonic_sse",
+        "tpsMethod": "unavailable: insufficient rate sample or inseparable token counts",
+        "charsMethod": "Unicode code points after first visible chunk / first-to-last visible chunk interval; includes punctuation and whitespace",
+        "costSource": "nominal_uncached_price_estimate",
+        "usageComplete": true,
+        "ratePolicy": "client-sse-v2-min500ms-3chunks-64units",
+        "rateSampleSeconds": 0.02984850003849715,
+        "answerChunkCount": 5
+      }
+    },
+    {
+      "id": "batch-875439d35629-00029-1",
+      "batchId": "batch-875439d35629",
+      "modelId": "goat-qwen38-max-cap1536",
+      "taskId": "chinese-04",
+      "status": "success",
+      "dataKind": "measured",
+      "timestamp": "2026-10-23T16:37:56.677883Z",
+      "output": "{\n  \"orderId\": \"ZF-17\",\n  \"quantity\": 2,\n  \"total\": 36\n}",
+      "error": null,
+      "metrics": {
+        "ttftMs": 2125.304,
+        "ttfaMs": 4006.642,
+        "durationMs": 4561.272,
+        "outputTps": null,
+        "charsPerSec": null,
+        "inputTokens": 92,
+        "outputTokens": 124,
+        "reasoningTokens": 91,
+        "cost": 0.000928
+      },
+      "grading": {
+        "status": "passed",
+        "score": 1,
+        "reason": "严格 JSON 解析并比较预设字段和值，允许额外字段。"
+      },
+      "config": {
+        "region": "本机Windows客户端；网络出口位置未独立核验",
+        "concurrency": 1,
+        "temperature": null,
+        "reasoning": "服务商默认，未指定推理档位",
+        "cacheState": "unknown",
+        "repeatIndex": 0,
+        "attemptIndex": 0
+      },
+      "provenance": {
+        "adapter": "openai-compatible",
+        "tokenCountSource": "provider_usage",
+        "timingSource": "client_monotonic_sse",
+        "tpsMethod": "unavailable: insufficient rate sample or inseparable token counts",
+        "charsMethod": "Unicode code points after first visible chunk / first-to-last visible chunk interval; includes punctuation and whitespace",
+        "costSource": "nominal_uncached_price_estimate",
+        "usageComplete": true,
+        "ratePolicy": "client-sse-v2-min500ms-3chunks-64units",
+        "rateSampleSeconds": 0.5252885000081733,
+        "answerChunkCount": 9
+      }
+    },
+    {
+      "id": "batch-875439d35629-00030-1",
+      "batchId": "batch-875439d35629",
+      "modelId": "goat-gemini38-flash-cap1536",
+      "taskId": "chinese-04",
+      "status": "success",
+      "dataKind": "measured",
+      "timestamp": "2026-10-23T16:38:01.252452Z",
+      "output": "{\n  \"orderId\": \"ZF-17\",\n  \"quantity\": 2,\n  \"total\": 36\n}",
+      "error": null,
+      "metrics": {
+        "ttftMs": 4566.487,
+        "ttfaMs": 4566.487,
+        "durationMs": 4726.675,
+        "outputTps": null,
+        "charsPerSec": null,
+        "inputTokens": 32,
+        "outputTokens": 294,
+        "reasoningTokens": 263,
+        "cost": 0.002253
+      },
+      "grading": {
+        "status": "passed",
+        "score": 1,
+        "reason": "严格 JSON 解析并比较预设字段和值，允许额外字段。"
+      },
+      "config": {
+        "region": "本机Windows客户端；网络出口位置未独立核验",
+        "concurrency": 1,
+        "temperature": null,
+        "reasoning": "服务商默认，未指定推理档位",
+        "cacheState": "unknown",
+        "repeatIndex": 0,
+        "attemptIndex": 0
+      },
+      "provenance": {
+        "adapter": "openai-compatible",
+        "tokenCountSource": "provider_usage",
+        "timingSource": "client_monotonic_sse",
+        "tpsMethod": "unavailable: insufficient rate sample or inseparable token counts",
+        "charsMethod": "Unicode code points after first visible chunk / first-to-last visible chunk interval; includes punctuation and whitespace",
+        "costSource": "nominal_uncached_price_estimate",
+        "usageComplete": true,
+        "ratePolicy": "client-sse-v2-min500ms-3chunks-64units",
+        "rateSampleSeconds": 0.13688429992180318,
+        "answerChunkCount": 2
+      }
+    },
+    {
+      "id": "batch-875439d35629-00031-1",
+      "batchId": "batch-875439d35629",
+      "modelId": "goat-mistral4-cap1536",
+      "taskId": "code-02",
+      "status": "error",
+      "dataKind": "measured",
+      "timestamp": "2026-10-23T16:38:05.987390Z",
+      "output": "",
+      "error": "http_429",
+      "metrics": {
+        "ttftMs": null,
+        "ttfaMs": null,
+        "durationMs": 8344.238,
+        "outputTps": null,
+        "charsPerSec": null,
+        "inputTokens": null,
+        "outputTokens": null,
+        "reasoningTokens": null,
+        "cost": null
+      },
+      "grading": {
+        "status": "not_applicable",
+        "score": null,
+        "reason": "请求未成功，不对不完整答案评分。"
+      },
+      "config": {
+        "region": "本机Windows客户端；网络出口位置未独立核验",
+        "concurrency": 1,
+        "temperature": null,
+        "reasoning": "服务商默认，未指定推理档位",
+        "cacheState": "unknown",
+        "repeatIndex": 0,
+        "attemptIndex": 0
+      },
+      "provenance": {
+        "adapter": "openai-compatible",
+        "tokenCountSource": "unavailable",
+        "timingSource": "client_monotonic_sse",
+        "tpsMethod": "unavailable: insufficient rate sample or inseparable token counts",
+        "charsMethod": "Unicode code points after first visible chunk / first-to-last visible chunk interval; includes punctuation and whitespace",
+        "costSource": "unavailable",
+        "usageComplete": false,
+        "ratePolicy": "client-sse-v2-min500ms-3chunks-64units",
+        "rateSampleSeconds": null,
+        "answerChunkCount": 0
+      }
+    },
+    {
+      "id": "batch-875439d35629-00032-1",
+      "batchId": "batch-875439d35629",
+      "modelId": "goat-claude-sonnet55-cap1536",
+      "taskId": "code-02",
+      "status": "success",
+      "dataKind": "measured",
+      "timestamp": "2026-10-23T16:38:14.346730Z",
+      "output": "# 修复 Python 可变默认参数问题\n\n## 问题代码\n\n```python\ndef append_item(x, items=[]):\n    items.append(x)\n    return items\n```\n\n## 为什么会出问题\n\nPython 的默认参数值**只在函数定义时计算一次**，而不是每次调用时重新创建。所以：\n\n1. 定义函数时，`[]` 被创建一次，并保存在函数对象的 `__defaults__` 中。\n2. 之后每次调用如果不传 `items`，用的都是**同一个列表对象**。\n3. `items.append(x)` 是原地修改，所以修改会累积，并泄漏到后续调用中。\n\n### 复现问题\n\n```python\ndef append_item(x, items=[]):\n    items.append(x)\n    return items\n\na = append_item(1)\nb = append_item(2)\n\nprint(a)  # [1, 2]  ← 预期是 [1]\nprint(b)  # [1, 2]\nprint(a is b)  # True，两次返回的是同一个对象\nprint(append_item.__defaults__)  # ([1, 2],)，默认值已被\"污染\"\n```\n\n## 修复方案\n\n使用 `None` 作为哨兵值，在函数体内创建新列表：\n\n```python\ndef append_item(x, items=None):\n    if items is None:\n        items = []\n    items.append(x)\n    return items\n```\n\n这里用 `is None` 而不是 `if not items`，是为了避免调用者传入的空列表被误判而替换掉。\n\n## 验证示例\n\n```python\ndef append_item(x, items=None):\n    if items is None:\n        items = []\n    items.append(x)\n    return items\n\n# 1. 多次调用互不影响\na = append_item(1)\nb = append_item(2)\nassert a == [1]\nassert b == [2]\nassert a is not b\n\n# 2. 默认值没有被污染\nassert append_item.__defaults__ == (None,)\n\n# 3. 传入自己的列表时，仍然原地修改并返回该列表（行为保持一致）\nmine = [10]\nresult = append_item(20, mine)\nassert result == [10, 20]\nassert result is mine\n\n# 4. 传入空列表时，不会被替换掉（这是用 is None 而非 falsy 判断的原因）\nempty = []\nresult = append_item(1, empty)\nassert result is empty\nassert empty == [1]\n\nprint(\"所有测试通过 ✅\")\n```\n\n## 小结\n\n| 写法 | 默认值创建时机 | 跨调用是否共享 |\n|---|---|---|\n| `items=[]` | 定义时（一次） | ✅ 共享（有 bug） |\n| `items=None` + 函数内创建 | 每次调用 | ❌ 不共享（正确） |\n\n**经验法则**：默认参数不要使用可变对象（`list`、`dict`、`set` 等），改用 `None` 并在函数内部初始化。`int`、`str`、`tuple` 等不可变类型作为默认值是安全的。",
+      "error": null,
+      "metrics": {
+        "ttftMs": 1638.91,
+        "ttfaMs": 1638.91,
+        "durationMs": 8180.33,
+        "outputTps": null,
+        "charsPerSec": 245.351,
+        "inputTokens": 51,
+        "outputTokens": 1016,
+        "reasoningTokens": null,
+        "cost": 0.010262
+      },
+      "grading": {
+        "status": "pending",
+        "score": null,
+        "reason": "等待人工按预设 rubric 评分。"
+      },
+      "config": {
+        "region": "本机Windows客户端；网络出口位置未独立核验",
+        "concurrency": 1,
+        "temperature": null,
+        "reasoning": "服务商默认，未指定推理档位",
+        "cacheState": "unknown",
+        "repeatIndex": 0,
+        "attemptIndex": 0
+      },
+      "provenance": {
+        "adapter": "anthropic-messages",
+        "tokenCountSource": "provider_usage",
+        "timingSource": "client_monotonic_sse",
+        "tpsMethod": "unavailable: insufficient rate sample or inseparable token counts",
+        "charsMethod": "Unicode code points after first visible chunk / first-to-last visible chunk interval; includes punctuation and whitespace",
+        "costSource": "nominal_uncached_price_estimate",
+        "usageComplete": true,
+        "ratePolicy": "client-sse-v2-min500ms-3chunks-64units",
+        "rateSampleSeconds": 6.529422599938698,
+        "answerChunkCount": 184
+      }
+    },
+    {
+      "id": "batch-875439d35629-00033-1",
+      "batchId": "batch-875439d35629",
+      "modelId": "goat-deepseek-flash-cap1536",
+      "taskId": "code-02",
+      "status": "error",
+      "dataKind": "measured",
+      "timestamp": "2026-10-23T16:38:22.541202Z",
+      "output": "问题在于：**Python 的默认参数值只在函数定义时求值一次**。  \n所以 `items=[]` 这个列表会被所有“未传入 `items`”的调用共享。\n\n```python\ndef append_item(x, items=[]):\n    items.append(x",
+      "error": "output_limit_reached",
+      "metrics": {
+        "ttftMs": 2344.232,
+        "ttfaMs": 11146.677,
+        "durationMs": 11731.799,
+        "outputTps": null,
+        "charsPerSec": null,
+        "inputTokens": 58,
+        "outputTokens": 1200,
+        "reasoningTokens": 1142,
+        "cost": 0.0007287000000000001
+      },
+      "grading": {
+        "status": "not_applicable",
+        "score": null,
+        "reason": "请求未成功，不对不完整答案评分。"
+      },
+      "config": {
+        "region": "本机Windows客户端；网络出口位置未独立核验",
+        "concurrency": 1,
+        "temperature": null,
+        "reasoning": "服务商默认，未指定推理档位",
+        "cacheState": "unknown",
+        "repeatIndex": 0,
+        "attemptIndex": 0
+      },
+      "provenance": {
+        "adapter": "openai-compatible",
+        "tokenCountSource": "provider_usage",
+        "timingSource": "client_monotonic_sse",
+        "tpsMethod": "unavailable: insufficient rate sample or inseparable token counts",
+        "charsMethod": "Unicode code points after first visible chunk / first-to-last visible chunk interval; includes punctuation and whitespace",
+        "costSource": "nominal_uncached_price_estimate",
+        "usageComplete": true,
+        "ratePolicy": "client-sse-v2-min500ms-3chunks-64units",
+        "rateSampleSeconds": 0.5847828999394551,
+        "answerChunkCount": 19
+      }
+    },
+    {
+      "id": "batch-875439d35629-00034-1",
+      "batchId": "batch-875439d35629",
+      "modelId": "goat-qwen38-max-cap1536",
+      "taskId": "code-02",
+      "status": "success",
+      "dataKind": "measured",
+      "timestamp": "2026-10-23T16:38:34.304560Z",
+      "output": "问题代码：\n\n```python\ndef append_item(x, items=[]):\n    items.append(x)\n    return items\n```\n\n## 问题：默认参数在多次调用之间共享\n\nPython 函数的默认参数只在函数定义时求值一次，而不是每次调用时重新创建。\n\n所以这里的 `items=[]` 只会在定义函数时创建一个空列表，之后如果没有显式传入 `items`，多次调用都会使用同一个列表对象。\n\n这会导致“跨调用状态污染”。\n\n---\n\n## 错误示例\n\n```python\ndef append_item(x, items=[]):\n    items.append(x)\n    return items\n\n\nprint(append_item(1))\nprint(append_item(2))\nprint(append_item(3))\n```\n\n输出：\n\n```python\n[1]\n[1, 2]\n[1, 2, 3]\n```\n\n期望可能是每次调用都从空列表开始：\n\n```python\n[1]\n[2]\n[3]\n```\n\n但实际结果会不断累积。\n\n---\n\n## 原因解释\n\n可以理解为函数内部保存了一个默认列表对象：\n\n```python\n# 概念上类似这样\n_default_items = []\n\ndef append_item(x, items=_default_items):\n    items.append(x)\n    return items\n```\n\n所以：\n\n```python\nappend_item(1)\nappend_item(2)\n```\n\n实际上都在修改同一个 `_default_items` 列表。\n\n可以用 `id()` 验证：\n\n```python\ndef append_item(x, items=[]):\n    items.append(x)\n    return items\n\n\na = append_item(1)\nb = append_item(2)\n\nprint(a)\nprint(b)\nprint(id(a) == id(b))\n```\n\n输出类似：\n\n```python\n[1]\n[1, 2]\nTrue\n```\n\n说明 `a` 和 `b` 指向同一个列表对象。\n\n---\n\n## 修复方式：使用 `None` 作为默认值\n\n```python\ndef append_item(x, items=None):\n    if items is None:\n        items = []\n    items.append(x)\n    return items\n```\n\n这样每次没有传入 `items` 时，都会在函数内部创建一个新的空列表。\n\n---\n\n## 验证修复后的行为\n\n```python\ndef append_item(x, items=None):\n    if items is None:\n        items = []\n    items.append(x)\n    return items\n\n\nprint(append_item(1))\nprint(append_item(2))\nprint(append_item(3))\n```\n\n输出：\n\n```python\n[1]\n[2]\n[3]\n```\n\n这次每次调用都使用新的列表。\n\n---\n\n## 验证对象不是同一个\n\n```python\na = append_item(1)\nb = append_item(2)\n\nprint(a)\nprint(b)\nprint(id(a) == id(b))\n```\n\n输出：\n\n```python\n[1]\n[2]\nFalse\n```\n\n说明 `a` 和 `b` 是两个不同的列表对象。\n\n---\n\n## 如果调用者显式传入列表，仍然可以正常工作\n\n```python\nitems = [10, 20]\n\nresult = append_item(30, items)\n\nprint(result)\nprint(items)\n```\n\n输出：\n\n```python\n[10, 20, 30]\n[10, 20, 30]\n```\n\n因为传入的是同一个列表，所以函数会修改调用者提供的列表。\n\n---\n\n## 推荐写法总结\n\n不要这样写：\n\n```python\ndef append_item(x, items=[]):\n    items.append(x)\n    return items\n```\n\n推荐写成：\n\n```python\ndef append_item(x, items=None):\n    if items is None:\n        items = []\n    items.append(x)\n    return items\n```\n\n这个模式适用于所有可变默认参数，例如：\n\n```python\ndef f(x, items=[]):\n    ...\n\ndef f(x, mapping={}):\n    ...\n\ndef f(x, s=set()):\n    ...\n```\n\n都应改成：\n\n```python\ndef f(x, items=None):\n    if items is None:\n        items = []\n    ...\n\ndef f(x, mapping=None):\n    if mapping is None:\n        mapping = {}\n    ...\n\ndef f(x, s=None):\n    if s is None:\n        s = set()\n    ...\n```",
+      "error": null,
+      "metrics": {
+        "ttftMs": 3510.748,
+        "ttfaMs": 6485.218,
+        "durationMs": 25871.925,
+        "outputTps": 50.249,
+        "charsPerSec": 123.841,
+        "inputTokens": 88,
+        "outputTokens": 1078,
+        "reasoningTokens": 105,
+        "cost": 0.006644
+      },
+      "grading": {
+        "status": "pending",
+        "score": null,
+        "reason": "等待人工按预设 rubric 评分。"
+      },
+      "config": {
+        "region": "本机Windows客户端；网络出口位置未独立核验",
+        "concurrency": 1,
+        "temperature": null,
+        "reasoning": "服务商默认，未指定推理档位",
+        "cacheState": "unknown",
+        "repeatIndex": 0,
+        "attemptIndex": 0
+      },
+      "provenance": {
+        "adapter": "openai-compatible",
+        "tokenCountSource": "provider_usage",
+        "timingSource": "client_monotonic_sse",
+        "tpsMethod": "visible tokens / first-to-last visible chunk interval; chunk-boundary estimate, >=500ms, >=3 chunks, >=64 visible tokens",
+        "charsMethod": "Unicode code points after first visible chunk / first-to-last visible chunk interval; includes punctuation and whitespace",
+        "costSource": "nominal_uncached_price_estimate",
+        "usageComplete": true,
+        "ratePolicy": "client-sse-v2-min500ms-3chunks-64units",
+        "rateSampleSeconds": 19.36360349995084,
+        "answerChunkCount": 263
+      }
+    },
+    {
+      "id": "batch-875439d35629-00035-1",
+      "batchId": "batch-875439d35629",
+      "modelId": "goat-gemini38-flash-cap1536",
+      "taskId": "code-02",
+      "status": "error",
+      "dataKind": "measured",
+      "timestamp": "2026-10-23T16:39:00.204262Z",
+      "output": "### 1. 修复后的代码\n\n在 Python 中，处理可变默认参数的标准做法是将默认值设为 `None`，并在函数内部进行判断和初始化：\n\n```python\ndef append_item(x, items=None):\n    if items is None:\n        items = []\n    items.append(x)\n    return items\n```\n\n---\n\n### 2. 跨调用问题解释\n\n**根本原因：**\nPython 的默认参数在**函数定义时（加载时）求值**，而不是在**函数调用时**求值。\n\n* 当解释器执行到 `def append_item(x, items=[]):` 时，列表 `[]` 会在内存中被创建**一次**，并作为该函数对象的一个属性（存放在 `append_item.__defaults__` 中）永久保存。\n* 如果在后续调用中没有显式传入 `items` 参数，Python 就会反复使用这个**同一个内存地址**上的列表。\n* 由于列表是**可变对象（Mutable Object）**，每次对 `items.append(x)` 的修改都会直接影响到这个保存在内存中的默认列表，导致状态跨越多次调用被“累积”保留。\n\n---\n\n### 3. 验证示例\n\n#### 问题复现（原代码）：\n```python\ndef buggy_append(x, items=[]):\n    items.append(x)\n    return items\n\n\n# 连续调用，不传第二个参数\nprint(buggy_append(1))  # 输出: [1]\nprint(buggy_append(2))  # 输出: [1, 2] (预期是 [2]，但上一次调用的结果被保留了)\nprint(buggy_append(3))  # 输出: [1, 2, 3]\n\n# 检查默认参数的内存地址（会发现是同一个对象）\nprint(buggy_append.__defaults__)  # 输出: ([1, 2, 3],)\n```\n\n#### 修复后验证：\n```python\ndef fixed_append(x, items=None):\n    if items is",
+      "error": "output_limit_reached",
+      "metrics": {
+        "ttftMs": 9871.895,
+        "ttfaMs": 9871.895,
+        "durationMs": 13590.027,
+        "outputTps": null,
+        "charsPerSec": null,
+        "inputTokens": 31,
+        "outputTokens": 1196,
+        "reasoningTokens": 733,
+        "cost": 0.0090165
+      },
+      "grading": {
+        "status": "not_applicable",
+        "score": null,
+        "reason": "请求未成功，不对不完整答案评分。"
+      },
+      "config": {
+        "region": "本机Windows客户端；网络出口位置未独立核验",
+        "concurrency": 1,
+        "temperature": null,
+        "reasoning": "服务商默认，未指定推理档位",
+        "cacheState": "unknown",
+        "repeatIndex": 0,
+        "attemptIndex": 0
+      },
+      "provenance": {
+        "adapter": "openai-compatible",
+        "tokenCountSource": "provider_usage",
+        "timingSource": "client_monotonic_sse",
+        "tpsMethod": "unavailable: insufficient rate sample or inseparable token counts",
+        "charsMethod": "Unicode code points after first visible chunk / first-to-last visible chunk interval; includes punctuation and whitespace",
+        "costSource": "nominal_uncached_price_estimate",
+        "usageComplete": true,
+        "ratePolicy": "client-sse-v2-min500ms-3chunks-64units",
+        "rateSampleSeconds": 3.649093799991533,
+        "answerChunkCount": 19
+      }
+    },
+    {
+      "id": "batch-875439d35629-00036-1",
+      "batchId": "batch-875439d35629",
+      "modelId": "goat-glm53-cap1536",
+      "taskId": "code-02",
+      "status": "success",
+      "dataKind": "measured",
+      "timestamp": "2026-10-23T16:39:13.810294Z",
+      "output": "# 问题根源\n\n`def` 语句执行时，默认值 `[]` **只求值一次**，这个列表对象被存储在函数对象的 `__defaults__` 属性中。之后所有未传 `items` 的调用共享**同一个列表**，而 `list.append` 是原地修改，于是状态跨调用泄漏。\n\n# 修复代码\n\n用 `None` 作哨兵值，在函数体内创建新列表：\n\n```python\ndef append_item(x, items=None):\n    if items is None:\n        items = []\n    items.append(x)\n    return items\n```\n\n# 验证示例\n\n**修复前——状态跨调用累积：**\n\n```python\ndef append_item(x, items=[]):\n    items.append(x)\n    return items\n\nprint(append_item(1))  # [1]\nprint(append_item(2))  # [1, 2]     ← 预期 [2]，被上次调用污染\nprint(append_item(3))  # [1, 2, 3]  ← 越积越多\n\n# 证据：默认值就存在函数对象上，且是同一个列表\nprint(append_item.__defaults__)  # ([1, 2, 3],)\n\n# 连续两次调用返回同一对象\na = append_item(1)\nb = append_item(2)\nprint(a is b)  # True\n```\n\n**修复后——每次调用相互独立：**\n\n```python\ndef append_item(x, items=None):\n    if items is None:\n        items = []\n    items.append(x)\n    return items\n\nprint(append_item(1))  # [1]\nprint(append_item(2))  # [2]        ✓ 独立\nprint(append_item(3))  # [3]        ✓ 独立\n\nprint(append_item.__defaults__)  # (None,)\n\n# 显式传入列表时行为不变：原地追加到调用者的列表\nlst = [0]\nappend_item(9, lst)\nprint(lst)  # [0, 9]\n```\n\n# 关键要点\n\n- **为什么用 `is None` 而不是 `if not items`**：调用方显式传入空列表 `[]` 时，`not items` 会误判为“没传参数”，换成新列表，破坏了“原地追加到给定列表”的语义。`None` 才是可靠的哨兵。\n- **通用规则**：不要用 `list`、`dict`、`set` 等可变对象作默认参数。\n- **机制补充**：默认参数在函数定义时求值是 Python 的设计（支持把 `__defaults__` 存在函数对象上），而非 bug。极少数场景会刻意利用它做缓存（如 `def fib(n, cache={})`），但容易踩坑，实际开发建议用 `functools.lru_cache` 替代。",
+      "error": null,
+      "metrics": {
+        "ttftMs": 1581.644,
+        "ttfaMs": 17080.241,
+        "durationMs": 23020.014,
+        "outputTps": 105.06,
+        "charsPerSec": 233.185,
+        "inputTokens": 39,
+        "outputTokens": 2099,
+        "reasoningTokens": 1475,
+        "cost": 0.0092902
+      },
+      "grading": {
+        "status": "pending",
+        "score": null,
+        "reason": "等待人工按预设 rubric 评分。"
+      },
+      "config": {
+        "region": "本机Windows客户端；网络出口位置未独立核验",
+        "concurrency": 1,
+        "temperature": null,
+        "reasoning": "服务商默认，未指定推理档位",
+        "cacheState": "unknown",
+        "repeatIndex": 0,
+        "attemptIndex": 0
+      },
+      "provenance": {
+        "adapter": "openai-compatible",
+        "tokenCountSource": "provider_usage",
+        "timingSource": "client_monotonic_sse",
+        "tpsMethod": "visible tokens / first-to-last visible chunk interval; chunk-boundary estimate, >=500ms, >=3 chunks, >=64 visible tokens",
+        "charsMethod": "Unicode code points after first visible chunk / first-to-last visible chunk interval; includes punctuation and whitespace",
+        "costSource": "nominal_uncached_price_estimate",
+        "usageComplete": true,
+        "ratePolicy": "client-sse-v2-min500ms-3chunks-64units",
+        "rateSampleSeconds": 5.939479900058359,
+        "answerChunkCount": 335
+      }
+    },
+    {
+      "id": "batch-a009ff942ab4-00001-1",
+      "batchId": "batch-a009ff942ab4",
+      "modelId": "goat-claude-sonnet55-cap1536",
+      "taskId": "speed-copy",
+      "status": "success",
+      "dataKind": "measured",
+      "timestamp": "2026-10-23T16:53:28.556429Z",
+      "output": "第1段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第2段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第3段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第4段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第5段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第6段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。",
+      "error": null,
+      "metrics": {
+        "ttftMs": 4409.984,
+        "ttfaMs": 4409.984,
+        "durationMs": 6747.692,
+        "outputTps": null,
+        "charsPerSec": 234.452,
+        "inputTokens": 612,
+        "outputTokens": 571,
+        "reasoningTokens": null,
+        "cost": 0.006934
+      },
+      "grading": {
+        "status": "passed",
+        "score": 1,
+        "reason": "去除首尾空白后与预设答案逐字比较。"
+      },
+      "config": {
+        "region": "本机Windows客户端；网络出口位置未独立核验",
+        "concurrency": 1,
+        "temperature": null,
+        "reasoning": "服务商默认，未指定推理档位",
+        "cacheState": "unknown",
+        "repeatIndex": 0,
+        "attemptIndex": 0
+      },
+      "provenance": {
+        "adapter": "anthropic-messages",
+        "tokenCountSource": "provider_usage",
+        "timingSource": "client_monotonic_sse",
+        "tpsMethod": "unavailable: insufficient rate sample or inseparable token counts",
+        "charsMethod": "Unicode code points after first visible chunk / first-to-last visible chunk interval; includes punctuation and whitespace",
+        "costSource": "nominal_uncached_price_estimate",
+        "usageComplete": true,
+        "ratePolicy": "client-sse-v2-min500ms-3chunks-64units",
+        "rateSampleSeconds": 2.33736470004078,
+        "answerChunkCount": 72
+      }
+    },
+    {
+      "id": "batch-a009ff942ab4-00002-1",
+      "batchId": "batch-a009ff942ab4",
+      "modelId": "goat-deepseek-flash-cap1536",
+      "taskId": "speed-copy",
+      "status": "success",
+      "dataKind": "measured",
+      "timestamp": "2026-10-23T16:53:35.305749Z",
+      "output": "第1段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第2段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第3段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第4段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第5段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第6段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。",
+      "error": null,
+      "metrics": {
+        "ttftMs": 1935.391,
+        "ttfaMs": 5084.996,
+        "durationMs": 7023.882,
+        "outputTps": 176.439,
+        "charsPerSec": 284.263,
+        "inputTokens": 396,
+        "outputTokens": 649,
+        "reasoningTokens": 307,
+        "cost": 0.00044879999999999996
+      },
+      "grading": {
+        "status": "passed",
+        "score": 1,
+        "reason": "去除首尾空白后与预设答案逐字比较。"
+      },
+      "config": {
+        "region": "本机Windows客户端；网络出口位置未独立核验",
+        "concurrency": 1,
+        "temperature": null,
+        "reasoning": "服务商默认，未指定推理档位",
+        "cacheState": "unknown",
+        "repeatIndex": 0,
+        "attemptIndex": 0
+      },
+      "provenance": {
+        "adapter": "openai-compatible",
+        "tokenCountSource": "provider_usage",
+        "timingSource": "client_monotonic_sse",
+        "tpsMethod": "visible tokens / first-to-last visible chunk interval; chunk-boundary estimate, >=500ms, >=3 chunks, >=64 visible tokens",
+        "charsMethod": "Unicode code points after first visible chunk / first-to-last visible chunk interval; includes punctuation and whitespace",
+        "costSource": "nominal_uncached_price_estimate",
+        "usageComplete": true,
+        "ratePolicy": "client-sse-v2-min500ms-3chunks-64units",
+        "rateSampleSeconds": 1.9383482000557706,
+        "answerChunkCount": 62
+      }
+    },
+    {
+      "id": "batch-a009ff942ab4-00003-1",
+      "batchId": "batch-a009ff942ab4",
+      "modelId": "goat-qwen38-max-cap1536",
+      "taskId": "speed-copy",
+      "status": "success",
+      "dataKind": "measured",
+      "timestamp": "2026-10-23T16:53:42.354445Z",
+      "output": "第1段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第2段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第3段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第4段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第5段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第6段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。",
+      "error": null,
+      "metrics": {
+        "ttftMs": 1947.162,
+        "ttfaMs": 3284.583,
+        "durationMs": 8796.843,
+        "outputTps": 62.284,
+        "charsPerSec": 102.087,
+        "inputTokens": 420,
+        "outputTokens": 395,
+        "reasoningTokens": 57,
+        "cost": 0.00321
+      },
+      "grading": {
+        "status": "passed",
+        "score": 1,
+        "reason": "去除首尾空白后与预设答案逐字比较。"
+      },
+      "config": {
+        "region": "本机Windows客户端；网络出口位置未独立核验",
+        "concurrency": 1,
+        "temperature": null,
+        "reasoning": "服务商默认，未指定推理档位",
+        "cacheState": "unknown",
+        "repeatIndex": 0,
+        "attemptIndex": 0
+      },
+      "provenance": {
+        "adapter": "openai-compatible",
+        "tokenCountSource": "provider_usage",
+        "timingSource": "client_monotonic_sse",
+        "tpsMethod": "visible tokens / first-to-last visible chunk interval; chunk-boundary estimate, >=500ms, >=3 chunks, >=64 visible tokens",
+        "charsMethod": "Unicode code points after first visible chunk / first-to-last visible chunk interval; includes punctuation and whitespace",
+        "costSource": "nominal_uncached_price_estimate",
+        "usageComplete": true,
+        "ratePolicy": "client-sse-v2-min500ms-3chunks-64units",
+        "rateSampleSeconds": 5.4267358999932185,
+        "answerChunkCount": 85
+      }
+    },
+    {
+      "id": "batch-a009ff942ab4-00004-1",
+      "batchId": "batch-a009ff942ab4",
+      "modelId": "goat-gemini38-flash-cap1536",
+      "taskId": "speed-copy",
+      "status": "success",
+      "dataKind": "measured",
+      "timestamp": "2026-10-23T16:53:51.159785Z",
+      "output": "第1段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第2段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第3段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第4段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第5段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第6段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。",
+      "error": null,
+      "metrics": {
+        "ttftMs": 3206.933,
+        "ttfaMs": 3206.933,
+        "durationMs": 5151.735,
+        "outputTps": 200.224,
+        "charsPerSec": 292.931,
+        "inputTokens": 390,
+        "outputTokens": 519,
+        "reasoningTokens": 154,
+        "cost": 0.0044775
+      },
+      "grading": {
+        "status": "passed",
+        "score": 1,
+        "reason": "去除首尾空白后与预设答案逐字比较。"
+      },
+      "config": {
+        "region": "本机Windows客户端；网络出口位置未独立核验",
+        "concurrency": 1,
+        "temperature": null,
+        "reasoning": "服务商默认，未指定推理档位",
+        "cacheState": "unknown",
+        "repeatIndex": 0,
+        "attemptIndex": 0
+      },
+      "provenance": {
+        "adapter": "openai-compatible",
+        "tokenCountSource": "provider_usage",
+        "timingSource": "client_monotonic_sse",
+        "tpsMethod": "visible tokens / first-to-last visible chunk interval; chunk-boundary estimate, >=500ms, >=3 chunks, >=64 visible tokens",
+        "charsMethod": "Unicode code points after first visible chunk / first-to-last visible chunk interval; includes punctuation and whitespace",
+        "costSource": "nominal_uncached_price_estimate",
+        "usageComplete": true,
+        "ratePolicy": "client-sse-v2-min500ms-3chunks-64units",
+        "rateSampleSeconds": 1.8229541999753565,
+        "answerChunkCount": 16
+      }
+    },
+    {
+      "id": "batch-a009ff942ab4-00005-1",
+      "batchId": "batch-a009ff942ab4",
+      "modelId": "goat-glm53-cap1536",
+      "taskId": "speed-copy",
+      "status": "success",
+      "dataKind": "measured",
+      "timestamp": "2026-10-23T16:53:56.316399Z",
+      "output": "第1段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第2段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第3段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第4段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第5段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第6段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。",
+      "error": null,
+      "metrics": {
+        "ttftMs": 2056.875,
+        "ttfaMs": 3153.659,
+        "durationMs": 6003.329,
+        "outputTps": 120.395,
+        "charsPerSec": 194.457,
+        "inputTokens": 378,
+        "outputTokens": 468,
+        "reasoningTokens": 125,
+        "cost": 0.0025884000000000002
+      },
+      "grading": {
+        "status": "passed",
+        "score": 1,
+        "reason": "去除首尾空白后与预设答案逐字比较。"
+      },
+      "config": {
+        "region": "本机Windows客户端；网络出口位置未独立核验",
+        "concurrency": 1,
+        "temperature": null,
+        "reasoning": "服务商默认，未指定推理档位",
+        "cacheState": "unknown",
+        "repeatIndex": 0,
+        "attemptIndex": 0
+      },
+      "provenance": {
+        "adapter": "openai-compatible",
+        "tokenCountSource": "provider_usage",
+        "timingSource": "client_monotonic_sse",
+        "tpsMethod": "visible tokens / first-to-last visible chunk interval; chunk-boundary estimate, >=500ms, >=3 chunks, >=64 visible tokens",
+        "charsMethod": "Unicode code points after first visible chunk / first-to-last visible chunk interval; includes punctuation and whitespace",
+        "costSource": "nominal_uncached_price_estimate",
+        "usageComplete": true,
+        "ratePolicy": "client-sse-v2-min500ms-3chunks-64units",
+        "rateSampleSeconds": 2.8489523999160156,
+        "answerChunkCount": 173
+      }
+    },
+    {
+      "id": "batch-a009ff942ab4-00006-1",
+      "batchId": "batch-a009ff942ab4",
+      "modelId": "goat-mistral4-cap1536",
+      "taskId": "speed-copy",
+      "status": "error",
+      "dataKind": "measured",
+      "timestamp": "2026-10-23T16:54:02.346438Z",
+      "output": "",
+      "error": "invalid_or_incomplete_stream",
+      "metrics": {
+        "ttftMs": 8683.703,
+        "ttfaMs": null,
+        "durationMs": 35446.655,
+        "outputTps": null,
+        "charsPerSec": null,
+        "inputTokens": 450,
+        "outputTokens": 1536,
+        "reasoningTokens": 538,
+        "cost": 0.00703248
+      },
+      "grading": {
+        "status": "not_applicable",
+        "score": null,
+        "reason": "请求未成功，不对不完整答案评分。"
+      },
+      "config": {
+        "region": "本机Windows客户端；网络出口位置未独立核验",
+        "concurrency": 1,
+        "temperature": null,
+        "reasoning": "服务商默认，未指定推理档位",
+        "cacheState": "unknown",
+        "repeatIndex": 0,
+        "attemptIndex": 0
+      },
+      "provenance": {
+        "adapter": "openai-compatible",
+        "tokenCountSource": "provider_usage",
+        "timingSource": "client_monotonic_sse",
+        "tpsMethod": "unavailable: insufficient rate sample or inseparable token counts",
+        "charsMethod": "Unicode code points after first visible chunk / first-to-last visible chunk interval; includes punctuation and whitespace",
+        "costSource": "nominal_uncached_price_estimate",
+        "usageComplete": true,
+        "ratePolicy": "client-sse-v2-min500ms-3chunks-64units",
+        "rateSampleSeconds": null,
+        "answerChunkCount": 0
+      }
+    },
+    {
+      "id": "batch-a009ff942ab4-00007-1",
+      "batchId": "batch-a009ff942ab4",
+      "modelId": "goat-deepseek-flash-cap1536",
+      "taskId": "speed-copy",
+      "status": "success",
+      "dataKind": "measured",
+      "timestamp": "2026-10-23T16:54:37.848290Z",
+      "output": "第1段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第2段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第3段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第4段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第5段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第6段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。",
+      "error": null,
+      "metrics": {
+        "ttftMs": 2861.127,
+        "ttfaMs": 5777.424,
+        "durationMs": 7634.461,
+        "outputTps": 184.762,
+        "charsPerSec": 298.959,
+        "inputTokens": 396,
+        "outputTokens": 634,
+        "reasoningTokens": 291,
+        "cost": 0.00043979999999999996
+      },
+      "grading": {
+        "status": "passed",
+        "score": 1,
+        "reason": "去除首尾空白后与预设答案逐字比较。"
+      },
+      "config": {
+        "region": "本机Windows客户端；网络出口位置未独立核验",
+        "concurrency": 1,
+        "temperature": null,
+        "reasoning": "服务商默认，未指定推理档位",
+        "cacheState": "unknown",
+        "repeatIndex": 1,
+        "attemptIndex": 0
+      },
+      "provenance": {
+        "adapter": "openai-compatible",
+        "tokenCountSource": "provider_usage",
+        "timingSource": "client_monotonic_sse",
+        "tpsMethod": "visible tokens / first-to-last visible chunk interval; chunk-boundary estimate, >=500ms, >=3 chunks, >=64 visible tokens",
+        "charsMethod": "Unicode code points after first visible chunk / first-to-last visible chunk interval; includes punctuation and whitespace",
+        "costSource": "nominal_uncached_price_estimate",
+        "usageComplete": true,
+        "ratePolicy": "client-sse-v2-min500ms-3chunks-64units",
+        "rateSampleSeconds": 1.8564410998951644,
+        "answerChunkCount": 58
+      }
+    },
+    {
+      "id": "batch-a009ff942ab4-00008-1",
+      "batchId": "batch-a009ff942ab4",
+      "modelId": "goat-qwen38-max-cap1536",
+      "taskId": "speed-copy",
+      "status": "success",
+      "dataKind": "measured",
+      "timestamp": "2026-10-23T16:54:45.500755Z",
+      "output": "第1段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第2段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第3段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第4段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第5段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第6段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。",
+      "error": null,
+      "metrics": {
+        "ttftMs": 1797.486,
+        "ttfaMs": 7307.098,
+        "durationMs": 12750.231,
+        "outputTps": 62.374,
+        "charsPerSec": 101.866,
+        "inputTokens": 420,
+        "outputTokens": 580,
+        "reasoningTokens": 242,
+        "cost": 0.00432
+      },
+      "grading": {
+        "status": "passed",
+        "score": 1,
+        "reason": "去除首尾空白后与预设答案逐字比较。"
+      },
+      "config": {
+        "region": "本机Windows客户端；网络出口位置未独立核验",
+        "concurrency": 1,
+        "temperature": null,
+        "reasoning": "服务商默认，未指定推理档位",
+        "cacheState": "unknown",
+        "repeatIndex": 1,
+        "attemptIndex": 0
+      },
+      "provenance": {
+        "adapter": "openai-compatible",
+        "tokenCountSource": "provider_usage",
+        "timingSource": "client_monotonic_sse",
+        "tpsMethod": "visible tokens / first-to-last visible chunk interval; chunk-boundary estimate, >=500ms, >=3 chunks, >=64 visible tokens",
+        "charsMethod": "Unicode code points after first visible chunk / first-to-last visible chunk interval; includes punctuation and whitespace",
+        "costSource": "nominal_uncached_price_estimate",
+        "usageComplete": true,
+        "ratePolicy": "client-sse-v2-min500ms-3chunks-64units",
+        "rateSampleSeconds": 5.418891899986193,
+        "answerChunkCount": 85
+      }
+    },
+    {
+      "id": "batch-a009ff942ab4-00009-1",
+      "batchId": "batch-a009ff942ab4",
+      "modelId": "goat-gemini38-flash-cap1536",
+      "taskId": "speed-copy",
+      "status": "success",
+      "dataKind": "measured",
+      "timestamp": "2026-10-23T16:54:58.269305Z",
+      "output": "第1段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第2段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第3段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第4段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第5段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第6段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。",
+      "error": null,
+      "metrics": {
+        "ttftMs": 4135.467,
+        "ttfaMs": 4135.467,
+        "durationMs": 6210.867,
+        "outputTps": 183.956,
+        "charsPerSec": 276.69,
+        "inputTokens": 390,
+        "outputTokens": 530,
+        "reasoningTokens": 165,
+        "cost": 0.00456
+      },
+      "grading": {
+        "status": "passed",
+        "score": 1,
+        "reason": "去除首尾空白后与预设答案逐字比较。"
+      },
+      "config": {
+        "region": "本机Windows客户端；网络出口位置未独立核验",
+        "concurrency": 1,
+        "temperature": null,
+        "reasoning": "服务商默认，未指定推理档位",
+        "cacheState": "unknown",
+        "repeatIndex": 1,
+        "attemptIndex": 0
+      },
+      "provenance": {
+        "adapter": "openai-compatible",
+        "tokenCountSource": "provider_usage",
+        "timingSource": "client_monotonic_sse",
+        "tpsMethod": "visible tokens / first-to-last visible chunk interval; chunk-boundary estimate, >=500ms, >=3 chunks, >=64 visible tokens",
+        "charsMethod": "Unicode code points after first visible chunk / first-to-last visible chunk interval; includes punctuation and whitespace",
+        "costSource": "nominal_uncached_price_estimate",
+        "usageComplete": true,
+        "ratePolicy": "client-sse-v2-min500ms-3chunks-64units",
+        "rateSampleSeconds": 1.984173500095494,
+        "answerChunkCount": 16
+      }
+    },
+    {
+      "id": "batch-a009ff942ab4-00010-1",
+      "batchId": "batch-a009ff942ab4",
+      "modelId": "goat-glm53-cap1536",
+      "taskId": "speed-copy",
+      "status": "success",
+      "dataKind": "measured",
+      "timestamp": "2026-10-23T16:55:04.491252Z",
+      "output": "第1段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第2段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第3段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第4段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第5段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第6段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。",
+      "error": null,
+      "metrics": {
+        "ttftMs": 1821.88,
+        "ttfaMs": 2754.434,
+        "durationMs": 5504.501,
+        "outputTps": 124.759,
+        "charsPerSec": 201.506,
+        "inputTokens": 378,
+        "outputTokens": 465,
+        "reasoningTokens": 122,
+        "cost": 0.0025752
+      },
+      "grading": {
+        "status": "passed",
+        "score": 1,
+        "reason": "去除首尾空白后与预设答案逐字比较。"
+      },
+      "config": {
+        "region": "本机Windows客户端；网络出口位置未独立核验",
+        "concurrency": 1,
+        "temperature": null,
+        "reasoning": "服务商默认，未指定推理档位",
+        "cacheState": "unknown",
+        "repeatIndex": 1,
+        "attemptIndex": 0
+      },
+      "provenance": {
+        "adapter": "openai-compatible",
+        "tokenCountSource": "provider_usage",
+        "timingSource": "client_monotonic_sse",
+        "tpsMethod": "visible tokens / first-to-last visible chunk interval; chunk-boundary estimate, >=500ms, >=3 chunks, >=64 visible tokens",
+        "charsMethod": "Unicode code points after first visible chunk / first-to-last visible chunk interval; includes punctuation and whitespace",
+        "costSource": "nominal_uncached_price_estimate",
+        "usageComplete": true,
+        "ratePolicy": "client-sse-v2-min500ms-3chunks-64units",
+        "rateSampleSeconds": 2.7492943999823183,
+        "answerChunkCount": 173
+      }
+    },
+    {
+      "id": "batch-a009ff942ab4-00011-1",
+      "batchId": "batch-a009ff942ab4",
+      "modelId": "goat-mistral4-cap1536",
+      "taskId": "speed-copy",
+      "status": "error",
+      "dataKind": "measured",
+      "timestamp": "2026-10-23T16:55:10.012634Z",
+      "output": "",
+      "error": "invalid_or_incomplete_stream",
+      "metrics": {
+        "ttftMs": 4224.757,
+        "ttfaMs": null,
+        "durationMs": 32963.468,
+        "outputTps": null,
+        "charsPerSec": null,
+        "inputTokens": 450,
+        "outputTokens": 1536,
+        "reasoningTokens": 537,
+        "cost": 0.00703248
+      },
+      "grading": {
+        "status": "not_applicable",
+        "score": null,
+        "reason": "请求未成功，不对不完整答案评分。"
+      },
+      "config": {
+        "region": "本机Windows客户端；网络出口位置未独立核验",
+        "concurrency": 1,
+        "temperature": null,
+        "reasoning": "服务商默认，未指定推理档位",
+        "cacheState": "unknown",
+        "repeatIndex": 1,
+        "attemptIndex": 0
+      },
+      "provenance": {
+        "adapter": "openai-compatible",
+        "tokenCountSource": "provider_usage",
+        "timingSource": "client_monotonic_sse",
+        "tpsMethod": "unavailable: insufficient rate sample or inseparable token counts",
+        "charsMethod": "Unicode code points after first visible chunk / first-to-last visible chunk interval; includes punctuation and whitespace",
+        "costSource": "nominal_uncached_price_estimate",
+        "usageComplete": true,
+        "ratePolicy": "client-sse-v2-min500ms-3chunks-64units",
+        "rateSampleSeconds": null,
+        "answerChunkCount": 0
+      }
+    },
+    {
+      "id": "batch-a009ff942ab4-00012-1",
+      "batchId": "batch-a009ff942ab4",
+      "modelId": "goat-claude-sonnet55-cap1536",
+      "taskId": "speed-copy",
+      "status": "success",
+      "dataKind": "measured",
+      "timestamp": "2026-10-23T16:55:43.048902Z",
+      "output": "第1段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第2段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第3段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第4段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第5段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第6段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。",
+      "error": null,
+      "metrics": {
+        "ttftMs": 2146.566,
+        "ttfaMs": 2146.566,
+        "durationMs": 4486.817,
+        "outputTps": null,
+        "charsPerSec": 234.236,
+        "inputTokens": 612,
+        "outputTokens": 571,
+        "reasoningTokens": null,
+        "cost": 0.006934
+      },
+      "grading": {
+        "status": "passed",
+        "score": 1,
+        "reason": "去除首尾空白后与预设答案逐字比较。"
+      },
+      "config": {
+        "region": "本机Windows客户端；网络出口位置未独立核验",
+        "concurrency": 1,
+        "temperature": null,
+        "reasoning": "服务商默认，未指定推理档位",
+        "cacheState": "unknown",
+        "repeatIndex": 1,
+        "attemptIndex": 0
+      },
+      "provenance": {
+        "adapter": "anthropic-messages",
+        "tokenCountSource": "provider_usage",
+        "timingSource": "client_monotonic_sse",
+        "tpsMethod": "unavailable: insufficient rate sample or inseparable token counts",
+        "charsMethod": "Unicode code points after first visible chunk / first-to-last visible chunk interval; includes punctuation and whitespace",
+        "costSource": "nominal_uncached_price_estimate",
+        "usageComplete": true,
+        "ratePolicy": "client-sse-v2-min500ms-3chunks-64units",
+        "rateSampleSeconds": 2.339525300078094,
+        "answerChunkCount": 72
+      }
+    },
+    {
+      "id": "batch-a009ff942ab4-00013-1",
+      "batchId": "batch-a009ff942ab4",
+      "modelId": "goat-qwen38-max-cap1536",
+      "taskId": "speed-copy",
+      "status": "success",
+      "dataKind": "measured",
+      "timestamp": "2026-10-23T16:55:47.543955Z",
+      "output": "第1段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第2段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第3段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第4段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第5段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第6段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。",
+      "error": null,
+      "metrics": {
+        "ttftMs": 2274.392,
+        "ttfaMs": 10080.379,
+        "durationMs": 15498.588,
+        "outputTps": 62.652,
+        "charsPerSec": 102.319,
+        "inputTokens": 420,
+        "outputTokens": 678,
+        "reasoningTokens": 340,
+        "cost": 0.004908
+      },
+      "grading": {
+        "status": "passed",
+        "score": 1,
+        "reason": "去除首尾空白后与预设答案逐字比较。"
+      },
+      "config": {
+        "region": "本机Windows客户端；网络出口位置未独立核验",
+        "concurrency": 1,
+        "temperature": null,
+        "reasoning": "服务商默认，未指定推理档位",
+        "cacheState": "unknown",
+        "repeatIndex": 2,
+        "attemptIndex": 0
+      },
+      "provenance": {
+        "adapter": "openai-compatible",
+        "tokenCountSource": "provider_usage",
+        "timingSource": "client_monotonic_sse",
+        "tpsMethod": "visible tokens / first-to-last visible chunk interval; chunk-boundary estimate, >=500ms, >=3 chunks, >=64 visible tokens",
+        "charsMethod": "Unicode code points after first visible chunk / first-to-last visible chunk interval; includes punctuation and whitespace",
+        "costSource": "nominal_uncached_price_estimate",
+        "usageComplete": true,
+        "ratePolicy": "client-sse-v2-min500ms-3chunks-64units",
+        "rateSampleSeconds": 5.394906500005163,
+        "answerChunkCount": 84
+      }
+    },
+    {
+      "id": "batch-a009ff942ab4-00014-1",
+      "batchId": "batch-a009ff942ab4",
+      "modelId": "goat-gemini38-flash-cap1536",
+      "taskId": "speed-copy",
+      "status": "success",
+      "dataKind": "measured",
+      "timestamp": "2026-10-23T16:56:03.055973Z",
+      "output": "第1段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第2段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第3段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第4段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第5段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第6段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。",
+      "error": null,
+      "metrics": {
+        "ttftMs": 6012.422,
+        "ttfaMs": 6012.422,
+        "durationMs": 7896.338,
+        "outputTps": 228.334,
+        "charsPerSec": 339.686,
+        "inputTokens": 390,
+        "outputTokens": 576,
+        "reasoningTokens": 211,
+        "cost": 0.004905
+      },
+      "grading": {
+        "status": "passed",
+        "score": 1,
+        "reason": "去除首尾空白后与预设答案逐字比较。"
+      },
+      "config": {
+        "region": "本机Windows客户端；网络出口位置未独立核验",
+        "concurrency": 1,
+        "temperature": null,
+        "reasoning": "服务商默认，未指定推理档位",
+        "cacheState": "unknown",
+        "repeatIndex": 2,
+        "attemptIndex": 0
+      },
+      "provenance": {
+        "adapter": "openai-compatible",
+        "tokenCountSource": "provider_usage",
+        "timingSource": "client_monotonic_sse",
+        "tpsMethod": "visible tokens / first-to-last visible chunk interval; chunk-boundary estimate, >=500ms, >=3 chunks, >=64 visible tokens",
+        "charsMethod": "Unicode code points after first visible chunk / first-to-last visible chunk interval; includes punctuation and whitespace",
+        "costSource": "nominal_uncached_price_estimate",
+        "usageComplete": true,
+        "ratePolicy": "client-sse-v2-min500ms-3chunks-64units",
+        "rateSampleSeconds": 1.598535900004208,
+        "answerChunkCount": 16
+      }
+    },
+    {
+      "id": "batch-a009ff942ab4-00015-1",
+      "batchId": "batch-a009ff942ab4",
+      "modelId": "goat-glm53-cap1536",
+      "taskId": "speed-copy",
+      "status": "success",
+      "dataKind": "measured",
+      "timestamp": "2026-10-23T16:56:10.959710Z",
+      "output": "第1段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第2段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第3段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第4段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第5段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第6段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。",
+      "error": null,
+      "metrics": {
+        "ttftMs": 1683.772,
+        "ttfaMs": 4447.472,
+        "durationMs": 7397.929,
+        "outputTps": 116.4,
+        "charsPerSec": 188.005,
+        "inputTokens": 378,
+        "outputTokens": 632,
+        "reasoningTokens": 289,
+        "cost": 0.00331
+      },
+      "grading": {
+        "status": "passed",
+        "score": 1,
+        "reason": "去除首尾空白后与预设答案逐字比较。"
+      },
+      "config": {
+        "region": "本机Windows客户端；网络出口位置未独立核验",
+        "concurrency": 1,
+        "temperature": null,
+        "reasoning": "服务商默认，未指定推理档位",
+        "cacheState": "unknown",
+        "repeatIndex": 2,
+        "attemptIndex": 0
+      },
+      "provenance": {
+        "adapter": "openai-compatible",
+        "tokenCountSource": "provider_usage",
+        "timingSource": "client_monotonic_sse",
+        "tpsMethod": "visible tokens / first-to-last visible chunk interval; chunk-boundary estimate, >=500ms, >=3 chunks, >=64 visible tokens",
+        "charsMethod": "Unicode code points after first visible chunk / first-to-last visible chunk interval; includes punctuation and whitespace",
+        "costSource": "nominal_uncached_price_estimate",
+        "usageComplete": true,
+        "ratePolicy": "client-sse-v2-min500ms-3chunks-64units",
+        "rateSampleSeconds": 2.9467313999775797,
+        "answerChunkCount": 171
+      }
+    },
+    {
+      "id": "batch-a009ff942ab4-00016-1",
+      "batchId": "batch-a009ff942ab4",
+      "modelId": "goat-mistral4-cap1536",
+      "taskId": "speed-copy",
+      "status": "error",
+      "dataKind": "measured",
+      "timestamp": "2026-10-23T16:56:18.389054Z",
+      "output": "",
+      "error": "invalid_or_incomplete_stream",
+      "metrics": {
+        "ttftMs": 4226.334,
+        "ttfaMs": null,
+        "durationMs": 41261.392,
+        "outputTps": null,
+        "charsPerSec": null,
+        "inputTokens": 450,
+        "outputTokens": 1536,
+        "reasoningTokens": 549,
+        "cost": 0.00703248
+      },
+      "grading": {
+        "status": "not_applicable",
+        "score": null,
+        "reason": "请求未成功，不对不完整答案评分。"
+      },
+      "config": {
+        "region": "本机Windows客户端；网络出口位置未独立核验",
+        "concurrency": 1,
+        "temperature": null,
+        "reasoning": "服务商默认，未指定推理档位",
+        "cacheState": "unknown",
+        "repeatIndex": 2,
+        "attemptIndex": 0
+      },
+      "provenance": {
+        "adapter": "openai-compatible",
+        "tokenCountSource": "provider_usage",
+        "timingSource": "client_monotonic_sse",
+        "tpsMethod": "unavailable: insufficient rate sample or inseparable token counts",
+        "charsMethod": "Unicode code points after first visible chunk / first-to-last visible chunk interval; includes punctuation and whitespace",
+        "costSource": "nominal_uncached_price_estimate",
+        "usageComplete": true,
+        "ratePolicy": "client-sse-v2-min500ms-3chunks-64units",
+        "rateSampleSeconds": null,
+        "answerChunkCount": 0
+      }
+    },
+    {
+      "id": "batch-a009ff942ab4-00017-1",
+      "batchId": "batch-a009ff942ab4",
+      "modelId": "goat-claude-sonnet55-cap1536",
+      "taskId": "speed-copy",
+      "status": "success",
+      "dataKind": "measured",
+      "timestamp": "2026-10-23T16:56:59.737014Z",
+      "output": "第1段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第2段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第3段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第4段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第5段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第6段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。",
+      "error": null,
+      "metrics": {
+        "ttftMs": 11026.95,
+        "ttfaMs": 11026.95,
+        "durationMs": 13529.718,
+        "outputTps": null,
+        "charsPerSec": 219.017,
+        "inputTokens": 612,
+        "outputTokens": 571,
+        "reasoningTokens": null,
+        "cost": 0.006934
+      },
+      "grading": {
+        "status": "passed",
+        "score": 1,
+        "reason": "去除首尾空白后与预设答案逐字比较。"
+      },
+      "config": {
+        "region": "本机Windows客户端；网络出口位置未独立核验",
+        "concurrency": 1,
+        "temperature": null,
+        "reasoning": "服务商默认，未指定推理档位",
+        "cacheState": "unknown",
+        "repeatIndex": 2,
+        "attemptIndex": 0
+      },
+      "provenance": {
+        "adapter": "anthropic-messages",
+        "tokenCountSource": "provider_usage",
+        "timingSource": "client_monotonic_sse",
+        "tpsMethod": "unavailable: insufficient rate sample or inseparable token counts",
+        "charsMethod": "Unicode code points after first visible chunk / first-to-last visible chunk interval; includes punctuation and whitespace",
+        "costSource": "nominal_uncached_price_estimate",
+        "usageComplete": true,
+        "ratePolicy": "client-sse-v2-min500ms-3chunks-64units",
+        "rateSampleSeconds": 2.5020867000566795,
+        "answerChunkCount": 72
+      }
+    },
+    {
+      "id": "batch-a009ff942ab4-00018-1",
+      "batchId": "batch-a009ff942ab4",
+      "modelId": "goat-deepseek-flash-cap1536",
+      "taskId": "speed-copy",
+      "status": "success",
+      "dataKind": "measured",
+      "timestamp": "2026-10-23T16:57:13.278977Z",
+      "output": "第1段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第2段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第3段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第4段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第5段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。\n\n第6段：本材料中的远山工坊为虚构组织。研究员按相同流程记录输入、完整输出、首次响应时间与所有失败尝试。每一批实验保留参数和版本，未知值不记为零。只有符合采样规则的数据才进入速度比较。",
+      "error": null,
+      "metrics": {
+        "ttftMs": 2333.531,
+        "ttfaMs": 5249.786,
+        "durationMs": 6660.831,
+        "outputTps": 243.681,
+        "charsPerSec": 394.294,
+        "inputTokens": 396,
+        "outputTokens": 655,
+        "reasoningTokens": 312,
+        "cost": 0.0004524
+      },
+      "grading": {
+        "status": "passed",
+        "score": 1,
+        "reason": "去除首尾空白后与预设答案逐字比较。"
+      },
+      "config": {
+        "region": "本机Windows客户端；网络出口位置未独立核验",
+        "concurrency": 1,
+        "temperature": null,
+        "reasoning": "服务商默认，未指定推理档位",
+        "cacheState": "unknown",
+        "repeatIndex": 2,
+        "attemptIndex": 0
+      },
+      "provenance": {
+        "adapter": "openai-compatible",
+        "tokenCountSource": "provider_usage",
+        "timingSource": "client_monotonic_sse",
+        "tpsMethod": "visible tokens / first-to-last visible chunk interval; chunk-boundary estimate, >=500ms, >=3 chunks, >=64 visible tokens",
+        "charsMethod": "Unicode code points after first visible chunk / first-to-last visible chunk interval; includes punctuation and whitespace",
+        "costSource": "nominal_uncached_price_estimate",
+        "usageComplete": true,
+        "ratePolicy": "client-sse-v2-min500ms-3chunks-64units",
+        "rateSampleSeconds": 1.4075778999831527,
+        "answerChunkCount": 57
+      }
+    }
+  ],
+  "batches": [
+    {
+      "id": "batch-17a57b45155b",
+      "title": "CommandCode 免费端点首次真实采集",
+      "createdAt": "2026-10-23T15:52:59.629623Z",
+      "status": "partial",
+      "dataKind": "measured",
+      "description": "客户端 API 测量；价格为标价估算，账单以服务商为准。 首次有限免费端点探测：非代表性小样本；未独立核验上游模型身份或思考配置。",
+      "taskIds": [
+        "math-01",
+        "data-01",
+        "chinese-04"
+      ],
+      "modelIds": [
+        "glyph-free-cap1024",
+        "beam-free-cap1024",
+        "laguna-free-cap1024"
+      ],
+      "config": {
+        "region": "本机 Windows 客户端；网络出口位置未核验",
+        "concurrency": 1,
+        "repeats": 1,
+        "timeoutSeconds": 60,
+        "budgetUsd": 0.01
+      }
+    },
+    {
+      "id": "batch-71b065dc9835",
+      "title": "CommandCode 免费端点长输出采样",
+      "createdAt": "2026-10-23T16:13:46.129897Z",
+      "status": "partial",
+      "dataKind": "measured",
+      "description": "客户端 API 测量；价格为标价估算，账单以服务商为准。 首次有限免费端点探测：非代表性小样本；未独立核验上游模型身份或思考配置。",
+      "taskIds": [
+        "speed-copy",
+        "speed-json",
+        "speed-writing"
+      ],
+      "modelIds": [
+        "glyph-free-cap2048",
+        "beam-free-cap2048",
+        "laguna-free-cap2048"
+      ],
+      "config": {
+        "region": "本机 Windows 客户端；网络出口位置未核验",
+        "concurrency": 1,
+        "repeats": 1,
+        "timeoutSeconds": 60,
+        "budgetUsd": 0.01
+      }
+    },
+    {
+      "id": "batch-f71f40297546",
+      "title": "CommandCode GOAT 六配置起步比较",
+      "createdAt": "2026-10-23T16:26:29.696624Z",
+      "status": "completed",
+      "dataKind": "measured",
+      "description": "客户端 API 测量；价格为标价估算，账单以服务商为准。 单次起步比较，不能推断总体能力；不同模型采用各自服务商默认推理。",
+      "taskIds": [
+        "math-01",
+        "data-01",
+        "speed-copy"
+      ],
+      "modelIds": [
+        "goat-claude-sonnet55-cap1536",
+        "goat-deepseek-flash-cap1536",
+        "goat-qwen38-max-cap1536",
+        "goat-gemini38-flash-cap1536",
+        "goat-glm53-cap1536",
+        "goat-mistral4-cap1536"
+      ],
+      "config": {
+        "region": "本机Windows客户端；网络出口位置未独立核验",
+        "concurrency": 1,
+        "repeats": 1,
+        "timeoutSeconds": 60,
+        "budgetUsd": 0.5
+      }
+    },
+    {
+      "id": "batch-875439d35629",
+      "title": "CommandCode GOAT 多场景补充采集",
+      "createdAt": "2026-10-23T16:34:27.716618Z",
+      "status": "partial",
+      "dataKind": "measured",
+      "description": "客户端 API 测量；价格为标价估算，账单以服务商为准。 单次起步比较，不能推断总体能力；不同模型采用各自服务商默认推理。",
+      "taskIds": [
+        "math-02",
+        "math-06",
+        "data-03",
+        "chinese-03",
+        "chinese-04",
+        "code-02"
+      ],
+      "modelIds": [
+        "goat-claude-sonnet55-cap1536",
+        "goat-deepseek-flash-cap1536",
+        "goat-qwen38-max-cap1536",
+        "goat-gemini38-flash-cap1536",
+        "goat-glm53-cap1536",
+        "goat-mistral4-cap1536"
+      ],
+      "config": {
+        "region": "本机Windows客户端；网络出口位置未独立核验",
+        "concurrency": 1,
+        "repeats": 1,
+        "timeoutSeconds": 60,
+        "budgetUsd": 0.45
+      }
+    },
+    {
+      "id": "batch-a009ff942ab4",
+      "title": "CommandCode GOAT 同题速度重复采样",
+      "createdAt": "2026-10-23T16:53:28.555417Z",
+      "status": "partial",
+      "dataKind": "measured",
+      "description": "客户端 API 测量；价格为标价估算，账单以服务商为准。 起步小样本，不能推断总体能力；不同模型采用各自服务商默认推理。",
+      "taskIds": [
+        "speed-copy"
+      ],
+      "modelIds": [
+        "goat-claude-sonnet55-cap1536",
+        "goat-deepseek-flash-cap1536",
+        "goat-qwen38-max-cap1536",
+        "goat-gemini38-flash-cap1536",
+        "goat-glm53-cap1536",
+        "goat-mistral4-cap1536"
+      ],
+      "config": {
+        "region": "本机Windows客户端；网络出口位置未独立核验",
+        "concurrency": 1,
+        "repeats": 3,
+        "timeoutSeconds": 60,
+        "budgetUsd": 0.3
+      }
+    }
+  ]
+}

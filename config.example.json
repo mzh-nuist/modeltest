@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "1.0",
+  "title": "逐风 AI 首轮试测（运行前核实配置）",
+  "simulation": false,
+  "region": "填写客户端实际区域",
+  "concurrency": 1,
+  "repeats": 3,
+  "taskIds": ["math-01", "code-01", "chinese-01"],
+  "timeoutSeconds": 60,
+  "maxRetries": 0,
+  "budgetUsd": 1.0,
+  "models": [
+    {
+      "id": "replace-with-verified-model-id",
+      "name": "填写已核实模型名",
+      "provider": "填写实际服务商",
+      "adapter": "openai-compatible",
+      "endpoint": "https://api.openai.com/v1/chat/completions",
+      "apiModel": "REPLACE_WITH_VERIFIED_API_MODEL",
+      "apiKeyEnv": "ZHUFENG_EVAL_API_KEY",
+      "version": "填写版本或快照",
+      "reasoning": "填写推理档位；确认 reasoningEffort 是否受支持",
+      "reasoningEffort": null,
+      "temperature": null,
+      "maxInputTokens": 32768,
+      "maxOutputTokens": 4096,
+      "maxTokensParameter": "max_completion_tokens",
+      "outputLimitIncludesReasoning": false,
+      "usageSemantics": "includes_reasoning",
+      "contextWindow": null,
+      "inputPrice": null,
+      "outputPrice": null,
+      "cachedInputPrice": null,
+      "currency": "USD",
+      "sourceUrl": "https://developers.openai.com/api/reference/resources/chat/subresources/completions/methods/create",
+      "sourceDate": "2026-10-23",
+      "tags": [],
+      "description": "故意保留未知价格和未确认输出上限；必须核实后才能执行。"
+    }
+  ]
+}

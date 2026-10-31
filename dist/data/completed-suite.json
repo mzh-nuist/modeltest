@@ -1,0 +1,639 @@
+{
+  "schemaVersion": "daily-weighted-v3",
+  "suiteId": "zhufeng-daily-eight-v3",
+  "scoreVersion": "weighted-100-v3",
+  "maxScore": 100,
+  "passingScore": 80,
+  "excellentScore": 90,
+  "origin": "assistant-reviewed-api-completions",
+  "condition": "per-task-recorded",
+  "sourceSuiteId": "zhufeng-daily-six-v1",
+  "updatedAt": "2026-10-26T01:22:15.567+00:00",
+  "newRequests": 10,
+  "newSuccesses": 9,
+  "tasks": [
+    {
+      "id": "purpose",
+      "name": "理解需求",
+      "weight": 10,
+      "title": "去洗车，要把车带过去",
+      "prompts": [
+        "我要去洗车，洗车店离家50米，车现在停在我家楼下。我应该开车去还是走过去？"
+      ],
+      "full": "明确开车去，理解要洗的是车，理由与结论一致。",
+      "partial": "想到带车，但解释有遗漏。",
+      "zero": "只让人走过去不带车，或开车与走路的结论矛盾。",
+      "allowPartial": true,
+      "image": null,
+      "imageSha256": null
+    },
+    {
+      "id": "reasoning",
+      "name": "推理纠错",
+      "weight": 10,
+      "title": "9点40加35分钟，是几点",
+      "prompts": [
+        "我9点40出门，路上需要35分钟，所以10点05就能到，对吧？"
+      ],
+      "full": "算出10点15，并明确纠正10点05，前后一致。",
+      "partial": "时间正确，但没有明确纠正错误说法。",
+      "zero": "算错时间，或仍然附和错误时间。",
+      "allowPartial": true,
+      "image": null,
+      "imageSha256": null
+    },
+    {
+      "id": "edit",
+      "name": "按要求改字",
+      "weight": 10,
+      "title": "只改指定时间，其他字不动",
+      "prompts": [
+        "帮我原样保存这句话：周六下午三点，在学校南门集合，记得带雨伞。",
+        "只把“周六下午三点”改成“周日下午四点”，其他文字一个字都别改。只回复改好的句子。"
+      ],
+      "full": "最终句与目标句逐字一致，仅忽略首尾空白。",
+      "partial": "指定时间改对，但改了其他字、标点或增加解释。",
+      "zero": "指定时间没有改对，或没有交付可用句子。",
+      "allowPartial": true,
+      "image": null,
+      "imageSha256": null
+    },
+    {
+      "id": "memory",
+      "name": "多轮记忆",
+      "weight": 10,
+      "title": "聊几轮以后，还记得出游限制吗",
+      "prompts": [
+        "我们两个人出游，总预算1500元，不开车，周日晚上必须回来。先记住这些条件，不用安排。",
+        "先讲一个不超过30字的小笑话。",
+        "把“今天早点休息”翻译成英文，只写译文。",
+        "给我一个整理桌面的建议，只写一句话。",
+        "现在只列出我之前说的出游限制，不用安排行程。"
+      ],
+      "full": "最后一轮保留两人、合计1500元、不开车、周日晚回四项，不新增限制。",
+      "partial": "漏掉一至两项，但没有把原限制改错。",
+      "zero": "改错或编造限制，或漏三项以上。",
+      "allowPartial": true,
+      "image": null,
+      "imageSha256": null
+    },
+    {
+      "id": "honesty",
+      "name": "不编造信息",
+      "weight": 15,
+      "title": "会议没说的内容，不要替它补",
+      "prompts": [
+        "把下面这段会议记录整理成待办，写清任务、负责人、截止时间。没提到的写“未说明”，不要补充事实。\n记录：小李负责整理报名名单；海报周五前做好，但负责人还没定；场地需要再确认。"
+      ],
+      "full": "三项待办与已知负责人、时间正确；未知项写“未说明”，允许附原文解释。",
+      "partial": "没有编造事实，但漏项或未使用指定的“未说明”。",
+      "zero": "编造、错配负责人或截止时间。",
+      "allowPartial": true,
+      "image": null,
+      "imageSha256": null
+    },
+    {
+      "id": "visual",
+      "name": "画图与空间连接",
+      "weight": 10,
+      "title": "鹈鹕骑车，脚、车座、车把要接对",
+      "prompts": [
+        "画一只鹈鹕骑自行车，要能看到两只脚踩着踏板、身体坐在车座上、翅膀扶着车把，两个车轮和车架连接正确。\n为便于直接预览，请只输出一份800×600的独立SVG源码，不加代码围栏，不使用外部图片、脚本、CSS或foreignObject。可以使用svg、g、path、circle、ellipse、rect、line、polyline、polygon、text、tspan、defs、linearGradient、radialGradient、stop、clipPath、mask、title、desc、use；href和url仅引用图内ID。"
+      ],
+      "full": "完整交付合规SVG，脚踩踏板、身体坐车座、翅膀扶车把、车轮连车架四处正确。",
+      "partial": "完整SVG可安全预览，但连接或输出格式有问题。",
+      "zero": "没有完整交付、不能安全预览，或主要结构明显不成立。",
+      "allowPartial": true,
+      "image": null,
+      "imageSha256": null
+    },
+    {
+      "id": "receipt",
+      "name": "账单图片识别",
+      "weight": 20,
+      "title": "这张账单，辣椒炒肉有几份",
+      "prompts": [
+        "请告诉我这个账单，辣椒炒肉有几份？"
+      ],
+      "full": "附原图测试后，明确回答1份。",
+      "partial": "本题不设半分；矛盾或未明确数量时待人工复核。",
+      "zero": "明确回答2份或其他错误数量。",
+      "allowPartial": false,
+      "image": "assets/receipt-chilli-pork.png",
+      "imageSha256": "73a513249777e5c4ea4d88545e9c7c0b83344b9284f5b0b29c0f0b5690ccee11"
+    },
+    {
+      "id": "zebra",
+      "name": "斑马绘画",
+      "title": "画一只在非洲稀树草原上奔跑的斑马",
+      "weight": 15,
+      "prompts": [
+        "画一只在非洲稀树草原上奔跑的斑马。应能清楚看到斑马的黑白条纹、奔跑姿态和草原环境。\n为便于直接预览，请只输出一份800×600的独立SVG源码，不加代码围栏，不使用外部图片、脚本、CSS或foreignObject。可以使用svg、g、path、circle、ellipse、rect、line、polyline、polygon、text、tspan、defs、linearGradient、radialGradient、stop、clipPath、mask、title、desc、use；href和url仅引用图内ID。"
+      ],
+      "full": "能安全预览，按斑马特征5、奔跑姿态4、草原环境3、画面交付3分别计分。",
+      "partial": "按四项实际完成程度累加，不固定为一半分。",
+      "zero": "超时、输出耗尽或无法得到完整安全SVG时，本次未交付，得0分。原回答若有说明或围栏，只提取唯一完整SVG预览，保留原文，格式问题计入交付分；不改图形。",
+      "allowPartial": true,
+      "rubricType": "criteria",
+      "criteria": [
+        {
+          "id": "zebra-identity",
+          "label": "斑马特征与条纹",
+          "max": 5,
+          "anchors": "5：形体清楚，头、躯干、四肢的条纹分布协调；4：可认但比例或局部条纹欠佳；3：有条纹但头身形体明显失真；2：仅局部斑马特征；1：特征很弱、难以辨认；0：无可见斑马条纹或主体不是斑马。"
+        },
+        {
+          "id": "running",
+          "label": "奔跑姿态",
+          "max": 4,
+          "anchors": "4：清楚的奔跑步态，四肢连接合理；3：明显在跑，但局部关节机械或肢体重叠；2：有运动感但步态或肢体关系明显不清；1：仅速度线等运动暗示；0：静站或看不出运动。"
+        },
+        {
+          "id": "savannah",
+          "label": "非洲稀树草原",
+          "max": 3,
+          "anchors": "3：草原、地平线和稀疏树木等环境可辨；2：草原可辨但环境线索少；1：泛化地面或背景不足；0：无环境或场景不符。"
+        },
+        {
+          "id": "delivery",
+          "label": "画面与交付",
+          "max": 3,
+          "anchors": "3：完整、清楚、主体未严重裁切，直接合规SVG；2：画面清楚但多了代码围栏等轻微格式问题；1：明显遮挡、重叠或裁切；0：不能安全预览。"
+        }
+      ],
+      "image": null,
+      "imageSha256": null
+    }
+  ],
+  "models": [
+    {
+      "modelId": "deepseek-v41-flash",
+      "sourceDigest": "47108983b7a6630e7191f7e52c7898f1c98a1d19a4bd529c929860491f3de44a",
+      "items": [
+        {
+          "taskId": "purpose",
+          "score": 2,
+          "reason": "明确开车去，因为要把楼下的车送去洗；没有相互矛盾的建议。"
+        },
+        {
+          "taskId": "reasoning",
+          "score": 2,
+          "reason": "正确算出10点15，并明确否定10点05。"
+        },
+        {
+          "taskId": "edit",
+          "score": 2,
+          "reason": "最终句子与目标句逐字一致（仅忽略首尾空白）。"
+        },
+        {
+          "taskId": "memory",
+          "score": 2,
+          "reason": "最后一轮保留两人、合计1500元、不开车、周日晚回四项。"
+        },
+        {
+          "taskId": "honesty",
+          "score": 1,
+          "reason": "三项待办和事实正确，未编造；但海报负责人写“未定”，没有按要求写“未说明”，扣1分格式分。",
+          "weightedNote": "三项待办和事实正确，未编造；负责人写“未定”而非指定的“未说明”。本项部分完成，得7.5/15分。"
+        },
+        {
+          "taskId": "visual",
+          "score": 0,
+          "reason": "默认档输出上限耗尽，没有完整正文；本条件下未交付。low档补测不补入此分。"
+        },
+        {
+          "taskId": "receipt",
+          "score": 0,
+          "reason": "明确结论为2份，并把主项和带连字符的下一行相加，未达到本题参考答案1份。",
+          "reviewer": "assistant-first-pass",
+          "measurement": {
+            "status": "success",
+            "error": null,
+            "output": "根据账单图片显示，**辣椒炒肉一共有2份**。\n\n具体明细如下：\n1. 第一行主项：`辣椒炒肉 Stir-Fried Pork with Chili`，数量（Quantity）为 **1**。\n2. 紧接着下面带减号的子项：`- 辣椒炒肉 Stir-Fried Pork with Chili*`，数量（Quantity）为 **1**。\n\n两者相加，总共点了2份。",
+            "checkedAt": "2026-10-26T00:55:31.265+00:00",
+            "condition": "default reasoning; maxOutputTokens8192; timeout180; no retries",
+            "apiModel": "deepseek/deepseek-v4.1-flash",
+            "provider": "CommandCode",
+            "sourceDigest": "c95fcafa83ee552a6c5a57aa9acdd0a7b0b34f9327398415d556c71d192a6036",
+            "tokenUsage": {
+              "inputTokens": 967,
+              "outputTokens": 349,
+              "reasoningTokens": 258
+            },
+            "imageSha256": "73a513249777e5c4ea4d88545e9c7c0b83344b9284f5b0b29c0f0b5690ccee11"
+          }
+        },
+        {
+          "taskId": "zebra",
+          "score": 1.2,
+          "reason": "实际画面更像白马，关键黑白条纹没有显示；奔跑姿态和草原环境清楚。原回答另附说明和围栏，交付格式扣1分，共9/15。",
+          "reviewer": "assistant-first-pass",
+          "measurement": {
+            "status": "success",
+            "error": null,
+            "output": "这是按照你的要求生成的独立 SVG 源码，画面聚焦一只在非洲稀树草原上奔跑的斑马，并清晰表现黑白条纹、动态姿态与落日草原环境。\n```svg\n<svg width=\"800\" height=\"600\" viewBox=\"0 0 800 600\" xmlns=\"http://www.w3.org/2000/svg\">\n  <title>奔跑的斑马</title>\n  <desc>一只在非洲稀树草原上奔跑的斑马，背景为日落、金合欢树和草原。</desc>\n\n  <defs>\n    <!-- 天空渐变 -->\n    <linearGradient id=\"skyGrad\" x1=\"0%\" y1=\"0%\" x2=\"0%\" y2=\"100%\">\n      <stop offset=\"0%\" stop-color=\"#4A90E2\" />\n      <stop offset=\"40%\" stop-color=\"#FFB347\" />\n      <stop offset=\"100%\" stop-color=\"#FF6B35\" />\n    </linearGradient>\n\n    <!-- 太阳发光渐变 -->\n    <radialGradient id=\"sunGrad\" cx=\"50%\" cy=\"50%\" r=\"50%\">\n      <stop offset=\"0%\" stop-color=\"#FFF5E1\" />\n      <stop offset=\"60%\" stop-color=\"#FFD700\" />\n      <stop offset=\"100%\" stop-color=\"#FF8C00\" stop-opacity=\"0\" />\n    </radialGradient>\n\n    <!-- 地面渐变 -->\n    <linearGradient id=\"groundGrad\" x1=\"0%\" y1=\"0%\" x2=\"0%\" y2=\"100%\">\n      <stop offset=\"0%\" stop-color=\"#C8963E\" />\n      <stop offset=\"100%\" stop-color=\"#6B4226\" />\n    </linearGradient>\n\n    <!-- 斑马身体形状（用于剪辑路径） -->\n    <g id=\"zebraShape\">\n      <!-- 身体 -->\n      <path d=\"M 280 400 C 300 340, 450 340, 520 370 C 560 380, 600 380, 620 400 L 620 440 C 580 460, 480 470, 380 450 C 320 440, 280 430, 280 400 Z\" />\n      <!-- 颈部 -->\n      <path d=\"M 520 370 C 580 300, 640 300, 680 340 L 660 390 C 620 390, 580 400, 540 400 Z\" />\n      <!-- 头部 -->\n      <path d=\"M 660 340 C 680 310, 710 320, 720 350 L 690 380 C 670 380, 650 370, 660 340 Z\" />\n      <!-- 耳朵 -->\n      <path d=\"M 670 320 L 660 280 L 680 300 Z\" />\n      <!-- 尾巴 -->\n      <path d=\"M 280 400 C 240 380, 200 370, 180 340 C 220 380, 240 400, 280 420 Z\" />\n      <!-- 前腿1（向前伸展） -->\n      <path d=\"M 540 420 C 570 450, 600 480, 620 490 L 610 500 C 580 490, 550 460, 520 430 Z\" />\n      <!-- 前腿2（弯曲） -->\n      <path d=\"M 570 430 C 590 460, 590 500, 580 530 L 560 520 C 570 490, 560 460, 540 440 Z\" />\n      <!-- 后腿1（向后伸展） -->\n      <path d=\"M 330 430 C 290 470, 250 500, 220 520 L 210 510 C 240 490, 280 460, 310 420 Z\" />\n      <!-- 后腿2（向前弯曲） -->\n      <path d=\"M 380 440 C 410 480, 430 520, 430 550 L 410 540 C 410 510, 390 480, 360 450 Z\" />\n    </g>\n\n    <!-- 斑马剪辑路径 -->\n    <clipPath id=\"zebraClip\">\n      <use href=\"#zebraShape\" />\n    </clipPath>\n\n    <!-- 草丛符号 -->\n    <g id=\"grass\">\n      <path d=\"M 0 0 Q 10 -20 20 -40 M 10 0 Q 15 -30 25 -50 M 20 0 Q 30 -20 40 -30\" stroke=\"#556B2F\" stroke-width=\"3\" fill=\"none\" stroke-linecap=\"round\" />\n    </g>\n  </defs>\n\n  <!-- 背景天空 -->\n  <rect x=\"0\" y=\"0\" width=\"800\" height=\"500\" fill=\"url(#skyGrad)\" />\n\n  <!-- 太阳 -->\n  <circle cx=\"600\" cy=\"250\" r=\"100\" fill=\"url(#sunGrad)\" />\n  <circle cx=\"600\" cy=\"250\" r=\"60\" fill=\"#FFD700\" opacity=\"0.8\" />\n\n  <!-- 云层 -->\n  <path d=\"M 100 200 Q 150 180 200 200 Q 250 190 300 210 L 300 220 L 100 220 Z\" fill=\"#FFB347\" opacity=\"0.3\" />\n  <path d=\"M 500 150 Q 550 130 600 150 Q 650 140 700 160 L 700 170 L 500 170 Z\" fill=\"#FFB347\" opacity=\"0.2\" />\n\n  <!-- 远处的鸟 -->\n  <g stroke=\"#333\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\n    <path d=\"M 200 150 Q 210 140 220 150 Q 210 145 200 150\" />\n    <path d=\"M 230 130 Q 240 120 250 130 Q 240 125 230 130\" />\n    <path d=\"M 180 160 Q 190 150 200 160 Q 190 155 180 160\" />\n    <path d=\"M 700 180 Q 710 170 720 180 Q 710 175 700 180\" />\n  </g>\n\n  <!-- 远山/丘陵 -->\n  <path d=\"M 0 450 Q 100 400 200 450 T 400 430 T 600 460 T 800 440 L 800 500 L 0 500 Z\" fill=\"#A67B5B\" opacity=\"0.5\" />\n\n  <!-- 地面 -->\n  <rect x=\"0\" y=\"450\" width=\"800\" height=\"150\" fill=\"url(#groundGrad)\" />\n\n  <!-- 金合欢树（背景） -->\n  <g fill=\"#2E402E\" opacity=\"0.8\">\n    <!-- 树1 -->\n    <path d=\"M 100 450 L 110 380 L 120 450 Z\" />\n    <path d=\"M 60 380 Q 110 340 160 380 Q 110 360 60 380 Z\" />\n    <path d=\"M 50 390 Q 110 360 170 390 Q 110 380 50 390 Z\" />\n    <!-- 树2 -->\n    <path d=\"M 700 450 L 710 370 L 720 450 Z\" />\n    <path d=\"M 650 380 Q 710 330 770 380 Q 710 360 650 380 Z\" />\n    <path d=\"M 640 390 Q 710 350 780 390 Q 710 380 640 390 Z\" />\n  </g>\n\n  <!-- 金合欢树（前景左侧） -->\n  <g fill=\"#1F2E1F\">\n    <path d=\"M 50 500 L 60 420 L 70 500 Z\" />\n    <path d=\"M 10 420 Q 60 380 110 420 Q 60 400 10 420 Z\" />\n    <path d=\"M 0 430 Q 60 390 120 430 Q 60 420 0 430 Z\" />\n  </g>\n\n  <!-- 斑马下方的阴影 -->\n  <ellipse cx=\"420\" cy=\"520\" rx=\"200\" ry=\"25\" fill=\"#4A2F1D\" opacity=\"0.4\" />\n\n  <!-- 斑马 -->\n  <g id=\"zebra\">\n    <!-- 斑马身体底色（白色） -->\n    <use href=\"#zebraShape\" fill=\"#F5F5F5\" />\n\n    <!-- 斑马条纹（使用剪辑路径限制在身体范围内） -->\n    <g clip-path=\"url(#zebraClip)\">\n      <!-- 身体条纹 -->\n      <path d=\"M 320 340 Q 300 400 320 460\" stroke=\"#1A1A1A\" stroke-width=\"12\" fill=\"none\" stroke-linecap=\"round\" />\n      <path d=\"M 360 335 Q 340 400 360 465\" stroke=\"#1A1A1A\" stroke-width=\"12\" fill=\"none\" stroke-linecap=\"round\" />\n      <path d=\"M 400 335 Q 380 400 400 470\" stroke=\"#1A1A1A\" stroke-width=\"12\" fill=\"none\" stroke-linecap=\"round\" />\n      <path d=\"M 440 335 Q 420 400 440 470\" stroke=\"#1A1A1A\" stroke-width=\"12\" fill=\"none\" stroke-linecap=\"round\" />\n      <path d=\"M 480 340 Q 460 400 480 465\" stroke=\"#1A1A1A\" stroke-width=\"12\" fill=\"none\" stroke-linecap=\"round\" />\n      <path d=\"M 520 350 Q 500 400 520 455\" stroke=\"#1A1A1A\" stroke-width=\"12\" fill=\"none\" stroke-linecap=\"round\" />\n      <path d=\"M 560 365 Q 540 400 560 445\" stroke=\"#1A1A1A\" stroke-width=\"12\" fill=\"none\" stroke-linecap=\"round\" />\n      <path d=\"M 600 380 Q 580 410 600 430\" stroke=\"#1A1A1A\" stroke-width=\"12\" fill=\"none\" stroke-linecap=\"round\" />\n\n      <!-- 颈部条纹 -->\n      <path d=\"M 540 380 Q 580 360 620 390\" stroke=\"#1A1A1A\" stroke-width=\"12\" fill=\"none\" stroke-linecap=\"round\" />\n      <path d=\"M 555 355 Q 600 330 640 365\" stroke=\"#1A1A1A\" stroke-width=\"12\" fill=\"none\" stroke-linecap=\"round\" />\n      <path d=\"M 575 330 Q 620 305 660 340\" stroke=\"#1A1A1A\" stroke-width=\"12\" fill=\"none\" stroke-linecap=\"round\" />\n      <path d=\"M 600 305 Q 640 285 670 315\" stroke=\"#1A1A1A\" stroke-width=\"12\" fill=\"none\" stroke-linecap=\"round\" />\n\n      <!-- 头部条纹 -->\n      <path d=\"M 670 350 Q 690 345 700 360\" stroke=\"#1A1A1A\" stroke-width=\"10\" fill=\"none\" stroke-linecap=\"round\" />\n      <path d=\"M 680 335 Q 700 330 710 345\" stroke=\"#1A1A1A\" stroke-width=\"10\" fill=\"none\" stroke-linecap=\"round\" />\n\n      <!-- 前腿1条纹 -->\n      <path d=\"M 560 450 L 580 460\" stroke=\"#1A1A1A\" stroke-width=\"12\" fill=\"none\" stroke-linecap=\"round\" />\n      <path d=\"M 580 470 L 600 480\" stroke=\"#1A1A1A\" stroke-width=\"12\" fill=\"none\" stroke-linecap=\"round\" />\n      <path d=\"M 600 490 L 615 495\" stroke=\"#1A1A1A\" stroke-width=\"12\" fill=\"none\" stroke-linecap=\"round\" />\n\n      <!-- 前腿2条纹 -->\n      <path d=\"M 570 460 L 580 470\" stroke=\"#1A1A1A\" stroke-width=\"12\" fill=\"none\" stroke-linecap=\"round\" />\n      <path d=\"M 565 490 L 575 500\" stroke=\"#1A1A1A\" stroke-width=\"12\" fill=\"none\" stroke-linecap=\"round\" />\n      <path d=\"M 570 515 L 580 525\" stroke=\"#1A1A1A\" stroke-width=\"12\" fill=\"none\" stroke-linecap=\"round\" />\n\n      <!-- 后腿1条纹 -->\n      <path d=\"M 300 450 L 280 460\" stroke=\"#1A1A1A\" stroke-width=\"12\" fill=\"none\" stroke-linecap=\"round\" />\n      <path d=\"M 270 470 L 250 480\" stroke=\"#1A1A1A\" stroke-width=\"12\" fill=\"none\" stroke-linecap=\"round\" />\n      <path d=\"M 240 490 L 225 500\" stroke=\"#1A1A1A\" stroke-width=\"12\" fill=\"none\" stroke-linecap=\"round\" />\n\n      <!-- 后腿2条纹 -->\n      <path d=\"M 390 470 L 400 480\" stroke=\"#1A1A1A\" stroke-width=\"12\" fill=\"none\" stroke-linecap=\"round\" />\n      <path d=\"M 400 500 L 410 510\" stroke=\"#1A1A1A\" stroke-width=\"12\" fill=\"none\" stroke-linecap=\"round\" />\n      <path d=\"M 410 530 L 420 540\" stroke=\"#1A1A1A\" stroke-width=\"12\" fill=\"none\" stroke-linecap=\"round\" />\n\n      <!-- 尾巴条纹 -->\n      <path d=\"M 260 390 L 240 380\" stroke=\"#1A1A1A\" stroke-width=\"10\" fill=\"none\" stroke-linecap=\"round\" />\n      <path d=\"M 230 375 L 210 365\" stroke=\"#1A1A1A\" stroke-width=\"10\" fill=\"none\" stroke-linecap=\"round\" />\n    </g>\n\n    <!-- 鬃毛 -->\n    <path d=\"M 520 370 Q 540 340 560 320 Q 580 300 600 310 Q 620 290 640 310 Q 660 300 670 320 L 680 340 Q 660 330 640 340 Q 620 320 600 340 Q 580 330 560 350 Q 540 370 520 370 Z\" fill=\"#1A1A1A\" />\n\n    <!-- 尾巴毛簇 -->\n    <path d=\"M 180 340 Q 160 320 150 300 Q 170 310 180 320 Q 190 300 200 310 Q 190 330 180 340 Z\" fill=\"#1A1A1A\" />\n\n    <!-- 口鼻部 -->\n    <path d=\"M 710 350 L 720 370 L 690 380 Z\" fill=\"#333\" />\n\n    <!-- 眼睛 -->\n    <circle cx=\"685\" cy=\"345\" r=\"4\" fill=\"#1A1A1A\" />\n\n    <!-- 蹄子 -->\n    <path d=\"M 620 490 L 610 500 L 625 495 Z\" fill=\"#111\" />\n    <path d=\"M 580 530 L 560 520 L 575 535 Z\" fill=\"#111\" />\n    <path d=\"M 220 520 L 210 510 L 215 525 Z\" fill=\"#111\" />\n    <path d=\"M 430 550 L 410 540 L 425 555 Z\" fill=\"#111\" />\n  </g>\n\n  <!-- 奔跑扬起的尘土 -->\n  <g fill=\"#D2B48C\" opacity=\"0.6\">\n    <circle cx=\"220\" cy=\"460\" r=\"4\" />\n    <circle cx=\"250\" cy=\"490\" r=\"6\" />\n    <circle cx=\"180\" cy=\"500\" r=\"5\" />\n    <circle cx=\"280\" cy=\"520\" r=\"7\" />\n    <circle cx=\"200\" cy=\"480\" r=\"3\" />\n    <circle cx=\"160\" cy=\"520\" r=\"4\" />\n    <path d=\"M 200 480 Q 180 460 160 480\" stroke=\"#D2B48C\" stroke-width=\"4\" fill=\"none\" stroke-linecap=\"round\" />\n    <path d=\"M 180 510 Q 160 495 140 510\" stroke=\"#D2B48C\" stroke-width=\"3\" fill=\"none\" stroke-linecap=\"round\" />\n  </g>\n\n  <!-- 前景草丛 -->\n  <use href=\"#grass\" x=\"100\" y=\"520\" />\n  <use href=\"#grass\" x=\"300\" y=\"560\" />\n  <use href=\"#grass\" x=\"600\" y=\"540\" />\n  <use href=\"#grass\" x=\"750\" y=\"570\" />\n  <use href=\"#grass\" x=\"50\" y=\"580\" />\n  <use href=\"#grass\" x=\"450\" y=\"590\" />\n  <use href=\"#grass\" x=\"680\" y=\"580\" />\n</svg>\n```\n画面以橙蓝渐变天空、太阳、远山和金合欢树构建草原背景，斑马位于前景偏中位置，前腿伸展、后腿蹬地，配合鬃毛与扬尘突出奔跑感；身体条纹用独立路径分区绘制，黑白对比明确，整体层次清晰。",
+            "checkedAt": "2026-10-26T01:03:17.974+00:00",
+            "condition": "low reasoning; cap16384; timeout180; one attempt; no retries",
+            "apiModel": "deepseek/deepseek-v4.1-flash",
+            "provider": "CommandCode",
+            "sourceDigest": "b8ce648491f1583592508ce7a8a78b9392cda2f879844327cb4f8da70659e3d9",
+            "tokenUsage": {
+              "inputTokens": 154,
+              "outputTokens": 14395,
+              "reasoningTokens": 10442
+            }
+          },
+          "criteriaScores": [
+            {
+              "awarded": 0,
+              "reason": "主体为大面积纯白，缺少可见的斑马黑白条纹。"
+            },
+            {
+              "awarded": 4,
+              "reason": "四肢形成伸展与弯曲的跑动姿态，尾部和扬尘强化运动感。"
+            },
+            {
+              "awarded": 3,
+              "reason": "可见草地、地平线、稀疏伞形树和日落环境。"
+            },
+            {
+              "awarded": 2,
+              "reason": "主体完整清晰，但额外附带说明文字与代码围栏。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "kimi-k31-pro",
+      "sourceDigest": "6c71d1d17c6d857d531aaa866568dd590583d1526e544efdc5f139b05fc3dda7",
+      "items": [
+        {
+          "taskId": "purpose",
+          "score": 2,
+          "reason": "明确开车送车去洗，目的与理由一致。"
+        },
+        {
+          "taskId": "reasoning",
+          "score": 2,
+          "reason": "算出10点15，并纠正10点05；分段计算一致。"
+        },
+        {
+          "taskId": "edit",
+          "score": 2,
+          "reason": "最终句子与目标句逐字一致（仅忽略首尾空白）。"
+        },
+        {
+          "taskId": "memory",
+          "score": 2,
+          "reason": "最后一轮四项限制齐全，无错误或新增限制。"
+        },
+        {
+          "taskId": "honesty",
+          "score": 2,
+          "reason": "三项待办、唯一已知负责人和时间均正确，未知项标明“未说明”。"
+        },
+        {
+          "taskId": "visual",
+          "score": 0,
+          "reason": "默认档180秒超时，未完整交付；单独的low档补测也超时。"
+        },
+        {
+          "taskId": "receipt",
+          "score": 0,
+          "reason": "明确把两条记录的数量相加，回答2份。",
+          "reviewer": "assistant-first-pass",
+          "measurement": {
+            "status": "success",
+            "error": null,
+            "output": "账单上“辣椒炒肉”有两条记录，数量各为 1，所以一共是 **2 份**。",
+            "checkedAt": "2026-10-26T00:55:58.563+00:00",
+            "condition": "default reasoning; maxOutputTokens8192; timeout180; no retries",
+            "apiModel": "moonshotai/Kimi-K3.1-Pro",
+            "provider": "CommandCode",
+            "sourceDigest": "afa5cc0aeafe07df47a23dfbc21679959cc3b5d4effa18d9affc1330577d7707",
+            "tokenUsage": {
+              "inputTokens": 2122,
+              "outputTokens": 539,
+              "reasoningTokens": 499
+            },
+            "imageSha256": "73a513249777e5c4ea4d88545e9c7c0b83344b9284f5b0b29c0f0b5690ccee11"
+          }
+        },
+        {
+          "taskId": "zebra",
+          "score": 0,
+          "reason": "180秒内未完整交付，未返回正文SVG。本次交付失败，按事先规定计0/15，不伪造画面。",
+          "reviewer": "assistant-first-pass",
+          "measurement": {
+            "status": "timeout",
+            "error": "request_timeout",
+            "output": "",
+            "checkedAt": "2026-10-26T01:06:21.429+00:00",
+            "condition": "low reasoning; cap16384; timeout180; one attempt; no retries",
+            "apiModel": "moonshotai/Kimi-K3.1-Pro",
+            "provider": "CommandCode",
+            "sourceDigest": "6352bdc2a613df8df11f9c92fa8e427af65ff7645eda68a5170a6dec7d9d630e",
+            "tokenUsage": {
+              "inputTokens": null,
+              "outputTokens": null,
+              "reasoningTokens": null
+            }
+          },
+          "criteriaScores": []
+        }
+      ]
+    },
+    {
+      "modelId": "kimi-k3",
+      "sourceDigest": "057b0db77622c3cbf75d48a9b785d5780afd0f2d780e97c090751294e9de2d96",
+      "items": [
+        {
+          "taskId": "purpose",
+          "score": 2,
+          "reason": "明确需要把车开去，理由围绕洗车目的。"
+        },
+        {
+          "taskId": "reasoning",
+          "score": 2,
+          "reason": "明确纠错为10点15，计算过程正确，没有附和错误时间。"
+        },
+        {
+          "taskId": "edit",
+          "score": 2,
+          "reason": "最终句子与目标句逐字一致（仅忽略首尾空白）。"
+        },
+        {
+          "taskId": "memory",
+          "score": 2,
+          "reason": "最后一轮保留原来的四项限制；中间回答不计入此项记忆分。"
+        },
+        {
+          "taskId": "honesty",
+          "score": 2,
+          "reason": "三项待办与已知信息正确，未知项使用“未说明”；括号解释来自记录。"
+        },
+        {
+          "taskId": "visual",
+          "score": 0,
+          "reason": "默认档输出上限耗尽，没有完整正文；low档补测图片单独展示。"
+        },
+        {
+          "taskId": "receipt",
+          "score": 0,
+          "reason": "明确结论为2份；之后列出备注或重复点单两种可能，并建议确认，没有给出正确的明确1份结论。",
+          "reviewer": "assistant-first-pass",
+          "measurement": {
+            "status": "success",
+            "error": null,
+            "output": "根据账单显示，**辣椒炒肉出现了两次，每份数量都是1**：\n\n1. **辣椒炒肉** Stir-Fried Pork with Chili — 数量 1\n2. **- 辣椒炒肉** Stir-Fried Pork with Chili* — 数量 1\n\n所以一共是 **2份**。\n\n不过需要注意的是，第二条记录前面有\"-\"符号、后面有\"*\"标记，这种情况下有可能是同一道菜的特殊备注（比如辣度调整或其他要求），也可能是重复点了一份。建议您可以和服务员确认一下是否为两份不同的辣椒炒肉。",
+            "checkedAt": "2026-10-26T00:56:33.939+00:00",
+            "condition": "default reasoning; maxOutputTokens8192; timeout180; no retries",
+            "apiModel": "moonshotai/Kimi-K3",
+            "provider": "CommandCode",
+            "sourceDigest": "67c4ee2e710c493b36edbc157656875bea1bfd7f4e4ded7a0d0c6d5220340851",
+            "tokenUsage": {
+              "inputTokens": 2125,
+              "outputTokens": 577,
+              "reasoningTokens": 452
+            },
+            "imageSha256": "73a513249777e5c4ea4d88545e9c7c0b83344b9284f5b0b29c0f0b5690ccee11"
+          }
+        },
+        {
+          "taskId": "zebra",
+          "score": 1.8666666666666667,
+          "reason": "斑马特征、条纹与草原明确，整体清楚；中间两条腿较直，关节和步态略显机械，奔跑项扣1分，共14/15。",
+          "reviewer": "assistant-first-pass",
+          "measurement": {
+            "status": "success",
+            "error": null,
+            "output": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"800\" height=\"600\" viewBox=\"0 0 800 600\">\n  <defs>\n    <linearGradient id=\"sky\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\">\n      <stop offset=\"0\" stop-color=\"#bfe8ff\"/>\n      <stop offset=\"0.55\" stop-color=\"#ffe9b0\"/>\n      <stop offset=\"1\" stop-color=\"#ffd18a\"/>\n    </linearGradient>\n    <linearGradient id=\"ground\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\">\n      <stop offset=\"0\" stop-color=\"#d9b85f\"/>\n      <stop offset=\"0.45\" stop-color=\"#c99b45\"/>\n      <stop offset=\"1\" stop-color=\"#8f6b2d\"/>\n    </linearGradient>\n    <radialGradient id=\"sun\" cx=\"0.5\" cy=\"0.5\" r=\"0.5\">\n      <stop offset=\"0\" stop-color=\"#fff8cf\"/>\n      <stop offset=\"0.65\" stop-color=\"#ffd15a\"/>\n      <stop offset=\"1\" stop-color=\"#ffab32\"/>\n    </radialGradient>\n\n    <path id=\"bodyShape\" d=\"M302 322 C334 274 458 263 538 301 C582 322 579 370 526 392 C438 429 337 405 300 365 C281 345 282 330 302 322 Z\"/>\n    <path id=\"neckShape\" d=\"M526 306 C556 258 601 224 658 214 C690 208 724 223 732 242 C722 264 690 274 657 279 C627 315 585 341 542 348 Z\"/>\n    <path id=\"frontNearLeg\" d=\"M556 365 C593 390 642 427 700 485 L720 475 C677 412 626 371 576 343 Z\"/>\n    <path id=\"hindNearLeg\" d=\"M333 366 C286 402 238 447 190 505 L214 515 C268 465 323 421 367 389 Z\"/>\n    <path id=\"frontFarLeg\" d=\"M512 370 C548 405 565 449 569 514 L592 514 C600 452 588 403 548 361 Z\"/>\n    <path id=\"hindFarLeg\" d=\"M392 380 C371 423 371 468 389 528 L412 525 C398 468 404 424 430 386 Z\"/>\n\n    <clipPath id=\"bodyClip\"><use href=\"#bodyShape\"/></clipPath>\n    <clipPath id=\"neckClip\"><use href=\"#neckShape\"/></clipPath>\n    <clipPath id=\"frontNearClip\"><use href=\"#frontNearLeg\"/></clipPath>\n    <clipPath id=\"hindNearClip\"><use href=\"#hindNearLeg\"/></clipPath>\n    <clipPath id=\"frontFarClip\"><use href=\"#frontFarLeg\"/></clipPath>\n    <clipPath id=\"hindFarClip\"><use href=\"#hindFarLeg\"/></clipPath>\n  </defs>\n\n  <rect width=\"800\" height=\"405\" fill=\"url(#sky)\"/>\n  <rect y=\"380\" width=\"800\" height=\"220\" fill=\"url(#ground)\"/>\n  <circle cx=\"642\" cy=\"112\" r=\"58\" fill=\"url(#sun)\" opacity=\"0.95\"/>\n  <path d=\"M0 358 C120 324 230 344 350 332 C505 316 645 340 800 322 L800 392 L0 392 Z\" fill=\"#a9823d\" opacity=\"0.45\"/>\n  <ellipse cx=\"430\" cy=\"526\" rx=\"185\" ry=\"28\" fill=\"#4b3317\" opacity=\"0.25\"/>\n\n  <g fill=\"#5c4322\" opacity=\"0.9\">\n    <rect x=\"120\" y=\"300\" width=\"10\" height=\"72\"/>\n    <path d=\"M70 306 C105 278 166 279 198 306 C165 293 103 294 70 306 Z\"/>\n    <path d=\"M105 284 C126 263 154 264 176 286 C151 277 129 277 105 284 Z\"/>\n    <rect x=\"688\" y=\"316\" width=\"9\" height=\"58\"/>\n    <path d=\"M646 318 C680 292 733 294 762 322 C724 308 681 307 646 318 Z\"/>\n  </g>\n\n  <g opacity=\"0.38\" fill=\"#efe0b2\">\n    <ellipse cx=\"225\" cy=\"506\" rx=\"40\" ry=\"10\"/>\n    <ellipse cx=\"690\" cy=\"492\" rx=\"46\" ry=\"11\"/>\n    <ellipse cx=\"590\" cy=\"535\" rx=\"58\" ry=\"13\"/>\n  </g>\n\n  <g id=\"zebra\" stroke-linejoin=\"round\" stroke-linecap=\"round\">\n    <use href=\"#hindFarLeg\" fill=\"#e8e8e8\" stroke=\"#151515\" stroke-width=\"4\"/>\n    <g clip-path=\"url(#hindFarClip)\" fill=\"#111\">\n      <rect x=\"370\" y=\"405\" width=\"80\" height=\"14\" transform=\"rotate(18 380 410)\"/>\n      <rect x=\"372\" y=\"448\" width=\"80\" height=\"13\" transform=\"rotate(8 380 450)\"/>\n      <rect x=\"382\" y=\"492\" width=\"60\" height=\"12\"/>\n    </g>\n    <use href=\"#frontFarLeg\" fill=\"#e8e8e8\" stroke=\"#151515\" stroke-width=\"4\"/>\n    <g clip-path=\"url(#frontFarClip)\" fill=\"#111\">\n      <rect x=\"514\" y=\"392\" width=\"80\" height=\"14\" transform=\"rotate(35 530 398)\"/>\n      <rect x=\"530\" y=\"440\" width=\"82\" height=\"13\" transform=\"rotate(78 565 445)\"/>\n      <rect x=\"558\" y=\"486\" width=\"50\" height=\"15\"/>\n    </g>\n\n    <use href=\"#bodyShape\" fill=\"#f7f7f0\" stroke=\"#101010\" stroke-width=\"5\"/>\n    <g clip-path=\"url(#bodyClip)\" fill=\"#0b0b0b\">\n      <path d=\"M320 300 C348 330 344 380 314 402 L352 410 C388 380 394 319 360 278 Z\"/>\n      <path d=\"M394 270 C428 305 424 378 386 414 L426 421 C470 382 478 307 438 267 Z\"/>\n      <path d=\"M478 276 C512 304 526 342 516 398 L555 384 C570 350 556 310 522 288 Z\"/>\n      <path d=\"M300 330 C330 341 356 342 386 333 L392 351 C358 362 323 359 293 348 Z\"/>\n      <path d=\"M420 286 C468 300 520 300 564 314 L558 331 C512 319 464 319 416 305 Z\"/>\n      <path d=\"M355 405 C420 392 481 396 534 378 L542 393 C492 417 410 421 344 419 Z\"/>\n    </g>\n\n    <use href=\"#neckShape\" fill=\"#f7f7f0\" stroke=\"#101010\" stroke-width=\"5\"/>\n    <g clip-path=\"url(#neckClip)\" fill=\"#0b0b0b\">\n      <path d=\"M548 288 C580 304 604 330 612 352 L640 337 C624 305 597 282 566 268 Z\"/>\n      <path d=\"M606 238 C630 255 646 276 650 298 L676 286 C669 259 650 238 626 224 Z\"/>\n      <path d=\"M666 214 C684 228 699 244 704 263 L732 246 C728 229 710 216 690 211 Z\"/>\n      <path d=\"M528 313 C570 315 610 329 646 285 L657 298 C626 346 575 334 536 331 Z\"/>\n    </g>\n    <path d=\"M532 304 C570 252 626 215 690 209\" fill=\"none\" stroke=\"#090909\" stroke-width=\"12\"/>\n    <path d=\"M652 211 L662 176 L681 214 Z\" fill=\"#f7f7f0\" stroke=\"#101010\" stroke-width=\"4\"/>\n    <path d=\"M688 216 L706 184 L716 228 Z\" fill=\"#f7f7f0\" stroke=\"#101010\" stroke-width=\"4\"/>\n    <path d=\"M707 232 C728 236 742 249 738 264 C724 274 704 273 688 265 C701 257 708 246 707 232 Z\" fill=\"#f7f7f0\" stroke=\"#101010\" stroke-width=\"4\"/>\n    <circle cx=\"683\" cy=\"239\" r=\"5\" fill=\"#050505\"/>\n    <path d=\"M724 254 C733 256 738 261 735 267\" fill=\"none\" stroke=\"#050505\" stroke-width=\"4\"/>\n    <path d=\"M300 350 C265 372 236 410 220 456\" fill=\"none\" stroke=\"#f7f7f0\" stroke-width=\"13\"/>\n    <path d=\"M300 350 C265 372 236 410 220 456\" fill=\"none\" stroke=\"#101010\" stroke-width=\"4\"/>\n    <path d=\"M211 446 C196 462 191 486 197 507 C216 500 227 481 229 456 Z\" fill=\"#111\"/>\n\n    <use href=\"#hindNearLeg\" fill=\"#ffffff\" stroke=\"#151515\" stroke-width=\"5\"/>\n    <g clip-path=\"url(#hindNearClip)\" fill=\"#101010\">\n      <rect x=\"235\" y=\"404\" width=\"150\" height=\"15\" transform=\"rotate(39 250 410)\"/>\n      <rect x=\"206\" y=\"444\" width=\"135\" height=\"14\" transform=\"rotate(46 225 450)\"/>\n      <rect x=\"184\" y=\"482\" width=\"75\" height=\"16\" transform=\"rotate(28 190 488)\"/>\n    </g>\n    <path d=\"M186 500 C202 494 220 503 226 518 C211 531 189 529 177 516 Z\" fill=\"#111\"/>\n\n    <use href=\"#frontNearLeg\" fill=\"#ffffff\" stroke=\"#151515\" stroke-width=\"5\"/>\n    <g clip-path=\"url(#frontNearClip)\" fill=\"#101010\">\n      <rect x=\"565\" y=\"362\" width=\"140\" height=\"15\" transform=\"rotate(38 590 368)\"/>\n      <rect x=\"610\" y=\"410\" width=\"145\" height=\"14\" transform=\"rotate(42 625 416)\"/>\n      <rect x=\"676\" y=\"462\" width=\"70\" height=\"17\" transform=\"rotate(28 690 468)\"/>\n    </g>\n    <path d=\"M700 474 C721 468 739 480 742 496 C725 507 703 503 694 489 Z\" fill=\"#111\"/>\n  </g>\n\n  <g stroke=\"#6e5426\" stroke-width=\"4\" stroke-linecap=\"round\">\n    <polyline points=\"60,602 72,560 86,602 101,548 116,602\" fill=\"none\"/>\n    <polyline points=\"700,602 716,552 731,602 748,566 764,602\" fill=\"none\"/>\n    <polyline points=\"350,602 360,572 374,602 392,562 404,602\" fill=\"none\"/>\n    <polyline points=\"520,602 532,568 546,602 562,574 575,602\" fill=\"none\"/>\n  </g>\n  <g fill=\"#7a5a26\">\n    <ellipse cx=\"145\" cy=\"565\" rx=\"5\" ry=\"12\"/>\n    <ellipse cx=\"660\" cy=\"575\" rx=\"5\" ry=\"13\"/>\n    <ellipse cx=\"455\" cy=\"585\" rx=\"4\" ry=\"10\"/>\n  </g>\n</svg>",
+            "checkedAt": "2026-10-26T01:09:23.079+00:00",
+            "condition": "low reasoning; cap16384; timeout180; one attempt; no retries",
+            "apiModel": "moonshotai/Kimi-K3",
+            "provider": "CommandCode",
+            "sourceDigest": "7b0cff546f31c914b6866ed49318743bc62278a3379c6295272f8f5a0d0ecba7",
+            "tokenUsage": {
+              "inputTokens": 201,
+              "outputTokens": 3972,
+              "reasoningTokens": 1167
+            }
+          },
+          "criteriaScores": [
+            {
+              "awarded": 5,
+              "reason": "马形主体和头颈有清楚黑白条纹，可辨斑马。"
+            },
+            {
+              "awarded": 3,
+              "reason": "前后伸展有奔跑感，但中间两腿近垂直，关节变化偏弱。"
+            },
+            {
+              "awarded": 3,
+              "reason": "稀疏伞形树、草原、远处地平线与暖色天空清楚。"
+            },
+            {
+              "awarded": 3,
+              "reason": "完整合规SVG，主体和四肢未被严重遮挡或裁切。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "glm53-flash",
+      "sourceDigest": "1ae2b270e9d4dcd8e3fad10cfe7917dc52d7bbe66d5d2513a1bd33d9320b8b32",
+      "items": [
+        {
+          "taskId": "purpose",
+          "score": 0,
+          "reason": "先说走过去，随后又说开车，结论矛盾；还把店距家50米错当成走到楼下的距离。"
+        },
+        {
+          "taskId": "reasoning",
+          "score": 2,
+          "reason": "算出10点15，明确指出10点05只对应25分钟。"
+        },
+        {
+          "taskId": "edit",
+          "score": 2,
+          "reason": "最终句子与目标句逐字一致（仅忽略首尾空白）。"
+        },
+        {
+          "taskId": "memory",
+          "score": 2,
+          "reason": "最后一轮四项限制齐全；中间笑话出现杂字和冗余，保留原文，不混入记忆分。"
+        },
+        {
+          "taskId": "honesty",
+          "score": 2,
+          "reason": "三项待办和已知信息正确，未知项均标“未说明”；括号解释没有新增事实。"
+        },
+        {
+          "taskId": "visual",
+          "score": 0,
+          "reason": "默认档输出上限耗尽，没有完整正文；low档补测不替换默认成绩。"
+        },
+        {
+          "taskId": "receipt",
+          "score": 2,
+          "reason": "明确回答1份，并将带连字符和星号的下一行解释为主项明细，符合出题者给定参考。",
+          "reviewer": "assistant-first-pass",
+          "measurement": {
+            "status": "success",
+            "error": null,
+            "output": "根据这张账单显示：\n\n**辣椒炒肉 Stir-Fried Pork with Chili —— 1份**\n\n账单上出现了两行相关内容：\n- 辣椒炒肉 Stir-Fried Pork with Chili：数量 1\n- “- 辣椒炒肉 Stir-Fried Pork with Chili*”：数量 1\n\n第二行是带星号（*）的主菜明细备注（类似口味/规格说明），并非单独再加一份。所以实际点的是 **1份辣椒炒肉**。",
+            "checkedAt": "2026-10-26T00:56:40.200+00:00",
+            "condition": "default reasoning; maxOutputTokens8192; timeout180; no retries",
+            "apiModel": "z-ai/glm-5.3-flash",
+            "provider": "CommandCode",
+            "sourceDigest": "dce8e29aedeae862603b83b76865d17443d5461b7049cc31da5c9c5dd4fdeb70",
+            "tokenUsage": {
+              "inputTokens": 2042,
+              "outputTokens": 152,
+              "reasoningTokens": 46
+            },
+            "imageSha256": "73a513249777e5c4ea4d88545e9c7c0b83344b9284f5b0b29c0f0b5690ccee11"
+          }
+        },
+        {
+          "taskId": "zebra",
+          "score": 1.4666666666666666,
+          "reason": "画面有黑白条纹与草原，但主体呈团块状，头颈与肢体关系失真，跑动步态不够清楚，共11/15。",
+          "reviewer": "assistant-first-pass",
+          "measurement": {
+            "status": "success",
+            "error": null,
+            "output": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"800\" height=\"600\" viewBox=\"0 0 800 600\">\n  <title>草原上奔跑的斑马</title>\n  <defs>\n    <linearGradient id=\"sky\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\">\n      <stop offset=\"0\" stop-color=\"#ffd98a\"/>\n      <stop offset=\"0.55\" stop-color=\"#ffedb0\"/>\n      <stop offset=\"1\" stop-color=\"#f7e7c0\"/>\n    </linearGradient>\n    <linearGradient id=\"ground\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\">\n      <stop offset=\"0\" stop-color=\"#d9b25f\"/>\n      <stop offset=\"0.4\" stop-color=\"#c99a48\"/>\n      <stop offset=\"1\" stop-color=\"#a97f3a\"/>\n    </linearGradient>\n    <radialGradient id=\"sun\" cx=\"0.5\" cy=\"0.5\" r=\"0.5\">\n      <stop offset=\"0\" stop-color=\"#fff3c4\"/>\n      <stop offset=\"0.6\" stop-color=\"#ffca66\"/>\n      <stop offset=\"1\" stop-color=\"#ffca66\" stop-opacity=\"0\"/>\n    </radialGradient>\n    <radialGradient id=\"dust\" cx=\"0.5\" cy=\"0.5\" r=\"0.5\">\n      <stop offset=\"0\" stop-color=\"#e8d4a8\" stop-opacity=\"0.75\"/>\n      <stop offset=\"1\" stop-color=\"#e8d4a8\" stop-opacity=\"0\"/>\n    </radialGradient>\n    <clipPath id=\"zebraClip\">\n      <path d=\"M225 330 Q230 280 295 268 Q310 240 340 232 Q365 226 382 244 L400 232 Q412 228 418 240 Q430 236 438 248 Q446 262 440 276 Q452 288 455 310 Q470 316 476 330 Q505 335 515 355 Q520 372 512 392 Q498 408 470 408 Q450 428 420 428 Q400 442 372 440 Q350 452 322 444 Q296 448 280 430 Q250 424 236 400 Q222 372 225 330 Z\"/>\n    </clipPath>\n  </defs>\n\n  <rect width=\"800\" height=\"600\" fill=\"url(#sky)\"/>\n  <circle cx=\"640\" cy=\"120\" r=\"150\" fill=\"url(#sun)\"/>\n  <circle cx=\"640\" cy=\"120\" r=\"62\" fill=\"#ffe9a3\"/>\n\n  <!-- 远山与远树 -->\n  <path d=\"M0 400 Q120 330 260 380 Q380 320 520 372 Q660 330 800 385 L800 600 L0 600 Z\" fill=\"#c9a55e\" opacity=\"0.6\"/>\n  <g opacity=\"0.5\" fill=\"#7a5a2b\">\n    <g transform=\"translate(120,300)\"><rect x=\"-2\" y=\"0\" width=\"4\" height=\"40\"/><ellipse cx=\"0\" cy=\"-14\" rx=\"34\" ry=\"14\"/></g>\n    <g transform=\"translate(180,320)\"><rect x=\"-2\" y=\"0\" width=\"3\" height=\"30\"/><ellipse cx=\"0\" cy=\"-10\" rx=\"26\" ry=\"11\"/></g>\n    <g transform=\"translate(700,290)\"><rect x=\"-2\" y=\"0\" width=\"4\" height=\"44\"/><ellipse cx=\"0\" cy=\"-16\" rx=\"38\" ry=\"15\"/></g>\n  </g>\n\n  <!-- 地面 -->\n  <rect y=\"400\" width=\"800\" height=\"200\" fill=\"url(#ground)\"/>\n  <path d=\"M0 405 Q200 392 400 404 Q600 414 800 400 L800 420 L0 420 Z\" fill=\"#e0bb6e\" opacity=\"0.7\"/>\n\n  <!-- 金合欢树 -->\n  <g transform=\"translate(660,398)\">\n    <path d=\"M-4 0 L-2 -70 L2 -70 L4 0 Z\" fill=\"#6b4a24\"/>\n    <path d=\"M0 -46 L-28 -60 M0 -52 L24 -66\" stroke=\"#6b4a24\" stroke-width=\"3\" fill=\"none\"/>\n    <ellipse cx=\"0\" cy=\"-86\" rx=\"62\" ry=\"20\" fill=\"#7d8c3e\"/>\n    <ellipse cx=\"-30\" cy=\"-76\" rx=\"34\" ry=\"13\" fill=\"#8f9c47\"/>\n    <ellipse cx=\"28\" cy=\"-78\" rx=\"30\" ry=\"12\" fill=\"#68762f\"/>\n  </g>\n  <g transform=\"translate(70,405)\">\n    <path d=\"M-3 0 L-1 -52 L1 -52 L3 0 Z\" fill=\"#6b4a24\"/>\n    <ellipse cx=\"0\" cy=\"-64\" rx=\"44\" ry=\"15\" fill=\"#828f42\"/>\n  </g>\n\n  <!-- 中景草丛 -->\n  <g stroke=\"#a88434\" stroke-width=\"2.5\" fill=\"none\" stroke-linecap=\"round\" opacity=\"0.85\">\n    <path d=\"M60 470 q-4 -22 -14 -30 M66 470 q0 -26 2 -34 M72 470 q6 -22 14 -28\"/>\n    <path d=\"M560 486 q-4 -24 -14 -32 M566 486 q0 -28 2 -36 M572 486 q6 -24 14 -30\"/>\n    <path d=\"M730 520 q-4 -26 -14 -34 M736 520 q0 -30 2 -38 M742 520 q6 -26 14 -32\"/>\n    <path d=\"M300 560 q-5 -26 -16 -34 M307 560 q0 -30 3 -38 M314 560 q6 -26 16 -32\"/>\n  </g>\n\n  <!-- 尘土 -->\n  <ellipse cx=\"300\" cy=\"478\" rx=\"120\" ry=\"34\" fill=\"url(#dust)\"/>\n  <ellipse cx=\"200\" cy=\"492\" rx=\"70\" ry=\"22\" fill=\"url(#dust)\"/>\n\n  <!-- 斑马 -->\n  <g>\n    <!-- 远侧腿 -->\n    <g fill=\"#cfcac2\" stroke=\"#8d8478\" stroke-width=\"1.5\">\n      <path d=\"M300 420 L268 452 L258 480 L246 508 L262 512 L276 484 L292 462 L318 436 Z\"/>\n      <path d=\"M460 414 L486 444 L498 470 L516 494 L502 504 L482 478 L468 452 L448 428 Z\"/>\n    </g>\n    <!-- 尾巴 -->\n    <path d=\"M232 340 Q196 348 176 372 Q160 392 158 416\" stroke=\"#3d3a36\" stroke-width=\"5\" fill=\"none\" stroke-linecap=\"round\"/>\n    <path d=\"M158 416 l-10 12 M158 416 l-2 16 M158 416 l8 12\" stroke=\"#2b2926\" stroke-width=\"3\" fill=\"none\" stroke-linecap=\"round\"/>\n    <!-- 蹄（远侧） -->\n    <path d=\"M244 506 l20 4 -2 10 -22 -3 Z\" fill=\"#2b2926\"/>\n    <path d=\"M514 492 l16 6 -4 10 -18 -7 Z\" fill=\"#2b2926\"/>\n\n    <!-- 尾根连接 -->\n    <path d=\"M232 340 Q222 340 240 336\" fill=\"#3d3a36\"/>\n\n    <!-- 身体（近侧组，含条纹裁剪） -->\n    <g clip-path=\"url(#zebraClip)\">\n      <path d=\"M225 330 Q230 280 295 268 Q310 240 340 232 Q365 226 382 244 L400 232 Q412 228 418 240 Q430 236 438 248 Q446 262 440 276 Q452 288 455 310 Q470 316 476 330 Q505 335 515 355 Q520 372 512 392 Q498 408 470 408 Q450 428 420 428 Q400 442 372 440 Q350 452 322 444 Q296 448 280 430 Q250 424 236 400 Q222 372 225 330 Z\"\n        fill=\"#f4f1ea\"/>\n      <rect x=\"225\" y=\"226\" width=\"300\" height=\"230\" fill=\"url(#dust)\" opacity=\"0\"/>\n      <!-- 斑马条纹（裁剪在身体内） -->\n      <g stroke=\"#26231f\" fill=\"none\" stroke-linecap=\"round\">\n        <g stroke-width=\"9\">\n          <path d=\"M244 300 Q296 288 348 296\"/>\n          <path d=\"M238 336 Q296 322 356 330\"/>\n          <path d=\"M236 372 Q300 356 362 362\"/>\n          <path d=\"M244 410 Q302 394 366 398\"/>\n          <path d=\"M258 440 Q306 430 360 430\"/>\n        </g>\n        <g stroke-width=\"7\">\n          <path d=\"M358 260 Q352 320 366 380 Q372 410 366 436\"/>\n          <path d=\"M378 254 Q372 316 388 376 Q394 408 388 438\"/>\n          <path d=\"M400 250 Q396 310 410 368 Q416 402 410 434\"/>\n          <path d=\"M424 248 Q422 306 434 362 Q440 400 434 428\"/>\n          <path d=\"M448 258 Q446 306 456 356 Q462 396 456 418\"/>\n        </g>\n        <g stroke-width=\"5\">\n          <path d=\"M468 320 Q464 356 470 386\"/>\n          <path d=\"M484 334 Q480 360 486 382\"/>\n          <path d=\"M498 352 Q496 368 500 380\"/>\n          <path d=\"M264 300 Q264 340 252 380 Q258 414 272 434\"/>\n          <path d=\"M284 288 Q280 330 268 372 Q272 412 286 438\"/>\n        </g>\n      </g>\n      <!-- 腹部淡条纹 -->\n      <g stroke=\"#c9c2b4\" stroke-width=\"6\" fill=\"none\">\n        <path d=\"M300 452 Q340 448 372 440\"/>\n        <path d=\"M380 442 Q416 432 440 424\"/>\n      </g>\n      <!-- 鬃毛条纹 -->\n      <g stroke=\"#26231f\" stroke-width=\"8\" stroke-linecap=\"round\">\n        <path d=\"M352 240 L360 224\"/>\n        <path d=\"M372 236 L380 220\"/>\n        <path d=\"M392 234 L400 222\"/>\n        <path d=\"M412 240 L418 230\"/>\n      </g>\n      <path d=\"M344 250 Q392 226 428 248 L428 262 Q392 240 344 262 Z\" fill=\"#3d3a36\"/>\n      <!-- 眼睛 -->\n      <circle cx=\"416\" cy=\"272\" r=\"4.5\" fill=\"#1c1a17\"/>\n      <path d=\"M446 296 Q462 292 470 298 Q460 306 446 302 Z\" fill=\"#2b2926\" opacity=\"0.15\"/>\n    </g>\n    <!-- 身体轮廓描边 -->\n    <path d=\"M225 330 Q230 280 295 268 Q310 240 340 232 Q365 226 382 244 L400 232 Q412 228 418 240 Q430 236 438 248 Q446 262 440 276 Q452 288 455 310 Q470 316 476 330 Q505 335 515 355 Q520 372 512 392 Q498 408 470 408 Q450 428 420 428 Q400 442 372 440 Q350 452 322 444 Q296 448 280 430 Q250 424 236 400 Q222 372 225 330 Z\"\n      fill=\"none\" stroke=\"#57504a\" stroke-width=\"2\"/>\n\n    <!-- 近侧腿（奔跑腾空姿态） -->\n    <g>\n      <path d=\"M330 424 L306 456 L296 484 L286 512 L304 516 L318 488 L334 464 L356 442 Z\" fill=\"#f4f1ea\" stroke=\"#57504a\" stroke-width=\"2\"/>\n      <path d=\"M286 510 l20 5 -2 11 -23 -5 Z\" fill=\"#2b2926\"/>\n      <path d=\"M470 416 L492 448 L502 476 L520 498 L506 510 L486 484 L474 454 L452 430 Z\" fill=\"#f4f1ea\" stroke=\"#57504a\" stroke-width=\"2\"/>\n      <path d=\"M518 496 l17 8 -5 11 -19 -10 Z\" fill=\"#2b2926\"/>\n      <!-- 近腿条纹 -->\n      <g stroke=\"#26231f\" stroke-width=\"4.5\" stroke-linecap=\"round\" fill=\"none\">\n        <path d=\"M340 434 L318 458\"/>\n        <path d=\"M328 456 L310 480\"/>\n        <path d=\"M316 478 L302 502\"/>\n        <path d=\"M462 426 L482 450\"/>\n        <path d=\"M474 448 L490 472\"/>\n        <path d=\"M486 470 L500 492\"/>\n      </g>\n    </g>\n  </g>\n\n  <!-- 前景草 -->\n  <g stroke=\"#6f5526\" stroke-width=\"3.5\" fill=\"none\" stroke-linecap=\"round\">\n    <path d=\"M110 600 q-6 -34 -22 -46 M118 600 q0 -40 4 -50 M126 600 q8 -34 20 -42\"/>\n    <path d=\"M420 600 q-6 -34 -22 -46 M428 600 q0 -40 4 -50 M436 600 q8 -34 20 -42\"/>\n    <path d=\"M640 600 q-6 -34 -22 -46 M648 600 q0 -40 4 -50 M656 600 q8 -34 20 -42\"/>\n    <path d=\"M770 600 q-6 -34 -22 -46 M778 600 q0 -40 4 -50\"/>\n  </g>\n  <g fill=\"#6f5526\">\n    <ellipse cx=\"124\" cy=\"548\" rx=\"8\" ry=\"4\" transform=\"rotate(-30 124 548)\"/>\n    <ellipse cx=\"434\" cy=\"548\" rx=\"8\" ry=\"4\" transform=\"rotate(-30 434 548)\"/>\n    <ellipse cx=\"654\" cy=\"548\" rx=\"8\" ry=\"4\" transform=\"rotate(-30 654 548)\"/>\n  </g>\n\n  <!-- 速度线 -->\n  <g stroke=\"#ffffff\" stroke-width=\"4\" stroke-linecap=\"round\" opacity=\"0.45\">\n    <line x1=\"565\" y1=\"330\" x2=\"640\" y2=\"330\"/>\n    <line x1=\"555\" y1=\"365\" x2=\"660\" y2=\"365\"/>\n    <line x1=\"570\" y1=\"400\" x2=\"645\" y2=\"400\"/>\n  </g>\n</svg>",
+            "checkedAt": "2026-10-26T01:10:11.664+00:00",
+            "condition": "low reasoning; cap16384; timeout180; one attempt; no retries",
+            "apiModel": "z-ai/glm-5.3-flash",
+            "provider": "CommandCode",
+            "sourceDigest": "97e5e1272ce189852b9b5521ffa52f00c4ad03c0ec0f880d2520972b73a4f222",
+            "tokenUsage": {
+              "inputTokens": 132,
+              "outputTokens": 4062,
+              "reasoningTokens": 78
+            }
+          },
+          "criteriaScores": [
+            {
+              "awarded": 3,
+              "reason": "有黑白条纹与四足动物特征，但躯干和头颈显著变形，部分条纹交叉成网格。"
+            },
+            {
+              "awarded": 2,
+              "reason": "有迈步与速度线索，但可见肢体数量与连接不够清楚。"
+            },
+            {
+              "awarded": 3,
+              "reason": "草地、地平线、稀疏树木和天空环境完整。"
+            },
+            {
+              "awarded": 3,
+              "reason": "直接完整SVG，画面清楚，主体未严重裁切。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "minimax-m31-flash",
+      "sourceDigest": "99c3b4f358fb760f5f751d52330a8766f5a1c3f35a96bee7ea1353d12806f314",
+      "items": [
+        {
+          "taskId": "purpose",
+          "score": 2,
+          "reason": "明确开车，因为车需要一起到店；回答一致。"
+        },
+        {
+          "taskId": "reasoning",
+          "score": 2,
+          "reason": "明确纠错为10点15，否定10点05。"
+        },
+        {
+          "taskId": "edit",
+          "score": 2,
+          "reason": "最终句子与目标句逐字一致（仅忽略首尾空白）。"
+        },
+        {
+          "taskId": "memory",
+          "score": 2,
+          "reason": "最后一轮准确保留两人、总预算1500元、不开车和周日晚回。"
+        },
+        {
+          "taskId": "honesty",
+          "score": 2,
+          "reason": "三项待办和已知信息正确，所有未知负责人、时间均使用“未说明”。"
+        },
+        {
+          "taskId": "visual",
+          "score": 0,
+          "reason": "默认档流式返回未完整结束，未交付完整SVG；low档图片单独展示。"
+        },
+        {
+          "taskId": "receipt",
+          "score": 0,
+          "reason": "明确回答共有2份，不符合本题参考。",
+          "reviewer": "assistant-first-pass",
+          "measurement": {
+            "status": "success",
+            "error": null,
+            "output": "账单上“辣椒炒肉”共有 **2份**（每项数量都是1）。",
+            "checkedAt": "2026-10-26T00:56:49.034+00:00",
+            "condition": "default reasoning; maxOutputTokens8192; timeout180; no retries",
+            "apiModel": "minimax/minimax-m3.1-flash",
+            "provider": "CommandCode",
+            "sourceDigest": "27d32a25208876f1f1341e9586baba6b7643405b74c0441584323bd096b76adc",
+            "tokenUsage": {
+              "inputTokens": 2231,
+              "outputTokens": 146,
+              "reasoningTokens": 124
+            },
+            "imageSha256": "73a513249777e5c4ea4d88545e9c7c0b83344b9284f5b0b29c0f0b5690ccee11"
+          }
+        },
+        {
+          "taskId": "zebra",
+          "score": 1.7333333333333334,
+          "reason": "斑马条纹、奔跑动势和草原场景可辨；颈与腿偏长，前侧两腿和蹄部重叠，分别扣特征与姿态各1分，共13/15。",
+          "reviewer": "assistant-first-pass",
+          "measurement": {
+            "status": "success",
+            "error": null,
+            "output": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"800\" height=\"600\" viewBox=\"0 0 800 600\" role=\"img\" aria-labelledby=\"title desc\">\n  <title id=\"title\">非洲稀树草原上奔跑的斑马</title>\n  <desc id=\"desc\">一只黑白条纹清晰、正在疾驰的斑马奔跑在金色草原上，背景有蓝天、太阳、远山和金合欢树。</desc>\n  <defs>\n    <linearGradient id=\"sky\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\">\n      <stop offset=\"0\" stop-color=\"#4aa8d8\"/>\n      <stop offset=\"0.62\" stop-color=\"#b9ddec\"/>\n      <stop offset=\"1\" stop-color=\"#f7dfb2\"/>\n    </linearGradient>\n    <linearGradient id=\"ground\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\">\n      <stop offset=\"0\" stop-color=\"#c8a24d\"/>\n      <stop offset=\"1\" stop-color=\"#8d6127\"/>\n    </linearGradient>\n    <radialGradient id=\"sunGlow\">\n      <stop offset=\"0\" stop-color=\"#fff9d5\" stop-opacity=\"0.95\"/>\n      <stop offset=\"0.35\" stop-color=\"#ffe98a\" stop-opacity=\"0.55\"/>\n      <stop offset=\"1\" stop-color=\"#ffe98a\" stop-opacity=\"0\"/>\n    </radialGradient>\n    <g id=\"zebra-shape\">\n      <ellipse cx=\"366\" cy=\"286\" rx=\"142\" ry=\"70\"/>\n      <path d=\"M440 246 C463 218 477 184 493 155 L536 170 C526 205 509 237 500 276 Z\"/>\n      <path d=\"M491 153 C514 130 550 127 577 139 L614 151 C628 156 632 170 620 181 C610 190 591 184 575 179 L538 171 L514 179 Z\"/>\n      <path d=\"M503 148 L498 115 L514 137 Z\"/>\n      <path d=\"M524 143 L531 111 L542 140 Z\"/>\n      <path d=\"M261 318 C248 351 230 381 207 413 L161 463 L116 476 L111 496 L163 491 L218 449 L274 372 L301 337 Z\"/>\n      <path d=\"M423 318 C444 348 470 372 501 397 L548 438 L615 462 L612 481 L538 466 L482 421 L417 374 L391 337 Z\"/>\n      <path d=\"M304 330 C319 368 327 403 326 438 L315 495 L280 516 L258 510 L295 480 L300 428 L281 346 Z\"/>\n      <path d=\"M476 301 C488 335 504 359 528 380 L572 417 L591 471 L569 478 L543 431 L498 402 L458 344 Z\"/>\n      <path d=\"M240 261 C220 278 205 312 202 337 C201 349 212 351 220 337 L249 302 Z\"/>\n      <path d=\"M479 218 C485 201 492 187 500 177 L517 184 C507 202 503 221 498 236 Z\"/>\n    </g>\n    <clipPath id=\"zebra-clip\">\n      <use href=\"#zebra-shape\"/>\n    </clipPath>\n    <clipPath id=\"head-clip\">\n      <path d=\"M491 153 C514 130 550 127 577 139 L614 151 C628 156 632 170 620 181 C610 190 591 184 575 179 L538 171 L514 179 Z\"/>\n    </clipPath>\n    <clipPath id=\"body-clip\">\n      <ellipse cx=\"366\" cy=\"286\" rx=\"142\" ry=\"70\"/>\n    </clipPath>\n  </defs>\n\n  <rect width=\"800\" height=\"600\" fill=\"url(#sky)\"/>\n  <circle cx=\"660\" cy=\"90\" r=\"100\" fill=\"url(#sunGlow)\"/>\n  <circle cx=\"660\" cy=\"90\" r=\"42\" fill=\"#fff3ae\"/>\n\n  <g fill=\"#ffffff\" opacity=\"0.78\">\n    <path d=\"M76 104 C91 89 111 90 122 102 C132 79 164 78 179 100 C196 93 216 101 221 116 L69 116 C69 110 71 106 76 104 Z\"/>\n    <path d=\"M260 66 C273 55 290 57 300 68 C309 50 334 50 346 67 C358 62 373 66 380 78 L249 79 C251 73 255 69 260 66 Z\"/>\n    <path d=\"M572 196 C584 184 601 185 612 195 C624 178 648 180 658 196 C671 191 686 197 691 208 L560 208 C562 203 566 199 572 196 Z\"/>\n  </g>\n\n  <path d=\"M0 331 C77 310 133 321 198 333 C270 347 330 324 406 321 C485 318 539 341 610 325 C674 311 736 313 800 329 L800 600 L0 600 Z\" fill=\"#b3a15f\" opacity=\"0.55\"/>\n  <path d=\"M0 382 C99 351 176 376 266 365 C362 353 437 355 522 371 C624 391 702 352 800 365 L800 600 L0 600 Z\" fill=\"url(#ground)\"/>\n  <path d=\"M0 455 C135 425 242 450 355 431 C480 410 608 446 800 420 L800 600 L0 600 Z\" fill=\"#a97830\" opacity=\"0.64\"/>\n\n  <g opacity=\"0.72\" fill=\"#7e7c48\">\n    <path d=\"M0 376 L41 344 L67 372 L94 337 L121 377 L153 350 L188 382 L224 361 L256 386 L290 370 L325 391 L363 368 L400 390 L441 365 L477 386 L516 363 L554 388 L590 367 L626 384 L666 354 L702 379 L745 350 L782 375 L800 364 L800 404 L0 407 Z\"/>\n  </g>\n\n  <g fill=\"#382f1e\">\n    <path d=\"M74 369 C72 324 70 281 75 237 L83 236 C80 280 81 321 86 368 Z\"/>\n    <path d=\"M78 272 C60 251 45 242 22 239 C48 230 68 237 81 254 C92 229 114 218 145 211 C120 226 108 242 91 262 C111 254 133 252 154 257 C126 262 105 270 88 280 Z\"/>\n    <path d=\"M62 249 C36 245 17 232 4 212 C31 221 51 225 69 237 Z\"/>\n    <path d=\"M101 247 C119 226 141 219 169 220 C144 229 129 241 114 258 Z\"/>\n  </g>\n  <g fill=\"none\" stroke=\"#382f1e\" stroke-width=\"5\" stroke-linecap=\"round\">\n    <path d=\"M77 253 C48 224 29 218 5 214\"/>\n    <path d=\"M82 250 C104 221 126 211 156 207\"/>\n    <path d=\"M84 263 C111 245 136 242 160 246\"/>\n  </g>\n\n  <g opacity=\"0.95\">\n    <path d=\"M616 376 C614 333 615 291 619 251 L626 250 C623 292 624 331 627 374 Z\" fill=\"#4c3a22\"/>\n    <path d=\"M620 276 C596 256 580 247 553 244 C580 239 601 246 620 259 C628 236 649 222 679 216 C650 230 638 245 630 265 C646 260 666 261 687 267 C658 271 638 278 627 287 Z\" fill=\"#4c3a22\"/>\n    <path d=\"M616 258 C591 235 573 229 548 227 C575 219 598 227 618 241 C629 220 649 210 674 207 C649 219 635 233 627 249 Z\" fill=\"#4c3a22\"/>\n  </g>\n\n  <g fill=\"none\" stroke=\"#59451f\" stroke-width=\"3\" stroke-linecap=\"round\" opacity=\"0.8\">\n    <path d=\"M624 264 C598 242 580 237 558 236\"/>\n    <path d=\"M625 271 C646 251 666 248 690 252\"/>\n    <path d=\"M621 280 C598 267 578 266 555 270\"/>\n  </g>\n\n  <g fill=\"#5d4b23\">\n    <path d=\"M18 457 L13 423 L23 445 L30 414 L35 447 L45 426 L42 459 Z\"/>\n    <path d=\"M92 492 L87 455 L97 480 L106 450 L110 482 L119 462 L115 494 Z\"/>\n    <path d=\"M702 455 L696 419 L707 445 L716 411 L720 443 L731 422 L726 457 Z\"/>\n    <path d=\"M744 528 L739 493 L749 516 L758 486 L762 518 L773 499 L768 531 Z\"/>\n    <path d=\"M380 545 L374 510 L385 534 L395 504 L398 536 L410 517 L405 547 Z\"/>\n  </g>\n\n  <g fill=\"#d9b951\">\n    <ellipse cx=\"36\" cy=\"488\" rx=\"18\" ry=\"4\"/>\n    <ellipse cx=\"143\" cy=\"529\" rx=\"23\" ry=\"5\"/>\n    <ellipse cx=\"651\" cy=\"505\" rx=\"25\" ry=\"5\"/>\n    <ellipse cx=\"715\" cy=\"559\" rx=\"19\" ry=\"4\"/>\n    <ellipse cx=\"42\" cy=\"570\" rx=\"29\" ry=\"5\"/>\n  </g>\n\n  <g>\n    <use href=\"#zebra-shape\" fill=\"#f6f3e9\"/>\n\n    <g clip-path=\"url(#body-clip)\" fill=\"#17191c\">\n      <path d=\"M235 232 C263 250 266 280 250 305 C264 319 273 337 273 356 L285 358 C281 327 278 305 265 283 C278 257 275 235 260 216 Z\"/>\n      <path d=\"M286 214 C312 229 317 252 304 274 C317 294 321 320 312 350 L327 357 C337 319 329 291 318 269 C333 243 328 220 312 205 Z\"/>\n      <path d=\"M344 211 C365 231 365 252 353 272 C367 295 369 321 358 350 L374 356 C385 323 381 294 370 272 C382 246 377 222 363 207 Z\"/>\n      <path d=\"M406 216 C421 235 418 257 407 277 C417 298 423 322 416 349 L431 356 C441 322 435 294 425 274 C438 249 436 226 425 211 Z\"/>\n      <path d=\"M465 228 C471 249 465 270 454 287 C465 305 474 326 470 349 L486 349 C489 319 479 294 471 278 C480 252 479 234 472 220 Z\"/>\n      <path d=\"M247 274 C272 284 285 284 302 276 L308 290 C286 298 266 296 242 286 Z\"/>\n      <path d=\"M317 232 C337 241 353 239 369 228 L373 244 C355 253 337 255 314 246 Z\"/>\n      <path d=\"M383 300 C405 307 425 305 441 294 L446 309 C427 320 404 321 383 314 Z\"/>\n      <path d=\"M272 332 C294 341 314 340 333 327 L339 341 C318 355 292 354 271 345 Z\"/>\n    </g>\n\n    <g clip-path=\"url(#zebra-clip)\" fill=\"#17191c\">\n      <path d=\"M455 253 C477 259 494 250 511 228 L519 244 C500 268 481 278 457 272 Z\"/>\n      <path d=\"M466 294 C486 299 506 289 520 273 L528 286 C511 307 489 317 468 310 Z\"/>\n      <path d=\"M487 178 C510 190 528 188 542 176 L547 190 C531 205 509 207 490 195 Z\"/>\n      <path d=\"M279 337 C264 367 244 392 218 416 L205 406 C231 378 247 351 259 327 Z\"/>\n      <path d=\"M238 369 C225 396 204 421 178 443 L166 437 C190 411 210 383 219 359 Z\"/>\n      <path d=\"M191 424 C178 441 162 455 141 468 L131 460 C151 445 166 429 178 413 Z\"/>\n      <path d=\"M435 330 C455 359 477 379 503 399 L494 411 C466 389 444 367 425 340 Z\"/>\n      <path d=\"M480 376 C500 400 522 419 548 432 L542 445 C513 430 489 410 469 388 Z\"/>\n      <path d=\"M305 347 C318 376 323 407 319 437 L306 435 C310 405 303 379 292 351 Z\"/>\n      <path d=\"M296 459 C307 476 300 492 286 505 L275 497 C286 484 291 474 284 458 Z\"/>\n      <path d=\"M469 322 C485 346 501 364 524 379 L516 392 C491 374 474 354 457 335 Z\"/>\n      <path d=\"M532 407 C548 426 565 441 585 455 L579 469 C553 452 535 434 520 417 Z\"/>\n      <path d=\"M231 268 C220 282 215 303 210 326 L199 324 C203 297 211 278 222 262 Z\"/>\n    </g>\n\n    <g clip-path=\"url(#head-clip)\" fill=\"#17191c\">\n      <path d=\"M498 143 C515 155 520 170 512 185 L500 179 C505 165 501 153 490 145 Z\"/>\n      <path d=\"M529 133 C543 145 547 160 539 176 L527 169 C533 155 530 145 521 137 Z\"/>\n      <path d=\"M558 132 C570 145 574 159 567 176 L555 171 C560 157 558 146 550 135 Z\"/>\n      <path d=\"M586 141 C596 153 599 165 593 181 L582 177 C587 165 585 155 579 146 Z\"/>\n      <path d=\"M535 176 C553 183 575 185 597 179 L600 190 C577 196 553 194 534 187 Z\"/>\n    </g>\n\n    <path d=\"M495 151 L499 116 L507 143 Z\" fill=\"#17191c\"/>\n    <path d=\"M522 143 L531 112 L536 141 Z\" fill=\"#17191c\"/>\n    <path d=\"M505 143 L502 121 L510 138 Z\" fill=\"#e4c7b0\"/>\n    <path d=\"M528 137 L531 119 L534 138 Z\" fill=\"#e4c7b0\"/>\n    <circle cx=\"588\" cy=\"153\" r=\"5.2\" fill=\"#17191c\"/>\n    <circle cx=\"589.5\" cy=\"151.5\" r=\"1.5\" fill=\"#ffffff\"/>\n    <ellipse cx=\"620\" cy=\"174\" rx=\"12\" ry=\"8\" fill=\"#17191c\"/>\n    <path d=\"M617 169 L628 166 L620 174 Z\" fill=\"#8c6558\"/>\n    <path d=\"M601 184 C596 189 590 191 584 190\" fill=\"none\" stroke=\"#17191c\" stroke-width=\"3\" stroke-linecap=\"round\"/>\n\n    <path d=\"M477 208 C484 186 490 170 499 159\" fill=\"none\" stroke=\"#17191c\" stroke-width=\"13\" stroke-linecap=\"round\"/>\n    <g fill=\"#17191c\">\n      <path d=\"M489 189 L495 177 L496 190 Z\"/>\n      <path d=\"M494 178 L501 167 L500 179 Z\"/>\n      <path d=\"M498 167 L505 157 L502 169 Z\"/>\n      <path d=\"M503 157 L509 148 L506 160 Z\"/>\n    </g>\n\n    <path d=\"M111 478 L143 473 L143 497 L116 498 Z\" fill=\"#17191c\"/>\n    <path d=\"M256 500 L292 507 L280 520 L252 514 Z\" fill=\"#17191c\"/>\n    <path d=\"M611 463 L630 468 L627 484 L607 481 Z\" fill=\"#17191c\"/>\n    <path d=\"M568 455 L593 468 L584 480 L563 469 Z\" fill=\"#17191c\"/>\n  </g>\n\n  <g fill=\"none\" stroke=\"#6c4b22\" stroke-width=\"4\" stroke-linecap=\"round\">\n    <path d=\"M151 492 C121 500 91 503 65 498\"/>\n    <path d=\"M194 475 C158 487 128 490 97 486\"/>\n    <path d=\"M552 461 C584 469 618 472 648 468\"/>\n  </g>\n  <g fill=\"#8e6a2f\" opacity=\"0.85\">\n    <ellipse cx=\"89\" cy=\"501\" rx=\"24\" ry=\"5\"/>\n    <ellipse cx=\"621\" cy=\"474\" rx=\"26\" ry=\"5\"/>\n    <ellipse cx=\"199\" cy=\"477\" rx=\"16\" ry=\"4\"/>\n  </g>\n\n  <g fill=\"#463719\" opacity=\"0.55\">\n    <ellipse cx=\"367\" cy=\"521\" rx=\"196\" ry=\"18\"/>\n    <ellipse cx=\"245\" cy=\"505\" rx=\"54\" ry=\"8\"/>\n    <ellipse cx=\"524\" cy=\"489\" rx=\"72\" ry=\"9\"/>\n  </g>\n\n  <g fill=\"#d0ad4e\">\n    <circle cx=\"25\" cy=\"544\" r=\"3\"/>\n    <circle cx=\"59\" cy=\"565\" r=\"2\"/>\n    <circle cx=\"117\" cy=\"552\" r=\"3\"/>\n    <circle cx=\"153\" cy=\"572\" r=\"2\"/>\n    <circle cx=\"206\" cy=\"536\" r=\"2.5\"/>\n    <circle cx=\"264\" cy=\"574\" r=\"3\"/>\n    <circle cx=\"340\" cy=\"556\" r=\"2\"/>\n    <circle cx=\"430\" cy=\"578\" r=\"3\"/>\n    <circle cx=\"498\" cy=\"550\" r=\"2.5\"/>\n    <circle cx=\"575\" cy=\"575\" r=\"3\"/>\n    <circle cx=\"662\" cy=\"539\" r=\"2.5\"/>\n    <circle cx=\"746\" cy=\"576\" r=\"3\"/>\n    <circle cx=\"782\" cy=\"527\" r=\"2\"/>\n  </g>\n</svg>",
+            "checkedAt": "2026-10-26T01:10:40.133+00:00",
+            "condition": "low reasoning; cap16384; timeout180; one attempt; no retries",
+            "apiModel": "minimax/minimax-m3.1-flash",
+            "provider": "CommandCode",
+            "sourceDigest": "d631d70282bb5526d43d226dc4455cba3e25dfa4e6a1002a8674c319a2986af8",
+            "tokenUsage": {
+              "inputTokens": 322,
+              "outputTokens": 5038,
+              "reasoningTokens": 363
+            }
+          },
+          "criteriaScores": [
+            {
+              "awarded": 4,
+              "reason": "黑白条纹随主体与头部绘制，斑马可辨，但颈和腿比例偏长。"
+            },
+            {
+              "awarded": 3,
+              "reason": "有明显向前奔跑步态，前腿与蹄部局部重叠。"
+            },
+            {
+              "awarded": 3,
+              "reason": "开阔草地、稀疏树木、远景和天空构成草原。"
+            },
+            {
+              "awarded": 3,
+              "reason": "直接完整SVG，主体清楚，构图与交付符合要求。"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

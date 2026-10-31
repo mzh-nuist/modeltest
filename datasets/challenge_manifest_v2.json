@@ -1,0 +1,1910 @@
+{
+  "schemaVersion": "challenge-manifest-v2",
+  "suiteId": "zhufeng-challenge-v2",
+  "protocolId": "challenge-rubric-v2",
+  "tasks": [
+    {
+      "id": "v2-m01",
+      "title": "两两独立尾概率的参数锐界",
+      "category": "math",
+      "familyId": "mechanism-m01",
+      "pool": "development",
+      "difficulty": "candidate-frontier",
+      "status": "uncalibrated",
+      "source": {
+        "name": "本站自编；方法参考 LiveBench / MathArena",
+        "url": "https://arxiv.org/abs/2406.19314",
+        "note": "合成材料；不是官方 benchmark 复现，区分度待校准。"
+      },
+      "rubric": [
+        "上界与断点：20 分，五档锚点；严格完成下限：4",
+        "下界与断点：30 分，五档锚点；严格完成下限：4",
+        "取等构造：30 分，五档锚点；严格完成下限：3",
+        "全局证书：20 分，五档锚点；严格完成下限：3",
+        "必须人工逐项引用证据；仅解析成功不代表内容正确。"
+      ],
+      "verification": {
+        "method": "finite_certificates_and_rational_moment_checks",
+        "notes": "5个可能S值的多项式界逐点通过；121个有理p点验证构造归一、非负和两阶矩。有限点核验不替代人工全区间证明。 已执行本地参考核验；尚无独立专家复核完整题面。",
+        "independentCheck": false
+      }
+    },
+    {
+      "id": "v2-m02",
+      "title": "互斥整数优化的完整参数包络",
+      "category": "math",
+      "familyId": "mechanism-m02",
+      "pool": "development",
+      "difficulty": "candidate-hard",
+      "status": "uncalibrated",
+      "source": {
+        "name": "本站自编；方法参考 LiveBench / MathArena",
+        "url": "https://arxiv.org/abs/2406.19314",
+        "note": "合成材料；不是官方 benchmark 复现，区分度待校准。"
+      },
+      "rubric": [
+        "五个分组上界与见证：40 分，五档锚点；严格完成下限：3",
+        "最优值包络：25 分，五档锚点；严格完成下限：4",
+        "全部最优解：20 分，五档锚点；严格完成下限：4",
+        "全域证书：15 分，五档锚点；严格完成下限：3",
+        "必须人工逐项引用证据；仅解析成功不代表内容正确。"
+      ],
+      "verification": {
+        "method": "exhaustive_enumeration_and_envelope",
+        "notes": "穷举3125状态，296可行；核对五组最优解，并在83个参数点直接优化与上包络交叉检查。 已执行本地参考核验；尚无独立专家复核完整题面。",
+        "independentCheck": false
+      }
+    },
+    {
+      "id": "v2-m03",
+      "title": "停止记录下的潜在硬币后验",
+      "category": "math",
+      "familyId": "mechanism-m03",
+      "pool": "development",
+      "difficulty": "candidate-hard",
+      "status": "uncalibrated",
+      "source": {
+        "name": "本站自编；方法参考 LiveBench / MathArena",
+        "url": "https://arxiv.org/abs/2406.19314",
+        "note": "合成材料；不是官方 benchmark 复现，区分度待校准。"
+      },
+      "rubric": [
+        "event_A：20.0 分；该项为核心条件。",
+        "event_B：20.0 分；该项为核心条件。",
+        "posterior_B：35.0 分；该项为核心条件。",
+        "predictive_head：25.0 分；该项为核心条件。",
+        "输出合同单独核验；核心内容与必要合同均通过才严格完成。"
+      ],
+      "verification": {
+        "method": "enumeration_vs_likelihood",
+        "notes": "枚举32个五步序列并与p²(1−p)³解析似然核对。 已执行本地参考核验；尚无独立专家复核完整题面。",
+        "independentCheck": false
+      }
+    },
+    {
+      "id": "v2-m04",
+      "title": "重叠模式首次出现的等待矩",
+      "category": "math",
+      "familyId": "mechanism-m04",
+      "pool": "development",
+      "difficulty": "candidate-hard",
+      "status": "uncalibrated",
+      "source": {
+        "name": "本站自编；方法参考 LiveBench / MathArena",
+        "url": "https://arxiv.org/abs/2406.19314",
+        "note": "合成材料；不是官方 benchmark 复现，区分度待校准。"
+      },
+      "rubric": [
+        "E0：25.0 分；该项为核心条件。",
+        "E1：15.0 分；该项为核心条件。",
+        "E2：15.0 分；该项为核心条件。",
+        "second_moment：25.0 分；该项为核心条件。",
+        "variance：20.0 分；该项为核心条件。",
+        "输出合同单独核验；核心内容与必要合同均通过才严格完成。"
+      ],
+      "verification": {
+        "method": "exact_linear_equations",
+        "notes": "Fraction高斯消元求一二阶矩并回代方程；状态转移独立由后缀定义构造。 已执行本地参考核验；尚无独立专家复核完整题面。",
+        "independentCheck": false
+      }
+    },
+    {
+      "id": "v2-m05",
+      "title": "移动尖峰的几乎处处与范数收敛",
+      "category": "math",
+      "familyId": "mechanism-m05",
+      "pool": "development",
+      "difficulty": "candidate-hard",
+      "status": "uncalibrated",
+      "source": {
+        "name": "本站自编；方法参考 LiveBench / MathArena",
+        "url": "https://arxiv.org/abs/2406.19314",
+        "note": "合成材料；不是官方 benchmark 复现，区分度待校准。"
+      },
+      "rubric": [
+        "逐点与有限命中：25 分，五档锚点；严格完成下限：3",
+        "依测度：15 分，五档锚点；严格完成下限：3",
+        "有限q范数临界：35 分，五档锚点；严格完成下限：4",
+        "无穷范数及边界：25 分，五档锚点；严格完成下限：4",
+        "必须人工逐项引用证据；仅解析成功不代表内容正确。"
+      ],
+      "verification": {
+        "method": "author_reference_review",
+        "notes": "题面和参考解已编写；未做独立专家复核，不能视为已校准。",
+        "independentCheck": false
+      }
+    },
+    {
+      "id": "v2-m06",
+      "title": "统一可积性失效与换序反例",
+      "category": "math",
+      "familyId": "mechanism-m06",
+      "pool": "development",
+      "difficulty": "candidate-hard",
+      "status": "uncalibrated",
+      "source": {
+        "name": "本站自编；方法参考 LiveBench / MathArena",
+        "url": "https://arxiv.org/abs/2406.19314",
+        "note": "合成材料；不是官方 benchmark 复现，区分度待校准。"
+      },
+      "rubric": [
+        "有效构造：30 分，五档锚点；严格完成下限：4",
+        "尾积分验证：30 分，五档锚点；严格完成下限：4",
+        "换序结论：20 分，五档锚点；严格完成下限：3",
+        "可积控制修补：20 分，五档锚点；严格完成下限：3",
+        "必须人工逐项引用证据；仅解析成功不代表内容正确。"
+      ],
+      "verification": {
+        "method": "author_reference_review",
+        "notes": "题面和参考解已编写；未做独立专家复核，不能视为已校准。",
+        "independentCheck": false
+      }
+    },
+    {
+      "id": "v2-m07",
+      "title": "有向网络的全部最小割",
+      "category": "math",
+      "familyId": "mechanism-m07",
+      "pool": "sealed",
+      "difficulty": "candidate-hard",
+      "status": "uncalibrated",
+      "source": {
+        "name": "逐风自编挑战题库",
+        "url": null,
+        "note": "本站题目；不代表官方 benchmark 复现成绩。"
+      },
+      "rubric": [
+        "内容完成度、必要输出合同、严格完成分别报告。",
+        "详细题面、答案、测试及评分证据留在本地封存包。"
+      ],
+      "verification": {
+        "method": "sealed-local",
+        "notes": "封存内容不进入网站或公开源码包；区分度未实测校准。",
+        "independentCheck": false
+      }
+    },
+    {
+      "id": "v2-m08",
+      "title": "带邻接限制的项链轨道计数",
+      "category": "math",
+      "familyId": "mechanism-m08",
+      "pool": "sealed",
+      "difficulty": "candidate-hard",
+      "status": "uncalibrated",
+      "source": {
+        "name": "逐风自编挑战题库",
+        "url": null,
+        "note": "本站题目；不代表官方 benchmark 复现成绩。"
+      },
+      "rubric": [
+        "内容完成度、必要输出合同、严格完成分别报告。",
+        "详细题面、答案、测试及评分证据留在本地封存包。"
+      ],
+      "verification": {
+        "method": "sealed-local",
+        "notes": "封存内容不进入网站或公开源码包；区分度未实测校准。",
+        "independentCheck": false
+      }
+    },
+    {
+      "id": "v2-m09",
+      "title": "线性丢番图的非负可解区间",
+      "category": "math",
+      "familyId": "mechanism-m09",
+      "pool": "sealed",
+      "difficulty": "candidate-hard",
+      "status": "uncalibrated",
+      "source": {
+        "name": "逐风自编挑战题库",
+        "url": null,
+        "note": "本站题目；不代表官方 benchmark 复现成绩。"
+      },
+      "rubric": [
+        "内容完成度、必要输出合同、严格完成分别报告。",
+        "详细题面、答案、测试及评分证据留在本地封存包。"
+      ],
+      "verification": {
+        "method": "sealed-local",
+        "notes": "封存内容不进入网站或公开源码包；区分度未实测校准。",
+        "independentCheck": false
+      }
+    },
+    {
+      "id": "v2-m10",
+      "title": "参数递推中的例外初值",
+      "category": "math",
+      "familyId": "mechanism-m10",
+      "pool": "sealed",
+      "difficulty": "candidate-medium",
+      "status": "uncalibrated",
+      "source": {
+        "name": "逐风自编挑战题库",
+        "url": null,
+        "note": "本站题目；不代表官方 benchmark 复现成绩。"
+      },
+      "rubric": [
+        "内容完成度、必要输出合同、严格完成分别报告。",
+        "详细题面、答案、测试及评分证据留在本地封存包。"
+      ],
+      "verification": {
+        "method": "sealed-local",
+        "notes": "封存内容不进入网站或公开源码包；区分度未实测校准。",
+        "independentCheck": false
+      }
+    },
+    {
+      "id": "v2-m11",
+      "title": "相关矩阵的可实现区间",
+      "category": "math",
+      "familyId": "mechanism-m11",
+      "pool": "sealed",
+      "difficulty": "candidate-hard",
+      "status": "uncalibrated",
+      "source": {
+        "name": "逐风自编挑战题库",
+        "url": null,
+        "note": "本站题目；不代表官方 benchmark 复现成绩。"
+      },
+      "rubric": [
+        "内容完成度、必要输出合同、严格完成分别报告。",
+        "详细题面、答案、测试及评分证据留在本地封存包。"
+      ],
+      "verification": {
+        "method": "sealed-local",
+        "notes": "封存内容不进入网站或公开源码包；区分度未实测校准。",
+        "independentCheck": false
+      }
+    },
+    {
+      "id": "v2-m12",
+      "title": "同一观测分布下因果方向不可识别",
+      "category": "math",
+      "familyId": "mechanism-m12",
+      "pool": "sealed",
+      "difficulty": "candidate-hard",
+      "status": "uncalibrated",
+      "source": {
+        "name": "逐风自编挑战题库",
+        "url": null,
+        "note": "本站题目；不代表官方 benchmark 复现成绩。"
+      },
+      "rubric": [
+        "内容完成度、必要输出合同、严格完成分别报告。",
+        "详细题面、答案、测试及评分证据留在本地封存包。"
+      ],
+      "verification": {
+        "method": "sealed-local",
+        "notes": "封存内容不进入网站或公开源码包；区分度未实测校准。",
+        "independentCheck": false
+      }
+    },
+    {
+      "id": "v2-m13",
+      "title": "证明中最早无效量词与修补",
+      "category": "math",
+      "familyId": "mechanism-m13",
+      "pool": "sealed",
+      "difficulty": "candidate-hard",
+      "status": "uncalibrated",
+      "source": {
+        "name": "逐风自编挑战题库",
+        "url": null,
+        "note": "本站题目；不代表官方 benchmark 复现成绩。"
+      },
+      "rubric": [
+        "内容完成度、必要输出合同、严格完成分别报告。",
+        "详细题面、答案、测试及评分证据留在本地封存包。"
+      ],
+      "verification": {
+        "method": "sealed-local",
+        "notes": "封存内容不进入网站或公开源码包；区分度未实测校准。",
+        "independentCheck": false
+      }
+    },
+    {
+      "id": "v2-m14",
+      "title": "单边矩界的等号与严格事件",
+      "category": "math",
+      "familyId": "mechanism-m14",
+      "pool": "sealed",
+      "difficulty": "candidate-hard",
+      "status": "uncalibrated",
+      "source": {
+        "name": "逐风自编挑战题库",
+        "url": null,
+        "note": "本站题目；不代表官方 benchmark 复现成绩。"
+      },
+      "rubric": [
+        "内容完成度、必要输出合同、严格完成分别报告。",
+        "详细题面、答案、测试及评分证据留在本地封存包。"
+      ],
+      "verification": {
+        "method": "sealed-local",
+        "notes": "封存内容不进入网站或公开源码包；区分度未实测校准。",
+        "independentCheck": false
+      }
+    },
+    {
+      "id": "v2-m15",
+      "title": "曼哈顿闭合巡回的最优与次优间隔",
+      "category": "math",
+      "familyId": "mechanism-m15",
+      "pool": "sealed",
+      "difficulty": "candidate-hard",
+      "status": "uncalibrated",
+      "source": {
+        "name": "逐风自编挑战题库",
+        "url": null,
+        "note": "本站题目；不代表官方 benchmark 复现成绩。"
+      },
+      "rubric": [
+        "内容完成度、必要输出合同、严格完成分别报告。",
+        "详细题面、答案、测试及评分证据留在本地封存包。"
+      ],
+      "verification": {
+        "method": "sealed-local",
+        "notes": "封存内容不进入网站或公开源码包；区分度未实测校准。",
+        "independentCheck": false
+      }
+    },
+    {
+      "id": "v2-m16",
+      "title": "鲁棒决策的参数切换与混合改进",
+      "category": "math",
+      "familyId": "mechanism-m16",
+      "pool": "sealed",
+      "difficulty": "candidate-hard",
+      "status": "uncalibrated",
+      "source": {
+        "name": "逐风自编挑战题库",
+        "url": null,
+        "note": "本站题目；不代表官方 benchmark 复现成绩。"
+      },
+      "rubric": [
+        "内容完成度、必要输出合同、严格完成分别报告。",
+        "详细题面、答案、测试及评分证据留在本地封存包。"
+      ],
+      "verification": {
+        "method": "sealed-local",
+        "notes": "封存内容不进入网站或公开源码包；区分度未实测校准。",
+        "independentCheck": false
+      }
+    },
+    {
+      "id": "v2-c01",
+      "title": "重边引用计数的动态连通",
+      "category": "code",
+      "familyId": "v2-c01",
+      "pool": "development",
+      "difficulty": "candidate-hard",
+      "status": "uncalibrated",
+      "source": {
+        "name": "逐风自编代码挑战，参考实际执行与回归方法",
+        "url": "https://livecodebench.github.io/",
+        "note": "非官方benchmark复现。"
+      },
+      "rubric": [
+        "核心45、边界20、资源15、回归20。",
+        "全部强制组与资源要求通过才算首答成功。",
+        "未验收隔离执行，代码维持blocked；格式通过不证明程序正确。"
+      ],
+      "verification": {
+        "method": "仅调用可信作者函数离线断言，从未执行模型提交。",
+        "notes": "通过64个语义/性质断言；资源未冻结。测试组：重边、反向边、自环、连续删除、非法顶点、输入保护。",
+        "independentCheck": true
+      }
+    },
+    {
+      "id": "v2-c02",
+      "title": "双时点有效区间查询",
+      "category": "code",
+      "familyId": "v2-c02",
+      "pool": "development",
+      "difficulty": "candidate-hard",
+      "status": "uncalibrated",
+      "source": {
+        "name": "逐风自编代码挑战，参考实际执行与回归方法",
+        "url": "https://livecodebench.github.io/",
+        "note": "非官方benchmark复现。"
+      },
+      "rubric": [
+        "核心45、边界20、资源15、回归20。",
+        "全部强制组与资源要求通过才算首答成功。",
+        "未验收隔离执行，代码维持blocked；格式通过不证明程序正确。"
+      ],
+      "verification": {
+        "method": "仅调用可信作者函数离线断言，从未执行模型提交。",
+        "notes": "通过2个语义/性质断言；资源未冻结。测试组：晚到更正、较晚低版本、删除覆盖、右端排除、同版本seen/id次序。",
+        "independentCheck": false
+      }
+    },
+    {
+      "id": "v2-c03",
+      "title": "任意字节分块的JSON行流",
+      "category": "code",
+      "familyId": "v2-c03",
+      "pool": "development",
+      "difficulty": "candidate-hard",
+      "status": "uncalibrated",
+      "source": {
+        "name": "逐风自编代码挑战，参考实际执行与回归方法",
+        "url": "https://livecodebench.github.io/",
+        "note": "非官方benchmark复现。"
+      },
+      "rubric": [
+        "核心45、边界20、资源15、回归20。",
+        "全部强制组与资源要求通过才算首答成功。",
+        "未验收隔离执行，代码维持blocked；格式通过不证明程序正确。"
+      ],
+      "verification": {
+        "method": "仅调用可信作者函数离线断言，从未执行模型提交。",
+        "notes": "通过15个语义/性质断言；资源未冻结。测试组：跨字节汉字、空块、CRLF、末行、重复键、1e999、非法序列。",
+        "independentCheck": false
+      }
+    },
+    {
+      "id": "v2-c04",
+      "title": "两种舍入顺序的精确金额",
+      "category": "code",
+      "familyId": "v2-c04",
+      "pool": "development",
+      "difficulty": "candidate-hard",
+      "status": "uncalibrated",
+      "source": {
+        "name": "逐风自编代码挑战，参考实际执行与回归方法",
+        "url": "https://livecodebench.github.io/",
+        "note": "非官方benchmark复现。"
+      },
+      "rubric": [
+        "核心45、边界20、资源15、回归20。",
+        "全部强制组与资源要求通过才算首答成功。",
+        "未验收隔离执行，代码维持blocked；格式通过不证明程序正确。"
+      ],
+      "verification": {
+        "method": "仅调用可信作者函数离线断言，从未执行模型提交。",
+        "notes": "通过3个语义/性质断言；资源未冻结。测试组：偶舍中点、负数抵消、负零、空输入、大额、多小额。",
+        "independentCheck": false
+      }
+    },
+    {
+      "id": "v2-c05",
+      "title": "依赖图批量修改后的快照",
+      "category": "code",
+      "familyId": "v2-c05",
+      "pool": "development",
+      "difficulty": "candidate-hard",
+      "status": "uncalibrated",
+      "source": {
+        "name": "逐风自编代码挑战，参考实际执行与回归方法",
+        "url": "https://livecodebench.github.io/",
+        "note": "非官方benchmark复现。"
+      },
+      "rubric": [
+        "核心45、边界20、资源15、回归20。",
+        "全部强制组与资源要求通过才算首答成功。",
+        "未验收隔离执行，代码维持blocked；格式通过不证明程序正确。"
+      ],
+      "verification": {
+        "method": "仅调用可信作者函数离线断言，从未执行模型提交。",
+        "notes": "通过3个语义/性质断言；资源未冻结。测试组：传递更新、依赖转常数、同时替换、环、缺依赖、重复项。",
+        "independentCheck": false
+      }
+    },
+    {
+      "id": "v2-c06",
+      "title": "跨平台相对路径规范化",
+      "category": "code",
+      "familyId": "v2-c06",
+      "pool": "development",
+      "difficulty": "candidate-hard",
+      "status": "uncalibrated",
+      "source": {
+        "name": "逐风自编代码挑战，参考实际执行与回归方法",
+        "url": "https://livecodebench.github.io/",
+        "note": "非官方benchmark复现。"
+      },
+      "rubric": [
+        "核心45、边界20、资源15、回归20。",
+        "全部强制组与资源要求通过才算首答成功。",
+        "未验收隔离执行，代码维持blocked；格式通过不证明程序正确。"
+      ],
+      "verification": {
+        "method": "仅调用可信作者函数离线断言，从未执行模型提交。",
+        "notes": "通过9个语义/性质断言；资源未冻结。测试组：中途越根、空路径、反斜杠、百分号、Unicode、NUL。",
+        "independentCheck": false
+      }
+    },
+    {
+      "id": "v2-c07",
+      "title": "取消边界下的非抢占调度",
+      "category": "code",
+      "familyId": "v2-c07",
+      "pool": "sealed",
+      "difficulty": "candidate-hard",
+      "status": "uncalibrated",
+      "source": {
+        "name": "逐风自编挑战题库",
+        "url": null,
+        "note": "本站题目；不代表官方 benchmark 复现成绩。"
+      },
+      "rubric": [
+        "内容完成度、必要输出合同、严格完成分别报告。",
+        "详细题面、答案、测试及评分证据留在本地封存包。"
+      ],
+      "verification": {
+        "method": "sealed-local",
+        "notes": "封存内容不进入网站或公开源码包；区分度未实测校准。",
+        "independentCheck": false
+      }
+    },
+    {
+      "id": "v2-c08",
+      "title": "带出发窗口的最早到达",
+      "category": "code",
+      "familyId": "v2-c08",
+      "pool": "sealed",
+      "difficulty": "candidate-hard",
+      "status": "uncalibrated",
+      "source": {
+        "name": "逐风自编挑战题库",
+        "url": null,
+        "note": "本站题目；不代表官方 benchmark 复现成绩。"
+      },
+      "rubric": [
+        "内容完成度、必要输出合同、严格完成分别报告。",
+        "详细题面、答案、测试及评分证据留在本地封存包。"
+      ],
+      "verification": {
+        "method": "sealed-local",
+        "notes": "封存内容不进入网站或公开源码包；区分度未实测校准。",
+        "independentCheck": false
+      }
+    },
+    {
+      "id": "v2-c09",
+      "title": "代码点编辑与UTF-8边界",
+      "category": "code",
+      "familyId": "v2-c09",
+      "pool": "sealed",
+      "difficulty": "candidate-hard",
+      "status": "uncalibrated",
+      "source": {
+        "name": "逐风自编挑战题库",
+        "url": null,
+        "note": "本站题目；不代表官方 benchmark 复现成绩。"
+      },
+      "rubric": [
+        "内容完成度、必要输出合同、严格完成分别报告。",
+        "详细题面、答案、测试及评分证据留在本地封存包。"
+      ],
+      "verification": {
+        "method": "sealed-local",
+        "notes": "封存内容不进入网站或公开源码包；区分度未实测校准。",
+        "independentCheck": false
+      }
+    },
+    {
+      "id": "v2-c10",
+      "title": "空值排序和稳定游标分页",
+      "category": "code",
+      "familyId": "v2-c10",
+      "pool": "sealed",
+      "difficulty": "candidate-hard",
+      "status": "uncalibrated",
+      "source": {
+        "name": "逐风自编挑战题库",
+        "url": null,
+        "note": "本站题目；不代表官方 benchmark 复现成绩。"
+      },
+      "rubric": [
+        "内容完成度、必要输出合同、严格完成分别报告。",
+        "详细题面、答案、测试及评分证据留在本地封存包。"
+      ],
+      "verification": {
+        "method": "sealed-local",
+        "notes": "封存内容不进入网站或公开源码包；区分度未实测校准。",
+        "independentCheck": false
+      }
+    },
+    {
+      "id": "v2-c11",
+      "title": "区间阈值计数与求和",
+      "category": "code",
+      "familyId": "v2-c11",
+      "pool": "sealed",
+      "difficulty": "candidate-hard",
+      "status": "uncalibrated",
+      "source": {
+        "name": "逐风自编挑战题库",
+        "url": null,
+        "note": "本站题目；不代表官方 benchmark 复现成绩。"
+      },
+      "rubric": [
+        "内容完成度、必要输出合同、严格完成分别报告。",
+        "详细题面、答案、测试及评分证据留在本地封存包。"
+      ],
+      "verification": {
+        "method": "sealed-local",
+        "notes": "封存内容不进入网站或公开源码包；区分度未实测校准。",
+        "independentCheck": false
+      }
+    },
+    {
+      "id": "v2-c12",
+      "title": "旧记录迁移和未知字段保持",
+      "category": "code",
+      "familyId": "v2-c12",
+      "pool": "sealed",
+      "difficulty": "candidate-hard",
+      "status": "uncalibrated",
+      "source": {
+        "name": "逐风自编挑战题库",
+        "url": null,
+        "note": "本站题目；不代表官方 benchmark 复现成绩。"
+      },
+      "rubric": [
+        "内容完成度、必要输出合同、严格完成分别报告。",
+        "详细题面、答案、测试及评分证据留在本地封存包。"
+      ],
+      "verification": {
+        "method": "sealed-local",
+        "notes": "封存内容不进入网站或公开源码包；区分度未实测校准。",
+        "independentCheck": false
+      }
+    },
+    {
+      "id": "v2-c13",
+      "title": "小仓库：传递缓存失效修复",
+      "category": "code",
+      "familyId": "v2-c13",
+      "pool": "sealed",
+      "difficulty": "candidate-hard",
+      "status": "uncalibrated",
+      "source": {
+        "name": "逐风自编挑战题库",
+        "url": null,
+        "note": "本站题目；不代表官方 benchmark 复现成绩。"
+      },
+      "rubric": [
+        "内容完成度、必要输出合同、严格完成分别报告。",
+        "详细题面、答案、测试及评分证据留在本地封存包。"
+      ],
+      "verification": {
+        "method": "sealed-local",
+        "notes": "封存内容不进入网站或公开源码包；区分度未实测校准。",
+        "independentCheck": false
+      }
+    },
+    {
+      "id": "v2-c14",
+      "title": "小仓库：超时幂等重试修复",
+      "category": "code",
+      "familyId": "v2-c14",
+      "pool": "sealed",
+      "difficulty": "candidate-hard",
+      "status": "uncalibrated",
+      "source": {
+        "name": "逐风自编挑战题库",
+        "url": null,
+        "note": "本站题目；不代表官方 benchmark 复现成绩。"
+      },
+      "rubric": [
+        "内容完成度、必要输出合同、严格完成分别报告。",
+        "详细题面、答案、测试及评分证据留在本地封存包。"
+      ],
+      "verification": {
+        "method": "sealed-local",
+        "notes": "封存内容不进入网站或公开源码包；区分度未实测校准。",
+        "independentCheck": false
+      }
+    },
+    {
+      "id": "v2-c15",
+      "title": "小仓库：配置删除与替换修复",
+      "category": "code",
+      "familyId": "v2-c15",
+      "pool": "sealed",
+      "difficulty": "candidate-hard",
+      "status": "uncalibrated",
+      "source": {
+        "name": "逐风自编挑战题库",
+        "url": null,
+        "note": "本站题目；不代表官方 benchmark 复现成绩。"
+      },
+      "rubric": [
+        "内容完成度、必要输出合同、严格完成分别报告。",
+        "详细题面、答案、测试及评分证据留在本地封存包。"
+      ],
+      "verification": {
+        "method": "sealed-local",
+        "notes": "封存内容不进入网站或公开源码包；区分度未实测校准。",
+        "independentCheck": false
+      }
+    },
+    {
+      "id": "v2-c16",
+      "title": "小仓库：错误位置与合法文本回归",
+      "category": "code",
+      "familyId": "v2-c16",
+      "pool": "sealed",
+      "difficulty": "candidate-hard",
+      "status": "uncalibrated",
+      "source": {
+        "name": "逐风自编挑战题库",
+        "url": null,
+        "note": "本站题目；不代表官方 benchmark 复现成绩。"
+      },
+      "rubric": [
+        "内容完成度、必要输出合同、严格完成分别报告。",
+        "详细题面、答案、测试及评分证据留在本地封存包。"
+      ],
+      "verification": {
+        "method": "sealed-local",
+        "notes": "封存内容不进入网站或公开源码包；区分度未实测校准。",
+        "independentCheck": false
+      }
+    },
+    {
+      "id": "v2-d01",
+      "title": "双时点修订与缺证据对账",
+      "category": "data",
+      "familyId": "mechanism-d01",
+      "pool": "development",
+      "difficulty": "candidate-hard",
+      "status": "uncalibrated",
+      "source": {
+        "name": "本站自编；方法参考 LiveBench",
+        "url": "https://arxiv.org/abs/2406.19314",
+        "note": "合成材料；不是官方 benchmark 复现，区分度待校准。"
+      },
+      "rubric": [
+        "selected：20 分；该项为核心条件。",
+        "converted.e1.rate：2.5 分；该项为核心条件。",
+        "converted.e1.cny：2.5 分；该项为核心条件。",
+        "converted.e2.rate：2.5 分；该项为核心条件。",
+        "converted.e2.cny：2.5 分；该项为核心条件。",
+        "converted.e3.rate：2.5 分；该项为核心条件。",
+        "converted.e3.cny：2.5 分；该项为核心条件。",
+        "converted.e4.rate：2.5 分；该项为核心条件。",
+        "converted.e4.cny：2.5 分；该项为核心条件。",
+        "converted.e7.rate：2.5 分；该项为核心条件。",
+        "converted.e7.cny：2.5 分；该项为核心条件。",
+        "order_totals.O1：3.75 分；该项为核心条件。",
+        "order_totals.O2：3.75 分；该项为核心条件。",
+        "order_totals.O4：3.75 分；该项为核心条件。",
+        "order_totals.O5：3.75 分；该项为核心条件。",
+        "known_total_cny：10.0 分；该项为核心条件。",
+        "total_cny：10.0 分；该项为核心条件。",
+        "missing：10 分；该项为核心条件。",
+        "duplicate_invariant：5.0 分；该项为核心条件。",
+        "reorder_invariant：5.0 分；该项为核心条件。",
+        "输出合同单独核验；核心内容与必要合同均通过才严格完成。"
+      ],
+      "verification": {
+        "method": "revision_filter_and_fraction_ledger",
+        "notes": "按事件选择与汇率时点过滤复算，精确已知和1261；同时检查零金额订单及未知完整总额。 已执行本地参考核验；尚无独立专家复核完整题面。",
+        "independentCheck": false
+      }
+    },
+    {
+      "id": "v2-d02",
+      "title": "订单粒度与历史用户分层",
+      "category": "data",
+      "familyId": "mechanism-d02",
+      "pool": "development",
+      "difficulty": "candidate-hard",
+      "status": "uncalibrated",
+      "source": {
+        "name": "本站自编；方法参考 LiveBench",
+        "url": "https://arxiv.org/abs/2406.19314",
+        "note": "合成材料；不是官方 benchmark 复现，区分度待校准。"
+      },
+      "rubric": [
+        "eligible_orders：20 分；该项为核心条件。",
+        "revenue.basic：15.0 分；该项为核心条件。",
+        "revenue.pro：15.0 分；该项为核心条件。",
+        "total：15.0 分；该项为核心条件。",
+        "naive_total：20.0 分；该项为核心条件。",
+        "overcount：15.0 分；该项为核心条件。",
+        "输出合同单独核验；核心内容与必要合同均通过才严格完成。"
+      ],
+      "verification": {
+        "method": "author_reference_review",
+        "notes": "题面和参考解已编写；未做独立专家复核，不能视为已校准。",
+        "independentCheck": false
+      }
+    },
+    {
+      "id": "v2-d03",
+      "title": "分母变化下的转化率比较",
+      "category": "data",
+      "familyId": "mechanism-d03",
+      "pool": "development",
+      "difficulty": "candidate-hard",
+      "status": "uncalibrated",
+      "source": {
+        "name": "本站自编；方法参考 LiveBench",
+        "url": "https://arxiv.org/abs/2406.19314",
+        "note": "合成材料；不是官方 benchmark 复现，区分度待校准。"
+      },
+      "rubric": [
+        "overall_A：15.0 分；该项为核心条件。",
+        "overall_B：15.0 分；该项为核心条件。",
+        "new_winner：10.0 分；该项为核心条件。",
+        "returning_winner：10.0 分；该项为核心条件。",
+        "standard_A：20.0 分；该项为核心条件。",
+        "standard_B：20.0 分；该项为核心条件。",
+        "february_comparable：10.0 分；该项为核心条件。",
+        "输出合同单独核验；核心内容与必要合同均通过才严格完成。"
+      ],
+      "verification": {
+        "method": "author_reference_review",
+        "notes": "题面和参考解已编写；未做独立专家复核，不能视为已校准。",
+        "independentCheck": false
+      }
+    },
+    {
+      "id": "v2-d04",
+      "title": "非随机缺失的均值锐界",
+      "category": "data",
+      "familyId": "mechanism-d04",
+      "pool": "development",
+      "difficulty": "candidate-hard",
+      "status": "uncalibrated",
+      "source": {
+        "name": "本站自编；方法参考 LiveBench",
+        "url": "https://arxiv.org/abs/2406.19314",
+        "note": "合成材料；不是官方 benchmark 复现，区分度待校准。"
+      },
+      "rubric": [
+        "mean_min：20.0 分；该项为核心条件。",
+        "mean_max：20.0 分；该项为核心条件。",
+        "rate_min：15.0 分；该项为核心条件。",
+        "rate_max：15.0 分；该项为核心条件。",
+        "mean_with_assumption：20.0 分；该项为核心条件。",
+        "rate_identified：10.0 分；该项为核心条件。",
+        "输出合同单独核验；核心内容与必要合同均通过才严格完成。"
+      ],
+      "verification": {
+        "method": "author_reference_review",
+        "notes": "题面和参考解已编写；未做独立专家复核，不能视为已校准。",
+        "independentCheck": false
+      }
+    },
+    {
+      "id": "v2-d05",
+      "title": "预测时点可用性的泄漏审计",
+      "category": "data",
+      "familyId": "mechanism-d05",
+      "pool": "sealed",
+      "difficulty": "candidate-hard",
+      "status": "uncalibrated",
+      "source": {
+        "name": "逐风自编挑战题库",
+        "url": null,
+        "note": "本站题目；不代表官方 benchmark 复现成绩。"
+      },
+      "rubric": [
+        "内容完成度、必要输出合同、严格完成分别报告。",
+        "详细题面、答案、测试及评分证据留在本地封存包。"
+      ],
+      "verification": {
+        "method": "sealed-local",
+        "notes": "封存内容不进入网站或公开源码包；区分度未实测校准。",
+        "independentCheck": false
+      }
+    },
+    {
+      "id": "v2-d06",
+      "title": "人工容量限制下的分类决策",
+      "category": "data",
+      "familyId": "mechanism-d06",
+      "pool": "sealed",
+      "difficulty": "candidate-hard",
+      "status": "uncalibrated",
+      "source": {
+        "name": "逐风自编挑战题库",
+        "url": null,
+        "note": "本站题目；不代表官方 benchmark 复现成绩。"
+      },
+      "rubric": [
+        "内容完成度、必要输出合同、严格完成分别报告。",
+        "详细题面、答案、测试及评分证据留在本地封存包。"
+      ],
+      "verification": {
+        "method": "sealed-local",
+        "notes": "封存内容不进入网站或公开源码包；区分度未实测校准。",
+        "independentCheck": false
+      }
+    },
+    {
+      "id": "v2-d07",
+      "title": "聚合量能恢复什么",
+      "category": "data",
+      "familyId": "mechanism-d07",
+      "pool": "sealed",
+      "difficulty": "candidate-hard",
+      "status": "uncalibrated",
+      "source": {
+        "name": "逐风自编挑战题库",
+        "url": null,
+        "note": "本站题目；不代表官方 benchmark 复现成绩。"
+      },
+      "rubric": [
+        "内容完成度、必要输出合同、严格完成分别报告。",
+        "详细题面、答案、测试及评分证据留在本地封存包。"
+      ],
+      "verification": {
+        "method": "sealed-local",
+        "notes": "封存内容不进入网站或公开源码包；区分度未实测校准。",
+        "independentCheck": false
+      }
+    },
+    {
+      "id": "v2-d08",
+      "title": "留存提升是否可归因",
+      "category": "data",
+      "familyId": "mechanism-d08",
+      "pool": "sealed",
+      "difficulty": "candidate-hard",
+      "status": "uncalibrated",
+      "source": {
+        "name": "逐风自编挑战题库",
+        "url": null,
+        "note": "本站题目；不代表官方 benchmark 复现成绩。"
+      },
+      "rubric": [
+        "内容完成度、必要输出合同、严格完成分别报告。",
+        "详细题面、答案、测试及评分证据留在本地封存包。"
+      ],
+      "verification": {
+        "method": "sealed-local",
+        "notes": "封存内容不进入网站或公开源码包；区分度未实测校准。",
+        "independentCheck": false
+      }
+    },
+    {
+      "id": "v2-d09",
+      "title": "不完全依从实验的估计对象",
+      "category": "data",
+      "familyId": "mechanism-d09",
+      "pool": "sealed",
+      "difficulty": "candidate-hard",
+      "status": "uncalibrated",
+      "source": {
+        "name": "逐风自编挑战题库",
+        "url": null,
+        "note": "本站题目；不代表官方 benchmark 复现成绩。"
+      },
+      "rubric": [
+        "内容完成度、必要输出合同、严格完成分别报告。",
+        "详细题面、答案、测试及评分证据留在本地封存包。"
+      ],
+      "verification": {
+        "method": "sealed-local",
+        "notes": "封存内容不进入网站或公开源码包；区分度未实测校准。",
+        "independentCheck": false
+      }
+    },
+    {
+      "id": "v2-d10",
+      "title": "事后挑指标和停表的分析修订",
+      "category": "data",
+      "familyId": "mechanism-d10",
+      "pool": "sealed",
+      "difficulty": "candidate-hard",
+      "status": "uncalibrated",
+      "source": {
+        "name": "逐风自编挑战题库",
+        "url": null,
+        "note": "本站题目；不代表官方 benchmark 复现成绩。"
+      },
+      "rubric": [
+        "内容完成度、必要输出合同、严格完成分别报告。",
+        "详细题面、答案、测试及评分证据留在本地封存包。"
+      ],
+      "verification": {
+        "method": "sealed-local",
+        "notes": "封存内容不进入网站或公开源码包；区分度未实测校准。",
+        "independentCheck": false
+      }
+    },
+    {
+      "id": "v2-d11",
+      "title": "重复本地时刻与半开时间窗",
+      "category": "data",
+      "familyId": "mechanism-d11",
+      "pool": "sealed",
+      "difficulty": "candidate-hard",
+      "status": "uncalibrated",
+      "source": {
+        "name": "逐风自编挑战题库",
+        "url": null,
+        "note": "本站题目；不代表官方 benchmark 复现成绩。"
+      },
+      "rubric": [
+        "内容完成度、必要输出合同、严格完成分别报告。",
+        "详细题面、答案、测试及评分证据留在本地封存包。"
+      ],
+      "verification": {
+        "method": "sealed-local",
+        "notes": "封存内容不进入网站或公开源码包；区分度未实测校准。",
+        "independentCheck": false
+      }
+    },
+    {
+      "id": "v2-d12",
+      "title": "实体匹配不确定性与总额区间",
+      "category": "data",
+      "familyId": "mechanism-d12",
+      "pool": "sealed",
+      "difficulty": "candidate-hard",
+      "status": "uncalibrated",
+      "source": {
+        "name": "逐风自编挑战题库",
+        "url": null,
+        "note": "本站题目；不代表官方 benchmark 复现成绩。"
+      },
+      "rubric": [
+        "内容完成度、必要输出合同、严格完成分别报告。",
+        "详细题面、答案、测试及评分证据留在本地封存包。"
+      ],
+      "verification": {
+        "method": "sealed-local",
+        "notes": "封存内容不进入网站或公开源码包；区分度未实测校准。",
+        "independentCheck": false
+      }
+    },
+    {
+      "id": "v2-i01",
+      "title": "权限例外的证据与撤销",
+      "category": "instruction",
+      "familyId": "mechanism-i01",
+      "pool": "development",
+      "difficulty": "candidate-hard",
+      "status": "uncalibrated",
+      "source": {
+        "name": "本站自编；方法参考 IFEval / IFBench",
+        "url": "https://github.com/allenai/IFBench",
+        "note": "合成材料；不是官方 benchmark 复现，区分度待校准。"
+      },
+      "rubric": [
+        "Q1时间与授权：25 分，五档锚点；严格完成下限：3",
+        "Q2生效撤销：25 分，五档锚点；严格完成下限：4",
+        "Q3有效例外：25 分，五档锚点；严格完成下限：3",
+        "Q4证据缺口：25 分，五档锚点；严格完成下限：4",
+        "必须人工逐项引用证据；仅解析成功不代表内容正确。"
+      ],
+      "verification": {
+        "method": "author_reference_review",
+        "notes": "题面和参考解已编写；未做独立专家复核，不能视为已校准。",
+        "independentCheck": false
+      }
+    },
+    {
+      "id": "v2-i02",
+      "title": "连续修订中的精确保持",
+      "category": "instruction",
+      "familyId": "mechanism-i02",
+      "pool": "development",
+      "difficulty": "candidate-hard",
+      "status": "uncalibrated",
+      "source": {
+        "name": "本站自编；方法参考 IFEval / IFBench",
+        "url": "https://github.com/allenai/IFBench",
+        "note": "合成材料；不是官方 benchmark 复现，区分度待校准。"
+      },
+      "rubric": [
+        "release：10.0 分；该项为核心条件。",
+        "owners.0：7.5 分；该项为核心条件。",
+        "owners.1：7.5 分；该项为核心条件。",
+        "notify.email：8.34 分；该项为核心条件。",
+        "notify.sms：8.33 分；该项为核心条件。",
+        "notify.levels.0：8.33 分；该项为核心条件。",
+        "regions.north.quota：7.5 分；该项为核心条件。",
+        "regions.north.enabled：7.5 分；该项为核心条件。",
+        "regions.south.quota：7.5 分；该项为核心条件。",
+        "regions.south.enabled：7.5 分；该项为核心条件。",
+        "tags.0：3.34 分；该项为核心条件。",
+        "tags.1：3.33 分；该项为核心条件。",
+        "tags.2：3.33 分；该项为核心条件。",
+        "retention_days：10.0 分；该项为核心条件。",
+        "输出合同单独核验；核心内容与必要合同均通过才严格完成。"
+      ],
+      "verification": {
+        "method": "author_reference_review",
+        "notes": "题面和参考解已编写；未做独立专家复核，不能视为已校准。",
+        "independentCheck": false
+      }
+    },
+    {
+      "id": "v2-i03",
+      "title": "三渠道发布的事实同步与局部限制",
+      "category": "instruction",
+      "familyId": "mechanism-i03",
+      "pool": "development",
+      "difficulty": "candidate-hard",
+      "status": "uncalibrated",
+      "source": {
+        "name": "本站自编；方法参考 IFEval / IFBench",
+        "url": "https://github.com/allenai/IFBench",
+        "note": "合成材料；不是官方 benchmark 复现，区分度待校准。"
+      },
+      "rubric": [
+        "共同事实与行动入口：30 分，五档锚点；严格完成下限：4",
+        "渠道专属要求：30 分，五档锚点；严格完成下限：3",
+        "名额与价格边界：25 分，五档锚点；严格完成下限：4",
+        "清晰与渠道适配：15 分，五档锚点；严格完成下限：非门槛",
+        "必须人工逐项引用证据；仅解析成功不代表内容正确。"
+      ],
+      "verification": {
+        "method": "author_reference_review",
+        "notes": "题面和参考解已编写；未做独立专家复核，不能视为已校准。",
+        "independentCheck": false
+      }
+    },
+    {
+      "id": "v2-i04",
+      "title": "材料中的操作话语与数据提取",
+      "category": "instruction",
+      "familyId": "mechanism-i04",
+      "pool": "sealed",
+      "difficulty": "candidate-hard",
+      "status": "uncalibrated",
+      "source": {
+        "name": "逐风自编挑战题库",
+        "url": null,
+        "note": "本站题目；不代表官方 benchmark 复现成绩。"
+      },
+      "rubric": [
+        "内容完成度、必要输出合同、严格完成分别报告。",
+        "详细题面、答案、测试及评分证据留在本地封存包。"
+      ],
+      "verification": {
+        "method": "sealed-local",
+        "notes": "封存内容不进入网站或公开源码包；区分度未实测校准。",
+        "independentCheck": false
+      }
+    },
+    {
+      "id": "v2-i05",
+      "title": "冲突要求的声明优先级",
+      "category": "instruction",
+      "familyId": "mechanism-i05",
+      "pool": "sealed",
+      "difficulty": "candidate-hard",
+      "status": "uncalibrated",
+      "source": {
+        "name": "逐风自编挑战题库",
+        "url": null,
+        "note": "本站题目；不代表官方 benchmark 复现成绩。"
+      },
+      "rubric": [
+        "内容完成度、必要输出合同、严格完成分别报告。",
+        "详细题面、答案、测试及评分证据留在本地封存包。"
+      ],
+      "verification": {
+        "method": "sealed-local",
+        "notes": "封存内容不进入网站或公开源码包；区分度未实测校准。",
+        "independentCheck": false
+      }
+    },
+    {
+      "id": "v2-i06",
+      "title": "例外名单与跨条件提取",
+      "category": "instruction",
+      "familyId": "mechanism-i06",
+      "pool": "sealed",
+      "difficulty": "candidate-hard",
+      "status": "uncalibrated",
+      "source": {
+        "name": "逐风自编挑战题库",
+        "url": null,
+        "note": "本站题目；不代表官方 benchmark 复现成绩。"
+      },
+      "rubric": [
+        "内容完成度、必要输出合同、严格完成分别报告。",
+        "详细题面、答案、测试及评分证据留在本地封存包。"
+      ],
+      "verification": {
+        "method": "sealed-local",
+        "notes": "封存内容不进入网站或公开源码包；区分度未实测校准。",
+        "independentCheck": false
+      }
+    },
+    {
+      "id": "v2-i07",
+      "title": "新要求替代旧要求后的范围控制",
+      "category": "instruction",
+      "familyId": "mechanism-i07",
+      "pool": "sealed",
+      "difficulty": "candidate-hard",
+      "status": "uncalibrated",
+      "source": {
+        "name": "逐风自编挑战题库",
+        "url": null,
+        "note": "本站题目；不代表官方 benchmark 复现成绩。"
+      },
+      "rubric": [
+        "内容完成度、必要输出合同、严格完成分别报告。",
+        "详细题面、答案、测试及评分证据留在本地封存包。"
+      ],
+      "verification": {
+        "method": "sealed-local",
+        "notes": "封存内容不进入网站或公开源码包；区分度未实测校准。",
+        "independentCheck": false
+      }
+    },
+    {
+      "id": "v2-i08",
+      "title": "格式合同内的精确数值变换",
+      "category": "instruction",
+      "familyId": "mechanism-i08",
+      "pool": "sealed",
+      "difficulty": "candidate-hard",
+      "status": "uncalibrated",
+      "source": {
+        "name": "逐风自编挑战题库",
+        "url": null,
+        "note": "本站题目；不代表官方 benchmark 复现成绩。"
+      },
+      "rubric": [
+        "内容完成度、必要输出合同、严格完成分别报告。",
+        "详细题面、答案、测试及评分证据留在本地封存包。"
+      ],
+      "verification": {
+        "method": "sealed-local",
+        "notes": "封存内容不进入网站或公开源码包；区分度未实测校准。",
+        "independentCheck": false
+      }
+    },
+    {
+      "id": "v2-i09",
+      "title": "可回答与未知字段的混合输出",
+      "category": "instruction",
+      "familyId": "mechanism-i09",
+      "pool": "sealed",
+      "difficulty": "candidate-hard",
+      "status": "uncalibrated",
+      "source": {
+        "name": "逐风自编挑战题库",
+        "url": null,
+        "note": "本站题目；不代表官方 benchmark 复现成绩。"
+      },
+      "rubric": [
+        "内容完成度、必要输出合同、严格完成分别报告。",
+        "详细题面、答案、测试及评分证据留在本地封存包。"
+      ],
+      "verification": {
+        "method": "sealed-local",
+        "notes": "封存内容不进入网站或公开源码包；区分度未实测校准。",
+        "independentCheck": false
+      }
+    },
+    {
+      "id": "v2-i10",
+      "title": "实体延续与失效规则分离",
+      "category": "instruction",
+      "familyId": "mechanism-i10",
+      "pool": "sealed",
+      "difficulty": "candidate-hard",
+      "status": "uncalibrated",
+      "source": {
+        "name": "逐风自编挑战题库",
+        "url": null,
+        "note": "本站题目；不代表官方 benchmark 复现成绩。"
+      },
+      "rubric": [
+        "内容完成度、必要输出合同、严格完成分别报告。",
+        "详细题面、答案、测试及评分证据留在本地封存包。"
+      ],
+      "verification": {
+        "method": "sealed-local",
+        "notes": "封存内容不进入网站或公开源码包；区分度未实测校准。",
+        "independentCheck": false
+      }
+    },
+    {
+      "id": "v2-l01",
+      "title": "多产品收费版本与业务时刻",
+      "category": "longcontext",
+      "familyId": "mechanism-l01",
+      "pool": "development",
+      "difficulty": "candidate-hard",
+      "status": "uncalibrated",
+      "source": {
+        "name": "本站自编；方法参考 HELMET / RULER",
+        "url": "https://arxiv.org/abs/2410.02694",
+        "note": "合成材料；不是官方 benchmark 复现，区分度待校准。"
+      },
+      "rubric": [
+        "quotes.0.id：1.25 分；该项为核心条件。",
+        "quotes.0.accepted：1.25 分；该项为核心条件。",
+        "quotes.0.total：1.25 分；该项为核心条件。",
+        "quotes.0.price_source：1.25 分；该项为核心条件。",
+        "quotes.0.fee_source：1.25 分；该项为核心条件。",
+        "quotes.1.id：1.25 分；该项为核心条件。",
+        "quotes.1.accepted：1.25 分；该项为核心条件。",
+        "quotes.1.total：1.25 分；该项为核心条件。",
+        "quotes.1.price_source：1.25 分；该项为核心条件。",
+        "quotes.1.fee_source：1.25 分；该项为核心条件。",
+        "quotes.2.id：1.25 分；该项为核心条件。",
+        "quotes.2.accepted：1.25 分；该项为核心条件。",
+        "quotes.2.total：1.25 分；该项为核心条件。",
+        "quotes.2.price_source：1.25 分；该项为核心条件。",
+        "quotes.2.fee_source：1.25 分；该项为核心条件。",
+        "quotes.3.id：1.25 分；该项为核心条件。",
+        "quotes.3.accepted：1.25 分；该项为核心条件。",
+        "quotes.3.total：1.25 分；该项为核心条件。",
+        "quotes.3.price_source：1.25 分；该项为核心条件。",
+        "quotes.3.fee_source：1.25 分；该项为核心条件。",
+        "quotes.4.id：1.25 分；该项为核心条件。",
+        "quotes.4.accepted：1.25 分；该项为核心条件。",
+        "quotes.4.total：1.25 分；该项为核心条件。",
+        "quotes.4.price_source：1.25 分；该项为核心条件。",
+        "quotes.4.fee_source：1.25 分；该项为核心条件。",
+        "quotes.5.id：1.25 分；该项为核心条件。",
+        "quotes.5.accepted：1.25 分；该项为核心条件。",
+        "quotes.5.total：1.25 分；该项为核心条件。",
+        "quotes.5.price_source：1.25 分；该项为核心条件。",
+        "quotes.5.fee_source：1.25 分；该项为核心条件。",
+        "quotes.6.id：1.25 分；该项为核心条件。",
+        "quotes.6.accepted：1.25 分；该项为核心条件。",
+        "quotes.6.total：1.25 分；该项为核心条件。",
+        "quotes.6.price_source：1.25 分；该项为核心条件。",
+        "quotes.6.fee_source：1.25 分；该项为核心条件。",
+        "quotes.7.id：1.25 分；该项为核心条件。",
+        "quotes.7.accepted：1.25 分；该项为核心条件。",
+        "quotes.7.total：1.25 分；该项为核心条件。",
+        "quotes.7.price_source：1.25 分；该项为核心条件。",
+        "quotes.7.fee_source：1.25 分；该项为核心条件。",
+        "quotes.8.id：1.25 分；该项为核心条件。",
+        "quotes.8.accepted：1.25 分；该项为核心条件。",
+        "quotes.8.total：1.25 分；该项为核心条件。",
+        "quotes.8.price_source：1.25 分；该项为核心条件。",
+        "quotes.8.fee_source：1.25 分；该项为核心条件。",
+        "quotes.9.id：1.25 分；该项为核心条件。",
+        "quotes.9.accepted：1.25 分；该项为核心条件。",
+        "quotes.9.total：1.25 分；该项为核心条件。",
+        "quotes.9.price_source：1.25 分；该项为核心条件。",
+        "quotes.9.fee_source：1.25 分；该项为核心条件。",
+        "quotes.10.id：1.25 分；该项为核心条件。",
+        "quotes.10.accepted：1.25 分；该项为核心条件。",
+        "quotes.10.total：1.25 分；该项为核心条件。",
+        "quotes.10.price_source：1.25 分；该项为核心条件。",
+        "quotes.10.fee_source：1.25 分；该项为核心条件。",
+        "quotes.11.id：1.25 分；该项为核心条件。",
+        "quotes.11.accepted：1.25 分；该项为核心条件。",
+        "quotes.11.total：1.25 分；该项为核心条件。",
+        "quotes.11.price_source：1.25 分；该项为核心条件。",
+        "quotes.11.fee_source：1.25 分；该项为核心条件。",
+        "accepted_count：10.0 分；该项为核心条件。",
+        "accepted_total：15.0 分；该项为核心条件。",
+        "输出合同单独核验；核心内容与必要合同均通过才严格完成。"
+      ],
+      "verification": {
+        "method": "version_selector_and_aggregate",
+        "notes": "按产品与event_time生成12笔参考报价，再核对受理数和金额和；材料长度超过8000字符。 已执行本地参考核验；尚无独立专家复核完整题面。",
+        "independentCheck": false
+      }
+    },
+    {
+      "id": "v2-l02",
+      "title": "合同交付窗口的约束相交",
+      "category": "longcontext",
+      "familyId": "mechanism-l02",
+      "pool": "development",
+      "difficulty": "candidate-hard",
+      "status": "uncalibrated",
+      "source": {
+        "name": "本站自编；方法参考 HELMET / RULER",
+        "url": "https://arxiv.org/abs/2410.02694",
+        "note": "合成材料；不是官方 benchmark 复现，区分度待校准。"
+      },
+      "rubric": [
+        "schedules.K01.feasible_days.0：3.04 分；该项为核心条件。",
+        "schedules.K01.feasible_days.1：3.04 分；该项为核心条件。",
+        "schedules.K01.earliest：3.04 分；该项为核心条件。",
+        "schedules.K01.latest：3.04 分；该项为核心条件。",
+        "schedules.K03.feasible_days.0：3.04 分；该项为核心条件。",
+        "schedules.K03.feasible_days.1：3.04 分；该项为核心条件。",
+        "schedules.K03.feasible_days.2：3.04 分；该项为核心条件。",
+        "schedules.K03.earliest：3.04 分；该项为核心条件。",
+        "schedules.K03.latest：3.04 分；该项为核心条件。",
+        "schedules.K06.feasible_days.0：3.04 分；该项为核心条件。",
+        "schedules.K06.feasible_days.1：3.04 分；该项为核心条件。",
+        "schedules.K06.feasible_days.2：3.04 分；该项为核心条件。",
+        "schedules.K06.feasible_days.3：3.04 分；该项为核心条件。",
+        "schedules.K06.earliest：3.04 分；该项为核心条件。",
+        "schedules.K06.latest：3.04 分；该项为核心条件。",
+        "schedules.K10.feasible_days.0：3.04 分；该项为核心条件。",
+        "schedules.K10.feasible_days.1：3.03 分；该项为核心条件。",
+        "schedules.K10.feasible_days.2：3.03 分；该项为核心条件。",
+        "schedules.K10.feasible_days.3：3.03 分；该项为核心条件。",
+        "schedules.K10.earliest：3.03 分；该项为核心条件。",
+        "schedules.K10.latest：3.03 分；该项为核心条件。",
+        "schedules.K14.feasible_days：3.03 分；该项为核心条件。",
+        "schedules.K14.earliest：3.03 分；该项为核心条件。",
+        "schedules.K14.latest：3.03 分；该项为核心条件。",
+        "schedules.K20.feasible_days.0：3.03 分；该项为核心条件。",
+        "schedules.K20.feasible_days.1：3.03 分；该项为核心条件。",
+        "schedules.K20.earliest：3.03 分；该项为核心条件。",
+        "schedules.K20.latest：3.03 分；该项为核心条件。",
+        "impossible_batches：15 分；该项为核心条件。",
+        "输出合同单独核验；核心内容与必要合同均通过才严格完成。"
+      ],
+      "verification": {
+        "method": "all_calendar_days",
+        "notes": "遍历1..30检验每项已声明条件；110份文档包超过8000字符。 已执行本地参考核验；尚无独立专家复核完整题面。",
+        "independentCheck": false
+      }
+    },
+    {
+      "id": "v2-l03",
+      "title": "合并拆分后的别名与当前账号",
+      "category": "longcontext",
+      "familyId": "mechanism-l03",
+      "pool": "development",
+      "difficulty": "candidate-hard",
+      "status": "uncalibrated",
+      "source": {
+        "name": "本站自编；方法参考 HELMET / RULER",
+        "url": "https://arxiv.org/abs/2410.02694",
+        "note": "合成材料；不是官方 benchmark 复现，区分度待校准。"
+      },
+      "rubric": [
+        "resolved.0.record_id：1.12 分；该项为核心条件。",
+        "resolved.0.current_entity：1.12 分；该项为核心条件。",
+        "resolved.0.account：1.12 分；该项为核心条件。",
+        "resolved.0.state：1.12 分；该项为核心条件。",
+        "resolved.1.record_id：1.12 分；该项为核心条件。",
+        "resolved.1.current_entity：1.12 分；该项为核心条件。",
+        "resolved.1.account：1.12 分；该项为核心条件。",
+        "resolved.1.state：1.12 分；该项为核心条件。",
+        "resolved.2.record_id：1.11 分；该项为核心条件。",
+        "resolved.2.current_entity：1.11 分；该项为核心条件。",
+        "resolved.2.account：1.11 分；该项为核心条件。",
+        "resolved.2.state：1.11 分；该项为核心条件。",
+        "resolved.3.record_id：1.11 分；该项为核心条件。",
+        "resolved.3.current_entity：1.11 分；该项为核心条件。",
+        "resolved.3.account：1.11 分；该项为核心条件。",
+        "resolved.3.state：1.11 分；该项为核心条件。",
+        "resolved.4.record_id：1.11 分；该项为核心条件。",
+        "resolved.4.current_entity：1.11 分；该项为核心条件。",
+        "resolved.4.account：1.11 分；该项为核心条件。",
+        "resolved.4.state：1.11 分；该项为核心条件。",
+        "resolved.5.record_id：1.11 分；该项为核心条件。",
+        "resolved.5.current_entity：1.11 分；该项为核心条件。",
+        "resolved.5.account：1.11 分；该项为核心条件。",
+        "resolved.5.state：1.11 分；该项为核心条件。",
+        "resolved.6.record_id：1.11 分；该项为核心条件。",
+        "resolved.6.current_entity：1.11 分；该项为核心条件。",
+        "resolved.6.account：1.11 分；该项为核心条件。",
+        "resolved.6.state：1.11 分；该项为核心条件。",
+        "resolved.7.record_id：1.11 分；该项为核心条件。",
+        "resolved.7.current_entity：1.11 分；该项为核心条件。",
+        "resolved.7.account：1.11 分；该项为核心条件。",
+        "resolved.7.state：1.11 分；该项为核心条件。",
+        "resolved.8.record_id：1.11 分；该项为核心条件。",
+        "resolved.8.current_entity：1.11 分；该项为核心条件。",
+        "resolved.8.account：1.11 分；该项为核心条件。",
+        "resolved.8.state：1.11 分；该项为核心条件。",
+        "resolved.9.record_id：1.11 分；该项为核心条件。",
+        "resolved.9.current_entity：1.11 分；该项为核心条件。",
+        "resolved.9.account：1.11 分；该项为核心条件。",
+        "resolved.9.state：1.11 分；该项为核心条件。",
+        "resolved.10.record_id：1.11 分；该项为核心条件。",
+        "resolved.10.current_entity：1.11 分；该项为核心条件。",
+        "resolved.10.account：1.11 分；该项为核心条件。",
+        "resolved.10.state：1.11 分；该项为核心条件。",
+        "resolved.11.record_id：1.11 分；该项为核心条件。",
+        "resolved.11.current_entity：1.11 分；该项为核心条件。",
+        "resolved.11.account：1.11 分；该项为核心条件。",
+        "resolved.11.state：1.11 分；该项为核心条件。",
+        "resolved.12.record_id：1.11 分；该项为核心条件。",
+        "resolved.12.current_entity：1.11 分；该项为核心条件。",
+        "resolved.12.account：1.11 分；该项为核心条件。",
+        "resolved.12.state：1.11 分；该项为核心条件。",
+        "resolved.13.record_id：1.11 分；该项为核心条件。",
+        "resolved.13.current_entity：1.11 分；该项为核心条件。",
+        "resolved.13.account：1.11 分；该项为核心条件。",
+        "resolved.13.state：1.11 分；该项为核心条件。",
+        "resolved.14.record_id：1.11 分；该项为核心条件。",
+        "resolved.14.current_entity：1.11 分；该项为核心条件。",
+        "resolved.14.account：1.11 分；该项为核心条件。",
+        "resolved.14.state：1.11 分；该项为核心条件。",
+        "resolved.15.record_id：1.11 分；该项为核心条件。",
+        "resolved.15.current_entity：1.11 分；该项为核心条件。",
+        "resolved.15.account：1.11 分；该项为核心条件。",
+        "resolved.15.state：1.11 分；该项为核心条件。",
+        "resolved.16.record_id：1.11 分；该项为核心条件。",
+        "resolved.16.current_entity：1.11 分；该项为核心条件。",
+        "resolved.16.account：1.11 分；该项为核心条件。",
+        "resolved.16.state：1.11 分；该项为核心条件。",
+        "resolved.17.record_id：1.11 分；该项为核心条件。",
+        "resolved.17.current_entity：1.11 分；该项为核心条件。",
+        "resolved.17.account：1.11 分；该项为核心条件。",
+        "resolved.17.state：1.11 分；该项为核心条件。",
+        "unknown_count：10.0 分；该项为核心条件。",
+        "current_west_accounts：10 分；该项为核心条件。",
+        "输出合同单独核验；核心内容与必要合同均通过才严格完成。"
+      ],
+      "verification": {
+        "method": "explicit_entity_chain",
+        "notes": "对18条输入分别追踪两步迁移和账号轮换；6条缺region保持未知，完整材料超过8000字符。 已执行本地参考核验；尚无独立专家复核完整题面。",
+        "independentCheck": false
+      }
+    },
+    {
+      "id": "v2-l04",
+      "title": "跨层日志的重试与真实副作用",
+      "category": "longcontext",
+      "familyId": "mechanism-l04",
+      "pool": "sealed",
+      "difficulty": "candidate-hard",
+      "status": "uncalibrated",
+      "source": {
+        "name": "逐风自编挑战题库",
+        "url": null,
+        "note": "本站题目；不代表官方 benchmark 复现成绩。"
+      },
+      "rubric": [
+        "内容完成度、必要输出合同、严格完成分别报告。",
+        "详细题面、答案、测试及评分证据留在本地封存包。"
+      ],
+      "verification": {
+        "method": "sealed-local",
+        "notes": "封存内容不进入网站或公开源码包；区分度未实测校准。",
+        "independentCheck": false
+      }
+    },
+    {
+      "id": "v2-l05",
+      "title": "长对话中的承诺与撤销状态",
+      "category": "longcontext",
+      "familyId": "mechanism-l05",
+      "pool": "sealed",
+      "difficulty": "candidate-hard",
+      "status": "uncalibrated",
+      "source": {
+        "name": "逐风自编挑战题库",
+        "url": null,
+        "note": "本站题目；不代表官方 benchmark 复现成绩。"
+      },
+      "rubric": [
+        "内容完成度、必要输出合同、严格完成分别报告。",
+        "详细题面、答案、测试及评分证据留在本地封存包。"
+      ],
+      "verification": {
+        "method": "sealed-local",
+        "notes": "封存内容不进入网站或公开源码包；区分度未实测校准。",
+        "independentCheck": false
+      }
+    },
+    {
+      "id": "v2-l06",
+      "title": "跨版本报表口径迁移",
+      "category": "longcontext",
+      "familyId": "mechanism-l06",
+      "pool": "sealed",
+      "difficulty": "candidate-hard",
+      "status": "uncalibrated",
+      "source": {
+        "name": "逐风自编挑战题库",
+        "url": null,
+        "note": "本站题目；不代表官方 benchmark 复现成绩。"
+      },
+      "rubric": [
+        "内容完成度、必要输出合同、严格完成分别报告。",
+        "详细题面、答案、测试及评分证据留在本地封存包。"
+      ],
+      "verification": {
+        "method": "sealed-local",
+        "notes": "封存内容不进入网站或公开源码包；区分度未实测校准。",
+        "independentCheck": false
+      }
+    },
+    {
+      "id": "v2-l07",
+      "title": "冲突研究材料中的有限结论",
+      "category": "longcontext",
+      "familyId": "mechanism-l07",
+      "pool": "sealed",
+      "difficulty": "candidate-hard",
+      "status": "uncalibrated",
+      "source": {
+        "name": "逐风自编挑战题库",
+        "url": null,
+        "note": "本站题目；不代表官方 benchmark 复现成绩。"
+      },
+      "rubric": [
+        "内容完成度、必要输出合同、严格完成分别报告。",
+        "详细题面、答案、测试及评分证据留在本地封存包。"
+      ],
+      "verification": {
+        "method": "sealed-local",
+        "notes": "封存内容不进入网站或公开源码包；区分度未实测校准。",
+        "independentCheck": false
+      }
+    },
+    {
+      "id": "v2-l08",
+      "title": "大量修订记录中的精确分区汇总",
+      "category": "longcontext",
+      "familyId": "mechanism-l08",
+      "pool": "sealed",
+      "difficulty": "candidate-hard",
+      "status": "uncalibrated",
+      "source": {
+        "name": "逐风自编挑战题库",
+        "url": null,
+        "note": "本站题目；不代表官方 benchmark 复现成绩。"
+      },
+      "rubric": [
+        "内容完成度、必要输出合同、严格完成分别报告。",
+        "详细题面、答案、测试及评分证据留在本地封存包。"
+      ],
+      "verification": {
+        "method": "sealed-local",
+        "notes": "封存内容不进入网站或公开源码包；区分度未实测校准。",
+        "independentCheck": false
+      }
+    },
+    {
+      "id": "v2-l09",
+      "title": "缺页报告的可回答性",
+      "category": "longcontext",
+      "familyId": "mechanism-l09",
+      "pool": "sealed",
+      "difficulty": "candidate-hard",
+      "status": "uncalibrated",
+      "source": {
+        "name": "逐风自编挑战题库",
+        "url": null,
+        "note": "本站题目；不代表官方 benchmark 复现成绩。"
+      },
+      "rubric": [
+        "内容完成度、必要输出合同、严格完成分别报告。",
+        "详细题面、答案、测试及评分证据留在本地封存包。"
+      ],
+      "verification": {
+        "method": "sealed-local",
+        "notes": "封存内容不进入网站或公开源码包；区分度未实测校准。",
+        "independentCheck": false
+      }
+    },
+    {
+      "id": "v2-l10",
+      "title": "代码配置说明的跨文件生效值",
+      "category": "longcontext",
+      "familyId": "mechanism-l10",
+      "pool": "sealed",
+      "difficulty": "candidate-hard",
+      "status": "uncalibrated",
+      "source": {
+        "name": "逐风自编挑战题库",
+        "url": null,
+        "note": "本站题目；不代表官方 benchmark 复现成绩。"
+      },
+      "rubric": [
+        "内容完成度、必要输出合同、严格完成分别报告。",
+        "详细题面、答案、测试及评分证据留在本地封存包。"
+      ],
+      "verification": {
+        "method": "sealed-local",
+        "notes": "封存内容不进入网站或公开源码包；区分度未实测校准。",
+        "independentCheck": false
+      }
+    },
+    {
+      "id": "v2-w01",
+      "title": "把小样本试点写成可用说明",
+      "category": "chinese",
+      "familyId": "mechanism-w01",
+      "pool": "development",
+      "difficulty": "candidate-hard",
+      "status": "uncalibrated",
+      "source": {
+        "name": "本站自编；方法参考 WritingBench",
+        "url": "https://github.com/X-PLUG/WritingBench",
+        "note": "合成材料；不是官方 benchmark 复现，区分度待校准。"
+      },
+      "rubric": [
+        "事实忠实：35 分，五档锚点；严格完成下限：4",
+        "用途与必要信息：25 分，五档锚点；严格完成下限：3",
+        "逻辑与推断边界：20 分，五档锚点；严格完成下限：3",
+        "用户表达：20 分，五档锚点；严格完成下限：非门槛",
+        "必须人工逐项引用证据；仅解析成功不代表内容正确。"
+      ],
+      "verification": {
+        "method": "author_reference_review",
+        "notes": "题面和参考解已编写；未做独立专家复核，不能视为已校准。",
+        "independentCheck": false
+      }
+    },
+    {
+      "id": "v2-w02",
+      "title": "同一故障事实面向两种读者",
+      "category": "chinese",
+      "familyId": "mechanism-w02",
+      "pool": "sealed",
+      "difficulty": "candidate-hard",
+      "status": "uncalibrated",
+      "source": {
+        "name": "逐风自编挑战题库",
+        "url": null,
+        "note": "本站题目；不代表官方 benchmark 复现成绩。"
+      },
+      "rubric": [
+        "内容完成度、必要输出合同、严格完成分别报告。",
+        "详细题面、答案、测试及评分证据留在本地封存包。"
+      ],
+      "verification": {
+        "method": "sealed-local",
+        "notes": "封存内容不进入网站或公开源码包；区分度未实测校准。",
+        "independentCheck": false
+      }
+    },
+    {
+      "id": "v2-w03",
+      "title": "在相反材料间形成有条件的建议",
+      "category": "chinese",
+      "familyId": "mechanism-w03",
+      "pool": "sealed",
+      "difficulty": "candidate-hard",
+      "status": "uncalibrated",
+      "source": {
+        "name": "逐风自编挑战题库",
+        "url": null,
+        "note": "本站题目；不代表官方 benchmark 复现成绩。"
+      },
+      "rubric": [
+        "内容完成度、必要输出合同、严格完成分别报告。",
+        "详细题面、答案、测试及评分证据留在本地封存包。"
+      ],
+      "verification": {
+        "method": "sealed-local",
+        "notes": "封存内容不进入网站或公开源码包；区分度未实测校准。",
+        "independentCheck": false
+      }
+    },
+    {
+      "id": "v2-w04",
+      "title": "压缩时保留分母与未决状态",
+      "category": "chinese",
+      "familyId": "mechanism-w04",
+      "pool": "sealed",
+      "difficulty": "candidate-hard",
+      "status": "uncalibrated",
+      "source": {
+        "name": "逐风自编挑战题库",
+        "url": null,
+        "note": "本站题目；不代表官方 benchmark 复现成绩。"
+      },
+      "rubric": [
+        "内容完成度、必要输出合同、严格完成分别报告。",
+        "详细题面、答案、测试及评分证据留在本地封存包。"
+      ],
+      "verification": {
+        "method": "sealed-local",
+        "notes": "封存内容不进入网站或公开源码包；区分度未实测校准。",
+        "independentCheck": false
+      }
+    },
+    {
+      "id": "v2-v01",
+      "title": "鹈鹕骑车的接触连接与遮挡",
+      "category": "visual",
+      "familyId": "mechanism-v01",
+      "pool": "development",
+      "difficulty": "candidate-hard",
+      "status": "uncalibrated",
+      "source": {
+        "name": "本站自编；方法参考 鹈鹕测试的空间关系观察",
+        "url": "https://simonwillison.net/2024/Oct/25/pelicans-on-a-bicycle/",
+        "note": "合成材料；不是官方 benchmark 复现，区分度待校准。"
+      },
+      "rubric": [
+        "关键接触与连接：45 分，五档锚点；严格完成下限：4",
+        "几何与遮挡：25 分，五档锚点；严格完成下限：3",
+        "鹈鹕和自行车特征：20 分，五档锚点；严格完成下限：3",
+        "画面表达：10 分，五档锚点；严格完成下限：非门槛",
+        "必须人工逐项引用证据；仅解析成功不代表内容正确。"
+      ],
+      "verification": {
+        "method": "author_reference_review",
+        "notes": "题面和参考解已编写；未做独立专家复核，不能视为已校准。",
+        "independentCheck": false
+      }
+    },
+    {
+      "id": "v2-v02",
+      "title": "流程图的连接与非连接交叉",
+      "category": "visual",
+      "familyId": "mechanism-v02",
+      "pool": "sealed",
+      "difficulty": "candidate-hard",
+      "status": "uncalibrated",
+      "source": {
+        "name": "逐风自编挑战题库",
+        "url": null,
+        "note": "本站题目；不代表官方 benchmark 复现成绩。"
+      },
+      "rubric": [
+        "内容完成度、必要输出合同、严格完成分别报告。",
+        "详细题面、答案、测试及评分证据留在本地封存包。"
+      ],
+      "verification": {
+        "method": "sealed-local",
+        "notes": "封存内容不进入网站或公开源码包；区分度未实测校准。",
+        "independentCheck": false
+      }
+    },
+    {
+      "id": "v2-v03",
+      "title": "修改SVG时保持未要求内容",
+      "category": "visual",
+      "familyId": "mechanism-v03",
+      "pool": "sealed",
+      "difficulty": "candidate-hard",
+      "status": "uncalibrated",
+      "source": {
+        "name": "逐风自编挑战题库",
+        "url": null,
+        "note": "本站题目；不代表官方 benchmark 复现成绩。"
+      },
+      "rubric": [
+        "内容完成度、必要输出合同、严格完成分别报告。",
+        "详细题面、答案、测试及评分证据留在本地封存包。"
+      ],
+      "verification": {
+        "method": "sealed-local",
+        "notes": "封存内容不进入网站或公开源码包；区分度未实测校准。",
+        "independentCheck": false
+      }
+    },
+    {
+      "id": "v2-v04",
+      "title": "等距投影的三块积木",
+      "category": "visual",
+      "familyId": "mechanism-v04",
+      "pool": "sealed",
+      "difficulty": "candidate-hard",
+      "status": "uncalibrated",
+      "source": {
+        "name": "逐风自编挑战题库",
+        "url": null,
+        "note": "本站题目；不代表官方 benchmark 复现成绩。"
+      },
+      "rubric": [
+        "内容完成度、必要输出合同、严格完成分别报告。",
+        "详细题面、答案、测试及评分证据留在本地封存包。"
+      ],
+      "verification": {
+        "method": "sealed-local",
+        "notes": "封存内容不进入网站或公开源码包；区分度未实测校准。",
+        "independentCheck": false
+      }
+    }
+  ]
+}

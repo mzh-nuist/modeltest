@@ -1,0 +1,23 @@
+{
+  "dist/data/catalog.json": "4cc7b07cee31107ba28687793d6ea05e2e2de72574b2838b96d8253c005b0195",
+  "dist/data/challenge-offline.json": "5255c9848dd2d26f73fd0e0c06893749826ac5a1379c5d21bf91d121ed5b9be9",
+  "dist/data/challenge.json": "f19202532524665967ccecbf67a44eafcfb2fc917f9c09d26f6a97add0eb1994",
+  "dist/data/checkup-collected-demo.json": "cfe4f5ad49244a6202fa5c80d96a418ac301dd60538990bc280640cb96029266",
+  "dist/data/checkup-demo.json": "336fbc654ea67841426fd8eb88d2144f9194c17a97affdcb8f75c29067ed900a",
+  "dist/data/checkup-offline.json": "2ae7145ec0e2af0cbd664e153494f20fbf83a8e5189c816277d4925776cf107e",
+  "dist/data/checkup.json": "117d911b6ebc19e1cba17b8f7f1cd087d486375f0f4c60b62fc1dc8447efafb9",
+  "dist/data/completed-suite.json": "3175c58e52f4f558feba1bfb40a82ecd5dad45a0ead82abce1082b190ce4bb07",
+  "dist/data/core.json": "509d103716deeceb23a83771a13bb45be0b0152bf07735239c624e2c1a007dfa",
+  "dist/data/daily-measured.json": "3644b31f7230d8180e5cac16208c2ed380fb0c4873c763ddaa839c84123df079",
+  "dist/data/daily-scores.json": "bba8d596bb44861e1d8837c91449cdf2355da7d7c823f60cb7d81537aeebfab1",
+  "dist/data/demo.json": "aff198ac22864e44f4986077b4c9235a56a7889680522877d2f4a057f3e25b3c",
+  "dist/data/effort-matrix.json": "a54e149cc1c19d59033b98211e8339f503a6765220f8aa637250c184291e4c61",
+  "dist/data/framework.json": "537cde73abf815f521288d466e74e141ac20097f0303f1019a2bd5934d88ec99",
+  "dist/data/high-model-limits.json": "d6e6d85ff5ff71cda771b7e59e817dde30e109b9eaf50d7add7fc1c1caad6ed6",
+  "dist/data/high-suite.json": "5d66cc45770fb12ab5e4c3a1b10b3ddaf4dbd0b208d4638749eddaf1c2a16e51",
+  "dist/data/measured.json": "5f4833f03908f4a41432e3475d9a471717fd9f09bdf46c0738713dabbba47281",
+  "dist/data/offline.json": "7446da6b2100f04bfbd2b40ba0248f1b8d6503ca04bb19b436ef08c3dc84fdd4",
+  "dist/data/receipt-test.json": "d92124ad3688add4712a0b38bd3f3f8741cac3ecf7aa091e2bc6efbab1f7e858",
+  "dist/data/weighted-suite.json": "b0d12dbe2dc436e43d2fbcbf8f0ff7b8bcaeded08916b42a642c51abd84ccaab",
+  "dist/data/zebra-test.json": "6fa667f73768773d34efc53a9d993bf0fff9f8d4549e7e9be2c5f7531702229f"
+}

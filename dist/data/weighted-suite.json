@@ -1,0 +1,332 @@
+{
+  "schemaVersion": "daily-weighted-v2",
+  "suiteId": "zhufeng-daily-seven-v2",
+  "scoreVersion": "weighted-100-v2",
+  "maxScore": 100,
+  "passingScore": 80,
+  "excellentScore": 90,
+  "origin": "assistant-rescore-existing-evidence",
+  "sourceSuiteId": "zhufeng-daily-six-v1",
+  "sourceScorebookSha256": "bba8d596bb44861e1d8837c91449cdf2355da7d7c823f60cb7d81537aeebfab1",
+  "condition": "default-8192-180",
+  "tasks": [
+    {
+      "id": "purpose",
+      "name": "理解需求",
+      "weight": 10,
+      "title": "去洗车，要把车带过去",
+      "prompts": [
+        "我要去洗车，洗车店离家50米，车现在停在我家楼下。我应该开车去还是走过去？"
+      ],
+      "full": "明确开车去，理解要洗的是车，理由与结论一致。",
+      "partial": "想到带车，但解释有遗漏。",
+      "zero": "只让人走过去不带车，或开车与走路的结论矛盾。",
+      "allowPartial": true,
+      "image": null,
+      "imageSha256": null
+    },
+    {
+      "id": "reasoning",
+      "name": "推理纠错",
+      "weight": 15,
+      "title": "9点40加35分钟，是几点",
+      "prompts": [
+        "我9点40出门，路上需要35分钟，所以10点05就能到，对吧？"
+      ],
+      "full": "算出10点15，并明确纠正10点05，前后一致。",
+      "partial": "时间正确，但没有明确纠正错误说法。",
+      "zero": "算错时间，或仍然附和错误时间。",
+      "allowPartial": true,
+      "image": null,
+      "imageSha256": null
+    },
+    {
+      "id": "edit",
+      "name": "按要求改字",
+      "weight": 15,
+      "title": "只改指定时间，其他字不动",
+      "prompts": [
+        "帮我原样保存这句话：周六下午三点，在学校南门集合，记得带雨伞。",
+        "只把“周六下午三点”改成“周日下午四点”，其他文字一个字都别改。只回复改好的句子。"
+      ],
+      "full": "最终句与目标句逐字一致，仅忽略首尾空白。",
+      "partial": "指定时间改对，但改了其他字、标点或增加解释。",
+      "zero": "指定时间没有改对，或没有交付可用句子。",
+      "allowPartial": true,
+      "image": null,
+      "imageSha256": null
+    },
+    {
+      "id": "memory",
+      "name": "多轮记忆",
+      "weight": 15,
+      "title": "聊几轮以后，还记得出游限制吗",
+      "prompts": [
+        "我们两个人出游，总预算1500元，不开车，周日晚上必须回来。先记住这些条件，不用安排。",
+        "先讲一个不超过30字的小笑话。",
+        "把“今天早点休息”翻译成英文，只写译文。",
+        "给我一个整理桌面的建议，只写一句话。",
+        "现在只列出我之前说的出游限制，不用安排行程。"
+      ],
+      "full": "最后一轮保留两人、合计1500元、不开车、周日晚回四项，不新增限制。",
+      "partial": "漏掉一至两项，但没有把原限制改错。",
+      "zero": "改错或编造限制，或漏三项以上。",
+      "allowPartial": true,
+      "image": null,
+      "imageSha256": null
+    },
+    {
+      "id": "honesty",
+      "name": "不编造信息",
+      "weight": 15,
+      "title": "会议没说的内容，不要替它补",
+      "prompts": [
+        "把下面这段会议记录整理成待办，写清任务、负责人、截止时间。没提到的写“未说明”，不要补充事实。\n记录：小李负责整理报名名单；海报周五前做好，但负责人还没定；场地需要再确认。"
+      ],
+      "full": "三项待办与已知负责人、时间正确；未知项写“未说明”，允许附原文解释。",
+      "partial": "没有编造事实，但漏项或未使用指定的“未说明”。",
+      "zero": "编造、错配负责人或截止时间。",
+      "allowPartial": true,
+      "image": null,
+      "imageSha256": null
+    },
+    {
+      "id": "visual",
+      "name": "画图与空间连接",
+      "weight": 10,
+      "title": "鹈鹕骑车，脚、车座、车把要接对",
+      "prompts": [
+        "画一只鹈鹕骑自行车，要能看到两只脚踩着踏板、身体坐在车座上、翅膀扶着车把，两个车轮和车架连接正确。\n为便于直接预览，请只输出一份800×600的独立SVG源码，不加代码围栏，不使用外部图片、脚本、CSS或foreignObject。可以使用svg、g、path、circle、ellipse、rect、line、polyline、polygon、text、tspan、defs、linearGradient、radialGradient、stop、clipPath、mask、title、desc、use；href和url仅引用图内ID。"
+      ],
+      "full": "完整交付合规SVG，脚踩踏板、身体坐车座、翅膀扶车把、车轮连车架四处正确。",
+      "partial": "完整SVG可安全预览，但连接或输出格式有问题。",
+      "zero": "没有完整交付、不能安全预览，或主要结构明显不成立。",
+      "allowPartial": true,
+      "image": null,
+      "imageSha256": null
+    },
+    {
+      "id": "receipt",
+      "name": "账单图片识别",
+      "weight": 20,
+      "title": "这张账单，辣椒炒肉有几份",
+      "prompts": [
+        "请告诉我这个账单，辣椒炒肉有几份？"
+      ],
+      "full": "附原图测试后，明确回答1份。",
+      "partial": "本题不设半分；矛盾或未明确数量时待人工复核。",
+      "zero": "明确回答2份或其他错误数量。",
+      "allowPartial": false,
+      "image": "assets/receipt-chilli-pork.png",
+      "imageSha256": "73a513249777e5c4ea4d88545e9c7c0b83344b9284f5b0b29c0f0b5690ccee11"
+    }
+  ],
+  "models": [
+    {
+      "modelId": "deepseek-v41-flash",
+      "sourceDigest": "47108983b7a6630e7191f7e52c7898f1c98a1d19a4bd529c929860491f3de44a",
+      "items": [
+        {
+          "taskId": "purpose",
+          "score": 2,
+          "reason": "明确开车去，因为要把楼下的车送去洗；没有相互矛盾的建议。"
+        },
+        {
+          "taskId": "reasoning",
+          "score": 2,
+          "reason": "正确算出10点15，并明确否定10点05。"
+        },
+        {
+          "taskId": "edit",
+          "score": 2,
+          "reason": "最终句子与目标句逐字一致（仅忽略首尾空白）。"
+        },
+        {
+          "taskId": "memory",
+          "score": 2,
+          "reason": "最后一轮保留两人、合计1500元、不开车、周日晚回四项。"
+        },
+        {
+          "taskId": "honesty",
+          "score": 1,
+          "reason": "三项待办和事实正确，未编造；但海报负责人写“未定”，没有按要求写“未说明”，扣1分格式分。",
+          "weightedNote": "三项待办和事实正确，未编造；海报负责人写“未定”而不是“未说明”。本项部分完成，得7.5/15分，扣7.5分。"
+        },
+        {
+          "taskId": "visual",
+          "score": 0,
+          "reason": "默认档输出上限耗尽，没有完整正文；本条件下未交付。low档补测不补入此分。"
+        },
+        {
+          "taskId": "receipt",
+          "score": null,
+          "reason": "尚未给该模型发送这张账单原图；20分待测，不算0分，也不补满分。"
+        }
+      ]
+    },
+    {
+      "modelId": "kimi-k31-pro",
+      "sourceDigest": "6c71d1d17c6d857d531aaa866568dd590583d1526e544efdc5f139b05fc3dda7",
+      "items": [
+        {
+          "taskId": "purpose",
+          "score": 2,
+          "reason": "明确开车送车去洗，目的与理由一致。"
+        },
+        {
+          "taskId": "reasoning",
+          "score": 2,
+          "reason": "算出10点15，并纠正10点05；分段计算一致。"
+        },
+        {
+          "taskId": "edit",
+          "score": 2,
+          "reason": "最终句子与目标句逐字一致（仅忽略首尾空白）。"
+        },
+        {
+          "taskId": "memory",
+          "score": 2,
+          "reason": "最后一轮四项限制齐全，无错误或新增限制。"
+        },
+        {
+          "taskId": "honesty",
+          "score": 2,
+          "reason": "三项待办、唯一已知负责人和时间均正确，未知项标明“未说明”。"
+        },
+        {
+          "taskId": "visual",
+          "score": 0,
+          "reason": "默认档180秒超时，未完整交付；单独的low档补测也超时。"
+        },
+        {
+          "taskId": "receipt",
+          "score": null,
+          "reason": "尚未给该模型发送这张账单原图；20分待测，不算0分，也不补满分。"
+        }
+      ]
+    },
+    {
+      "modelId": "kimi-k3",
+      "sourceDigest": "057b0db77622c3cbf75d48a9b785d5780afd0f2d780e97c090751294e9de2d96",
+      "items": [
+        {
+          "taskId": "purpose",
+          "score": 2,
+          "reason": "明确需要把车开去，理由围绕洗车目的。"
+        },
+        {
+          "taskId": "reasoning",
+          "score": 2,
+          "reason": "明确纠错为10点15，计算过程正确，没有附和错误时间。"
+        },
+        {
+          "taskId": "edit",
+          "score": 2,
+          "reason": "最终句子与目标句逐字一致（仅忽略首尾空白）。"
+        },
+        {
+          "taskId": "memory",
+          "score": 2,
+          "reason": "最后一轮保留原来的四项限制；中间回答不计入此项记忆分。"
+        },
+        {
+          "taskId": "honesty",
+          "score": 2,
+          "reason": "三项待办与已知信息正确，未知项使用“未说明”；括号解释来自记录。"
+        },
+        {
+          "taskId": "visual",
+          "score": 0,
+          "reason": "默认档输出上限耗尽，没有完整正文；low档补测图片单独展示。"
+        },
+        {
+          "taskId": "receipt",
+          "score": null,
+          "reason": "尚未给该模型发送这张账单原图；20分待测，不算0分，也不补满分。"
+        }
+      ]
+    },
+    {
+      "modelId": "glm53-flash",
+      "sourceDigest": "1ae2b270e9d4dcd8e3fad10cfe7917dc52d7bbe66d5d2513a1bd33d9320b8b32",
+      "items": [
+        {
+          "taskId": "purpose",
+          "score": 0,
+          "reason": "先说走过去，随后又说开车，结论矛盾；还把店距家50米错当成走到楼下的距离。"
+        },
+        {
+          "taskId": "reasoning",
+          "score": 2,
+          "reason": "算出10点15，明确指出10点05只对应25分钟。"
+        },
+        {
+          "taskId": "edit",
+          "score": 2,
+          "reason": "最终句子与目标句逐字一致（仅忽略首尾空白）。"
+        },
+        {
+          "taskId": "memory",
+          "score": 2,
+          "reason": "最后一轮四项限制齐全；中间笑话出现杂字和冗余，保留原文，不混入记忆分。"
+        },
+        {
+          "taskId": "honesty",
+          "score": 2,
+          "reason": "三项待办和已知信息正确，未知项均标“未说明”；括号解释没有新增事实。"
+        },
+        {
+          "taskId": "visual",
+          "score": 0,
+          "reason": "默认档输出上限耗尽，没有完整正文；low档补测不替换默认成绩。"
+        },
+        {
+          "taskId": "receipt",
+          "score": null,
+          "reason": "尚未给该模型发送这张账单原图；20分待测，不算0分，也不补满分。"
+        }
+      ]
+    },
+    {
+      "modelId": "minimax-m31-flash",
+      "sourceDigest": "99c3b4f358fb760f5f751d52330a8766f5a1c3f35a96bee7ea1353d12806f314",
+      "items": [
+        {
+          "taskId": "purpose",
+          "score": 2,
+          "reason": "明确开车，因为车需要一起到店；回答一致。"
+        },
+        {
+          "taskId": "reasoning",
+          "score": 2,
+          "reason": "明确纠错为10点15，否定10点05。"
+        },
+        {
+          "taskId": "edit",
+          "score": 2,
+          "reason": "最终句子与目标句逐字一致（仅忽略首尾空白）。"
+        },
+        {
+          "taskId": "memory",
+          "score": 2,
+          "reason": "最后一轮准确保留两人、总预算1500元、不开车和周日晚回。"
+        },
+        {
+          "taskId": "honesty",
+          "score": 2,
+          "reason": "三项待办和已知信息正确，所有未知负责人、时间均使用“未说明”。"
+        },
+        {
+          "taskId": "visual",
+          "score": 0,
+          "reason": "默认档流式返回未完整结束，未交付完整SVG；low档图片单独展示。"
+        },
+        {
+          "taskId": "receipt",
+          "score": null,
+          "reason": "尚未给该模型发送这张账单原图；20分待测，不算0分，也不补满分。"
+        }
+      ]
+    }
+  ]
+}

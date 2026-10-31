@@ -1,0 +1,68 @@
+{
+  "schemaVersion": "daily-six-scores-v1",
+  "suiteId": "zhufeng-daily-six-v1",
+  "origin": "assistant-first-pass",
+  "condition": "default-8192-180",
+  "models": [
+    {
+      "modelId": "deepseek-v41-flash",
+      "sourceDigest": "47108983b7a6630e7191f7e52c7898f1c98a1d19a4bd529c929860491f3de44a",
+      "items": [
+        {"taskId":"purpose","score":2,"reason":"明确开车去，因为要把楼下的车送去洗；没有相互矛盾的建议。"},
+        {"taskId":"reasoning","score":2,"reason":"正确算出10点15，并明确否定10点05。"},
+        {"taskId":"edit","score":2,"reason":"最终句子与目标句逐字一致（仅忽略首尾空白）。"},
+        {"taskId":"memory","score":2,"reason":"最后一轮保留两人、合计1500元、不开车、周日晚回四项。"},
+        {"taskId":"honesty","score":1,"reason":"三项待办和事实正确，未编造；但海报负责人写“未定”，没有按要求写“未说明”，扣1分格式分。"},
+        {"taskId":"visual","score":0,"reason":"默认档输出上限耗尽，没有完整正文；本条件下未交付。low档补测不补入此分。"}
+      ]
+    },
+    {
+      "modelId": "kimi-k31-pro",
+      "sourceDigest": "6c71d1d17c6d857d531aaa866568dd590583d1526e544efdc5f139b05fc3dda7",
+      "items": [
+        {"taskId":"purpose","score":2,"reason":"明确开车送车去洗，目的与理由一致。"},
+        {"taskId":"reasoning","score":2,"reason":"算出10点15，并纠正10点05；分段计算一致。"},
+        {"taskId":"edit","score":2,"reason":"最终句子与目标句逐字一致（仅忽略首尾空白）。"},
+        {"taskId":"memory","score":2,"reason":"最后一轮四项限制齐全，无错误或新增限制。"},
+        {"taskId":"honesty","score":2,"reason":"三项待办、唯一已知负责人和时间均正确，未知项标明“未说明”。"},
+        {"taskId":"visual","score":0,"reason":"默认档180秒超时，未完整交付；单独的low档补测也超时。"}
+      ]
+    },
+    {
+      "modelId": "kimi-k3",
+      "sourceDigest": "057b0db77622c3cbf75d48a9b785d5780afd0f2d780e97c090751294e9de2d96",
+      "items": [
+        {"taskId":"purpose","score":2,"reason":"明确需要把车开去，理由围绕洗车目的。"},
+        {"taskId":"reasoning","score":2,"reason":"明确纠错为10点15，计算过程正确，没有附和错误时间。"},
+        {"taskId":"edit","score":2,"reason":"最终句子与目标句逐字一致（仅忽略首尾空白）。"},
+        {"taskId":"memory","score":2,"reason":"最后一轮保留原来的四项限制；中间回答不计入此项记忆分。"},
+        {"taskId":"honesty","score":2,"reason":"三项待办与已知信息正确，未知项使用“未说明”；括号解释来自记录。"},
+        {"taskId":"visual","score":0,"reason":"默认档输出上限耗尽，没有完整正文；low档补测图片单独展示。"}
+      ]
+    },
+    {
+      "modelId": "glm53-flash",
+      "sourceDigest": "1ae2b270e9d4dcd8e3fad10cfe7917dc52d7bbe66d5d2513a1bd33d9320b8b32",
+      "items": [
+        {"taskId":"purpose","score":0,"reason":"先说走过去，随后又说开车，结论矛盾；还把店距家50米错当成走到楼下的距离。"},
+        {"taskId":"reasoning","score":2,"reason":"算出10点15，明确指出10点05只对应25分钟。"},
+        {"taskId":"edit","score":2,"reason":"最终句子与目标句逐字一致（仅忽略首尾空白）。"},
+        {"taskId":"memory","score":2,"reason":"最后一轮四项限制齐全；中间笑话出现杂字和冗余，保留原文，不混入记忆分。"},
+        {"taskId":"honesty","score":2,"reason":"三项待办和已知信息正确，未知项均标“未说明”；括号解释没有新增事实。"},
+        {"taskId":"visual","score":0,"reason":"默认档输出上限耗尽，没有完整正文；low档补测不替换默认成绩。"}
+      ]
+    },
+    {
+      "modelId": "minimax-m31-flash",
+      "sourceDigest": "99c3b4f358fb760f5f751d52330a8766f5a1c3f35a96bee7ea1353d12806f314",
+      "items": [
+        {"taskId":"purpose","score":2,"reason":"明确开车，因为车需要一起到店；回答一致。"},
+        {"taskId":"reasoning","score":2,"reason":"明确纠错为10点15，否定10点05。"},
+        {"taskId":"edit","score":2,"reason":"最终句子与目标句逐字一致（仅忽略首尾空白）。"},
+        {"taskId":"memory","score":2,"reason":"最后一轮准确保留两人、总预算1500元、不开车和周日晚回。"},
+        {"taskId":"honesty","score":2,"reason":"三项待办和已知信息正确，所有未知负责人、时间均使用“未说明”。"},
+        {"taskId":"visual","score":0,"reason":"默认档流式返回未完整结束，未交付完整SVG；low档图片单独展示。"}
+      ]
+    }
+  ]
+}

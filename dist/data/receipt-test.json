@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "receipt-vision-bank-v2",
+  "suiteId": "zhufeng-receipt-vision-v1",
+  "id": "receipt-chilli-pork",
+  "title": "这张账单，辣椒炒肉有几份？",
+  "prompt": "请告诉我这个账单，辣椒炒肉有几份？",
+  "image": "assets/receipt-chilli-pork.png",
+  "imageSha256": "73a513249777e5c4ea4d88545e9c7c0b83344b9284f5b0b29c0f0b5690ccee11",
+  "reference": {
+    "quantity": 1,
+    "source": "user-provided-answer",
+    "explanation": "按出题者提供的参考：1份。带连字符的下一行视为这道菜的子项，不把两行数量简单相加。"
+  },
+  "rubric": {
+    "maxScore": 20,
+    "correct": "明确回答1份，20分。",
+    "wrong": "明确回答2份或其他错误数量，0分。",
+    "pending": "表述矛盾、只转录原文、未明确数量：待人工复核；不支持图片和未测不计0分。"
+  },
+  "status": "defined",
+  "note": "八项百分制第7项，权重20%。本批五个模型已真实发送原图，按出题者参考答案初评；以下保留实际回答。"
+}
