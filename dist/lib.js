@@ -1,6 +1,6 @@
-import {validateProtocols} from './protocol-validate.js?v=20261031-player6';
-import {metricSummary,manualTask,protocolOf} from './core-metrics.js?v=20261031-player6';
-import {publicData} from './public-data.js?v=20261031-player6';
+import {validateProtocols} from './protocol-validate.js?v=20261101-short1';
+import {metricSummary,manualTask,protocolOf} from './core-metrics.js?v=20261101-short1';
+import {publicData} from './public-data.js?v=20261101-short1';
 export const categories={math:'数学与推理',code:'代码任务',chinese:'中文表达',data:'数据分析',longcontext:'长文理解',instruction:'指令遵循',visual:'SVG与视觉构造'};
 export const esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 export function safeUrl(x){try{const u=new URL(x);return ['https:','http:'].includes(u.protocol)&&!u.username&&!u.password?u.href:null}catch{return null}}

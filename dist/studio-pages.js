@@ -1,11 +1,11 @@
-import {historicalReading} from './playful-season.js?v=20261031-player6';
-import {modelBadge} from './model-identity.js?v=20261031-player6';
-import {modelPicker} from './model-picker.js?v=20261031-player6';
-import {weightedSummary,points,formatPoints,siteStars,RECEIPT_REVIEW_RULE} from './weighted-score.js?v=20261031-player6';
-import {extractDrawing} from './completed-suite.js?v=20261031-player6';
-import {checkupSVG} from './checkup-view.js?v=20261031-player6';
-import {previewableCheckupSVG} from './checkup-data.js?v=20261031-player6';
-import {arrowRight,arrowUpRight} from './ui-icons.js?v=20261031-player6';
+import {historicalReading} from './playful-season.js?v=20261101-short1';
+import {modelBadge} from './model-identity.js?v=20261101-short1';
+import {modelPicker} from './model-picker.js?v=20261101-short1';
+import {weightedSummary,points,formatPoints,siteStars,RECEIPT_REVIEW_RULE} from './weighted-score.js?v=20261101-short1';
+import {extractDrawing} from './completed-suite.js?v=20261101-short1';
+import {checkupSVG} from './checkup-view.js?v=20261101-short1';
+import {previewableCheckupSVG} from './checkup-data.js?v=20261101-short1';
+import {arrowRight,arrowUpRight} from './ui-icons.js?v=20261101-short1';
 
 const e=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const names=['理解需求','推理纠错','定点改字','多轮记忆','不乱编','画图连接','账单整活','斑马绘画'];

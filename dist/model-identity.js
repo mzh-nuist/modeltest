@@ -16,5 +16,5 @@ export function modelIdentity(id){
 }
 export function modelBadge(id){
   const {icon,family}=modelIdentity(id);
-  return `<span class="model-badge brand-${family}" aria-hidden="true">${icon?`<img src="assets/brands/${icon}.svg?v=20261031-player6" width="24" height="24" alt="" decoding="async">`:'AI'}</span>`;
+  return `<span class="model-badge brand-${family}" aria-hidden="true">${icon?`<img src="assets/brands/${icon}.svg?v=20261101-short1" width="24" height="24" alt="" decoding="async">`:'AI'}</span>`;
 }

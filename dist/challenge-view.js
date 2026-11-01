@@ -1,4 +1,4 @@
-import {CHALLENGE_CATEGORIES as categories,parseChallengeJSON,validateChallengeCatalog,validateChallengeReport,validateChallengeResponses,filterChallengeTasks,replayChallenge} from './challenge-data.js?v=20261031-player6';
+import {CHALLENGE_CATEGORIES as categories,parseChallengeJSON,validateChallengeCatalog,validateChallengeReport,validateChallengeResponses,filterChallengeTasks,replayChallenge} from './challenge-data.js?v=20261101-short1';
 const e=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const n=x=>typeof x==='number'?x.toLocaleString('zh-CN',{maximumFractionDigits:2}):'—';
 const labels={scored:'内容已评分',unscorable:'内容无法解析',pending:'待人工复核',blocked:'待隔离执行',not_applicable:'未评分'};

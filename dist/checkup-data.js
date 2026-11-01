@@ -1,4 +1,4 @@
-import {parseChallengeJSON, staticSVGShape} from './challenge-data.js?v=20261031-player6';
+import {parseChallengeJSON, staticSVGShape} from './challenge-data.js?v=20261101-short1';
 
 export const CHECKUP_SUITE = 'zhufeng-daily-six-v1';
 export const CHECKUP_IDS = ['purpose', 'reasoning', 'edit', 'memory', 'honesty', 'visual'];

@@ -1,5 +1,5 @@
-import {esc as e,stats,fmt} from './lib.js?v=20261031-player6';
-import {comparisonScope,measurementScope} from './scope.js?v=20261031-player6';
+import {esc as e,stats,fmt} from './lib.js?v=20261101-short1';
+import {comparisonScope,measurementScope} from './scope.js?v=20261101-short1';
 const money=x=>'$'+fmt(x,6);
 const palette=['#5370a4','#8463a4','#b16a40','#31877e','#aa5276','#7a8136'];
 

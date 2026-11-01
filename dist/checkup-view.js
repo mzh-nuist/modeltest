@@ -1,4 +1,4 @@
-import {validateCheckupBank,validateCheckupReport,parseCheckupJSON,newCheckupReport,assessCheckupRun,assessCheckupReport,compareCheckups,importCheckupReport,previewableCheckupSVG,changedCharacters,VERDICTS} from './checkup-data.js?v=20261031-player6';
+import {validateCheckupBank,validateCheckupReport,parseCheckupJSON,newCheckupReport,assessCheckupRun,assessCheckupReport,compareCheckups,importCheckupReport,previewableCheckupSVG,changedCharacters,VERDICTS} from './checkup-data.js?v=20261101-short1';
 
 const e=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const tag=verdict=>`<span class="checkup-status checkup-${e(verdict)}">${e(VERDICTS[verdict])}</span>`;

@@ -1,4 +1,4 @@
-import {protocolOf} from './core-metrics.js?v=20261031-player6';
+import {protocolOf} from './core-metrics.js?v=20261101-short1';
 export function scopeData(document,batchId){
   if(batchId==='all')return document;
   const batch=document.batches.find(b=>b.id===batchId);

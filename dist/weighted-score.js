@@ -1,5 +1,5 @@
-import {modelBadge,modelIdentity} from './model-identity.js?v=20261031-player6';
-import {personalStars} from './daily-score.js?v=20261031-player6';
+import {modelBadge,modelIdentity} from './model-identity.js?v=20261101-short1';
+import {personalStars} from './daily-score.js?v=20261101-short1';
 const e=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 export const RECEIPT_REVIEW_RULE="复核按回答的主要结论判分：主要结论为1份得20分，为2份或其他错误数量得0分；附带条件或其他可能性不单独决定分数。没有可识别的主要结论时才待复核。";
 export const points=(raw,weight)=>raw===null?null:Number((raw*weight/2).toFixed(4));

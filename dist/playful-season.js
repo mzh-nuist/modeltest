@@ -1,6 +1,6 @@
-import {dynamicChallengePage} from './dynamic-challenge-page.js?v=20261031-player6';
-import {bindPelicanPlayer} from './pelican-player.js?v=20261031-player6';
-import {arrowRight,arrowUpRight} from './ui-icons.js?v=20261031-player6';
+import {dynamicChallengePage} from './dynamic-challenge-page.js?v=20261101-short1';
+import {bindPelicanPlayer} from './pelican-player.js?v=20261101-short1';
+import {arrowRight,arrowUpRight} from './ui-icons.js?v=20261101-short1';
 const e=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const IDS=['werewolf-rota','robot-repair','monster-flat','alien-minutes','octopus-move','dynamic-pelican'];
 

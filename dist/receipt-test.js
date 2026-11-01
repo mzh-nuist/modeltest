@@ -1,6 +1,6 @@
-import {modelBadge} from './model-identity.js?v=20261031-player6';
-import {completionBody} from './completed-suite.js?v=20261031-player6';
-import {weightedGrade,RECEIPT_REVIEW_RULE} from './weighted-score.js?v=20261031-player6';
+import {modelBadge} from './model-identity.js?v=20261101-short1';
+import {completionBody} from './completed-suite.js?v=20261101-short1';
+import {weightedGrade,RECEIPT_REVIEW_RULE} from './weighted-score.js?v=20261101-short1';
 const e=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 export function gradeReceiptAnswer(answer){
   const s=String(answer).normalize('NFKC').trim().replace(/[。.!！\s]/g,'');

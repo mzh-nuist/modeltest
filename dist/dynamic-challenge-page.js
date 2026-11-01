@@ -1,4 +1,4 @@
-import {pelicanPlayer} from './pelican-player.js?v=20261031-player6';
+import {pelicanPlayer} from './pelican-player.js?v=20261101-short1';
 const e=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 export function dynamicChallengePage(task,bank,criteria){
  const o=task.observation;

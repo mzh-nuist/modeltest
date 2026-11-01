@@ -1,6 +1,6 @@
-import {validateCheckupReport,previewableCheckupSVG} from './checkup-data.js?v=20261031-player6';
-import {extractDrawing} from './completed-suite.js?v=20261031-player6';
-import {weightedSummary,formatPoints} from './weighted-score.js?v=20261031-player6';
+import {validateCheckupReport,previewableCheckupSVG} from './checkup-data.js?v=20261101-short1';
+import {extractDrawing} from './completed-suite.js?v=20261101-short1';
+import {weightedSummary,formatPoints} from './weighted-score.js?v=20261101-short1';
 const e=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 export const EFFORTS=['low','medium','high'];
 const total=(profile,tasks)=>profile.items.every(x=>x.score!==null)?Number(profile.items.reduce((n,x,i)=>n+x.score*tasks[i].weight/2,0).toFixed(4)):null;

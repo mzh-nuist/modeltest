@@ -1,6 +1,6 @@
-import {esc as e,fmt as f} from './lib.js?v=20261031-player6';
-import {speedSummary} from './evidence.js?v=20261031-player6';
-import {metricSummary,protocolOf} from './core-metrics.js?v=20261031-player6';
+import {esc as e,fmt as f} from './lib.js?v=20261101-short1';
+import {speedSummary} from './evidence.js?v=20261101-short1';
+import {metricSummary,protocolOf} from './core-metrics.js?v=20261101-short1';
 
 const ms=x=>x==null?'—':f(x/1000,2)+' s';
 

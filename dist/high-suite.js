@@ -1,5 +1,5 @@
-import {validateCheckupReport,previewableCheckupSVG} from './checkup-data.js?v=20261031-player6';
-import {extractDrawing} from './completed-suite.js?v=20261031-player6';
+import {validateCheckupReport,previewableCheckupSVG} from './checkup-data.js?v=20261101-short1';
+import {extractDrawing} from './completed-suite.js?v=20261101-short1';
 const e=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 export function validateHighSuite(suite,legacy,bank,limits){
  const fail=()=>{throw Error('high单档成绩与协议不一致');};

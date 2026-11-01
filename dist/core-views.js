@@ -1,5 +1,5 @@
-import {esc as e,fmt as f,safeUrl} from './lib.js?v=20261031-player6';
-import {metricSummary} from './core-metrics.js?v=20261031-player6';
+import {esc as e,fmt as f,safeUrl} from './lib.js?v=20261101-short1';
+import {metricSummary} from './core-metrics.js?v=20261101-short1';
 const pct=x=>x==null?'—':f(x*100,1)+'%',sec=x=>x==null?'—':f(x/1000,3)+' s',usd=x=>x==null?'—':'$'+f(x,6);
 const stateNames={implemented:'已实现 · 离线验收',review:'复核流程可用',blocked:'缺执行环境',planned:'尚未接入'};
 const costNames={available:'费用齐备且判定完成',unmeasured:'未采集',unknown_cost:'存在未知费用',pending_review:'有人工待评',no_qualified:'无合格结果'};

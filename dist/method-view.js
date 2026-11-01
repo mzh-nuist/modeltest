@@ -1,4 +1,4 @@
-import {esc as e,fmt as f} from './lib.js?v=20261031-player6';
+import {esc as e,fmt as f} from './lib.js?v=20261101-short1';
 
 export function methodView(){
  return `<section class="panel"><div class="panel-body prose"><h2>一条成绩怎么产生</h2><ol><li><strong>先固定题目和评分契约。</strong>保存完整输入、答案、容差、格式要求及逐项评分标准；请求中只发送题目，不发送参考答案。</li><li><strong>按同一配置采集。</strong>记录服务商、模型别名、输出上限、地区、并发、缓存和采集批次。当前运行器串行；模型产品、Agent和纯API不是同一评测对象。</li><li><strong>记录流式事件。</strong>从请求发出开始计时，保存正文分块、用量和结束状态。原始事件留在本机，网页加载经过白名单处理的公开文件。</li><li><strong>分别判内容、格式和合格交付。</strong>自动题重算答案；人工题按每项零、半、满分和文字证据复核，未评保持待评。请求失败不自动获得内容分。</li><li><strong>重放与展示。</strong>本机审计重新拼接正文、核对题目哈希、请求型号及上限，重算评分、计时和费用。导入校验通过只说明结构一致，不能证明来源真实。</li></ol><p>本轮费用上限为0，实际新增请求全部指向本机模拟服务。24题×3个预设输出配置共72次模拟，用于验收系统；新题库尚无真实模型成绩。历史90条实测保留旧协议与旧判分。</p></div></section>

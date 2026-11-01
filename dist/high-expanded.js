@@ -1,5 +1,5 @@
-import {validateHighMeasurement} from './high-measurement.js?v=20261031-player6';
-import {projectHighSuite} from './high-suite.js?v=20261031-player6';
+import {validateHighMeasurement} from './high-measurement.js?v=20261101-short1';
+import {projectHighSuite} from './high-suite.js?v=20261101-short1';
 export const expandedModels={
  'claude-sonnet55':{name:'Claude Sonnet 5.5',apiModel:'claude-sonnet-5-5',family:'Claude'},
  'claude-haiku55':{name:'Claude Haiku 5.5',apiModel:'claude-haiku-5-5',family:'Claude'},
