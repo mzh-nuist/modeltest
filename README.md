@@ -20,6 +20,12 @@
 
 截至本次源码快照，第一期有 **10 款模型的真实答卷**。新一期挑战题单独版本管理；动态鹈鹕页中的播放器是本站制作的题意示范，**不是模型测试成绩**。模型名称与请求条件按实际服务商记录展示。
 
+## GPT‑6.2 Sol 与 Astra 对照
+
+[查看线上对照](https://modeltest.cc/#checkup/codex-gpt62) · [查看公开题目与原答卷](dist/data/codex-gpt62-20261118.json)
+
+两款模型均以 Codex Standard、High 档作答，各完成八道主试题和四个短题样例。Sol 得 92.5 分，Astra 得 72.5 分。相差的 20 分来自账单整活题，两款模型的四个短题样例均为满分。Codex 独立批次的条件见对照页。
+
 ## 新短题实测
 
 [推老板进工位](https://modeltest.cc/#checkup/season/boss-sokoban) · [齿轮诈骗](https://modeltest.cc/#checkup/season/gear-scam)

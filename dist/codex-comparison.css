@@ -1,0 +1,150 @@
+.codex-comparison .codex-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+.codex-comparison .codex-score,
+.codex-comparison .codex-quote {
+  margin: 0;
+  padding: clamp(12px, 2vw, 24px);
+}
+.codex-comparison .codex-score h2,
+.codex-comparison .codex-answer h4 {
+  margin: 0;
+}
+.codex-comparison .codex-score p {
+  margin: 10px 0 0;
+}
+.codex-comparison .codex-score > span,
+.codex-comparison .codex-points {
+  color: var(--muted);
+}
+.codex-comparison .codex-points strong {
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+  font-size: 1.25em;
+}
+.codex-comparison .codex-score .codex-points strong {
+  font-size: clamp(32px, 6vw, 62px);
+  font-weight: 650;
+  line-height: 1.15;
+}
+.codex-comparison .codex-receipt {
+  display: grid;
+  align-items: start;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+  gap: 24px;
+}
+.codex-comparison .codex-receipt h3 {
+  margin: 0 0 16px;
+}
+.codex-comparison .codex-bill {
+  display: block;
+  overflow: hidden;
+  color: var(--accent);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--panel);
+  text-decoration: none;
+}
+.codex-comparison .codex-bill:hover {
+  border-color: var(--accent);
+  text-decoration: underline;
+}
+.codex-comparison .codex-bill img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 300px;
+  object-fit: cover;
+  object-position: center bottom;
+}
+.codex-comparison .codex-bill span {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  min-height: 44px;
+  padding: 8px 12px;
+}
+.codex-comparison .codex-quote blockquote {
+  margin: 18px 0;
+  line-height: 1.75;
+}
+.codex-comparison .codex-case {
+  margin: 0 0 8px;
+}
+.codex-comparison .codex-row-label,
+.codex-comparison .codex-case summary {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) clamp(66px, 15vw, 160px) clamp(66px, 15vw, 160px) 16px;
+  gap: 8px;
+  align-items: center;
+  padding: 10px 16px;
+  text-align: left;
+}
+.codex-comparison .codex-row-label {
+  padding-inline: 17px;
+  color: var(--muted);
+  font-size: 14px;
+}
+.codex-comparison .codex-case summary {
+  cursor: pointer;
+  min-height: 52px;
+  background: var(--panel);
+  list-style: none;
+}
+.codex-comparison .codex-case summary::-webkit-details-marker { display: none; }
+.codex-comparison .codex-case summary::after {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border: solid currentColor;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+.codex-comparison .codex-case[open] summary::after { transform: rotate(225deg); }
+.codex-comparison .codex-case summary:hover,
+.codex-comparison .codex-case[open] summary {
+  color: var(--accent);
+  background: var(--soft);
+}
+.codex-comparison .codex-case summary:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: -3px;
+}
+.codex-comparison .codex-answer,
+.codex-comparison .codex-turn { min-width: 0; }
+.codex-comparison .codex-turn + .codex-turn { border-top: 1px solid var(--line); }
+.codex-comparison .codex-reason { line-height: 1.75; }
+.codex-comparison .codex-drawing {
+  margin: 12px 0;
+  padding: 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #f2f5f8;
+}
+.codex-comparison .codex-drawing img {
+  display: block;
+  width: 100%;
+  height: clamp(160px, 27vw, 360px);
+  object-fit: contain;
+}
+@media (max-width: 700px) {
+  .codex-comparison .codex-receipt,
+  .codex-comparison .codex-turn .codex-grid { grid-template-columns: 1fr; }
+  .codex-comparison .codex-receipt { gap: 16px; }
+  .codex-comparison .codex-bill { order: 1; }
+  .codex-comparison .codex-bill img { max-height: 210px; }
+  .codex-comparison .codex-grid { gap: 10px; }
+  .codex-comparison .codex-score .column-model,
+  .codex-comparison .codex-quote .column-model { font-size: 15px; gap: 5px; }
+  .codex-comparison .codex-score .model-badge,
+  .codex-comparison .codex-quote .model-badge {
+    width: 22px;
+    height: 22px;
+    flex: 0 0 22px;
+    padding: 2px;
+  }
+  .codex-comparison .codex-score .model-badge img,
+  .codex-comparison .codex-quote .model-badge img { width: 16px; height: 16px; }
+}

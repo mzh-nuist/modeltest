@@ -95,15 +95,22 @@ const luminance=hex=>{
   return c[0]*.2126+c[1]*.7152+c[2]*.0722;
 };
 const contrast=(a,b)=>{const x=luminance(a),y=luminance(b);return (Math.max(x,y)+.05)/(Math.min(x,y)+.05);};
-test('release versions reach all module imports so cached old modules cannot mix with the new entry point',()=>{
+test('each public asset uses a consistent cache version across HTML and module imports',()=>{
   const base=new URL('../dist/',import.meta.url),html=fs.readFileSync(new URL('index.html',base),'utf8');
-  const version=html.match(/src="app\.js\?v=([^"]+)"/)[1];
-  for(const match of html.matchAll(/(?:src|href)="([^"?]+\.(?:js|css))(?:\?v=([^"]+))?"/g))assert.equal(match[2],version,match[1]);
+  const versions=new Map();
+  const register=(path,version,label)=>{
+    assert.ok(version,`missing cache version: ${label}`);
+    const asset=new URL(path,base).href;
+    if(versions.has(asset))assert.equal(version,versions.get(asset),label);
+    versions.set(asset,version);
+    assert.ok(fs.existsSync(new URL(asset)),`missing asset: ${label}`);
+  };
+  for(const match of html.matchAll(/(?:src|href)="([^"?]+\.(?:js|css))(?:\?v=([^"]+))?"/g))register(match[1],match[2],match[1]);
   let imports=0;
   for(const name of fs.readdirSync(base).filter(n=>n.endsWith('.js'))){
     const source=fs.readFileSync(new URL(name,base),'utf8');
     for(const match of source.matchAll(/(?:from\s*|import\s*)['"](\.\/[^'"?]+\.js)(?:\?v=([^'"]+))?['"]/g)){
-      imports++;assert.equal(match[2],version,`${name} -> ${match[1]}`);assert.ok(fs.existsSync(new URL(match[1],base)));
+      imports++;register(match[1],match[2],`${name} -> ${match[1]}`);
     }
   }
   assert.ok(imports>30);
@@ -120,9 +127,9 @@ test('light and dark reading tokens meet text contrast targets and public styles
   }
   assert.ok(contrast('ffffff','2457cf')>=4.5);
   const allLinks=[...html.matchAll(/<link rel="stylesheet" href="([^"]+)"/g)].map(m=>m[1]);
-  const links=allLinks.filter(x=>!x.startsWith('dynamic-challenge.css')&&!x.startsWith('short-challenges.css'));
-  assert.match(allLinks.at(-2),/^dynamic-challenge\.css/);
-  assert.match(allLinks.at(-1),/^short-challenges\.css/);
+  const featureStyles=['dynamic-challenge.css','short-challenges.css','codex-comparison.css'];
+  const links=allLinks.filter(x=>!featureStyles.includes(x.split('?')[0]));
+  assert.deepEqual(allLinks.slice(-featureStyles.length).map(x=>x.split('?')[0]),featureStyles);
   assert.match(links.at(-4),/^experience\.css/);
   assert.match(links.at(-3),/^site-shell\.css/);
   assert.match(links.at(-2),/^playful-season\.css/);assert.match(links.at(-1),/^columns\.css/);

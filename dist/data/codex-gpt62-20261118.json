@@ -1,0 +1,393 @@
+{
+  "schemaVersion": "codex-comparison-v1",
+  "date": "2026-11-18",
+  "route": "Codex app-server",
+  "clientVersion": "0.167.0-alpha.3.2",
+  "reasoningEffort": "high",
+  "speed": "standard",
+  "models": [
+    {
+      "id": "gpt-6.2-sol",
+      "name": "GPT‑6.2 Sol"
+    },
+    {
+      "id": "gpt-6.2-astra",
+      "name": "GPT‑6.2 Astra"
+    }
+  ],
+  "cases": [
+    {
+      "id": "purpose",
+      "suite": "main",
+      "title": "理解需求",
+      "maxPoints": 10,
+      "prompts": [
+        "我要去洗车，洗车店离家50米，车现在停在我家楼下。我应该开车去还是走过去？"
+      ],
+      "answers": [
+        {
+          "modelId": "gpt-6.2-sol",
+          "turns": [
+            "开车去。虽然只有 50 米，但你得把车开到店里才能洗。"
+          ],
+          "score": 10,
+          "reason": "明确开车去，并说明车必须到店。"
+        },
+        {
+          "modelId": "gpt-6.2-astra",
+          "turns": [
+            "开车去。店虽然只隔 50 米，但要洗的是车，得把车开过去。"
+          ],
+          "score": 10,
+          "reason": "明确开车去，并说明车必须到店。"
+        }
+      ]
+    },
+    {
+      "id": "reasoning",
+      "suite": "main",
+      "title": "推理纠错",
+      "maxPoints": 10,
+      "prompts": [
+        "我9点40出门，路上需要35分钟，所以10点05就能到，对吧？"
+      ],
+      "answers": [
+        {
+          "modelId": "gpt-6.2-sol",
+          "turns": [
+            "不是，9:40 加 35 分钟是 **10:15**。10:05 到的话，路上只用了 25 分钟。"
+          ],
+          "score": 10,
+          "reason": "明确纠正 10:05，计算 9:40 加 35 分钟为 10:15。"
+        },
+        {
+          "modelId": "gpt-6.2-astra",
+          "turns": [
+            "不对，9:40 出门，路上要 35 分钟，预计 10:15 到。如果要在 10:05 到，最晚得 9:30 出门。"
+          ],
+          "score": 10,
+          "reason": "明确纠正 10:05，计算 9:40 加 35 分钟为 10:15。"
+        }
+      ]
+    },
+    {
+      "id": "edit",
+      "suite": "main",
+      "title": "按要求改字",
+      "maxPoints": 10,
+      "prompts": [
+        "帮我原样保存这句话：周六下午三点，在学校南门集合，记得带雨伞。",
+        "只把“周六下午三点”改成“周日下午四点”，其他文字一个字都别改。只回复改好的句子。"
+      ],
+      "answers": [
+        {
+          "modelId": "gpt-6.2-sol",
+          "turns": [
+            "原样保留在这段对话中，未另存为文件：\n\n周六下午三点，在学校南门集合，记得带雨伞。",
+            "周日下午四点，在学校南门集合，记得带雨伞。"
+          ],
+          "score": 10,
+          "reason": "最终句与目标逐字一致，仅忽略首尾空白。"
+        },
+        {
+          "modelId": "gpt-6.2-astra",
+          "turns": [
+            "周六下午三点，在学校南门集合，记得带雨伞。",
+            "周日下午四点，在学校南门集合，记得带雨伞。"
+          ],
+          "score": 10,
+          "reason": "最终句与目标逐字一致，仅忽略首尾空白。"
+        }
+      ]
+    },
+    {
+      "id": "memory",
+      "suite": "main",
+      "title": "多轮记忆",
+      "maxPoints": 10,
+      "prompts": [
+        "我们两个人出游，总预算1500元，不开车，周日晚上必须回来。先记住这些条件，不用安排。",
+        "先讲一个不超过30字的小笑话。",
+        "把“今天早点休息”翻译成英文，只写译文。",
+        "给我一个整理桌面的建议，只写一句话。",
+        "现在只列出我之前说的出游限制，不用安排行程。"
+      ],
+      "answers": [
+        {
+          "modelId": "gpt-6.2-sol",
+          "turns": [
+            "记下了：两人出游，总预算 1500 元，不开车，周日晚上必须回来。先不做安排。",
+            "我问钱包周末去哪玩，它说：你看我有零钱吗？",
+            "Get some rest early tonight.",
+            "只把每天用的东西留在桌面上，其余物品归位。",
+            "- 两人出游\n- 总预算 1500 元\n- 不开车\n- 周日晚上必须回来"
+          ],
+          "score": 10,
+          "reason": "保留两人、合计 1500 元、不开车、周日晚上必须回四项。"
+        },
+        {
+          "modelId": "gpt-6.2-astra",
+          "turns": [
+            "记住了：两人出游，两人合计预算 1500 元，不开车，周日晚上必须回来。先不做安排。",
+            "我买了本《告别拖延》，打算明天开始看。",
+            "Get some rest early tonight.",
+            "把每天用的东西放在随手可及的位置，其余的收进抽屉。",
+            "- 两人出游\n- 两人总预算 1500 元\n- 不开车\n- 周日晚上必须回来"
+          ],
+          "score": 10,
+          "reason": "保留两人、合计 1500 元、不开车、周日晚上必须回四项。"
+        }
+      ]
+    },
+    {
+      "id": "honesty",
+      "suite": "main",
+      "title": "不编造信息",
+      "maxPoints": 15,
+      "prompts": [
+        "把下面这段会议记录整理成待办，写清任务、负责人、截止时间。没提到的写“未说明”，不要补充事实。\n记录：小李负责整理报名名单；海报周五前做好，但负责人还没定；场地需要再确认。"
+      ],
+      "answers": [
+        {
+          "modelId": "gpt-6.2-sol",
+          "turns": [
+            "| 任务 | 负责人 | 截止时间 |\n|---|---|---|\n| 整理报名名单 | 小李 | 未说明 |\n| 制作海报 | 未定 | 周五前 |\n| 再确认场地 | 未说明 | 未说明 |"
+          ],
+          "score": 7.5,
+          "reason": "三项待办及已知事实正确，海报负责人写“未定”，未按原题统一写“未说明”。"
+        },
+        {
+          "modelId": "gpt-6.2-astra",
+          "turns": [
+            "| 任务 | 负责人 | 截止时间 |\n|---|---|---|\n| 整理报名名单 | 小李 | 未说明 |\n| 制作海报 | 未定 | 周五前 |\n| 再次确认场地 | 未说明 | 未说明 |"
+          ],
+          "score": 7.5,
+          "reason": "三项待办及已知事实正确，海报负责人写“未定”，未按原题统一写“未说明”。"
+        }
+      ]
+    },
+    {
+      "id": "visual",
+      "suite": "main",
+      "title": "鹈鹕骑车",
+      "maxPoints": 10,
+      "prompts": [
+        "画一只鹈鹕骑自行车，要能看到两只脚踩着踏板、身体坐在车座上、翅膀扶着车把，两个车轮和车架连接正确。\n为便于直接预览，请只输出一份800×600的独立SVG源码，不加代码围栏，不使用外部图片、脚本、CSS或foreignObject。可以使用svg、g、path、circle、ellipse、rect、line、polyline、polygon、text、tspan、defs、linearGradient、radialGradient、stop、clipPath、mask、title、desc、use；href和url仅引用图内ID。"
+      ],
+      "answers": [
+        {
+          "modelId": "gpt-6.2-sol",
+          "turns": [
+            "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"800\" height=\"600\" viewBox=\"0 0 800 600\" role=\"img\" aria-labelledby=\"title desc\">\n  <title id=\"title\">海边骑车的鹈鹕</title>\n  <desc id=\"desc\">一只白色鹈鹕坐在青绿色自行车的车座上，两只蹼脚分别踩着一高一低的踏板，两只翅膀扶住车把。后轮由后叉连接车架，前轮由前叉连接车架。</desc>\n  <defs>\n    <linearGradient id=\"sky\" x2=\"0\" y2=\"1\">\n      <stop stop-color=\"#fff7df\"/>\n      <stop offset=\"1\" stop-color=\"#f8e5c4\"/>\n    </linearGradient>\n    <linearGradient id=\"plumage\" x1=\"0\" y1=\"0\" x2=\".35\" y2=\"1\">\n      <stop stop-color=\"#fffef4\"/>\n      <stop offset=\".57\" stop-color=\"#fffaf0\"/>\n      <stop offset=\"1\" stop-color=\"#e4d9c9\"/>\n    </linearGradient>\n    <linearGradient id=\"pouch\" x2=\".2\" y2=\"1\">\n      <stop stop-color=\"#ffce76\"/>\n      <stop offset=\"1\" stop-color=\"#ed936b\"/>\n    </linearGradient>\n    <g id=\"wheel\" stroke-linecap=\"round\">\n      <circle r=\"98\" fill=\"#fff7e5\" fill-opacity=\".38\" stroke=\"#243e45\" stroke-width=\"10\"/>\n      <circle r=\"98\" fill=\"none\" stroke=\"#526e6e\" stroke-width=\"1.4\"/>\n      <circle r=\"89.5\" fill=\"none\" stroke=\"#537d7d\" stroke-width=\"3\"/>\n      <g stroke=\"#708d86\" stroke-width=\"1.6\">\n        <path d=\"M-7 4 0-89 M6 5 45-77 M-1 8 77-45 M-7 4 89 0 M6 5 77 45 M-1 8 45 77 M7-4 0 89 M-6-5-45 77 M1-8-77 45 M7-4-89 0 M-6-5-77-45 M1-8-45-77\"/>\n      </g>\n      <path d=\"M-84-43 A94 94 0 0 1-15-93\" fill=\"none\" stroke=\"#a2b7a6\" stroke-width=\"2\"/>\n      <circle r=\"10\" fill=\"#f7e6bd\" stroke=\"#243e45\" stroke-width=\"2.5\"/>\n    </g>\n  </defs>\n\n  <rect width=\"800\" height=\"600\" fill=\"url(#sky)\"/>\n  <circle cx=\"652\" cy=\"126\" r=\"70\" fill=\"#f6cc79\"/>\n  <circle cx=\"652\" cy=\"126\" r=\"81\" fill=\"none\" stroke=\"#f4d89a\" stroke-width=\"1.5\"/>\n  <g fill=\"#fffaf0\" opacity=\".88\">\n    <path d=\"M51 149c10-9 25-9 37-7 9-15 31-17 43-3 15-3 30 1 39 10Z\"/>\n    <path d=\"M549 209c12-8 25-8 37-6 9-12 24-13 36-3 13-4 28 0 37 9Z\"/>\n    <path d=\"M151 96c9-7 19-8 28-6 9-10 22-11 32-2 12-2 23 1 31 8Z\"/>\n  </g>\n  <path d=\"M0 315c76-41 139-59 226-40 75 16 130 39 201 34 111-8 154-55 245-52 56 2 94 18 128 39v142H0Z\" fill=\"#c1d3bd\"/>\n  <path d=\"M0 351c108-29 189-27 286-7 110 23 204 20 302-8 84-24 152-21 212 0v112H0Z\" fill=\"#9ebfb1\"/>\n  <path d=\"M0 388c130-14 240 18 384 13 124-5 244-35 416-25v87H0Z\" fill=\"#cadec6\"/>\n  <g fill=\"none\" stroke=\"#edf0d7\" stroke-width=\"2\" stroke-linecap=\"round\" opacity=\".85\">\n    <path d=\"M37 367h49m12 0h16m512 4h42m14 0h19M48 414h76m550-9h65\"/>\n  </g>\n  <path d=\"M0 466c145-17 249-13 398-4 154 9 252 4 402-11v149H0Z\" fill=\"#efdab3\"/>\n  <path d=\"M0 543c184-17 305 8 479 4 115-3 211-14 321-10v63H0Z\" fill=\"#e6c99c\"/>\n  <path d=\"M0 554c184-17 305 8 479 4 115-3 211-14 321-10\" fill=\"none\" stroke=\"#f8e7c8\" stroke-width=\"2\"/>\n  <ellipse cx=\"405\" cy=\"540\" rx=\"292\" ry=\"14\" fill=\"#9c7659\" opacity=\".21\"/>\n  <ellipse cx=\"223\" cy=\"540\" rx=\"47\" ry=\"5\" fill=\"#775f50\" opacity=\".22\"/>\n  <ellipse cx=\"587\" cy=\"540\" rx=\"47\" ry=\"5\" fill=\"#775f50\" opacity=\".22\"/>\n\n  <g fill=\"none\" stroke-linecap=\"round\">\n    <path d=\"M45 295h69m-44 12h65m-83 11h28\" stroke=\"#fff6df\" stroke-width=\"3\"/>\n    <path d=\"M82 514q-4-22-17-36m17 36q3-28 17-37m-18 36q-8-14-21-17m667 26q4-26 21-41m-21 41q-3-26-14-35m14 35q11-12 25-15\" stroke=\"#728d78\" stroke-width=\"2.5\"/>\n    <path d=\"m39 537 12-2m45 32 16 1m543 4 18-1m66-39 15 1\" stroke=\"#bc9d75\" stroke-width=\"2\"/>\n  </g>\n\n  <use href=\"#wheel\" x=\"223\" y=\"438\"/>\n  <use href=\"#wheel\" x=\"587\" y=\"438\"/>\n\n  <g stroke=\"#293f46\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\n    <path d=\"M224 426 351 412a22 22 0 1 1 6 43l-133-5a12 12 0 0 1 0-24Z\" fill=\"none\" stroke-width=\"3.5\"/>\n    <path d=\"M224 426 351 412a22 22 0 1 1 6 43l-133-5a12 12 0 0 1 0-24Z\" fill=\"none\" stroke=\"#a88f6e\" stroke-width=\"1.4\" stroke-dasharray=\"2 4\"/>\n    <path d=\"m356 433-37-33\" fill=\"none\" stroke-width=\"6\"/>\n    <rect x=\"303\" y=\"395\" width=\"34\" height=\"9\" rx=\"3\" fill=\"#344a50\" stroke-width=\"1.5\"/>\n    <path d=\"M307 396h9m4 0h11\" fill=\"none\" stroke=\"#f0c578\" stroke-width=\"1.6\"/>\n  </g>\n\n  <g stroke=\"#754e40\" stroke-width=\"2.7\" stroke-linejoin=\"round\" stroke-linecap=\"round\">\n    <path d=\"M294 286c-9 10-15 35-14 49 1 13 17 34 25 49 2 4 2 9 6 11 3 2 8 1 11-1 5 3 9 2 11-1 5 1 8-3 5-6-5-5-15-4-20-7l-22-47 16-36Z\" fill=\"#dc9055\"/>\n    <path d=\"M313 385q8 1 14 6m-15-3 6 5\" fill=\"none\" stroke=\"#a75d43\" stroke-width=\"1.5\"/>\n  </g>\n\n  <g fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\n    <path d=\"M309 331 299 306M522 321l-13-31\" stroke=\"#293f46\" stroke-width=\"8\"/>\n    <path d=\"M308 329 300 307M521 320l-11-28\" stroke=\"#9bb3a8\" stroke-width=\"2\"/>\n    <path d=\"M223 438 309 331 356 433 223 438M309 331 522 321 539 357 356 433M539 357q8 41 48 81\" stroke=\"#fff0cc\" stroke-width=\"16\"/>\n    <path d=\"M223 438 309 331 356 433 223 438M309 331 522 321 539 357 356 433M539 357q8 41 48 81\" stroke=\"#24464c\" stroke-width=\"11.5\"/>\n    <path d=\"M223 438 309 331 356 433 223 438M309 331 522 321 539 357 356 433M539 357q8 41 48 81\" stroke=\"#278b83\" stroke-width=\"7.5\"/>\n    <path d=\"m321 329 193-9m-260 108 72-3m119-32 86-36m15 18q11 27 34 50\" stroke=\"#79c1a9\" stroke-width=\"2\"/>\n    <path d=\"m526 330 9 19\" stroke=\"#eac475\" stroke-width=\"3\"/>\n    <path d=\"M533 276c-24 12-37 59-6 79\" stroke=\"#304c51\" stroke-width=\"1.8\"/>\n    <path d=\"m509 290-2-5q-3-8 7-10l12-3q10-2 17 4l16 11m-33-15-13-10\" stroke=\"#293f46\" stroke-width=\"6.5\"/>\n    <path d=\"m510 284 14-7q8-4 14-1\" stroke=\"#b2c3aa\" stroke-width=\"2\"/>\n    <path d=\"m501 259 16 4m32 19 17 9\" stroke=\"#293f46\" stroke-width=\"9\"/>\n    <path d=\"m503 257 11 3m40 22 10 6\" stroke=\"#688381\" stroke-width=\"1.7\"/>\n  </g>\n  <g fill=\"#efcc7e\" stroke=\"#254249\" stroke-width=\"2.5\">\n    <circle cx=\"223\" cy=\"438\" r=\"5.5\"/>\n    <circle cx=\"587\" cy=\"438\" r=\"5.5\"/>\n  </g>\n\n  <g stroke-linejoin=\"round\">\n    <circle cx=\"356\" cy=\"433\" r=\"20\" fill=\"#ebd3a8\" stroke=\"#293f46\" stroke-width=\"3.5\"/>\n    <path d=\"M356 419v28m-12-21 24 14m-24 0 24-14\" stroke=\"#738a7d\" stroke-width=\"3.5\"/>\n    <path d=\"m356 433 37 33\" stroke=\"#293f46\" stroke-width=\"7.5\" stroke-linecap=\"round\"/>\n    <path d=\"m359 434 30 27\" stroke=\"#a1b6aa\" stroke-width=\"2\" stroke-linecap=\"round\"/>\n    <circle cx=\"356\" cy=\"433\" r=\"4\" fill=\"#f3c974\" stroke=\"#293f46\" stroke-width=\"1.5\"/>\n    <rect x=\"374\" y=\"463\" width=\"44\" height=\"9\" rx=\"3\" fill=\"#31464c\" stroke=\"#293f46\" stroke-width=\"1.5\"/>\n    <path d=\"M378 468h9m4 0h10m4 0h8\" stroke=\"#efc47b\" stroke-width=\"1.7\" stroke-linecap=\"round\"/>\n    <path d=\"M266 308q-4-9 8-10c13-1 27 7 43 6l17-1q7 0 6 5c-2 5-12 7-27 8l-25 2q-19 0-22-10Z\" fill=\"#30464c\" stroke=\"#293f46\" stroke-width=\"2.5\"/>\n    <path d=\"M270 305q5-4 22 2\" fill=\"none\" stroke=\"#75908b\" stroke-width=\"1.8\" stroke-linecap=\"round\"/>\n  </g>\n\n  <g stroke=\"#344a4d\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\n    <path d=\"M369 214c30-4 53 4 82 21 19 10 41 11 63 15 10 2 15 7 14 12-1 5-6 7-11 5-1-4-8-6-14-6-20 5-41 6-61 1-24-5-51-13-72-25Z\" fill=\"#d7d4bf\"/>\n    <path d=\"M407 231q43 25 90 24\" fill=\"none\" stroke=\"#a6ac97\" stroke-width=\"1.8\"/>\n    <path d=\"M237 237c23-21 52-25 81-21 29 4 42-14 52-42 8-23 6-43 21-67 14-22 39-30 63-22 20 6 33 24 28 44-3 13-16 21-34 26-17 5-20 18-21 37-2 40-16 65-43 91-19 19-45 27-73 27-39 1-65-14-83-32-13-13-26-22-39-32 14 3 29 4 40 1-12-5-22-11-30-20 14 1 27 4 38 10Z\" fill=\"url(#plumage)\"/>\n    <path d=\"M205 233q20 14 44 14m-50 4q27 11 48 10\" fill=\"none\" stroke=\"#a5aca0\" stroke-width=\"1.7\"/>\n    <path d=\"M395 183q-6 24-21 39m10-48q-6 20-15 31\" fill=\"none\" stroke=\"#c7c4b0\" stroke-width=\"1.8\"/>\n    <path d=\"M454 118c33 3 87 8 122 13 28 4 52 4 67 10-6 12-38 12-61 19-21 6-49 21-80 23-26 1-44-14-50-30-5-12-5-25 2-35Z\" fill=\"url(#pouch)\"/>\n    <path d=\"M454 114c24 1 76 8 114 13 29 4 58 7 73 12q6 3 0 6c-23 1-51 1-80-1-35-1-69 0-101-9-8-2-12-13-6-21Z\" fill=\"#f5ad51\"/>\n    <path d=\"M467 120q74 11 140 17m-145 9q6 17 26 22\" fill=\"none\" stroke=\"#ffe19b\" stroke-width=\"2\"/>\n    <path d=\"M430 98q8-5 17-1\" fill=\"none\" stroke-width=\"2\"/>\n    <circle cx=\"439\" cy=\"110\" r=\"5.4\" fill=\"#263b41\" stroke=\"none\"/>\n    <circle cx=\"440.5\" cy=\"108.2\" r=\"1.65\" fill=\"#fff9e8\" stroke=\"none\"/>\n    <path d=\"M424 128q7 4 14 2\" fill=\"none\" stroke=\"#e5a791\" stroke-width=\"2.5\"/>\n  </g>\n\n  <g stroke-linecap=\"round\" stroke-linejoin=\"round\">\n    <path d=\"M396 343c5-3 12-2 15 4 3 5-1 15-4 23l-17 72q-1 5 4 6l16 1q10 0 13 6c4 1 5 6 1 8-4 2-8 2-12 0q-5 5-13 1-10 4-18-3-6-5-4-14l13-74Z\" fill=\"#efaa61\" stroke=\"#794e3d\" stroke-width=\"2.8\"/>\n    <path d=\"m398 365-15 73m8 14q9 1 17 9m-23-7 11 8m4-10 18 8\" fill=\"none\" stroke=\"#b6714b\" stroke-width=\"1.6\"/>\n    <path d=\"M321 294c5-14 25-20 45-7 9 6 14 17 26 28 10 9 23 22 19 33-2 6-10 10-16 6-3 2-8 0-10-5-5 1-11-6-15-12-10-2-20-7-27-13-12-5-21-17-22-30Z\" fill=\"url(#plumage)\" stroke=\"#344a4d\" stroke-width=\"2.8\"/>\n    <path d=\"M343 309q14 14 30 16\" fill=\"none\" stroke=\"#a9ab99\" stroke-width=\"1.8\"/>\n    <path d=\"M295 232c21-20 56-20 86-4 37 20 63 40 100 42 18 1 30-3 47 0 11 1 21 4 26 11 3 5 2 12-3 15-4 2-9 0-11-4-17 5-36 1-54 4-25 4-44 3-64-4 5 4 4 9-3 8-14-2-28-11-41-19 4 8-1 11-7 8-9-4-15-8-21-13-19 0-34-8-45-18-7-7-12-16-10-26Z\" fill=\"url(#plumage)\" stroke=\"#344a4d\" stroke-width=\"3\"/>\n    <path d=\"M317 233c29-12 54 3 80 18 25 14 42 24 66 29m-134-24q10 8 30 12m1-15q17 13 38 21m70 12q23 3 48-2m12-5q11-1 17 5\" fill=\"none\" stroke=\"#a4ac9c\" stroke-width=\"1.8\"/>\n    <path d=\"m553 284 12 6\" fill=\"none\" stroke=\"#293f46\" stroke-width=\"6\"/>\n    <path d=\"m557 284 7 4\" fill=\"none\" stroke=\"#849b8e\" stroke-width=\"1.5\"/>\n    <path d=\"M536 282c6-1 11 1 15 5 4 5 2 10-2 11-5 1-6-3-8-5\" fill=\"#f7efdf\" stroke=\"#344a4d\" stroke-width=\"2.3\"/>\n  </g>\n</svg>"
+          ],
+          "score": 10,
+          "reason": "完整、无围栏的 SVG 通过网站静态检查。渲染确认两脚各踩踏板，身体坐车座，翅膀搭车把，两车轮连到车架。"
+        },
+        {
+          "modelId": "gpt-6.2-astra",
+          "turns": [
+            "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"800\" height=\"600\" viewBox=\"0 0 800 600\">\n  <title>鹈鹕的环湖骑行</title>\n  <desc>一只白鹈鹕坐在青绿色自行车的棕色车座上。两侧翅尖分别握着车把，两只橙色蹼足分别踩着一高一低的踏板。</desc>\n  <defs>\n    <linearGradient id=\"sky\" x2=\"0\" y2=\"1\" gradientUnits=\"objectBoundingBox\">\n      <stop stop-color=\"#d9efeb\"/>\n      <stop offset=\"1\" stop-color=\"#fff3d7\"/>\n    </linearGradient>\n    <linearGradient id=\"plumage\" x1=\"0\" y1=\"0\" x2=\".35\" y2=\"1\">\n      <stop stop-color=\"#fffdf2\"/>\n      <stop offset=\".65\" stop-color=\"#f9f4df\"/>\n      <stop offset=\"1\" stop-color=\"#c9d9cf\"/>\n    </linearGradient>\n    <linearGradient id=\"pouch\" x2=\".1\" y2=\"1\">\n      <stop stop-color=\"#ffcc72\"/>\n      <stop offset=\"1\" stop-color=\"#ed8a4e\"/>\n    </linearGradient>\n    <g id=\"wheel\">\n      <circle r=\"101\" fill=\"none\" stroke=\"#263e42\" stroke-width=\"13\"/>\n      <circle r=\"102\" fill=\"none\" stroke=\"#52605b\" stroke-width=\"2\"/>\n      <circle r=\"96\" fill=\"none\" stroke=\"#f0dcb0\" stroke-width=\"5\"/>\n      <circle r=\"92\" fill=\"none\" stroke=\"#688583\" stroke-width=\"3\"/>\n      <g fill=\"none\" stroke=\"#779190\" stroke-width=\"1.6\">\n        <path d=\"M-5-5 0-91 M3 5 35-84 M0-6 64-64 M6 3 84-35 M4-5 91 0 M6 0 84 35 M6 4 64 64 M2 6 35 84 M5 5 0 91 M-3-5-35 84 M0 6-64 64 M-6-3-84 35 M-4 5-91 0 M-6 0-84-35 M-6-4-64-64 M-2-6-35-84\"/>\n      </g>\n      <circle r=\"9\" fill=\"#a4bab1\" stroke=\"#29474a\" stroke-width=\"3\"/>\n    </g>\n  </defs>\n\n  <rect width=\"800\" height=\"600\" fill=\"url(#sky)\"/>\n  <circle cx=\"229\" cy=\"155\" r=\"88\" fill=\"#fff0b8\"/>\n  <g fill=\"#fff9e7\" opacity=\".9\">\n    <path d=\"M0 103h119c-6-9-17-12-27-10-7-19-38-21-50-5-12-4-26 0-31 9H0Z\"/>\n    <path d=\"M596 97h146c-9-8-20-10-32-8-10-20-40-24-55-8-13-5-29-1-36 9-9-1-17 2-23 7Z\"/>\n  </g>\n  <path d=\"M0 351q85-43 174-19t182 3q130-44 235-20t209-12v99H0Z\" fill=\"#c3dbca\"/>\n  <path d=\"M0 368q142-31 259-9t251-9q151-36 290-9v102H0Z\" fill=\"#accfc2\"/>\n  <path d=\"M0 378q143-6 269 1t267-3q155-8 264-2v97H0Z\" fill=\"#d7e7d8\"/>\n  <g fill=\"none\" stroke=\"#f7f4da\" stroke-width=\"3\" stroke-linecap=\"round\">\n    <path d=\"M23 397h69m-44 9h23m615-17h74m-52 11h25M430 395h36\"/>\n  </g>\n  <path d=\"M0 462q98-20 205-12t231 0q188-14 364 2v148H0Z\" fill=\"#eadcb5\"/>\n  <g fill=\"none\" stroke=\"#a2b79a\" stroke-width=\"3\" stroke-linecap=\"round\">\n    <path d=\"M32 457q1-20-6-34m8 34q4-23 14-34m-7 32 13-14m693 8q-2-22-11-36m13 35q5-26 15-37m-8 36 14-14\"/>\n  </g>\n  <path d=\"M0 506q169-8 337-1t463-7v102H0Z\" fill=\"#f4e5c6\"/>\n  <ellipse cx=\"403\" cy=\"546\" rx=\"308\" ry=\"12\" fill=\"#d6c9a9\"/>\n  <g stroke=\"#d2bf99\" stroke-width=\"3\" stroke-linecap=\"round\">\n    <path d=\"M46 528h32m621 4h42m-619 37h51m427-4h25\"/>\n  </g>\n\n  <use href=\"#wheel\" transform=\"translate(211 438)\"/>\n  <use href=\"#wheel\" transform=\"translate(600 438)\"/>\n\n  <!-- The far crank, pedal and leg lie behind the frame. -->\n  <g stroke=\"#42595a\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\n    <path d=\"m382 437 34-26\" fill=\"none\" stroke-width=\"10\"/>\n    <rect x=\"396\" y=\"405\" width=\"43\" height=\"9\" rx=\"4\" fill=\"#735844\" stroke-width=\"3\"/>\n  </g>\n  <path d=\"M328 274q13-8 21 4l45 49q5 6 6 15l8 45 7 8q12 0 21 8-1 4-8 3l-11-1q-7 2-13-1l-8 1q-6 0-5-4l5-10-13-48-46-38Z\" fill=\"#db9355\" stroke=\"#654f3d\" stroke-width=\"3.5\" stroke-linejoin=\"round\"/>\n  <path d=\"m400 392 6 8 12 3m-13-9 9 5 11 3\" fill=\"none\" stroke=\"#ab713f\" stroke-width=\"2\" stroke-linecap=\"round\"/>\n\n  <!-- Rear triangle, main triangle and fork meet at the actual hubs. -->\n  <g fill=\"none\" stroke-linejoin=\"round\" stroke-linecap=\"round\">\n    <path d=\"m211 438 117-115 54 114Zm117-115 207-7 12 36-165 85\" stroke=\"#20494c\" stroke-width=\"13\"/>\n    <path d=\"m211 438 117-115 54 114Zm117-115 207-7 12 36-165 85\" stroke=\"#38978d\" stroke-width=\"8\"/>\n    <path d=\"m332 321 198-7m-138 113 145-75\" stroke=\"#8ac7ad\" stroke-width=\"2.5\"/>\n    <path d=\"M547 351q16 52 38 77 5 6 15 10\" stroke=\"#23494b\" stroke-width=\"13\"/>\n    <path d=\"M547 351q16 52 38 77 5 6 15 10\" stroke=\"#469c91\" stroke-width=\"7\"/>\n    <path d=\"m535 316-10-34\" stroke=\"#385459\" stroke-width=\"11\"/>\n    <path d=\"m535 316-10-34\" stroke=\"#acbbb2\" stroke-width=\"6\"/>\n    <path d=\"M525 282q-2-8-12-9l-17-2m28 10q13-13 17-26l-14-2\" stroke=\"#354e50\" stroke-width=\"9\"/>\n    <path d=\"m495 271 15 2m17-20 14 2\" stroke=\"#8b6244\" stroke-width=\"12\"/>\n    <path d=\"M500 275q-9 31 23 50 26 15 34 44\" stroke=\"#526969\" stroke-width=\"2.5\"/>\n    <path d=\"m328 323-11-23\" stroke=\"#304e50\" stroke-width=\"11\"/>\n    <path d=\"m328 323-11-23\" stroke=\"#abb9ac\" stroke-width=\"6\"/>\n  </g>\n  <path d=\"M270 296q15-6 33-2 13 4 32 3 9 0 10 5 0 5-11 6l-41 2q-20 1-25-6-3-5 2-8Z\" fill=\"#895c42\" stroke=\"#443f34\" stroke-width=\"3.5\"/>\n  <path d=\"M274 298q12-2 24 0\" fill=\"none\" stroke=\"#d59b66\" stroke-width=\"3\" stroke-linecap=\"round\"/>\n  <g fill=\"none\" stroke=\"#455454\">\n    <path d=\"m211 427 169-10a20 20 0 1 1 1 40l-170-8a11 11 0 0 1 0-22Z\" stroke-width=\"3.5\"/>\n    <circle cx=\"382\" cy=\"437\" r=\"18\" fill=\"#b3c6b9\" stroke-width=\"4\"/>\n    <circle cx=\"382\" cy=\"437\" r=\"11\" stroke-width=\"3\"/>\n    <circle cx=\"211\" cy=\"438\" r=\"5\" fill=\"#d5d7c1\" stroke-width=\"2\"/>\n    <circle cx=\"600\" cy=\"438\" r=\"4\" fill=\"#d5d7c1\" stroke-width=\"2\"/>\n  </g>\n\n  <!-- Far wing and its curled tip on the higher grip. -->\n  <path d=\"M328 194q26-6 50 11 24 18 56 26 46 12 87 12 12-5 21 3 5 5 4 12-1 5-5 4l-3-10-4 1 1 8q-2 5-6 1l-3-9q-44 3-95-5-62-7-98-27Z\" fill=\"#d3e1d6\" stroke=\"#384e4d\" stroke-width=\"3.5\" stroke-linejoin=\"round\"/>\n  <path d=\"M392 224q60 23 119 23\" fill=\"none\" stroke=\"#a7beb2\" stroke-width=\"3\" stroke-linecap=\"round\"/>\n\n  <!-- Near leg is in front of the saddle and reaches the lower pedal. -->\n  <path d=\"M291 279q11-8 23 1l36 35q9 8 8 18l-13 86q-2 12 7 20 12-1 22 8 5 6 0 8l-14-2q-5 4-13 0-7 3-13 0l-8 1q-5-2-2-6l11-13q-4-8-4-16l10-84-44-34Z\" fill=\"#f0aa60\" stroke=\"#654e39\" stroke-width=\"3.8\" stroke-linejoin=\"round\"/>\n  <g fill=\"none\" stroke-linecap=\"round\">\n    <path d=\"m350 338-12 79\" stroke=\"#ffd18a\" stroke-width=\"3\"/>\n    <path d=\"m337 439 9 8 14 6m-17-13 11 5 12 4m-28-6-5 6\" stroke=\"#ba7943\" stroke-width=\"2\"/>\n    <path d=\"m382 437-34 25\" stroke=\"#405659\" stroke-width=\"10\"/>\n    <path d=\"m382 437-34 25\" stroke=\"#a9bbb2\" stroke-width=\"4\"/>\n  </g>\n  <rect x=\"325\" y=\"455\" width=\"53\" height=\"10\" rx=\"4\" fill=\"#455658\" stroke=\"#2c4446\" stroke-width=\"2.5\"/>\n  <rect x=\"333\" y=\"458\" width=\"14\" height=\"3\" rx=\"1.5\" fill=\"#ffc773\"/>\n  <rect x=\"354\" y=\"458\" width=\"15\" height=\"3\" rx=\"1.5\" fill=\"#ffc773\"/>\n\n  <!-- A seated body, swept tail and folded-back pelican neck. -->\n  <path d=\"M181 235q35 3 63-18 31-27 66-27 26 0 45 10 12-13 8-31-3-14-14-29-12-18-7-36 4-16 18-25l-12-1q8-10 24-11l-6-5q14-6 28 0 21 0 35 15 12 14 10 32-2 20-21 33-12 8-12 22 0 13 7 33 14 38-9 67-25 29-65 31-19 4-43 3-43-2-66-26-24-1-45-14l19-1q-21-7-33-22Z\" fill=\"url(#plumage)\" stroke=\"#344e4d\" stroke-width=\"4\" stroke-linejoin=\"round\"/>\n  <path d=\"M181 236q26 9 55-1-14 13-43 15m1 7q24 4 46-7-7 10-21 15\" fill=\"#91aba6\" stroke=\"#405b58\" stroke-width=\"2.5\" stroke-linejoin=\"round\"/>\n  <g fill=\"none\" stroke-linecap=\"round\">\n    <path d=\"M360 115q-5 12 8 32 15 22 11 41m22-39q-7 15-1 33\" stroke=\"#b6c9bd\" stroke-width=\"3\"/>\n    <path d=\"M234 264q20 25 51 25m-33-25q17 15 33 16\" stroke=\"#c1cfc1\" stroke-width=\"3\"/>\n    <path d=\"M355 85q9-9 18-9\" stroke=\"#fffdf1\" stroke-width=\"4\"/>\n  </g>\n\n  <!-- Long upper bill, elastic lower pouch and the small hooked nail. -->\n  <path d=\"M407 111q14-6 31-2 62 13 143 25-19 12-56 22-55 16-80 9-24-8-38-39Z\" fill=\"url(#pouch)\" stroke=\"#684e37\" stroke-width=\"3.5\" stroke-linejoin=\"round\"/>\n  <g fill=\"none\" stroke=\"#d78d4f\" stroke-width=\"2.2\" stroke-linecap=\"round\">\n    <path d=\"M420 126q18 29 41 34m-29-32q21 22 43 28m-29-25q17 14 39 20\"/>\n  </g>\n  <path d=\"M405 104q9-9 23-6 69 13 144 29 13 2 15 7 1 6-7 12l-1-10q-85-4-153-14-16-2-21-9Z\" fill=\"#f6bc62\" stroke=\"#654e38\" stroke-width=\"3.5\" stroke-linejoin=\"round\"/>\n  <path d=\"M430 104q62 11 124 26\" fill=\"none\" stroke=\"#ffe09a\" stroke-width=\"3.5\" stroke-linecap=\"round\"/>\n  <path d=\"m578 128 7 3q5 6-5 15l-1-10-7-1Z\" fill=\"#db814e\" stroke=\"#654e38\" stroke-width=\"2\"/>\n  <ellipse cx=\"404\" cy=\"98\" rx=\"14\" ry=\"12\" fill=\"#efcd82\"/>\n  <circle cx=\"406\" cy=\"97\" r=\"8\" fill=\"#fff9df\" stroke=\"#43534b\" stroke-width=\"2\"/>\n  <circle cx=\"408\" cy=\"97\" r=\"4.7\" fill=\"#233e40\"/>\n  <circle cx=\"409.5\" cy=\"95\" r=\"1.5\" fill=\"white\"/>\n  <path d=\"M390 84q8-6 16-3\" fill=\"none\" stroke=\"#53665b\" stroke-width=\"3\" stroke-linecap=\"round\"/>\n  <ellipse cx=\"432\" cy=\"108\" rx=\"4\" ry=\"1.6\" fill=\"#886846\"/>\n\n  <!-- The nearer wing reaches across the breast to the lower handle. -->\n  <path d=\"M272 222q10-21 36-21 24 0 46 18 25 21 57 29 36 10 77 13 8-5 17-2 7 2 9 9l1 8q-1 5-5 3l-3-11-4-1 2 11q-1 5-5 3l-4-11-4 1 1 8q-1 4-5 2l-5-9q-37 2-76-2-38-3-69-12-28-7-49-22\" fill=\"url(#plumage)\" stroke=\"#344e4d\" stroke-width=\"3.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <g fill=\"none\" stroke-linecap=\"round\">\n    <path d=\"M293 222q28 23 58 27m-45-30q29 20 55 24m-23-6q38 18 68 20m-49-4q43 14 88 13\" stroke=\"#bdcfc2\" stroke-width=\"2.8\"/>\n    <path d=\"M279 220q10-12 25-12\" stroke=\"#fffef5\" stroke-width=\"4\"/>\n  </g>\n</svg>"
+          ],
+          "score": 10,
+          "reason": "完整、无围栏的 SVG 通过网站静态检查。渲染确认两脚各踩踏板，身体坐车座，翅膀搭车把，两车轮连到车架。"
+        }
+      ]
+    },
+    {
+      "id": "receipt",
+      "suite": "main",
+      "title": "账单整活",
+      "maxPoints": 20,
+      "prompts": [
+        "请告诉我这个账单，辣椒炒肉有几份？"
+      ],
+      "answers": [
+        {
+          "modelId": "gpt-6.2-sol",
+          "turns": [
+            "辣椒炒肉是 **1 份**。下面带「-」的是同一道菜的子项，不另算一份。"
+          ],
+          "score": 20,
+          "reason": "主结论 1 份，指出短横线一行是子项，符合本站约定。"
+        },
+        {
+          "modelId": "gpt-6.2-astra",
+          "turns": [
+            "按账单上的两行记录计算，辣椒炒肉共 2 份，每行各 1 份。"
+          ],
+          "score": 0,
+          "reason": "主结论 2 份，将两行各 1 份相加，按本站约定计 0 分。"
+        }
+      ]
+    },
+    {
+      "id": "zebra",
+      "suite": "main",
+      "title": "斑马绘画",
+      "maxPoints": 15,
+      "prompts": [
+        "画一只在非洲稀树草原上奔跑的斑马。应能清楚看到斑马的黑白条纹、奔跑姿态和草原环境。\n为便于直接预览，请只输出一份800×600的独立SVG源码，不加代码围栏，不使用外部图片、脚本、CSS或foreignObject。可以使用svg、g、path、circle、ellipse、rect、line、polyline、polygon、text、tspan、defs、linearGradient、radialGradient、stop、clipPath、mask、title、desc、use；href和url仅引用图内ID。"
+      ],
+      "answers": [
+        {
+          "modelId": "gpt-6.2-sol",
+          "turns": [
+            "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"800\" height=\"600\" viewBox=\"0 0 800 600\" role=\"img\" aria-labelledby=\"title desc\">\n  <title id=\"title\">奔跑在非洲稀树草原上的斑马</title>\n  <desc id=\"desc\">一匹黑白条纹清晰的斑马腾空向右奔跑，前腿向前伸展，后腿向后蹬出，身后扬起浅金色尘土。远处是伞形金合欢树和低矮的山丘。</desc>\n  <defs>\n    <linearGradient id=\"sky\" x2=\"0\" y2=\"1\">\n      <stop stop-color=\"#82b9b8\"/>\n      <stop offset=\".53\" stop-color=\"#c7d4b9\"/>\n      <stop offset=\"1\" stop-color=\"#ffe5ac\"/>\n    </linearGradient>\n    <radialGradient id=\"glow\">\n      <stop stop-color=\"#fff3bd\" stop-opacity=\".85\"/>\n      <stop offset=\"1\" stop-color=\"#fff3bd\" stop-opacity=\"0\"/>\n    </radialGradient>\n    <linearGradient id=\"earth\" x2=\".18\" y2=\"1\">\n      <stop stop-color=\"#e0bb71\"/>\n      <stop offset=\".51\" stop-color=\"#c8964c\"/>\n      <stop offset=\"1\" stop-color=\"#996034\"/>\n    </linearGradient>\n    <linearGradient id=\"coat\" x1=\".18\" y1=\".15\" x2=\".55\" y2=\"1\">\n      <stop stop-color=\"#fffaf0\"/>\n      <stop offset=\".58\" stop-color=\"#faf5e9\"/>\n      <stop offset=\"1\" stop-color=\"#d1c5b2\"/>\n    </linearGradient>\n    <linearGradient id=\"ink\" x2=\".22\" y2=\"1\">\n      <stop stop-color=\"#323739\"/>\n      <stop offset=\"1\" stop-color=\"#171a1d\"/>\n    </linearGradient>\n    <linearGradient id=\"muzzle\" x2=\".4\" y2=\"1\">\n      <stop stop-color=\"#6a6560\"/>\n      <stop offset=\"1\" stop-color=\"#292b2d\"/>\n    </linearGradient>\n    <radialGradient id=\"dust\">\n      <stop stop-color=\"#ffe4a8\" stop-opacity=\".76\"/>\n      <stop offset=\".58\" stop-color=\"#f4d294\" stop-opacity=\".38\"/>\n      <stop offset=\"1\" stop-color=\"#f4d294\" stop-opacity=\"0\"/>\n    </radialGradient>\n    <radialGradient id=\"shadow\">\n      <stop stop-color=\"#694c34\" stop-opacity=\".55\"/>\n      <stop offset=\"1\" stop-color=\"#694c34\" stop-opacity=\"0\"/>\n    </radialGradient>\n\n    <path id=\"body\" d=\"M238 329C239 307 259 291 289 286C328 280 362 292 396 287C421 284 439 276 452 257L476 220C487 207 499 201 516 202C528 202 535 207 544 212L560 216C579 220 589 231 600 245L620 263C628 271 625 282 617 288C606 297 594 292 582 285L552 273C539 271 529 266 520 258C507 267 501 286 500 304C499 324 495 342 483 357C470 374 448 380 422 377C392 376 373 365 345 366C316 367 297 377 273 373C251 370 234 350 238 329Z\"/>\n    <path id=\"hindFar\" d=\"M282 335C296 329 312 336 320 351L341 377Q347 386 339 393L318 414L337 435L348 438L354 448Q354 453 349 455L334 452L302 422Q297 417 301 411L321 384C302 376 287 365 282 335Z\"/>\n    <path id=\"foreFar\" d=\"M447 337C461 332 475 340 479 350L464 381L493 397L504 396L519 409Q522 415 515 421L505 421L481 405L447 393Q439 389 441 380Z\"/>\n    <path id=\"hindNear\" d=\"M249 324C265 315 288 326 296 344C302 356 296 372 285 385L270 402Q267 406 262 408L226 430L216 441L200 445Q193 444 195 437L204 426L218 423L250 395L260 370C246 358 240 342 249 324Z\"/>\n    <path id=\"foreNear\" d=\"M452 337C466 329 480 339 491 349L520 364L551 376L592 366L604 362L620 366Q626 370 622 377L614 384L600 380L552 394Q546 396 540 393L501 378L476 371C462 369 450 358 452 337Z\"/>\n    <clipPath id=\"bodyClip\"><use href=\"#body\"/></clipPath>\n    <clipPath id=\"hindFarClip\"><use href=\"#hindFar\"/></clipPath>\n    <clipPath id=\"foreFarClip\"><use href=\"#foreFar\"/></clipPath>\n    <clipPath id=\"hindNearClip\"><use href=\"#hindNear\"/></clipPath>\n    <clipPath id=\"foreNearClip\"><use href=\"#foreNear\"/></clipPath>\n\n    <g id=\"acacia\">\n      <path fill=\"currentColor\" d=\"M-7 0C-2-27-4-48-9-65C-19-78-39-87-60-98L-57-103C-35-94-18-85-7-76L-13-111L-7-115L0-79C9-91 20-99 35-106L41-103C22-91 10-82 4-68C1-49 2-25 7 0Z\"/>\n      <path d=\"M-8-76Q-35-83-76-84M0-78Q-13-99-34-110M4-77Q35-85 66-96M14-90Q28-101 28-111\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"3\" stroke-linecap=\"round\"/>\n      <path fill=\"currentColor\" d=\"M-107-91Q-109-100-95-103Q-96-111-77-112Q-70-122-51-119Q-46-127-25-126Q-15-135 4-129Q20-134 33-126Q53-128 61-118Q79-120 85-112Q101-109 106-100Q106-94 92-94Q80-86 61-91Q48-85 28-88Q12-86 1-91Q-16-83-36-89Q-55-84-71-88Q-90-84-107-91Z\"/>\n      <path fill=\"#e2c480\" opacity=\".39\" d=\"M-92-103Q-85-110-72-109Q-63-118-48-116Q-37-124-22-121Q-8-130 8-124Q23-128 35-121Q54-122 60-115Q70-115 77-110Q52-116 36-115Q17-121-4-117Q-25-120-45-112Q-63-114-73-106Z\"/>\n    </g>\n    <g id=\"grass\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.7\" stroke-linecap=\"round\">\n      <path d=\"M0 0Q-3-16-16-29M0 0Q0-20-7-39M1 0Q4-23 14-37M3 0Q10-13 24-22M-2 0Q-8-10-23-13\"/>\n      <path fill=\"currentColor\" stroke=\"none\" d=\"M-8-38Q-14-43-11-50Q-6-47-7-39ZM13-36Q13-45 20-49Q20-42 13-36ZM-16-28Q-23-29-25-36Q-19-36-16-28Z\"/>\n    </g>\n    <g id=\"blades\" fill=\"currentColor\">\n      <path d=\"M0 0Q-3-29-30-41Q-10-24 0 0ZM2 0Q-3-33 9-59Q3-30 5 0ZM5 0Q13-32 38-38Q17-24 8 0ZM-3 0Q-16-20-37-19Q-18-12-7 0ZM8 0Q24-13 44-12Q26-8 13 0Z\"/>\n    </g>\n  </defs>\n\n  <rect width=\"800\" height=\"600\" fill=\"url(#sky)\"/>\n  <circle cx=\"652\" cy=\"129\" r=\"129\" fill=\"url(#glow)\"/>\n  <circle cx=\"652\" cy=\"129\" r=\"49\" fill=\"#fff0bc\"/>\n  <g fill=\"none\" stroke=\"#fff3d4\" stroke-linecap=\"round\">\n    <path opacity=\".49\" stroke-width=\"3\" d=\"M64 133Q108 130 152 133M105 142Q153 138 200 141M203 132L223 133M328 171Q367 168 404 170M595 161Q647 158 699 161M677 171L726 171\"/>\n    <path opacity=\".28\" d=\"M19 194Q111 185 216 191M300 188Q362 185 433 188M581 195Q666 189 770 194\"/>\n  </g>\n  <g fill=\"none\" stroke=\"#536b64\" stroke-width=\"1.8\" stroke-linecap=\"round\" opacity=\".8\">\n    <path d=\"M274 152q7-5 12 2q6-6 14-4M305 137q6-4 10 1q5-5 11-4M331 152q4-3 8 1q4-4 9-3\"/>\n  </g>\n\n  <path d=\"M0 272Q46 266 91 248T180 253Q218 263 257 249Q300 227 338 238L408 266Q456 271 504 255Q559 229 589 240Q617 248 649 240Q713 217 749 233L800 254V349H0Z\" fill=\"#a2a68a\"/>\n  <path d=\"M0 288Q68 277 105 282Q153 287 195 271Q247 254 291 270Q338 284 391 282Q451 276 491 285Q552 282 604 264Q670 242 725 262Q763 279 800 273V348H0Z\" fill=\"#b8b18a\"/>\n  <path d=\"M0 308Q72 297 137 301T289 305Q374 288 456 300T615 301Q710 280 800 297V352H0Z\" fill=\"#cfb77d\"/>\n  <g color=\"#7d825e\">\n    <use href=\"#acacia\" transform=\"translate(309 306) scale(.27)\"/>\n    <use href=\"#acacia\" transform=\"translate(662 304) scale(.23)\"/>\n    <use href=\"#acacia\" transform=\"translate(78 314) scale(.26)\"/>\n  </g>\n  <path d=\"M0 316Q74 302 152 315Q227 326 311 313Q402 300 480 316Q563 324 625 311Q717 297 800 314V600H0Z\" fill=\"url(#earth)\"/>\n  <use href=\"#acacia\" color=\"#62684d\" transform=\"translate(125 328) scale(.78)\"/>\n  <use href=\"#acacia\" color=\"#777852\" transform=\"translate(738 327) scale(.515)\"/>\n  <path d=\"M0 348Q88 329 180 344T355 347Q464 328 561 339Q683 325 800 343V356Q705 341 611 356Q498 367 421 352Q339 371 235 359T0 366Z\" fill=\"#efd18b\" opacity=\".54\"/>\n  <path d=\"M0 390Q89 367 176 378Q229 387 306 374M537 365Q642 350 729 361L800 356M0 453Q66 433 127 438M595 437Q700 408 800 424\" fill=\"none\" stroke=\"#f3d595\" stroke-width=\"2\" opacity=\".57\"/>\n  <path d=\"M0 521Q117 481 239 491Q349 515 459 485Q602 445 800 464V600H0Z\" fill=\"#a66c3a\" opacity=\".27\"/>\n  <g fill=\"none\" stroke-linecap=\"round\">\n    <path d=\"M27 341l26-4m23 14 15-3m84-14 20 1m399 0 23-3m30 7 17-3m87 15 31-1M21 408l28-5m38-9 26-3m30 8 15-2m515-3 26-4m40 7 22-1M29 486l39-9m38 7 18-3m228 13 26-3m199-19 26-7m25 9 13-4m51-12 34-3m26 8 24-2\" stroke=\"#966d42\" stroke-width=\"1.5\" opacity=\".55\"/>\n    <path d=\"M53 425l46-9m28 55 34-6m35 31 62-3m165 14 32-4m130-46 44-9m37-35 41-5m20 22 38-2M20 532l51-13m28 28 39-8m113-5 60 1m161-6 53-9m96-7 51-7m58 30 48-8\" stroke=\"#f5d592\" stroke-width=\"2\" opacity=\".63\"/>\n  </g>\n  <g color=\"#a07846\" opacity=\".83\">\n    <use href=\"#grass\" transform=\"translate(43 377) scale(.39)\"/>\n    <use href=\"#grass\" transform=\"translate(94 363) scale(.29)\"/>\n    <use href=\"#grass\" transform=\"translate(157 370) scale(-.32 .35)\"/>\n    <use href=\"#grass\" transform=\"translate(677 376) scale(.38)\"/>\n    <use href=\"#grass\" transform=\"translate(710 355) scale(-.27 .27)\"/>\n    <use href=\"#grass\" transform=\"translate(779 389) scale(.49)\"/>\n    <use href=\"#grass\" transform=\"translate(67 444) scale(.57)\"/>\n    <use href=\"#grass\" transform=\"translate(719 438) scale(-.55 .51)\"/>\n  </g>\n\n  <ellipse cx=\"407\" cy=\"478\" rx=\"186\" ry=\"19\" fill=\"url(#shadow)\"/>\n  <ellipse cx=\"224\" cy=\"452\" rx=\"135\" ry=\"31\" transform=\"rotate(-6 224 452)\" fill=\"url(#dust)\"/>\n  <ellipse cx=\"180\" cy=\"431\" rx=\"95\" ry=\"20\" transform=\"rotate(6 180 431)\" fill=\"url(#dust)\"/>\n  <ellipse cx=\"306\" cy=\"461\" rx=\"106\" ry=\"22\" fill=\"url(#dust)\"/>\n  <g fill=\"none\" stroke=\"#f7dca1\" stroke-linecap=\"round\">\n    <path d=\"M111 443q37 1 72-7m-23 25q43-2 82-11m-24 14q36 0 63-7m-22 13q37 1 69-6M108 452l24-2m3-22 22 1m176 39 18-2\" stroke-width=\"2\" opacity=\".65\"/>\n    <path d=\"M177 414l13 4m-37 2 12 1m21 32 12-3m-45 18 12-1m167-11 12 1\" opacity=\".75\"/>\n  </g>\n\n  <!-- Tail and mane -->\n  <path d=\"M249 317C230 313 220 328 200 327C183 326 168 312 153 307\" fill=\"none\" stroke=\"#28292a\" stroke-width=\"7\" stroke-linecap=\"round\"/>\n  <path d=\"M247 316C227 316 219 327 200 325C184 324 172 314 163 312\" fill=\"none\" stroke=\"#d7cbb7\" stroke-width=\"2\" stroke-linecap=\"round\"/>\n  <path d=\"M167 313C155 302 143 307 132 294Q134 301 143 309Q131 308 121 301C131 321 151 326 168 320Q172 317 167 313Z\" fill=\"url(#ink)\"/>\n  <path d=\"M155 318Q142 316 134 310\" fill=\"none\" stroke=\"#69645c\" stroke-width=\"1.3\" stroke-linecap=\"round\"/>\n  <path d=\"M397 287L414 275L410 272L433 261L428 257L446 245L441 242L458 231L453 227L473 215L467 212L488 203L483 199L506 197Q518 197 528 206L485 238L454 281Z\" fill=\"url(#ink)\"/>\n  <path d=\"M421 274L439 266M438 257L453 249M452 242L468 232M471 224L486 215M486 211L501 204\" stroke=\"#787368\" fill=\"none\" stroke-width=\"1.3\" stroke-linecap=\"round\" opacity=\".68\"/>\n  <path d=\"M530 212C531 198 544 181 559 175C566 175 559 194 553 203Q548 214 542 219Z\" fill=\"#d4c7b4\" stroke=\"#26292b\" stroke-width=\"2.5\"/>\n  <path d=\"M539 212Q544 191 558 179Q554 198 544 215Z\" fill=\"#594f4d\"/>\n  <path d=\"M504 209C496 201 492 183 495 168C502 164 516 182 522 196Q526 206 520 214Z\" fill=\"url(#coat)\" stroke=\"#26292b\" stroke-width=\"2.5\"/>\n  <path d=\"M507 205Q496 190 498 174Q510 182 517 203L515 209Z\" fill=\"#625550\"/>\n  <path d=\"M496 168Q501 167 507 175L498 181Z\" fill=\"#25282a\"/>\n\n  <!-- Legs on the far side -->\n  <use href=\"#hindFar\" fill=\"#c7bca9\"/>\n  <g clip-path=\"url(#hindFarClip)\" fill=\"#393b3a\">\n    <path d=\"M284 337Q305 343 327 352L331 360Q307 350 286 350Z M296 358L339 370L343 380Q320 372 303 372Z M313 384Q325 386 345 392L338 401L307 393Z M301 400Q317 398 331 408L326 415Q313 408 297 411Z M293 418Q307 415 320 419L327 427Q309 425 302 434Z M307 437Q319 427 332 430L340 437Q323 437 316 446Z M331 440Q340 430 352 434L363 454L343 462L330 453Z\"/>\n  </g>\n  <use href=\"#hindFar\" fill=\"none\" stroke=\"#333330\" stroke-width=\"2.3\" stroke-linejoin=\"round\"/>\n  <use href=\"#foreFar\" fill=\"#c7bca9\"/>\n  <g clip-path=\"url(#foreFarClip)\" fill=\"#393b3a\">\n    <path d=\"M437 345Q460 343 481 354L477 363Q455 351 436 356Z M435 364Q452 361 473 371L469 378Q450 370 432 376Z M435 381Q453 377 467 383L480 391Q455 387 441 395Z M458 396Q468 389 481 390L490 396Q476 398 471 406Z M482 409Q490 400 500 398L507 402L493 417Z M500 417Q505 406 514 403L525 415L517 426L505 424Z\"/>\n  </g>\n  <use href=\"#foreFar\" fill=\"none\" stroke=\"#333330\" stroke-width=\"2.3\" stroke-linejoin=\"round\"/>\n\n  <!-- Near legs -->\n  <use href=\"#hindNear\" fill=\"url(#coat)\"/>\n  <g clip-path=\"url(#hindNearClip)\" fill=\"url(#ink)\">\n    <path d=\"M239 335Q264 325 300 341L304 351Q271 335 237 346Z M238 352Q266 342 301 357L298 367Q269 353 242 364Z M250 369Q271 361 294 373L287 381Q270 372 253 379Z M252 386Q268 378 283 388L276 396Q264 389 249 397Z M239 398Q252 391 273 404L266 412Q252 403 235 409Z M224 412Q238 405 254 416L244 423Q234 414 220 421Z M210 423Q225 417 233 426L228 433Q216 425 207 434Z M190 435Q204 425 219 437L214 447L191 449Z\"/>\n  </g>\n  <use href=\"#hindNear\" fill=\"none\" stroke=\"#242729\" stroke-width=\"2.5\" stroke-linejoin=\"round\"/>\n  <path d=\"M200 439l8-4\" fill=\"none\" stroke=\"#82766b\" stroke-width=\"1.4\" stroke-linecap=\"round\"/>\n\n  <use href=\"#foreNear\" fill=\"url(#coat)\"/>\n  <g clip-path=\"url(#foreNearClip)\" fill=\"url(#ink)\">\n    <path d=\"M477 336Q497 352 480 375L471 372Q485 351 465 340Z M496 349Q509 362 492 378L484 375Q499 361 487 347Z M509 355Q522 368 506 384L498 382Q512 370 502 355Z M523 365Q533 378 520 389L513 386Q523 377 516 361Z M536 369Q546 381 531 396L525 392Q536 381 529 367Z M545 372Q557 379 551 396L542 400Q548 382 539 371Z M561 372Q570 378 568 393L559 398Q563 384 554 375Z M577 367Q585 374 582 389L574 394Q578 382 571 369Z M592 363Q599 371 595 386L588 388Q590 375 585 366Z M601 359Q608 372 602 389L616 388L628 377L624 360Z\"/>\n  </g>\n  <use href=\"#foreNear\" fill=\"none\" stroke=\"#242729\" stroke-width=\"2.5\" stroke-linejoin=\"round\"/>\n  <path d=\"M609 367l9 3\" fill=\"none\" stroke=\"#8b7e70\" stroke-width=\"1.4\" stroke-linecap=\"round\"/>\n\n  <!-- Body, neck and head -->\n  <use href=\"#body\" fill=\"url(#coat)\"/>\n  <g clip-path=\"url(#bodyClip)\" fill=\"url(#ink)\">\n    <path d=\"M240 295C258 298 269 310 264 324C260 336 248 339 229 338L230 346C246 348 268 342 274 327C283 307 267 295 251 287Z\"/>\n    <path d=\"M264 285C281 293 292 308 289 326C285 350 262 364 240 359L247 370C270 371 291 356 299 333C306 313 294 295 279 282Z\"/>\n    <path d=\"M293 280C313 298 320 316 314 336C308 355 291 367 278 376L295 378C309 368 322 354 327 338C334 315 320 290 309 280Z\"/>\n    <path d=\"M324 279C339 300 346 320 340 341C336 353 329 362 317 374L330 375C342 365 349 354 352 340C356 317 350 296 339 280Z\"/>\n    <path d=\"M352 280C362 301 362 318 363 333C364 348 358 358 350 369L365 373C372 361 377 351 375 332C374 313 375 295 368 283Z\"/>\n    <path d=\"M381 282C384 294 381 310 385 324C390 341 381 359 378 373L391 376C394 360 402 344 397 326C393 310 398 295 396 283Z\"/>\n    <path d=\"M410 279C408 299 401 313 410 332C417 347 406 363 404 379L417 382C420 365 429 346 422 328C416 312 423 297 427 273Z\"/>\n    <path d=\"M437 269C430 290 422 311 432 327C442 343 430 363 427 383L441 383C443 363 457 345 445 325C433 304 450 285 450 258Z\"/>\n    <path d=\"M447 249C452 262 463 280 481 290L505 297L506 307C479 308 453 291 441 273Z\"/>\n    <path d=\"M457 232C465 253 484 270 508 276L507 286C482 281 464 270 449 248Z\"/>\n    <path d=\"M468 217C477 239 494 252 518 260L513 269C489 265 468 248 460 230Z\"/>\n    <path d=\"M481 203C486 222 501 235 514 239C517 246 521 253 529 261L522 263C509 257 506 247 496 243C483 234 477 225 473 214Z\"/>\n    <path d=\"M495 200C497 213 507 224 521 227C533 230 536 243 542 248C551 256 565 262 581 272L575 281C558 271 544 270 534 256C527 247 526 238 514 235C501 231 492 222 487 204Z\"/>\n    <path d=\"M511 198C519 207 530 209 540 212C547 217 546 225 552 231C562 241 582 247 595 260L590 267C575 255 557 253 545 240C534 230 540 224 529 221C518 218 510 211 503 200Z\"/>\n    <path d=\"M550 209C556 218 561 225 570 230C584 237 598 240 609 255L604 260C591 246 575 246 564 239C554 233 549 223 544 212Z\"/>\n    <path d=\"M455 288C464 302 481 314 505 317L503 327C483 325 469 323 459 310C454 321 474 335 497 336L492 346C474 345 461 338 451 328C457 343 470 352 486 355L474 365C463 362 453 351 448 341C453 357 445 367 446 381L456 381C457 368 464 363 466 357C448 341 438 315 455 288Z\"/>\n    <path d=\"M530 271C542 270 552 276 561 281L556 286L530 279Z\"/>\n    <path d=\"M583 274C592 266 600 259 608 253L631 269L630 289L613 301L588 294C591 288 586 281 583 274Z\" fill=\"url(#muzzle)\"/>\n    <path d=\"M587 274Q596 265 607 259\" fill=\"none\" stroke=\"#a09689\" stroke-width=\"1.5\" opacity=\".55\"/>\n  </g>\n  <use href=\"#body\" fill=\"none\" stroke=\"#242729\" stroke-width=\"2.6\" stroke-linejoin=\"round\"/>\n\n  <!-- Forelock, eye and muzzle -->\n  <path d=\"M509 204Q520 199 533 205Q545 206 549 218Q542 214 537 215L542 222Q532 219 527 214L529 220Q519 216 509 204Z\" fill=\"#25282a\"/>\n  <path d=\"M542 232Q548 227 556 231Q553 239 546 238Z\" fill=\"#f7ebd1\"/>\n  <path d=\"M542 233Q547 228 554 232Q552 238 547 237Q544 236 542 233Z\" fill=\"#1a1c1d\"/>\n  <circle cx=\"550\" cy=\"232.5\" r=\"1.45\" fill=\"#fff3d8\"/>\n  <path d=\"M604 268Q611 264 616 270Q615 275 607 274Q603 273 604 268Z\" fill=\"#171b1d\"/>\n  <path d=\"M607 267Q611 266 615 269M599 283Q608 288 617 282\" fill=\"none\" stroke=\"#a79785\" stroke-width=\"1.15\" stroke-linecap=\"round\"/>\n  <path d=\"M600 282Q609 287 617 281\" fill=\"none\" stroke=\"#24262a\" stroke-width=\"1.5\" stroke-linecap=\"round\"/>\n\n  <!-- Dust grains and foreground grasses -->\n  <g fill=\"#ffe2a2\" opacity=\".88\">\n    <circle cx=\"161\" cy=\"442\" r=\"2\"/><circle cx=\"178\" cy=\"431\" r=\"2.8\"/><circle cx=\"192\" cy=\"419\" r=\"1.8\"/>\n    <circle cx=\"207\" cy=\"451\" r=\"2.2\"/><circle cx=\"226\" cy=\"440\" r=\"1.4\"/><circle cx=\"248\" cy=\"456\" r=\"2.7\"/>\n    <circle cx=\"262\" cy=\"446\" r=\"1.6\"/><circle cx=\"288\" cy=\"458\" r=\"2\"/><circle cx=\"311\" cy=\"445\" r=\"1.5\"/>\n    <circle cx=\"334\" cy=\"461\" r=\"2.4\"/><circle cx=\"362\" cy=\"460\" r=\"1.2\"/>\n  </g>\n  <g fill=\"#8a623b\" opacity=\".72\">\n    <circle cx=\"181\" cy=\"452\" r=\"1.7\"/><circle cx=\"209\" cy=\"459\" r=\"1.4\"/><circle cx=\"232\" cy=\"449\" r=\"1.1\"/>\n    <circle cx=\"254\" cy=\"463\" r=\"1.7\"/><circle cx=\"277\" cy=\"450\" r=\"1.3\"/><circle cx=\"316\" cy=\"462\" r=\"1.5\"/>\n  </g>\n  <g color=\"#e8bf77\" opacity=\".9\">\n    <use href=\"#grass\" transform=\"translate(129 508) scale(.65)\"/>\n    <use href=\"#grass\" transform=\"translate(188 518) scale(-.54 .57)\"/>\n    <use href=\"#grass\" transform=\"translate(299 547) scale(.59)\"/>\n    <use href=\"#grass\" transform=\"translate(501 518) scale(.62)\"/>\n    <use href=\"#grass\" transform=\"translate(559 536) scale(-.72 .7)\"/>\n    <use href=\"#grass\" transform=\"translate(648 497) scale(.61)\"/>\n    <use href=\"#grass\" transform=\"translate(766 500) scale(-.69 .71)\"/>\n  </g>\n  <path d=\"M0 567Q74 553 133 565T254 573Q335 559 402 569T539 567Q665 541 800 566V600H0Z\" fill=\"#8c5836\" opacity=\".56\"/>\n  <g color=\"#754d32\">\n    <use href=\"#blades\" transform=\"translate(28 580) scale(1.36)\"/>\n    <use href=\"#grass\" transform=\"translate(87 574) scale(-1.14 1.21)\"/>\n    <use href=\"#blades\" transform=\"translate(150 590) scale(.87)\"/>\n    <use href=\"#grass\" transform=\"translate(239 598) scale(.76)\"/>\n    <use href=\"#grass\" transform=\"translate(450 599) scale(-.79 .7)\"/>\n    <use href=\"#blades\" transform=\"translate(605 594) scale(.96)\"/>\n    <use href=\"#grass\" transform=\"translate(672 569) scale(-1.06 1.12)\"/>\n    <use href=\"#blades\" transform=\"translate(772 589) scale(1.44)\"/>\n  </g>\n  <g color=\"#ebbd72\">\n    <use href=\"#grass\" transform=\"translate(49 571) scale(.95)\"/>\n    <use href=\"#grass\" transform=\"translate(101 587) scale(-.87 .85)\"/>\n    <use href=\"#grass\" transform=\"translate(698 589) scale(.94)\"/>\n    <use href=\"#grass\" transform=\"translate(752 573) scale(-.93 1.04)\"/>\n  </g>\n  <g fill=\"none\" stroke=\"#dba96a\" stroke-linecap=\"round\" opacity=\".7\">\n    <path d=\"M13 597l18-5m151-14 24-2m61 11 46-3m42-14 28 1m101 11 22-2m23 12 42-5m61 10 21-4m81-13 12 1\" stroke-width=\"1.5\"/>\n  </g>\n</svg>"
+          ],
+          "score": 15,
+          "reason": "头、躯干及四肢条纹清楚。四肢前伸后蹬、腾空步态明确。稀疏伞形树、地平线及草原可辨。主体完整且直接交付合规 SVG。",
+          "criteria": [
+            5,
+            4,
+            3,
+            3
+          ]
+        },
+        {
+          "modelId": "gpt-6.2-astra",
+          "turns": [
+            "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"800\" height=\"600\" viewBox=\"0 0 800 600\">\n  <title>蹄不沾地</title>\n  <desc>暖金色的非洲稀树草原上，一只黑白条纹的斑马向右疾驰，四蹄腾空，身后扬起薄尘。远处的金合欢树映着山峦。</desc>\n  <defs>\n    <linearGradient id=\"sky\" x2=\"0\" y2=\"1\" gradientUnits=\"objectBoundingBox\">\n      <stop stop-color=\"#82bdc6\"/><stop offset=\".62\" stop-color=\"#d1e0cc\"/><stop offset=\"1\" stop-color=\"#ffe1ac\"/>\n    </linearGradient>\n    <linearGradient id=\"plain\" x2=\".15\" y2=\"1\">\n      <stop stop-color=\"#dcc28a\"/><stop offset=\".4\" stop-color=\"#e7bf73\"/><stop offset=\"1\" stop-color=\"#b88343\"/>\n    </linearGradient>\n    <linearGradient id=\"hide\" x1=\".3\" x2=\".65\" y2=\"1\">\n      <stop stop-color=\"#fff6df\"/><stop offset=\".53\" stop-color=\"#f7f0df\"/><stop offset=\".82\" stop-color=\"#e2dbcb\"/><stop offset=\"1\" stop-color=\"#b9b7ab\"/>\n    </linearGradient>\n    <linearGradient id=\"ink\" x1=\".25\" x2=\".65\" y2=\"1\">\n      <stop stop-color=\"#22292a\"/><stop offset=\".57\" stop-color=\"#282b2b\"/><stop offset=\"1\" stop-color=\"#454440\"/>\n    </linearGradient>\n    <radialGradient id=\"shadow\">\n      <stop stop-color=\"#684d34\" stop-opacity=\".48\"/><stop offset=\"1\" stop-color=\"#846341\" stop-opacity=\"0\"/>\n    </radialGradient>\n    <radialGradient id=\"dust\">\n      <stop stop-color=\"#fff0c7\" stop-opacity=\".65\"/><stop offset=\"1\" stop-color=\"#ffe9bd\" stop-opacity=\"0\"/>\n    </radialGradient>\n    <path id=\"acacia\" d=\"M-8 0 Q-2-22-5-46 L-23-64-46-70-44-73-21-68-6-57-10-77-7-79 0-57 17-74 37-81 38-78 21-70 4-48 Q2-22 8 0Z M-69-72 Q-73-76-62-79-62-86-47-85-44-93-30-89-17-95-9-86 0-87 3-80-6-72-27-74-40-69-51-72Z M-12-82 Q-14-89-3-90 3-99 17-95 26-101 38-95 51-98 57-90 70-89 70-84 58-78 46-81 32-76 20-81 3-76-12-82Z\"/>\n    <path id=\"tuft\" d=\"M0 0 Q-5-11-13-16 Q-6-13 1-4 Q0-18-5-29 Q3-19 4-5 Q10-21 17-25 Q10-15 7-4 L20-14 9 0Z\"/>\n    <path id=\"horse\" d=\"M220 256 C231 231 256 223 287 225 C327 226 354 240 387 230 C419 221 443 188 476 167 Q500 150 525 149 Q544 146 558 161 C570 177 587 191 602 201 Q614 208 611 219 Q608 232 597 232 Q575 229 554 216 Q539 224 522 216 C506 234 502 265 487 292 Q478 310 459 320 C446 345 420 355 393 355 C357 354 337 344 315 344 Q295 351 272 347 C249 345 229 333 219 313 Q206 284 220 256Z\"/>\n    <clipPath id=\"bodyClip\"><use href=\"#horse\"/></clipPath>\n    <path id=\"hindFar\" d=\"M263 311 C277 311 296 325 293 343 Q292 361 309 379 Q318 390 309 403 L283 438 Q278 445 279 452 L267 458 262 449 Q263 444 268 439 L291 402 Q297 394 289 387 C268 372 248 362 244 342 Q240 322 263 311Z\"/>\n    <path id=\"foreFar\" d=\"M437 301 Q456 293 467 310 Q473 324 468 343 L459 371 Q458 380 450 383 L398 399 Q387 401 380 412 L368 415 365 407 Q368 400 376 397 L432 370 Q440 366 439 358 L430 326Z\"/>\n    <path id=\"hind\" d=\"M237 298 C255 289 282 306 280 327 C277 345 258 354 244 361 Q229 370 214 389 Q205 400 194 399 L139 394 Q128 392 119 396 L103 393 100 385 Q103 381 113 382 L182 382 Q191 382 195 371 L212 328 Q218 305 237 298Z\"/>\n    <path id=\"fore\" d=\"M459 283 Q479 274 486 294 Q489 309 498 319 L526 339 Q535 344 546 342 L601 333 Q612 330 619 322 L630 320 637 328 626 339 Q622 343 614 343 L544 361 Q528 367 517 359 L476 338 Q452 329 446 311 Q442 292 459 283Z\"/>\n    <clipPath id=\"legClip\"><use href=\"#hind\"/><use href=\"#fore\"/></clipPath>\n    <clipPath id=\"farClip\"><use href=\"#hindFar\"/><use href=\"#foreFar\"/></clipPath>\n  </defs>\n\n  <rect width=\"800\" height=\"334\" fill=\"url(#sky)\"/>\n  <circle cx=\"658\" cy=\"98\" r=\"47\" fill=\"#ffe7ae\" opacity=\".32\"/>\n  <circle cx=\"658\" cy=\"98\" r=\"35\" fill=\"#fff0c6\"/>\n  <g fill=\"#fff4d7\" opacity=\".46\">\n    <path d=\"M34 103 Q60 96 81 99 Q98 87 116 95 Q132 96 139 100 L178 104Z\"/>\n    <path d=\"M326 75 Q346 69 359 72 Q380 60 395 69 Q412 65 427 73 L450 76Z\"/>\n  </g>\n  <path d=\"M0 258 Q63 246 114 250 C155 250 176 224 209 226 Q233 222 251 213 Q269 208 288 221 L339 240 Q381 246 423 235 Q464 217 499 227 Q544 241 581 234 Q631 229 669 209 Q696 191 718 197 Q755 202 800 178 V330 H0Z\" fill=\"#a7b8a7\"/>\n  <path d=\"M0 266 Q67 255 118 261 T242 259 Q319 244 397 259 T560 254 Q643 247 700 255 Q751 251 800 240 V327 H0Z\" fill=\"#a5aa84\"/>\n  <path d=\"M0 282 Q108 268 210 278 T422 273 Q533 259 638 272 Q727 280 800 263 V600 H0Z\" fill=\"url(#plain)\"/>\n  <g fill=\"#838768\"><use href=\"#acacia\" transform=\"translate(184 279) scale(.26)\"/><use href=\"#acacia\" transform=\"translate(584 269) scale(.19)\"/><use href=\"#acacia\" transform=\"translate(629 274) scale(.27)\"/></g>\n  <use href=\"#acacia\" transform=\"translate(79 292) scale(.94 .92)\" fill=\"#5d6654\"/>\n  <path d=\"M13 219 Q23 211 37 212 Q49 202 66 209 M78 211 Q94 196 114 201 Q125 198 137 207\" fill=\"none\" stroke=\"#839073\" stroke-width=\"3\" stroke-linecap=\"round\"/>\n  <use href=\"#acacia\" transform=\"translate(743 293) scale(.74 .65)\" fill=\"#737b5f\"/>\n  <g fill=\"none\" stroke-linecap=\"round\">\n    <path d=\"M0 300 Q70 291 141 298 M532 294 Q591 288 652 291 M674 302 L785 297 M12 325 L100 318 M575 315 L669 310\" stroke=\"#af9e6e\" stroke-width=\"2\"/>\n    <path d=\"M0 352 Q72 338 156 342 M598 365 Q699 350 800 353 M28 425 L157 418 M538 416 L678 406 M655 459 L800 448 M66 491 L243 478\" stroke=\"#f6daa0\" stroke-width=\"3\"/>\n  </g>\n  <g fill=\"#ae985e\" opacity=\".8\"><use href=\"#tuft\" transform=\"translate(36 311) scale(.38)\"/><use href=\"#tuft\" transform=\"translate(174 315) scale(.28)\"/><use href=\"#tuft\" transform=\"translate(664 323) scale(.43)\"/><use href=\"#tuft\" transform=\"translate(783 332) scale(.5)\"/><use href=\"#tuft\" transform=\"translate(56 365) scale(.55)\"/></g>\n  <ellipse cx=\"376\" cy=\"454\" rx=\"216\" ry=\"22\" fill=\"url(#shadow)\"/>\n  <g fill=\"url(#dust)\"><ellipse cx=\"103\" cy=\"435\" rx=\"79\" ry=\"17\"/><ellipse cx=\"144\" cy=\"429\" rx=\"46\" ry=\"17\"/><ellipse cx=\"68\" cy=\"422\" rx=\"46\" ry=\"14\"/></g>\n  <g fill=\"#a78558\" opacity=\".6\"><circle cx=\"101\" cy=\"415\" r=\"1.7\"/><circle cx=\"147\" cy=\"418\" r=\"2\"/><circle cx=\"87\" cy=\"425\" r=\"1.2\"/><circle cx=\"122\" cy=\"410\" r=\"1.3\"/></g>\n\n  <!-- The two receding legs are cooler and darker. -->\n  <g fill=\"#cdcbbd\" stroke=\"#474844\" stroke-width=\"1.8\" stroke-linejoin=\"round\"><use href=\"#hindFar\"/><use href=\"#foreFar\"/></g>\n  <g clip-path=\"url(#farClip)\" fill=\"none\" stroke=\"#474946\">\n    <path d=\"M239 345 Q264 352 300 337 M245 358 Q279 365 302 349 M263 371 L307 362 M280 383 L314 373 M285 396 L318 388 M279 404 L307 412 M271 418 L297 426 M261 435 L285 443 M429 330 L479 323 M430 344 L473 338 M431 357 L469 353 M430 369 L461 368 M419 370 L431 391 M403 378 L412 401 M385 386 L396 406\" stroke-width=\"6\"/>\n  </g>\n  <path d=\"M266 445 Q272 449 279 448 L280 456 268 464 260 459Z M369 402 L379 410 374 419 359 421 358 415Z\" fill=\"#353934\"/>\n\n  <!-- Tail streaming out behind the galloping animal. -->\n  <path d=\"M226 252 C202 238 192 255 174 251 C154 247 144 229 122 235\" fill=\"none\" stroke=\"#323633\" stroke-width=\"7\" stroke-linecap=\"round\"/>\n  <path d=\"M220 250 C201 243 190 258 172 253 Q153 248 145 240\" fill=\"none\" stroke=\"#d9d3bc\" stroke-width=\"2.6\"/>\n  <path d=\"M134 237 Q122 222 108 227 Q94 232 79 222 Q86 233 96 236 L82 233 Q91 244 106 244 Q119 244 134 237Z\" fill=\"#252b2a\"/>\n\n  <g fill=\"url(#hide)\" stroke=\"#373c38\" stroke-width=\"2\" stroke-linejoin=\"round\"><use href=\"#hind\"/><use href=\"#fore\"/></g>\n  <g clip-path=\"url(#legClip)\" fill=\"none\" stroke=\"url(#ink)\">\n    <path d=\"M206 329 Q244 344 281 324 M199 341 Q236 356 266 342 M200 355 Q225 367 249 359 M191 368 Q207 380 228 376 M179 380 L198 403 M166 377 L176 402 M149 378 L157 400 M133 378 L137 399 M117 378 L119 399 M448 308 Q467 315 494 299 M451 320 Q480 325 498 311 M468 335 Q491 333 507 319 M487 345 L516 327 M505 355 L528 335 M527 364 L533 338 M549 364 L545 338 M569 357 L562 333 M587 351 L580 329 M604 348 L597 325 M617 341 L609 321\" stroke-width=\"7\"/>\n  </g>\n  <path d=\"M115 382 L116 394 104 400 Q95 395 92 387 L99 382Z M621 319 L631 313 Q640 314 644 324 L636 331 626 331Z\" fill=\"#303532\"/>\n  <path d=\"M96 386 L104 384 M633 316 L639 321\" stroke=\"#77786b\" stroke-width=\"2\" stroke-linecap=\"round\"/>\n\n  <!-- Upright, short mane follows the crest of the neck. -->\n  <path d=\"M382 233 Q411 220 425 199 L430 201 432 190 437 192 440 181 445 183 448 173 452 175 458 163 462 165 468 154 472 156 478 145 483 148 489 137 493 141 500 132 505 137 514 130 518 138 526 135 533 151 Q501 159 480 175 Q441 210 408 230Z\" fill=\"#252b2a\"/>\n  <path d=\"M443 192 L451 199 M461 172 L469 180 M482 153 L488 164 M502 141 L508 155\" fill=\"none\" stroke=\"#c9c6b8\" stroke-width=\"3\"/>\n  <!-- Far ear, behind the poll. -->\n  <path d=\"M529 156 Q521 137 528 114 Q541 119 544 134 Q545 146 539 155Z\" fill=\"#d8d5c4\" stroke=\"#333835\" stroke-width=\"2\"/>\n  <path d=\"M530 119 Q539 125 540 141 Q534 138 530 119Z\" fill=\"#494942\"/>\n\n  <use href=\"#horse\" fill=\"url(#hide)\"/>\n  <g clip-path=\"url(#bodyClip)\" fill=\"url(#ink)\">\n    <!-- The hindquarter bands curl around the haunch. -->\n    <path d=\"M211 248 Q236 239 258 222 L273 219 Q259 239 235 249 Q217 258 205 276Z\"/>\n    <path d=\"M207 282 C222 263 250 257 264 244 Q275 234 283 218 L292 222 C281 248 269 255 247 266 Q222 278 213 298Z\"/>\n    <path d=\"M210 310 C224 285 253 277 273 261 Q287 248 299 222 L308 224 C304 249 285 267 266 280 Q231 300 222 326Z\"/>\n    <path d=\"M221 333 Q235 308 264 293 Q291 279 301 257 Q300 281 278 299 Q249 319 241 344Z\"/>\n    <path d=\"M248 349 Q258 326 280 309 Q294 297 304 280 Q302 299 289 316 Q274 334 271 351Z\"/>\n    <path d=\"M282 353 Q286 335 299 314 Q305 304 308 292 Q311 310 304 332 L301 351Z\"/>\n    <!-- Along the barrel the bands drop toward the pale belly. -->\n    <path d=\"M314 220 L329 224 C318 249 310 270 313 293 Q317 321 309 347 Q307 326 304 302 C298 267 313 243 314 220Z\"/>\n    <path d=\"M339 225 L356 228 C341 251 330 275 331 303 Q333 327 327 347 Q326 327 322 308 C316 281 328 249 339 225Z\"/>\n    <path d=\"M367 225 L382 224 C372 244 352 267 352 291 C350 314 359 332 350 352 Q349 331 342 313 C332 281 351 250 367 225Z\"/>\n    <path d=\"M394 220 L410 214 C396 240 373 266 371 290 C367 316 382 337 375 355 Q371 337 362 319 C348 286 374 248 394 220Z\"/>\n    <path d=\"M412 231 C406 253 391 273 387 296 Q384 318 398 345 Q402 353 400 361 Q392 344 383 335 C365 304 381 274 396 251Z\"/>\n    <!-- Shoulder bands fan upward into the striped neck. -->\n    <path d=\"M414 207 L426 199 Q429 220 416 247 C405 270 393 292 397 310 Q402 335 420 352 L409 359 C391 339 382 316 389 291 Q396 271 407 248 Q418 224 414 207Z\"/>\n    <path d=\"M433 190 L445 182 Q444 211 432 235 C413 269 400 286 409 311 Q415 329 435 342 L427 350 C404 336 392 310 399 285 Q402 272 419 242 Q436 212 433 190Z\"/>\n    <path d=\"M451 178 L464 169 Q460 201 447 226 C432 253 413 277 418 300 Q421 319 448 334 L440 343 Q410 326 409 302 C405 278 424 250 438 226 Q453 200 451 178Z\"/>\n    <path d=\"M471 162 L483 155 Q479 185 463 217 Q451 242 435 264 Q423 283 430 299 Q436 312 459 320 L451 330 Q425 319 420 299 Q416 281 430 257 C450 224 470 193 471 162Z\"/>\n    <path d=\"M491 151 L501 148 Q497 180 478 214 Q469 232 451 255 Q435 278 440 293 Q446 305 475 309 L467 318 Q439 314 431 296 Q424 278 444 250 C467 217 487 180 491 151Z\"/>\n    <path d=\"M508 146 L518 144 Q513 175 495 204 Q482 226 463 249 Q444 272 449 284 Q455 293 488 293 L482 304 Q449 303 440 289 Q432 274 454 246 C478 217 503 178 508 146Z\"/>\n    <path d=\"M522 151 L530 152 Q527 175 512 198 Q504 211 491 223 Q506 198 513 181Z\"/>\n    <path d=\"M506 218 Q498 238 480 256 Q468 270 466 275 Q474 280 495 276 L492 285 Q465 289 455 279 Q453 269 472 249Z\"/>\n    <!-- Finer facial markings converge toward the muzzle. -->\n    <path d=\"M533 146 L544 148 Q539 163 529 177 Q520 188 519 202 Q514 191 521 175Z\"/>\n    <path d=\"M550 150 L557 157 Q550 169 538 176 Q531 180 527 190 Q526 177 538 168Z\"/>\n    <path d=\"M556 164 Q565 171 573 180 L577 189 Q562 183 554 176 Q550 172 546 173Z\"/>\n    <path d=\"M536 184 Q545 178 554 181 Q569 187 588 196 L593 203 Q570 197 552 188 Q544 185 536 188Z\"/>\n    <path d=\"M530 193 Q539 187 548 190 Q565 199 585 204 L592 212 Q566 208 548 197 Q538 192 530 197Z\"/>\n    <path d=\"M523 200 Q534 197 543 201 Q556 209 574 213 L586 220 Q559 218 542 208 Q531 202 523 206Z\"/>\n    <path d=\"M520 210 Q533 206 542 213 L553 219 536 223Z\"/>\n    <path d=\"M599 195 Q584 200 580 212 Q578 221 581 230 L611 240 620 207Z\" fill=\"#4b4d47\"/>\n  </g>\n  <use href=\"#horse\" fill=\"none\" stroke=\"#303633\" stroke-width=\"2.1\"/>\n  <!-- Near ear and attentive eye. -->\n  <path d=\"M524 159 Q515 158 508 145 Q501 132 499 118 Q514 120 525 132 Q534 144 529 154Z\" fill=\"#f6efdb\" stroke=\"#303633\" stroke-width=\"2.2\"/>\n  <path d=\"M504 124 Q516 128 523 140 Q527 148 526 152 Q518 150 512 139Z\" fill=\"#67645b\"/>\n  <path d=\"M500 118 Q509 119 514 125 L505 126Z\" fill=\"#292f2d\"/>\n  <path d=\"M539 179 Q545 170 554 176 Q551 184 542 183Z\" fill=\"#252a28\"/>\n  <ellipse cx=\"548\" cy=\"178\" rx=\"3.5\" ry=\"3.8\" fill=\"#151c1b\"/>\n  <circle cx=\"549.2\" cy=\"176.7\" r=\"1.2\" fill=\"#fff9e9\"/>\n  <path d=\"M595 207 Q601 203 605 209 Q603 214 597 213 Q594 212 595 207Z\" fill=\"#202726\"/>\n  <path d=\"M590 221 Q599 225 608 219\" fill=\"none\" stroke=\"#262c29\" stroke-width=\"2\" stroke-linecap=\"round\"/>\n\n  <!-- Sunlit foreground grasses. -->\n  <g fill=\"#a27c45\"><use href=\"#tuft\" transform=\"translate(28 474) scale(.9)\"/><use href=\"#tuft\" transform=\"translate(202 494) scale(.61)\"/><use href=\"#tuft\" transform=\"translate(567 464) scale(.62)\"/><use href=\"#tuft\" transform=\"translate(727 424) scale(.8)\"/><use href=\"#tuft\" transform=\"translate(654 522) scale(1.2)\"/></g>\n  <g fill=\"none\" stroke=\"#eacd8b\" stroke-width=\"2.4\" stroke-linecap=\"round\">\n    <path d=\"M0 495 L68 487 M88 518 L151 510 M255 473 L278 469 M326 508 L414 499 M536 487 L597 481 M716 481 L769 473 M193 555 L258 545 M442 562 L509 551\"/>\n    <path d=\"M56 600 Q51 568 36 545 M57 600 Q62 557 83 531 M62 600 Q72 573 91 558 M740 600 Q734 561 712 533 M745 600 Q753 553 778 519\"/>\n  </g>\n  <g fill=\"#81673d\"><use href=\"#tuft\" transform=\"translate(11 601) scale(2.1 2.5)\"/><use href=\"#tuft\" transform=\"translate(116 591) scale(1.25 1.5)\"/><use href=\"#tuft\" transform=\"translate(695 583) scale(1.6 1.8)\"/><use href=\"#tuft\" transform=\"translate(796 601) scale(2.4 2.8)\"/></g>\n</svg>"
+          ],
+          "score": 15,
+          "reason": "头、躯干和四肢的条纹清晰连贯。四肢前伸后蹬，处于可辨的奔跑腾空姿态。地平线、稀疏伞形树和草坡明确。主体完整，直接交付通过检查的 SVG。",
+          "criteria": [
+            5,
+            4,
+            3,
+            3
+          ]
+        }
+      ]
+    },
+    {
+      "id": "office-1",
+      "suite": "short",
+      "title": "推老板 · 第一关",
+      "maxPoints": 100,
+      "prompts": [
+        "把两位老板都推进工位。只能推，不能拉；每步上下左右一格，不能穿墙或同时推两人。\n#墙，-空地，P是你，B是老板，.是工位。\n12步内完成，只输出UDLR动作串（上、下、左、右）。\n#######\n#..---#\n#-BB--#\n#--P--#\n#######"
+      ],
+      "answers": [
+        {
+          "modelId": "gpt-6.2-sol",
+          "turns": [
+            "ULDLURRRUL"
+          ],
+          "score": 100,
+          "content": 80,
+          "format": 10,
+          "delivery": 10
+        },
+        {
+          "modelId": "gpt-6.2-astra",
+          "turns": [
+            "URULLRDDLU"
+          ],
+          "score": 100,
+          "content": 80,
+          "format": 10,
+          "delivery": 10
+        }
+      ]
+    },
+    {
+      "id": "office-2",
+      "suite": "short",
+      "title": "推老板 · 第二关",
+      "maxPoints": 100,
+      "prompts": [
+        "把两位老板都推进工位。只能推，不能拉；每步上下左右一格，不能穿墙或同时推两人。\n#墙，-空地，P是你，B是老板，.是工位。\n18步内完成，只输出UDLR动作串（上、下、左、右）。\n#######\n#--.--#\n#-B-B-#\n#--#--#\n#-.P--#\n#######"
+      ],
+      "answers": [
+        {
+          "modelId": "gpt-6.2-sol",
+          "turns": [
+            "RUURULDDDLLULUURDD"
+          ],
+          "score": 100,
+          "content": 80,
+          "format": 10,
+          "delivery": 10
+        },
+        {
+          "modelId": "gpt-6.2-astra",
+          "turns": [
+            "RUURULDDDLLLUUURDD"
+          ],
+          "score": 100,
+          "content": 80,
+          "format": 10,
+          "delivery": 10
+        }
+      ]
+    },
+    {
+      "id": "gears-1",
+      "suite": "short",
+      "title": "齿轮诈骗 · 第一关",
+      "maxPoints": 100,
+      "prompts": [
+        "A驱动五个固定轴齿轮，啮合关系为AB、BC、CD、DE、EA、BD，每对必须反向。\n只检查转向，不考虑速比与安装距离。\n原机构能全部转动吗？最少断开哪些啮合，才能让A仍驱动全部？\n只输出JSON：can为原机构能否转动（布尔），cut为断开的啮合对数组。"
+      ],
+      "answers": [
+        {
+          "modelId": "gpt-6.2-sol",
+          "turns": [
+            "{\"can\":false,\"cut\":[\"BC\"]}"
+          ],
+          "score": 100,
+          "content": 80,
+          "format": 10,
+          "delivery": 10
+        },
+        {
+          "modelId": "gpt-6.2-astra",
+          "turns": [
+            "{\"can\":false,\"cut\":[\"BC\"]}"
+          ],
+          "score": 100,
+          "content": 80,
+          "format": 10,
+          "delivery": 10
+        }
+      ]
+    },
+    {
+      "id": "gears-2",
+      "suite": "short",
+      "title": "齿轮诈骗 · 第二关",
+      "maxPoints": 100,
+      "prompts": [
+        "A驱动五个固定轴齿轮，啮合关系为AB、CD、DE、EA、BD，每对必须反向。\n只检查转向，不考虑速比与安装距离。\n原机构能全部转动吗？最少断开哪些啮合，才能让A仍驱动全部？\n只输出JSON：can为原机构能否转动（布尔），cut为断开的啮合对数组。"
+      ],
+      "answers": [
+        {
+          "modelId": "gpt-6.2-sol",
+          "turns": [
+            "{\"can\":true,\"cut\":[]}"
+          ],
+          "score": 100,
+          "content": 80,
+          "format": 10,
+          "delivery": 10
+        },
+        {
+          "modelId": "gpt-6.2-astra",
+          "turns": [
+            "{\"can\":true,\"cut\":[]}"
+          ],
+          "score": 100,
+          "content": 80,
+          "format": 10,
+          "delivery": 10
+        }
+      ]
+    }
+  ],
+  "sourceHashes": {
+    "data/high-suite.json": "5d66cc45770fb12ab5e4c3a1b10b3ddaf4dbd0b208d4638749eddaf1c2a16e51",
+    "data/short-challenges.json": "9507ccae6daea32960d4cfd2e948279279a99773f5dbb623aaa4f4dc02dcdbb1",
+    "short-challenge-grading.js": "eb7f63109f4332c137635239f1b769dc14cae74b87a63dd73f72d65e56dfa30a",
+    "assets/receipt-chilli-pork.png": "73a513249777e5c4ea4d88545e9c7c0b83344b9284f5b0b29c0f0b5690ccee11"
+  }
+}
