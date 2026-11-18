@@ -12,7 +12,8 @@ function collection(batch, model) {
       ? 'Codex Standard · High · 客户端 ' + batch.clientVersion
         + '。每题独立会话，客户端未设总时限和输出上限，服务端输出上限未知。'
       : 'CommandCode API · 请求 High · 输出上限 ' + batch.maxOutputTokens
-        + ' token。每题独立会话，无客户端总时限，无自动重试。型号与推理档以请求配置为准。',
+        + ' token。每题独立会话，无客户端总时限，无自动重试。型号与推理档以请求配置为准。'
+        + (batch.deliveryNote || ''),
   };
 }
 
