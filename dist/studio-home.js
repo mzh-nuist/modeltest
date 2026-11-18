@@ -1,8 +1,8 @@
 import {arrowUpRight,arrowRight} from './ui-icons.js?v=20261101-short1';
-import {weightedSummary,points,formatPoints,siteStars} from './weighted-score.js?v=20261118-codex2';
-import {extractDrawing} from './completed-suite.js?v=20261118-models3';
+import {weightedSummary,points,formatPoints,siteStars} from './weighted-score.js?v=20261118-models4';
+import {extractDrawing} from './completed-suite.js?v=20261118-models4';
 import {previewableCheckupSVG} from './checkup-data.js?v=20261101-short1';
-import {modelBadge} from './model-identity.js?v=20261118-codex2';
+import {modelBadge} from './model-identity.js?v=20261118-models4';
 
 const e=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const url=(route='')=>'#checkup'+(route?'/'+route:'');
@@ -50,7 +50,7 @@ function modelCards(data,book){
 function pendingModels(data,book){
   const models=data.models.filter(model=>!weightedSummary(book,book.models.find(r=>r.modelId===model.id)).complete);
   if(!models.length)return '';
-  return `<section class="pending-models" aria-label="待测与待复核模型"><h2>待测 / 待复核模型 <span>${models.length}</span></h2><div class="pending-model-grid">${models.map(model=>`<a class="pending-model-card" href="${url('model/'+model.id)}"><span class="column-model">${modelBadge(model.id)}<span>${e(model.name)}</span></span><span class="pending-model-note">${e(model.pendingReason||'答卷尚未完成，暂不排名。')}</span><span class="pending-open">${book.highSource?.models.find(m=>m.modelId===model.id)?.requests>0?'待复核':'待测'} ${arrowRight}</span></a>`).join('')}</div></section>`;
+  return `<section class="pending-models" aria-label="待测与待复核模型"><h2>待测 / 待复核模型 <span>${models.length}</span></h2><div class="pending-model-grid">${models.map(model=>`<a class="pending-model-card" href="${url('model/'+model.id)}"><span class="column-model">${modelBadge(model.id)}<span>${e(model.name)}</span></span><span class="pending-model-note">${e(model.pendingReason||'答卷尚未完成，暂不排名。')}</span><span class="pending-open">${model.report.runs.some(run=>run.status!=='not_run')?'待复核':'待测'} ${arrowRight}</span></a>`).join('')}</div></section>`;
 }
 export function studioScores(data,book,{filter='all'}={}){
   const rows=data.models.map(m=>({m,row:book.models.find(r=>r.modelId===m.id)})).filter(({row})=>weightedSummary(book,row).complete).sort((a,b)=>weightedSummary(book,b.row).earned-weightedSummary(book,a.row).earned).filter(x=>filter!=='passed'||weightedSummary(book,x.row).qualified);
@@ -61,7 +61,7 @@ export function studioQuestions(book){
 }
 function measurementOverview(data,book){
   const graded=book.models.filter(r=>weightedSummary(book,r).complete).length;
-  const measured=book.highSource?book.models.filter(row=>row.items.some(item=>item.measurement?.attempts?.length||item.measurement?.status==='success')).length:graded;
+  const measured=book.highSource?book.models.filter(row=>row.items.some(item=>item.measurement?.attempts?.length||(item.measurement?.collectionLabel&&item.measurement.status!=='not_run'))).length:graded;
   return measured===graded?`${measured} 款已测 · ${data.models.length-measured} 款待测`:`${measured} 款已实测 · ${graded} 款已评分 · ${measured-graded} 款待复核 · ${data.models.length-measured} 款待测`;
 }
 export function studioArchive(data,book,preferences={}){

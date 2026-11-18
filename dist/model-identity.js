@@ -10,9 +10,10 @@ const brands={
   gpt6:{family:'openai',icon:'openai'},
   gemini38:{family:'gemini',icon:'gemini'},
   mistral:{family:'mistral',icon:'mistral'},
+  grok47:{family:'grok',icon:'grok'},
 };
 export function modelIdentity(id){
-  const key=Object.keys(brands).find(k=>String(id).startsWith(k+'-'));
+  const key=Object.keys(brands).find(k=>id===k||String(id).startsWith(k+'-'));
   return brands[key]||{family:'neutral',icon:null};
 }
 export function modelBadge(id){

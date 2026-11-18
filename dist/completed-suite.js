@@ -1,7 +1,7 @@
-import {modelBadge} from './model-identity.js?v=20261118-codex2';
+import {modelBadge} from './model-identity.js?v=20261118-models4';
 import {previewableCheckupSVG} from './checkup-data.js?v=20261101-short1';
 import {checkupSVG} from './checkup-view.js?v=20261101-short1';
-import {weightedGrade,weightedSummary,formatPoints,taskName} from './weighted-score.js?v=20261118-codex2';
+import {weightedGrade,weightedSummary,formatPoints,taskName} from './weighted-score.js?v=20261118-models4';
 const e=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 export function extractDrawing(output){const text=String(output||''),matches=text.match(/<svg\b[\s\S]*?<\/svg>/gi);const svg=matches?.length===1?matches[0]:text;return {svg,fenced:svg.trim()!==text.trim()};}
 export function validateCompletedSuite(suite,data,old,bank){
@@ -23,7 +23,7 @@ export function validateCompletedSuite(suite,data,old,bank){
 }
 export function completedItem(suite,row,id){return row.items.find(x=>x.taskId===id);}
 export function completionBody(suite,row,id){
-  const i=suite.tasks.findIndex(t=>t.id===id),item=row.items[i],m=item.measurement;if(!m||m.status==='not_run')return `<p class="checkup-warning">${e(item.reason||'尚未发送本项测试。')}</p>`;
+  const i=suite.tasks.findIndex(t=>t.id===id),item=row.items[i],m=item.measurement;if(!m||m.status==='not_run'||m.collectionLabel&&m.status==='incomplete')return `<p class="checkup-warning">${e(item.reason||'尚未发送本项测试。')}</p>`;
   const result=`<p class="evidence-meta">${e(item.reason)}</p>`;
   let graphic='';if(id==='zebra'){const pic=extractDrawing(m.output);graphic=m.status==='success'&&previewableCheckupSVG(pic.svg)?`${pic.fenced?'<p class="checkup-warning">已提取原回答中的图形预览，格式问题计入评分。</p>':''}${checkupSVG(pic.svg,"AI 生成绘图：查看条纹、奔跑姿态和草原环境。")}`:'<p class="checkup-warning">本次没有完整、安全可预览的图形。失败原文与状态保留。</p>';}
   const scores=item.criteriaScores?.length?`<ul class="drawing-criteria">${item.criteriaScores.map((c,k)=>`<li>${e(suite.tasks[i].criteria[k].label)}：${c.awarded} / ${suite.tasks[i].criteria[k].max}${c.reason?' · '+e(c.reason):''}</li>`).join('')}</ul>`:'';

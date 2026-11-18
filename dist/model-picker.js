@@ -1,4 +1,4 @@
-import {modelBadge} from './model-identity.js?v=20261118-codex2';
+import {modelBadge} from './model-identity.js?v=20261118-models4';
 const e=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const chevron='<svg class="picker-chevron" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true" focusable="false"><path d="m5 7.5 5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 export function modelPicker(models,selected,side){

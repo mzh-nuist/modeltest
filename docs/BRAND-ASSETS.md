@@ -14,6 +14,7 @@
 | `qwen.svg` | [qwen-color.svg](https://raw.githubusercontent.com/lobehub/lobe-icons/8b7bbc433d38437fa2b0cca58ae896917162b812/packages/static-svg/icons/qwen-color.svg) | `a158a0e3ed5b541e4f91384ece02c3acf0a0d81b7b11a46d77bafb248b09e32c` |
 | `claude.svg` | [claude-color.svg](https://raw.githubusercontent.com/lobehub/lobe-icons/8b7bbc433d38437fa2b0cca58ae896917162b812/packages/static-svg/icons/claude-color.svg) | `a3101f3047a119aa11825ad9369510f0c472428c8c52d420e31bc62db44a8364` |
 | `openai.svg` | [openai.svg](https://raw.githubusercontent.com/lobehub/lobe-icons/8b7bbc433d38437fa2b0cca58ae896917162b812/packages/static-svg/icons/openai.svg) | `a595df6b423920c67a7f8f73c063e4bfb72d415948097b6cac063a2366bb5186` |
+| `grok.svg` | [grok.svg](https://raw.githubusercontent.com/lobehub/lobe-icons/8b7bbc433d38437fa2b0cca58ae896917162b812/packages/static-svg/icons/grok.svg) | `9175fc90c22655160231976c849f25a03b888d7cc0e04c5f1b987b659bb07c95` |
 
 SVG 原始字节保留，尺寸与留白由 CSS 控制；图标无脚本、事件处理器或外部资源引用。深浅色模式均使用浅色底托，保留图标原色。
 

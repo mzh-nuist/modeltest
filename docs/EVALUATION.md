@@ -29,6 +29,7 @@ GPT‑6.2 Sol 与 Astra 沿用同一套八题和评分标准，通过 Codex Stan
 - `dist/data/high-expanded.json`：后续五款模型的独立批次与复核记录。
 - `dist/data/codex-gpt62-20261118.json`：两款 GPT‑6.2 的八题答卷、四个短题样例、分数与题目版本摘要。
 - `dist/data/codex-terra-20261118.json`：GPT‑6.1 Terra 的同题答卷，沿用 Codex Standard High 设置。
+- `dist/data/grok47-high-20261118.json`：Grok 4.7 的 CommandCode API High 答卷。缺少完整交付的项目暂缺分数，总分待评。
 - `dist/data/completed-suite.json`：历史补充答卷；由前端合并规则决定适用范围。
 - `dist/data/playful-season.json`：新一期题目、评分与状态，和第一期成绩分开。
 - 其余 `demo`、`offline` 文件是演示或离线夹具；历史批次也不自动进入当前榜单。

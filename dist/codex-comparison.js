@@ -1,10 +1,11 @@
 import {esc as escape} from './lib.js?v=20261101-short1';
-import {extractDrawing} from './completed-suite.js?v=20261118-models3';
+import {extractDrawing} from './completed-suite.js?v=20261118-models4';
 import {previewableCheckupSVG} from './checkup-data.js?v=20261101-short1';
 import {arrowRight} from './ui-icons.js?v=20261101-short1';
 
 const evidenceFile = 'data/codex-gpt62-20261118.json';
 const terraFile = 'data/codex-terra-20261118.json';
+const grokFile = 'data/grok47-high-20261118.json';
 const batchPromises = new Map();
 const expectedModels = ['gpt-6.2-sol', 'gpt-6.2-astra'];
 const expectedCases = [
@@ -33,6 +34,12 @@ export function validateCodexComparison(data, modelIds = expectedModels, route =
         || !item.prompts.every(isText) || item.answers?.length !== modelIds.length) invalid();
     modelIds.forEach((modelId, modelIndex) => {
       const answer = item.answers[modelIndex];
+      if (!isCodex && answer?.modelId === modelId && ['unavailable', 'not_run'].includes(answer.status)) {
+        if (answer.score !== null || !isText(answer.reason) || answer.turns?.length !== 0
+            || !Number.isInteger(answer.attempted) || !inRange(answer.attempted, turns)
+            || (answer.status === 'not_run') !== (answer.attempted === 0)) invalid();
+        return;
+      }
       if (answer?.modelId !== modelId || !inRange(answer.score, max) || !Array.isArray(answer.turns)
           || answer.turns.length !== turns || !answer.turns.every(isText)) invalid();
       if (main ? !isText(answer.reason) : !(
@@ -178,6 +185,7 @@ export async function loadComparisonBatches() {
   const outcomes = await Promise.allSettled([
     loadBatch(evidenceFile, expectedModels),
     loadBatch(terraFile, ['gpt-6.1-terra']),
+    loadBatch(grokFile, ['xai/grok-4.7'], 'CommandCode API'),
   ]);
   return outcomes.flatMap(result => result.status === 'fulfilled' ? [result.value] : []);
 }

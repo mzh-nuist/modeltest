@@ -1,0 +1,260 @@
+{
+  "schemaVersion": "provider-comparison-v1",
+  "date": "2026-11-18",
+  "route": "CommandCode API",
+  "clientVersion": "ModelTest SSE",
+  "reasoningEffort": "high",
+  "models": [
+    {
+      "id": "xai/grok-4.7",
+      "name": "Grok 4.7"
+    }
+  ],
+  "cases": [
+    {
+      "id": "purpose",
+      "suite": "main",
+      "title": "理解需求",
+      "maxPoints": 10,
+      "prompts": [
+        "我要去洗车，洗车店离家50米，车现在停在我家楼下。我应该开车去还是走过去？"
+      ],
+      "answers": [
+        {
+          "modelId": "xai/grok-4.7",
+          "score": 10,
+          "turns": [
+            "开车去。\n\n洗车得把车开到店里，走过去车还在楼下，洗不了。50米虽然很近，但这一小段还是得开过去。"
+          ],
+          "reason": "选择开车，并说明必须把车开到洗车店。"
+        }
+      ]
+    },
+    {
+      "id": "reasoning",
+      "suite": "main",
+      "title": "推理纠错",
+      "maxPoints": 10,
+      "prompts": [
+        "我9点40出门，路上需要35分钟，所以10点05就能到，对吧？"
+      ],
+      "answers": [
+        {
+          "modelId": "xai/grok-4.7",
+          "score": 10,
+          "turns": [
+            "不对。9点40分加上35分钟是**10点15分**，不是10点05分。\n\n9:40 + 35分钟 = 10:15。"
+          ],
+          "reason": "纠正错误前提，9:40 加 35 分钟为 10:15。"
+        }
+      ]
+    },
+    {
+      "id": "edit",
+      "suite": "main",
+      "title": "按要求改字",
+      "maxPoints": 10,
+      "prompts": [
+        "帮我原样保存这句话：周六下午三点，在学校南门集合，记得带雨伞。",
+        "只把“周六下午三点”改成“周日下午四点”，其他文字一个字都别改。只回复改好的句子。"
+      ],
+      "answers": [
+        {
+          "modelId": "xai/grok-4.7",
+          "score": 10,
+          "turns": [
+            "已原样保存：\n\n周六下午三点，在学校南门集合，记得带雨伞。",
+            "周日下午四点，在学校南门集合，记得带雨伞。"
+          ],
+          "reason": "第二轮只把时间改成周日下午四点，最终文本与目标逐字一致。"
+        }
+      ]
+    },
+    {
+      "id": "memory",
+      "suite": "main",
+      "title": "多轮记忆",
+      "maxPoints": 10,
+      "prompts": [
+        "我们两个人出游，总预算1500元，不开车，周日晚上必须回来。先记住这些条件，不用安排。",
+        "先讲一个不超过30字的小笑话。",
+        "把“今天早点休息”翻译成英文，只写译文。",
+        "给我一个整理桌面的建议，只写一句话。",
+        "现在只列出我之前说的出游限制，不用安排行程。"
+      ],
+      "answers": [
+        {
+          "modelId": "xai/grok-4.7",
+          "score": 10,
+          "turns": [
+            "好的，我先记住这些条件：\n\n- 两人出游\n- 总预算 1500 元\n- 不开车\n- 周日晚上必须回来\n\n先不安排行程。你之后想出发时告诉我出发地、想去的方向或偏好就行。",
+            "鱼为什么不说话？因为它不会普通话。",
+            "Rest early today.",
+            "把桌面上暂时不用的文件按类别收进文件夹，只留下常用的几个。",
+            "你之前说的出游限制是：\n\n- 两个人出游\n- 总预算 1500 元\n- 不开车\n- 周日晚上必须回来"
+          ],
+          "reason": "完整保留两人、总预算 1500 元、不开车、周日晚必须回来。"
+        }
+      ]
+    },
+    {
+      "id": "honesty",
+      "suite": "main",
+      "title": "不编造信息",
+      "maxPoints": 15,
+      "prompts": [
+        "把下面这段会议记录整理成待办，写清任务、负责人、截止时间。没提到的写“未说明”，不要补充事实。\n记录：小李负责整理报名名单；海报周五前做好，但负责人还没定；场地需要再确认。"
+      ],
+      "answers": [
+        {
+          "modelId": "xai/grok-4.7",
+          "score": 15,
+          "turns": [
+            "**待办**\n\n1. **任务**：整理报名名单  \n   **负责人**：小李  \n   **截止时间**：未说明\n\n2. **任务**：做好海报  \n   **负责人**：未说明  \n   **截止时间**：周五前\n\n3. **任务**：再确认场地  \n   **负责人**：未说明  \n   **截止时间**：未说明"
+          ],
+          "reason": "三项待办、已知负责人和期限正确，未提供的信息均写“未说明”。"
+        }
+      ]
+    },
+    {
+      "id": "visual",
+      "suite": "main",
+      "title": "鹈鹕骑车",
+      "maxPoints": 10,
+      "prompts": [
+        "画一只鹈鹕骑自行车，要能看到两只脚踩着踏板、身体坐在车座上、翅膀扶着车把，两个车轮和车架连接正确。\n为便于直接预览，请只输出一份800×600的独立SVG源码，不加代码围栏，不使用外部图片、脚本、CSS或foreignObject。可以使用svg、g、path、circle、ellipse、rect、line、polyline、polygon、text、tspan、defs、linearGradient、radialGradient、stop、clipPath、mask、title、desc、use；href和url仅引用图内ID。"
+      ],
+      "answers": [
+        {
+          "modelId": "xai/grok-4.7",
+          "score": null,
+          "turns": [],
+          "status": "unavailable",
+          "attempted": 1,
+          "reason": "接口返回流不完整，没有交付正文，本题暂缺分数。"
+        }
+      ]
+    },
+    {
+      "id": "receipt",
+      "suite": "main",
+      "title": "账单整活",
+      "maxPoints": 20,
+      "prompts": [
+        "请告诉我这个账单，辣椒炒肉有几份？"
+      ],
+      "answers": [
+        {
+          "modelId": "xai/grok-4.7",
+          "score": 0,
+          "turns": [
+            "账单上「辣椒炒肉」出现了两行，每行数量都是 1：\n\n1. 辣椒炒肉 Stir-Fried Pork with Chili — 1  \n2. - 辣椒炒肉 Stir-Fried Pork with Chili* — 1  \n\n按字面合计是 **2 份**。第二行前面有短横线并带星号，有可能是备注或加项，不是独立一份；若要确认是否真的点了两份，建议问一下服务员。"
+          ],
+          "reason": "主要结论为按字面合计 2 份。虽提到第二行可能是子项，按本站主要结论规则计 0 分。"
+        }
+      ]
+    },
+    {
+      "id": "zebra",
+      "suite": "main",
+      "title": "斑马绘画",
+      "maxPoints": 15,
+      "prompts": [
+        "画一只在非洲稀树草原上奔跑的斑马。应能清楚看到斑马的黑白条纹、奔跑姿态和草原环境。\n为便于直接预览，请只输出一份800×600的独立SVG源码，不加代码围栏，不使用外部图片、脚本、CSS或foreignObject。可以使用svg、g、path、circle、ellipse、rect、line、polyline、polygon、text、tspan、defs、linearGradient、radialGradient、stop、clipPath、mask、title、desc、use；href和url仅引用图内ID。"
+      ],
+      "answers": [
+        {
+          "modelId": "xai/grok-4.7",
+          "score": null,
+          "turns": [],
+          "status": "unavailable",
+          "attempted": 1,
+          "reason": "截至本次发布，尚未取得完整、可判分的答卷。"
+        }
+      ]
+    },
+    {
+      "id": "office-1",
+      "suite": "short",
+      "title": "推老板 · 第一关",
+      "maxPoints": 100,
+      "prompts": [
+        "把两位老板都推进工位。只能推，不能拉；每步上下左右一格，不能穿墙或同时推两人。\n#墙，-空地，P是你，B是老板，.是工位。\n12步内完成，只输出UDLR动作串（上、下、左、右）。\n#######\n#..---#\n#-BB--#\n#--P--#\n#######"
+      ],
+      "answers": [
+        {
+          "modelId": "xai/grok-4.7",
+          "score": null,
+          "turns": [],
+          "status": "not_run",
+          "attempted": 0,
+          "reason": "截至本次发布，尚未采集本题。"
+        }
+      ]
+    },
+    {
+      "id": "office-2",
+      "suite": "short",
+      "title": "推老板 · 第二关",
+      "maxPoints": 100,
+      "prompts": [
+        "把两位老板都推进工位。只能推，不能拉；每步上下左右一格，不能穿墙或同时推两人。\n#墙，-空地，P是你，B是老板，.是工位。\n18步内完成，只输出UDLR动作串（上、下、左、右）。\n#######\n#--.--#\n#-B-B-#\n#--#--#\n#-.P--#\n#######"
+      ],
+      "answers": [
+        {
+          "modelId": "xai/grok-4.7",
+          "score": null,
+          "turns": [],
+          "status": "not_run",
+          "attempted": 0,
+          "reason": "截至本次发布，尚未采集本题。"
+        }
+      ]
+    },
+    {
+      "id": "gears-1",
+      "suite": "short",
+      "title": "齿轮诈骗 · 第一关",
+      "maxPoints": 100,
+      "prompts": [
+        "A驱动五个固定轴齿轮，啮合关系为AB、BC、CD、DE、EA、BD，每对必须反向。\n只检查转向，不考虑速比与安装距离。\n原机构能全部转动吗？最少断开哪些啮合，才能让A仍驱动全部？\n只输出JSON：can为原机构能否转动（布尔），cut为断开的啮合对数组。"
+      ],
+      "answers": [
+        {
+          "modelId": "xai/grok-4.7",
+          "score": null,
+          "turns": [],
+          "status": "not_run",
+          "attempted": 0,
+          "reason": "截至本次发布，尚未采集本题。"
+        }
+      ]
+    },
+    {
+      "id": "gears-2",
+      "suite": "short",
+      "title": "齿轮诈骗 · 第二关",
+      "maxPoints": 100,
+      "prompts": [
+        "A驱动五个固定轴齿轮，啮合关系为AB、CD、DE、EA、BD，每对必须反向。\n只检查转向，不考虑速比与安装距离。\n原机构能全部转动吗？最少断开哪些啮合，才能让A仍驱动全部？\n只输出JSON：can为原机构能否转动（布尔），cut为断开的啮合对数组。"
+      ],
+      "answers": [
+        {
+          "modelId": "xai/grok-4.7",
+          "score": null,
+          "turns": [],
+          "status": "not_run",
+          "attempted": 0,
+          "reason": "截至本次发布，尚未采集本题。"
+        }
+      ]
+    }
+  ],
+  "sourceHashes": {
+    "data/high-suite.json": "5d66cc45770fb12ab5e4c3a1b10b3ddaf4dbd0b208d4638749eddaf1c2a16e51",
+    "data/short-challenges.json": "9507ccae6daea32960d4cfd2e948279279a99773f5dbb623aaa4f4dc02dcdbb1",
+    "short-challenge-grading.js": "eb7f63109f4332c137635239f1b769dc14cae74b87a63dd73f72d65e56dfa30a",
+    "assets/receipt-chilli-pork.png": "73a513249777e5c4ea4d88545e9c7c0b83344b9284f5b0b29c0f0b5690ccee11"
+  },
+  "maxOutputTokens": 16384
+}

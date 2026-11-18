@@ -28,6 +28,8 @@
 
 同系列同档位只展示已有完整答卷的最新版本。Terra 是独立档位，[GPT‑6.1 Terra](https://modeltest.cc/#checkup/model/gpt61-terra) 同题得 99 分，四个短题样例均为满分。
 
+[Grok 4.7](https://modeltest.cc/#checkup/model/grok47) 已公开取得的答卷。绘图答卷仍不完整，八题总分待评。
+
 ## 新短题实测
 
 [推老板进工位](https://modeltest.cc/#checkup/season/boss-sokoban) · [齿轮诈骗](https://modeltest.cc/#checkup/season/gear-scam)

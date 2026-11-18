@@ -1,8 +1,8 @@
 import {historicalReading} from './playful-season.js?v=20261101-short1';
-import {modelBadge} from './model-identity.js?v=20261118-codex2';
-import {modelPicker} from './model-picker.js?v=20261118-codex2';
-import {weightedSummary,points,formatPoints,siteStars,RECEIPT_REVIEW_RULE} from './weighted-score.js?v=20261118-codex2';
-import {extractDrawing} from './completed-suite.js?v=20261118-models3';
+import {modelBadge} from './model-identity.js?v=20261118-models4';
+import {modelPicker} from './model-picker.js?v=20261118-models4';
+import {weightedSummary,points,formatPoints,siteStars,RECEIPT_REVIEW_RULE} from './weighted-score.js?v=20261118-models4';
+import {extractDrawing} from './completed-suite.js?v=20261118-models4';
 import {checkupSVG} from './checkup-view.js?v=20261101-short1';
 import {previewableCheckupSVG} from './checkup-data.js?v=20261101-short1';
 import {arrowRight,arrowUpRight} from './ui-icons.js?v=20261101-short1';
@@ -35,6 +35,7 @@ export function readableAnswer(value){
 function textAnswer(value){return `<div class="answer-reading">${readableAnswer(value)}</div><details class="answer-disclosure"><summary>查看原始文本</summary>${raw(value)}</details>`;}
 function actualAnswer(model,book,row,i,bank){
   const item=row.items[i],run=model.report.runs[i],measurement=item.measurement;
+  if(measurement?.collectionLabel&&measurement.status==='incomplete')return '<p class="answer-empty">本次请求未取得完整答卷。</p>';
   if(measurement?.status!=='success'&&!measurement?.attempts?.length)return '<p class="answer-empty">尚未实测，暂无回答。</p>';
   const output=i<6?run?.outputs.at(-1):measurement?.output;
   if(i===5||i===7){
@@ -66,7 +67,7 @@ function taskSection(models,book,bank,i){
   const task=book.tasks[i],compare=models.length===2;
   const heading=`<div class="case-heading"><span class="case-number">${number(i)}</span><div><p>${e(i===6?'账单整活题':names[i])}</p><h2>${e(titles[i])}</h2></div>${compare?`<span class="case-weight">满分 ${task.weight} 分</span>`:itemScore(book,book.models.find(r=>r.modelId===models[0].id),i)}</div>`;
   const question=`${taskPrompt(task,bank.tasks[i])}<details class="answer-disclosure"><summary>评分标准</summary>${rubric(task)}</details>`;
-  const answers=models.map(model=>{const row=book.models.find(r=>r.modelId===model.id);return `<article class="answer-pane" aria-label="${e(model.name)} · ${e(names[i])}">${compare?`<header class="answer-author"><a href="#checkup/model/${e(model.id)}">${modelBadge(model.id)}<span>${e(model.name)}</span></a>${itemScore(book,row,i)}</header>`:`<p class="answer-kind">${row.items[i].measurement?.status==='success'||row.items[i].measurement?.attempts?.length?'模型原回答 · AI 生成':'等待实测'}</p>`}${answerContent(model,book,row,i,bank)}</article>`;}).join('');
+  const answers=models.map(model=>{const row=book.models.find(r=>r.modelId===model.id);return `<article class="answer-pane" aria-label="${e(model.name)} · ${e(names[i])}">${compare?`<header class="answer-author"><a href="#checkup/model/${e(model.id)}">${modelBadge(model.id)}<span>${e(model.name)}</span></a>${itemScore(book,row,i)}</header>`:`<p class="answer-kind">${row.items[i].measurement?.status==='success'||row.items[i].measurement?.attempts?.length?'模型原回答 · AI 生成':row.items[i].measurement?.status==='incomplete'?'答卷未完整交付':'等待实测'}</p>`}${answerContent(model,book,row,i,bank)}</article>`;}).join('');
   return `<section class="answer-section" id="answer-${e(task.id)}" tabindex="-1">${heading}${compare?`<details class="shared-question"><summary>查看题目与评分标准</summary><div class="question-content">${question}</div></details><div class="answer-columns">${answers}</div>`:`<div class="detail-answer-layout"><aside class="question-content"><span class="question-label">测试题目</span>${question}</aside>${answers}</div>`}</section>`;
 }
 

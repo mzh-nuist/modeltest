@@ -124,3 +124,26 @@ test('GPT-6.1 Terra extends the catalogue as a distinct tier while Sol and Astra
   assert.equal(shorts.codexCalls, 12);
   assert.ok(shorts.records.filter(record => record.modelId === 'gpt61-terra').every(record => record.grade.total === 100));
 });
+
+test('Grok shows usable replies but leaves missing delivery unscored and off the ranked list', () => {
+  const checkup = json('checkup');
+  const projected = projectHighSuite(json('high-suite'), json('daily-measured'), json('completed-suite'), checkup);
+  const historical = mergeHighExpanded(projected, json('high-expanded'), checkup);
+  const source = json('grok47-high-20261118');
+  const grok = validateCodexComparison(source, ['xai/grok-4.7'], 'CommandCode API');
+  const {data, book} = publishCodexMain(historical, grok, checkup);
+  const row = book.models.at(-1);
+  assert.deepEqual([row.items[5].score,row.items[6].score,row.items[7].score], [null,0,null]);
+  assert.equal(weightedSummary(book, row).finalScore, null);
+  assert.equal(weightedSummary(book, row).graded, 6);
+  assert.equal(data.totalRequests - historical.data.totalRequests, 13);
+  assert.equal(data.successfulRequests - historical.data.successfulRequests, 11);
+  const markup = studioArchive(data, book);
+  assert.match(markup, /class="pending-model-card" href="#checkup\/model\/grok47"/);
+  assert.doesNotMatch(markup, /class="column-model-card" href="#checkup\/model\/grok47"/);
+  const details = publishedModel(data, checkup, 'grok47', book);
+  assert.match(details, /按字面合计是/);
+  assert.match(details, /本次请求未取得完整答卷/);
+  const shorts = json('short-challenge-results');
+  assert.deepEqual(publishCodexShort(shorts, grok, bank), shorts);
+});

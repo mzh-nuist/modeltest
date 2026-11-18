@@ -33,6 +33,11 @@ export function publishCodexMain({data, book}, batch, bank) {
     const metadata = collection(batch, model);
     const items = main.map((item, index) => {
       const answer = item.answers[i];
+      if (answer.score === null) return {
+        taskId: item.id, score: null, reason: answer.reason, reviewer: 'assistant',
+        measurement: {...metadata, status: answer.status === 'not_run' ? 'not_run' : 'incomplete',
+          outputs: item.prompts.map(() => null)},
+      };
       const criteria = book.tasks[index].criteria;
       const criteriaScores = answer.criteria?.map(awarded => ({awarded, reason: ''}));
       if (criteriaScores && (criteriaScores.length !== criteria?.length
@@ -49,21 +54,26 @@ export function publishCodexMain({data, book}, batch, bank) {
         },
       };
     });
-    rows.push({modelId: id, selectionFinal: true, items});
+    const pending = items.filter(item => item.score === null).map(item => book.tasks.find(task => task.id === item.taskId).name);
+    rows.push({modelId: id, selectionFinal: pending.length === 0, items});
     models.push({
       id, name: model.name, family: id === 'grok47' ? 'Grok' : 'GPT',
       highOnly: true, selectedEffort: 'high', ...metadata,
+      pendingReason: pending.length ? pending.join('、') + '缺少完整答卷。总分待评。' : null,
       report: {
         runs: items.slice(0, bank.tasks.length).map(item => ({
-          taskId: item.taskId, status: 'complete', outputs: item.measurement.outputs,
+          taskId: item.taskId, status: item.measurement.status === 'success' ? 'complete' : item.measurement.status,
+          outputs: item.measurement.outputs,
         })),
       },
     });
   }
-  const requests = main.reduce((sum, item) => sum + item.prompts.length, 0) * models.length;
+  const requests = main.reduce((sum, item) => sum + item.answers.reduce(
+    (total, answer) => total + (answer.attempted ?? item.prompts.length), 0), 0);
+  const successes = main.reduce((sum, item) => sum + item.answers.filter(answer => answer.score !== null).length * item.prompts.length, 0);
   const counts = batch.route === 'Codex app-server'
     ? {codexRequests: (data.codexRequests || 0) + requests}
-    : {totalRequests: data.totalRequests + requests, successfulRequests: data.successfulRequests + requests};
+    : {totalRequests: data.totalRequests + requests, successfulRequests: data.successfulRequests + successes};
   return {
     data: {...data, ...counts, models: [...data.models, ...models], codexDate: batch.date},
     book: {...book, models: [...book.models, ...rows]},
@@ -74,8 +84,9 @@ export function publishCodexShort(results, batch, bank) {
   const records = bank.tasks.flatMap(task => task.cases.flatMap(example => {
     const item = batch.cases.find(row => row.suite === 'short' && row.id === example.id);
     if (item?.prompts[0] !== example.prompt) throw new Error('Codex 短题与站点版本不一致');
-    return batch.models.map((model, i) => {
+    return batch.models.flatMap((model, i) => {
       const answer = item.answers[i];
+      if (answer.score === null) return [];
       const output = answer.turns[0];
       const status = 'success';
       const grade = gradeShort(task, example, output, status);
