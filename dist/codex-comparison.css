@@ -3,6 +3,13 @@
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 16px;
 }
+.collection-label {
+  display: block;
+  color: var(--muted);
+  font-size: .82em;
+  font-weight: 500;
+  line-height: 1.6;
+}
 .codex-comparison .codex-score,
 .codex-comparison .codex-quote {
   margin: 0;

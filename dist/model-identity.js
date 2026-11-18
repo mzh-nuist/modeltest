@@ -6,6 +6,7 @@ const brands={
   qwen38:{family:'qwen',icon:'qwen'},
   claude:{family:'claude',icon:'claude'},
   gpt61:{family:'openai',icon:'openai'},
+  gpt62:{family:'openai',icon:'openai'},
   gpt6:{family:'openai',icon:'openai'},
   gemini38:{family:'gemini',icon:'gemini'},
   mistral:{family:'mistral',icon:'mistral'},

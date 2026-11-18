@@ -1,5 +1,5 @@
 import {validateCheckupReport,previewableCheckupSVG} from './checkup-data.js?v=20261101-short1';
-import {extractDrawing} from './completed-suite.js?v=20261101-short1';
+import {extractDrawing} from './completed-suite.js?v=20261118-codex2';
 const e=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 export function validateHighSuite(suite,legacy,bank,limits){
  const fail=()=>{throw Error('high单档成绩与协议不一致');};
@@ -45,7 +45,7 @@ export function projectHighSuite(suite,legacyData,legacy,bank){
  return {data:{...legacyData,models,highOnly:true,totalRequests:suite.totalRequests,successfulRequests:suite.successfulRequests,publishedAt:suite.updatedAt},book:{...legacy,schemaVersion:'daily-weighted-v5',scoreVersion:suite.scoreVersion,condition:'high-only-no-deadline',updatedAt:suite.updatedAt,models:rows,highOnly:true,highSource:suite}};
 }
 export function highPanel(book,id){
- if(!book?.highOnly)return '';const m=book.highSource.models.find(x=>x.modelId===id),bounded=m.outputPolicy==='budget-bounded-output',budgetBlocked=m.items.some(x=>x.measurement?.error==='original_twenty_percent_budget_exhausted'),caps=m.items.flatMap(x=>(x.measurement?.attempts||[]).map(a=>a.maxOutputTokens??m.maxOutputTokens));
+ if(!book?.highOnly)return '';const m=book.highSource.models.find(x=>x.modelId===id);if(!m)return '';const bounded=m.outputPolicy==='budget-bounded-output',budgetBlocked=m.items.some(x=>x.measurement?.error==='original_twenty_percent_budget_exhausted'),caps=m.items.flatMap(x=>(x.measurement?.attempts||[]).map(a=>a.maxOutputTokens??m.maxOutputTokens));
  const attempts=m.items.flatMap(x=>x.measurement?.attempts||[]),known=attempts.filter(a=>Number.isInteger(a.tokenUsage?.outputTokens)),used=known.reduce((n,a)=>n+a.tokenUsage.outputTokens,0);
  const issues=m.items.filter(x=>x.measurement?.attempts.some(a=>a.status!=='success')).length;
  const issueNote=issues?'<p>本次 '+issues+' 项有接口交付异常，异常记录与正文评分分别展示；站长已确认的内容按确认结果计分。请展开原回答和判分说明核对。</p>':'';

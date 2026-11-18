@@ -1,9 +1,10 @@
 import {esc as escape} from './lib.js?v=20261101-short1';
-import {extractDrawing} from './completed-suite.js?v=20261101-short1';
+import {extractDrawing} from './completed-suite.js?v=20261118-codex2';
 import {previewableCheckupSVG} from './checkup-data.js?v=20261101-short1';
 import {arrowRight} from './ui-icons.js?v=20261101-short1';
 
 const evidenceFile = 'data/codex-gpt62-20261118.json';
+let batchPromise;
 const expectedModels = ['gpt-6.2-sol', 'gpt-6.2-astra'];
 const expectedCases = [
   ['purpose', 10, 1], ['reasoning', 10, 1], ['edit', 10, 2], ['memory', 10, 5],
@@ -149,11 +150,8 @@ export function createCodexComparison(onChange) {
   return () => {
     if (state === 'idle') {
       state = 'loading';
-      fetch(evidenceFile).then(response => {
-        if (!response.ok) throw new Error('答卷暂时无法读取');
-        return response.json();
-      }).then(payload => {
-        data = validateCodexComparison(payload);
+      loadCodexComparison().then(payload => {
+        data = payload;
         state = 'ready';
       }).catch(() => { state = 'error'; }).finally(onChange);
     }
@@ -161,4 +159,15 @@ export function createCodexComparison(onChange) {
     const message = state === 'error' ? '对照答卷暂时无法读取，请刷新页面重试。' : '正在读取对照答卷…';
     return `<div class="column-page">${title(message)}${back}</div>`;
   };
+}
+
+export function loadCodexComparison() {
+  batchPromise ??= fetch(evidenceFile).then(response => {
+    if (!response.ok) throw new Error('答卷暂时无法读取');
+    return response.json();
+  }).then(validateCodexComparison).catch(error => {
+    batchPromise = undefined;
+    throw error;
+  });
+  return batchPromise;
 }

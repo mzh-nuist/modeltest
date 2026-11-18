@@ -19,10 +19,13 @@ ModelTest 把日常理解、文字任务和可见作品放在一起，帮助读�
 
 多轮记忆和修改任务需要多次请求，因此八项测试不是八次 API 调用。模型的服务商、推理参数、输出条件与请求状态随答卷保留；一次测试结果不能直接证明长期稳定性。
 
+GPT‑6.2 Sol 与 Astra 沿用同一套八题和评分标准，通过 Codex Standard 的 High 档补测。总榜与答卷标注「Codex High」。历史 API 批次与 Codex 的入口、输出设置不同，对比页保留双方的测试设置。两道短题仍单独计分。
+
 ## 公开数据
 
 - `dist/data/high-suite.json`：首批五款模型的 high 答卷。
 - `dist/data/high-expanded.json`：后续五款模型的独立批次与复核记录。
+- `dist/data/codex-gpt62-20261118.json`：两款 GPT‑6.2 的八题答卷、四个短题样例、分数与题目版本摘要。
 - `dist/data/completed-suite.json`：历史补充答卷；由前端合并规则决定适用范围。
 - `dist/data/playful-season.json`：新一期题目、评分与状态，和第一期成绩分开。
 - 其余 `demo`、`offline` 文件是演示或离线夹具；历史批次也不自动进入当前榜单。

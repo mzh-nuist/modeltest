@@ -1,10 +1,10 @@
-import {modelBadge} from './model-identity.js?v=20261101-short1';
+import {modelBadge} from './model-identity.js?v=20261118-codex2';
 const e=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const chevron='<svg class="picker-chevron" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true" focusable="false"><path d="m5 7.5 5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 export function modelPicker(models,selected,side){
   const model=models.find(m=>m.id===selected);
   if(!model||![0,1].includes(side))throw Error('Invalid model picker');
-  return `<div class="model-picker-field"><span class="picker-label">模型 ${side===0?'A':'B'}</span><details class="model-picker" data-model-picker="${side}" data-selected="${e(selected)}"><summary aria-label="选择模型${side===0?'A':'B'}，当前${e(model.name)}">${modelBadge(model.id)}<span class="picker-name">${e(model.name)}</span>${chevron}</summary><div class="model-options" role="group" aria-label="模型${side===0?'A':'B'}的可选型号">${models.map(m=>`<button type="button" data-pub-model-choice="${side}" data-model-id="${e(m.id)}" aria-pressed="${m.id===selected}">${modelBadge(m.id)}<span>${e(m.name)}</span><span class="picker-check" aria-hidden="true">${m.id===selected?'✓':''}</span></button>`).join('')}</div></details></div>`;
+  return `<div class="model-picker-field"><span class="picker-label">模型 ${side===0?'A':'B'}</span><details class="model-picker" data-model-picker="${side}" data-selected="${e(selected)}"><summary aria-label="选择模型${side===0?'A':'B'}，当前${e(model.name)}">${modelBadge(model.id)}<span class="picker-name">${e(model.name)}</span>${chevron}</summary><div class="model-options" role="group" aria-label="模型${side===0?'A':'B'}的可选型号">${models.map(m=>`<button type="button" data-pub-model-choice="${side}" data-model-id="${e(m.id)}" aria-pressed="${m.id===selected}">${modelBadge(m.id)}<span>${e(m.name)}${m.collectionLabel?`<small class="collection-label">${e(m.collectionLabel)}</small>`:''}</span><span class="picker-check" aria-hidden="true">${m.id===selected?'✓':''}</span></button>`).join('')}</div></details></div>`;
 }
 export function chooseComparison(models,current,side,id){
   if(![0,1].includes(side)||!models.some(m=>m.id===id)||models.length<2)throw Error('Invalid comparison choice');
