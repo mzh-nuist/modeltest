@@ -1,6 +1,6 @@
 import {arrowUpRight,arrowRight} from './ui-icons.js?v=20261101-short1';
 import {weightedSummary,points,formatPoints,siteStars} from './weighted-score.js?v=20261118-codex2';
-import {extractDrawing} from './completed-suite.js?v=20261118-codex2';
+import {extractDrawing} from './completed-suite.js?v=20261118-models3';
 import {previewableCheckupSVG} from './checkup-data.js?v=20261101-short1';
 import {modelBadge} from './model-identity.js?v=20261118-codex2';
 

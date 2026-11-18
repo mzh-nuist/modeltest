@@ -2,7 +2,7 @@ import {historicalReading} from './playful-season.js?v=20261101-short1';
 import {modelBadge} from './model-identity.js?v=20261118-codex2';
 import {modelPicker} from './model-picker.js?v=20261118-codex2';
 import {weightedSummary,points,formatPoints,siteStars,RECEIPT_REVIEW_RULE} from './weighted-score.js?v=20261118-codex2';
-import {extractDrawing} from './completed-suite.js?v=20261118-codex2';
+import {extractDrawing} from './completed-suite.js?v=20261118-models3';
 import {checkupSVG} from './checkup-view.js?v=20261101-short1';
 import {previewableCheckupSVG} from './checkup-data.js?v=20261101-short1';
 import {arrowRight,arrowUpRight} from './ui-icons.js?v=20261101-short1';
@@ -82,7 +82,7 @@ export function studioModelPage(data,bank,book,id,preferences={},evidence=''){
 
 export function studioComparePage(data,bank,book,one,two,evidence=''){
   const models=[one,two];
-  return `<div class="studio-pages model-comparison">${breadcrumb('模型对比')}<section class="compare-intro"><div><h1>两个模型，同题较量。</h1><p>从分数到原回答，放在一起看。${Boolean(one.collectionLabel)!==Boolean(two.collectionLabel)?' 两边的测试入口与输出设置不同。':''}</p></div><a class="page-action" href="#checkup/results">全部成绩 ${arrowUpRight}</a></section><div class="compare-overview">${models.map((model,i)=>{const row=book.models.find(r=>r.modelId===model.id);return `<section class="compare-model-summary" aria-label="模型 ${i===0?'A':'B'} 概览">${modelPicker(data.models,model.id,i)}<div class="compare-model-score">${totalScore(book,row)}<div>${siteStars(book,row)}${collection(model)}<a class="page-text-link" href="#checkup/model/${e(model.id)}">完整答卷 ${arrowUpRight}</a></div></div></section>`;}).join('')}</div>${navigation(book)}${book.tasks.map((_,i)=>taskSection(models,book,bank,i)).join('')}<section class="page-evidence"><h2>测试记录</h2>${evidence}</section></div>`;
+  return `<div class="studio-pages model-comparison">${breadcrumb('模型对比')}<section class="compare-intro"><div><h1>两个模型，同题较量。</h1><p>从分数到原回答，放在一起看。${(one.condition||one.provider)!==(two.condition||two.provider)?' 两边的测试入口与输出设置不同。':''}</p></div><a class="page-action" href="#checkup/results">全部成绩 ${arrowUpRight}</a></section><div class="compare-overview">${models.map((model,i)=>{const row=book.models.find(r=>r.modelId===model.id);return `<section class="compare-model-summary" aria-label="模型 ${i===0?'A':'B'} 概览">${modelPicker(data.models,model.id,i)}<div class="compare-model-score">${totalScore(book,row)}<div>${siteStars(book,row)}${collection(model)}<a class="page-text-link" href="#checkup/model/${e(model.id)}">完整答卷 ${arrowUpRight}</a></div></div></section>`;}).join('')}</div>${navigation(book)}${book.tasks.map((_,i)=>taskSection(models,book,bank,i)).join('')}<section class="page-evidence"><h2>测试记录</h2>${evidence}</section></div>`;
 }
 
 export function bindAnswerNavigation(main){

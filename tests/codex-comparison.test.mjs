@@ -104,3 +104,23 @@ test('both short challenge pages expose the additional fair-scored samples in th
     assert.match(html, /服务端上限未知/);
   }
 });
+
+test('GPT-6.1 Terra extends the catalogue as a distinct tier while Sol and Astra remain 6.2 only', () => {
+  const checkup = json('checkup');
+  const projected = projectHighSuite(json('high-suite'), json('daily-measured'), json('completed-suite'), checkup);
+  const historical = mergeHighExpanded(projected, json('high-expanded'), checkup);
+  const current = publishCodexMain(historical, evidence, checkup);
+  const terra = validateCodexComparison(json('codex-terra-20261118'), ['gpt-6.1-terra']);
+  assert.throws(() => validateCodexComparison(terra, ['gpt-6.1-sol']), /数据不完整/);
+  const {data, book} = publishCodexMain(current, terra, checkup);
+  assert.equal(data.codexRequests, 39);
+  assert.equal(data.models.length, 13);
+  assert.deepEqual(data.models.filter(model => /gpt.*(?:sol|astra|terra)$/.test(model.id)).map(model => model.id),
+    ['gpt62-sol', 'gpt62-astra', 'gpt61-terra']);
+  const details = publishedModel(data, checkup, 'gpt61-terra', book);
+  assert.match(details, /<strong>99<\/strong>/);
+  assert.match(details, /Codex High/);
+  const shorts = publishCodexShort(publishCodexShort(json('short-challenge-results'), evidence, bank), terra, bank);
+  assert.equal(shorts.codexCalls, 12);
+  assert.ok(shorts.records.filter(record => record.modelId === 'gpt61-terra').every(record => record.grade.total === 100));
+});

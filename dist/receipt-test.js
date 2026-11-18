@@ -1,5 +1,5 @@
 import {modelBadge} from './model-identity.js?v=20261118-codex2';
-import {completionBody} from './completed-suite.js?v=20261118-codex2';
+import {completionBody} from './completed-suite.js?v=20261118-models3';
 import {weightedGrade,RECEIPT_REVIEW_RULE} from './weighted-score.js?v=20261118-codex2';
 const e=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 export function gradeReceiptAnswer(answer){

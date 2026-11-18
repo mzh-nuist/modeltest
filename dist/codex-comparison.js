@@ -1,10 +1,11 @@
 import {esc as escape} from './lib.js?v=20261101-short1';
-import {extractDrawing} from './completed-suite.js?v=20261118-codex2';
+import {extractDrawing} from './completed-suite.js?v=20261118-models3';
 import {previewableCheckupSVG} from './checkup-data.js?v=20261101-short1';
 import {arrowRight} from './ui-icons.js?v=20261101-short1';
 
 const evidenceFile = 'data/codex-gpt62-20261118.json';
-let batchPromise;
+const terraFile = 'data/codex-terra-20261118.json';
+const batchPromises = new Map();
 const expectedModels = ['gpt-6.2-sol', 'gpt-6.2-astra'];
 const expectedCases = [
   ['purpose', 10, 1], ['reasoning', 10, 1], ['edit', 10, 2], ['memory', 10, 5],
@@ -14,13 +15,14 @@ const expectedCases = [
 const isText = value => typeof value === 'string' && Boolean(value.trim());
 const inRange = (value, max) => Number.isFinite(value) && value >= 0 && value <= max;
 
-export function validateCodexComparison(data) {
-  const invalid = () => { throw new Error('Codex 对照数据不完整'); };
-  if (data?.schemaVersion !== 'codex-comparison-v1' || data.reasoningEffort !== 'high'
+export function validateCodexComparison(data, modelIds = expectedModels, route = 'Codex app-server') {
+  const invalid = () => { throw new Error('对照数据不完整'); };
+  const isCodex = route === 'Codex app-server';
+  if (data?.schemaVersion !== (isCodex ? 'codex-comparison-v1' : 'provider-comparison-v1') || data.reasoningEffort !== 'high'
       || !/^\d{4}-\d{2}-\d{2}$/.test(data.date) || !isText(data.clientVersion)
-      || data.route !== 'Codex app-server' || data.speed !== 'standard'
-      || data.models?.length !== expectedModels.length || data.cases?.length !== expectedCases.length) invalid();
-  expectedModels.forEach((id, index) => {
+      || data.route !== route || (isCodex ? data.speed !== 'standard' : data.maxOutputTokens !== 16384)
+      || data.models?.length !== modelIds.length || data.cases?.length !== expectedCases.length) invalid();
+  modelIds.forEach((id, index) => {
     if (data.models[index]?.id !== id || !isText(data.models[index].name)) invalid();
   });
   expectedCases.forEach(([id, max, turns], index) => {
@@ -28,8 +30,8 @@ export function validateCodexComparison(data) {
     const main = index < 8;
     if (item?.id !== id || item.suite !== (main ? 'main' : 'short') || item.maxPoints !== max
         || !isText(item.title) || !Array.isArray(item.prompts) || item.prompts.length !== turns
-        || !item.prompts.every(isText) || item.answers?.length !== expectedModels.length) invalid();
-    expectedModels.forEach((modelId, modelIndex) => {
+        || !item.prompts.every(isText) || item.answers?.length !== modelIds.length) invalid();
+    modelIds.forEach((modelId, modelIndex) => {
       const answer = item.answers[modelIndex];
       if (answer?.modelId !== modelId || !inRange(answer.score, max) || !Array.isArray(answer.turns)
           || answer.turns.length !== turns || !answer.turns.every(isText)) invalid();
@@ -150,7 +152,7 @@ export function createCodexComparison(onChange) {
   return () => {
     if (state === 'idle') {
       state = 'loading';
-      loadCodexComparison().then(payload => {
+      loadBatch(evidenceFile, expectedModels).then(payload => {
         data = payload;
         state = 'ready';
       }).catch(() => { state = 'error'; }).finally(onChange);
@@ -161,13 +163,21 @@ export function createCodexComparison(onChange) {
   };
 }
 
-export function loadCodexComparison() {
-  batchPromise ??= fetch(evidenceFile).then(response => {
+function loadBatch(file, modelIds, route) {
+  if (!batchPromises.has(file)) batchPromises.set(file, fetch(file).then(response => {
     if (!response.ok) throw new Error('答卷暂时无法读取');
     return response.json();
-  }).then(validateCodexComparison).catch(error => {
-    batchPromise = undefined;
+  }).then(data => ({...validateCodexComparison(data, modelIds, route), file})).catch(error => {
+    batchPromises.delete(file);
     throw error;
-  });
-  return batchPromise;
+  }));
+  return batchPromises.get(file);
+}
+
+export async function loadComparisonBatches() {
+  const outcomes = await Promise.allSettled([
+    loadBatch(evidenceFile, expectedModels),
+    loadBatch(terraFile, ['gpt-6.1-terra']),
+  ]);
+  return outcomes.flatMap(result => result.status === 'fulfilled' ? [result.value] : []);
 }

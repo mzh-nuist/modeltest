@@ -1,5 +1,5 @@
 import {validateCheckupReport,previewableCheckupSVG} from './checkup-data.js?v=20261101-short1';
-import {extractDrawing} from './completed-suite.js?v=20261118-codex2';
+import {extractDrawing} from './completed-suite.js?v=20261118-models3';
 import {weightedSummary,formatPoints} from './weighted-score.js?v=20261118-codex2';
 const e=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 export const EFFORTS=['low','medium','high'];

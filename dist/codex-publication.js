@@ -1,9 +1,20 @@
 import {gradeShort} from './short-challenge-grading.js?v=20261101-short1';
 
-const modelId = model => model.id.replace('gpt-6.2-', 'gpt62-');
-const collectionLabel = 'Codex High';
-const conditions = batch => 'Codex Standard · High · 客户端 ' + batch.clientVersion
-  + '。每题独立会话，客户端未设总时限和输出上限，服务端输出上限未知。';
+const modelId = model => model.id === 'xai/grok-4.7' ? 'grok47'
+  : model.id.replace(/^gpt-(\d+)\.(\d+)-/, 'gpt$1$2-');
+function collection(batch, model) {
+  const codex = batch.route === 'Codex app-server';
+  return {
+    apiModel: model.id, checkedAt: batch.date, collectionFile: batch.file,
+    collectionLabel: codex ? 'Codex High' : 'API High',
+    provider: codex ? 'OpenAI' : 'CommandCode',
+    condition: codex
+      ? 'Codex Standard · High · 客户端 ' + batch.clientVersion
+        + '。每题独立会话，客户端未设总时限和输出上限，服务端输出上限未知。'
+      : 'CommandCode API · 请求 High · 输出上限 ' + batch.maxOutputTokens
+        + ' token。每题独立会话，无客户端总时限，无自动重试。型号与推理档以请求配置为准。',
+  };
+}
 
 export function publishCodexMain({data, book}, batch, bank) {
   const main = batch.cases.filter(item => item.suite === 'main');
@@ -19,7 +30,7 @@ export function publishCodexMain({data, book}, batch, bank) {
   for (const [i, model] of batch.models.entries()) {
     const id = modelId(model);
     if (data.models.some(other => other.id === id)) throw new Error('Codex 模型标识重复');
-    const condition = conditions(batch);
+    const metadata = collection(batch, model);
     const items = main.map((item, index) => {
       const answer = item.answers[i];
       const criteria = book.tasks[index].criteria;
@@ -34,15 +45,14 @@ export function publishCodexMain({data, book}, batch, bank) {
         reviewer: 'assistant', criteriaScores,
         measurement: {
           status: 'success', output: answer.turns.at(-1), outputs: answer.turns,
-          checkedAt: batch.date, condition, apiModel: model.id, provider: 'OpenAI',
-          collectionLabel,
+          ...metadata,
         },
       };
     });
     rows.push({modelId: id, selectionFinal: true, items});
     models.push({
-      id, name: model.name, apiModel: model.id, provider: 'OpenAI', family: 'GPT',
-      highOnly: true, selectedEffort: 'high', checkedAt: batch.date, collectionLabel, condition,
+      id, name: model.name, family: id === 'grok47' ? 'Grok' : 'GPT',
+      highOnly: true, selectedEffort: 'high', ...metadata,
       report: {
         runs: items.slice(0, bank.tasks.length).map(item => ({
           taskId: item.taskId, status: 'complete', outputs: item.measurement.outputs,
@@ -50,9 +60,12 @@ export function publishCodexMain({data, book}, batch, bank) {
       },
     });
   }
-  const codexRequests = main.reduce((sum, item) => sum + item.prompts.length, 0) * models.length;
+  const requests = main.reduce((sum, item) => sum + item.prompts.length, 0) * models.length;
+  const counts = batch.route === 'Codex app-server'
+    ? {codexRequests: (data.codexRequests || 0) + requests}
+    : {totalRequests: data.totalRequests + requests, successfulRequests: data.successfulRequests + requests};
   return {
-    data: {...data, models: [...data.models, ...models], codexRequests, codexDate: batch.date},
+    data: {...data, ...counts, models: [...data.models, ...models], codexDate: batch.date},
     book: {...book, models: [...book.models, ...rows]},
   };
 }
@@ -75,11 +88,13 @@ export function publishCodexShort(results, batch, bank) {
         throw new Error('Codex 短题答卷重复');
       }
       return {
-        modelId: id, name: model.name, apiModel: model.id, provider: 'OpenAI',
-        collectionLabel, condition: conditions(batch), checkedAt: batch.date,
+        modelId: id, name: model.name, ...collection(batch, model),
         taskId: task.id, caseId: example.id, status, output, grade,
       };
     });
   }));
-  return {...results, records: [...results.records, ...records], codexCalls: records.length};
+  const counts = batch.route === 'Codex app-server'
+    ? {codexCalls: (results.codexCalls || 0) + records.length}
+    : {modelCalls: results.modelCalls + records.length, successfulRequests: results.successfulRequests + records.length};
+  return {...results, ...counts, records: [...results.records, ...records]};
 }

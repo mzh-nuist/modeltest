@@ -26,6 +26,8 @@
 
 两款模型均以 Codex Standard、High 档作答，各完成八道主试题和四个短题样例。Sol 得 92.5 分，Astra 得 72.5 分。相差的 20 分来自账单整活题，两款模型的四个短题样例均为满分。首页、成绩榜、模型详情、同题对比、作品与短题页均标注 Codex High。测试入口和输出设置见对照页。
 
+同系列同档位只展示已有完整答卷的最新版本。Terra 是独立档位，[GPT‑6.1 Terra](https://modeltest.cc/#checkup/model/gpt61-terra) 同题得 99 分，四个短题样例均为满分。
+
 ## 新短题实测
 
 [推老板进工位](https://modeltest.cc/#checkup/season/boss-sokoban) · [齿轮诈骗](https://modeltest.cc/#checkup/season/gear-scam)
