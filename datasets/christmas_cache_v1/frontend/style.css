@@ -1,0 +1,6 @@
+* { box-sizing: border-box; }
+body { margin: 0; background: #13252c; color: #fff; font: 17px/1.5 system-ui, sans-serif; }
+main { max-width: 54rem; margin: auto; padding: 1rem; }
+#stage { min-height: 18rem; }
+button { font: inherit; }
+:focus-visible { outline: 3px solid #ffd989; outline-offset: 3px; }
