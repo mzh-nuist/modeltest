@@ -1,12 +1,12 @@
 import {validateShortBank,validateShortResults,shortTaskPage,shortOverview,bindShortChallenges} from './short-challenges.js?v=20261118-models3';
 import {mergeHighExpanded} from './high-expanded.js?v=20261118-models4';
 import {validatePlayfulSeason,seasonPage,bindSeason} from './playful-season.js?v=20261101-short1';
-import {studioModelPage,studioComparePage,bindAnswerNavigation} from './studio-pages.js?v=20261118-models4';
+import {studioModelPage,studioComparePage,bindAnswerNavigation} from './studio-pages.js?v=20261120-grok6';
 import {siteNotesPage} from './site-notes.js?v=20261118-models3';
 import {modelBadge} from './model-identity.js?v=20261118-models4';
-import {studioHome,studioArchive,studioWorks,studioRepairs} from './studio-home.js?v=20261118-models4';
-import {createCodexComparison,loadComparisonBatches} from './codex-comparison.js?v=20261118-models4';
-import {publishCodexMain,publishCodexShort} from './codex-publication.js?v=20261118-models5';
+import {studioHome,studioArchive,studioWorks,studioRepairs} from './studio-home.js?v=20261120-grok6';
+import {createCodexComparison,loadComparisonBatches} from './codex-comparison.js?v=20261120-grok6';
+import {publishCodexMain,publishCodexShort} from './codex-publication.js?v=20261120-grok6';
 import {modelPicker,bindModelPickers} from './model-picker.js?v=20261118-models4';
 import {validateHighSuite,projectHighSuite,highPanel} from './high-suite.js?v=20261118-models4';
 import {EFFORTS,validateEffortMatrix,projectEffortMatrix,effortPanel,effortOverview} from './effort-matrix.js?v=20261118-models4';
@@ -66,7 +66,7 @@ export function supplementalPicture(m){
   const picture=s.status==='success'&&previewableCheckupSVG(svg)?checkupSVG(svg):`<p class="checkup-warning">${s.status==='timeout'?'180 秒内未完整交付。':'本次没有完整、可安全预览的 SVG。'}${s.output?'已保留部分正文，见下方原文。':''}</p>`;
   return `<h3>画图补测 · low / 32768</h3><p class="evidence-meta">${e(s.note)}</p>${extracted?'<p class="checkup-warning">原回答添加了题目禁止的代码围栏。这里只为显示移除外层围栏，图形未修改；格式问题仍保留。</p>':''}${picture}<details><summary>查看补测原始回答</summary>${pre(s.output)}</details>`;
 }
-function answerCard(task,m,i,book=null){const row=m.report.runs[i];return `<article class="panel"><div class="panel-head"><h2><a class="model-nameplate" href="#checkup/model/${e(m.id)}">${modelBadge(m.id)}<span>${e(m.name)}</span></a>${m.selectedEffort?' · '+e(m.collectionLabel||m.selectedEffort):''}</h2>${verdict(m,i,book)}</div><div class="panel-body"><p class="evidence-meta">${e(book?.models.find(x=>x.modelId===m.id)?.items[i].weightedNote||book?.models.find(x=>x.modelId===m.id)?.items[i].reason||m.checks[i].note)}</p>${i===5?`<h3>${e(m.collectionLabel||(m.selectedEffort?'High 档':'首轮默认档 · 8192'))}</h3><p class="checkup-warning">${e(m.checks?.[i]?.note||row.note||'')}</p>${!m.selectedEffort&&row.outputs[0]?pre(row.outputs[0]):''}${supplementalPicture(m)}`:original(task,row)}${condition(m)}</div></article>`;}
+function answerCard(task,m,i,book=null){const row=m.report.runs[i];return `<article class="panel"><div class="panel-head"><h2><a class="model-nameplate" href="#checkup/model/${e(m.id)}">${modelBadge(m.id)}<span>${e(m.name)}</span></a>${m.selectedEffort?' · '+e(m.collectionLabel||m.selectedEffort):''}</h2>${verdict(m,i,book)}</div><div class="panel-body"><p class="evidence-meta">${e(book?.models.find(x=>x.modelId===m.id)?.items[i].weightedNote||book?.models.find(x=>x.modelId===m.id)?.items[i].reason||m.checks[i].note)}</p>${i===5?`<h3>${e(book?.models.find(x=>x.modelId===m.id)?.items[i].measurement?.followup?'Grok 订阅 High':m.collectionLabel||(m.selectedEffort?'High 档':'首轮默认档 · 8192'))}</h3><p class="checkup-warning">${e(m.checks?.[i]?.note||row.note||'')}</p>${!m.selectedEffort&&row.outputs[0]?pre(row.outputs[0]):''}${supplementalPicture(m)}`:original(task,row)}${condition(m)}</div></article>`;}
 const criteria=task=>`<details class="panel pub-criteria"><summary>这项怎么看？展开参考标准</summary><div class="panel-body"><p>${e(task.expected)}</p><ul>${task.checks.map(c=>`<li>${e(c.label)}</li>`).join('')}</ul></div></details>`;
 export function publishedHome(data,bank,book=null,preferences={}){
   if(book?.highOnly)return studioHome(data,book,preferences);

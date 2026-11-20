@@ -52,7 +52,7 @@ function scoringNotes(book,row,i){
   const criteria=item.criteriaScores?.length?`<details class="answer-disclosure"><summary>分项评分</summary><ul>${item.criteriaScores.map((score,j)=>`<li><strong>${e(book.tasks[i].criteria[j].label)} · ${score.awarded} / ${book.tasks[i].criteria[j].max}</strong>${score.reason?`<p>${e(score.reason)}</p>`:''} </li>`).join('')}</ul></details>`:'';
   return `<div class="answer-review"><span class="review-label">${item.score===null?'待测说明':item.reviewer==='site-owner'?'站长确认':'判分依据 · 助手初评'}</span><p>${e(reason)}</p>${criteria}</div>`;
 }
-function measurementNotes(item){const m=item.measurement;if(!m||m.collectionLabel)return '';return `<details class="answer-disclosure"><summary>本题请求记录</summary><p>${e(m.condition)}<br>${e(m.apiModel)} · ${e(m.provider)}<br>${e(m.checkedAt)}<br>状态：${e(m.status)} ${e(m.error||'')}<br>原记录摘要：${e(m.sourceDigest)}</p></details>`;}
+function measurementNotes(item){const m=item.measurement;if(m?.followup)return `<p class="format-note">${e(m.condition)}</p>`;if(!m||m.collectionLabel)return '';return `<details class="answer-disclosure"><summary>本题请求记录</summary><p>${e(m.condition)}<br>${e(m.apiModel)} · ${e(m.provider)}<br>${e(m.checkedAt)}<br>状态：${e(m.status)} ${e(m.error||'')}<br>原记录摘要：${e(m.sourceDigest)}</p></details>`;}
 function rubric(task){return task.rubricType==='criteria'?`<ul>${task.criteria.map(c=>`<li><strong>${e(c.label)} · ${c.max} 分</strong><p>${e(c.anchors)}</p></li>`).join('')}</ul>`:`<p><strong>满分：</strong>${e(task.full)}<br><strong>${task.allowPartial?'部分得分':'需复核'}：</strong>${e(task.partial)}<br><strong>零分：</strong>${e(task.zero)}</p>${task.id==='receipt'?'<p>'+e(RECEIPT_REVIEW_RULE)+'</p>':''}`;}
 function taskPrompt(task,bankTask){
   const prompts=bankTask?.prompts||task.prompts;
@@ -61,7 +61,7 @@ function taskPrompt(task,bankTask){
   return `<p>${e(task.title)}</p><details class="answer-disclosure"><summary>查看完整${prompts.length>1?' '+prompts.length+' 轮':''}提问</summary>${prompts.map((p,j)=>`${prompts.length>1?'<h4>第 '+(j+1)+' 轮</h4>':''}${raw(p)}`).join('')}</details>`;
 }
 function answerContent(model,book,row,i,bank){
-  return actualAnswer(model,book,row,i,bank)+historicalReading(book.tasks[i],row.items[i])+scoringNotes(book,row,i)+(i>=6?measurementNotes(row.items[i]):'');
+  return actualAnswer(model,book,row,i,bank)+historicalReading(book.tasks[i],row.items[i])+scoringNotes(book,row,i)+(i>=6||row.items[i].measurement?.followup?measurementNotes(row.items[i]):'');
 }
 function taskSection(models,book,bank,i){
   const task=book.tasks[i],compare=models.length===2;

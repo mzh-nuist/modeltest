@@ -34,6 +34,13 @@ export function validateCodexComparison(data, modelIds = expectedModels, route =
         || !item.prompts.every(isText) || item.answers?.length !== modelIds.length) invalid();
     modelIds.forEach((modelId, modelIndex) => {
       const answer = item.answers[modelIndex];
+      if (answer?.followup !== undefined && (
+        isCodex || modelId !== 'xai/grok-4.7' || (main && id !== 'visual')
+        || answer.followup?.route !== 'Grok subscription Responses'
+        || answer.followup.reasoningEffort !== 'high' || answer.followup.maxVisibleOutputTokens !== 16384
+        || !/^\d{4}-\d{2}-\d{2}$/.test(answer.followup.date)
+        || answer.score === null
+      )) invalid();
       if (!isCodex && answer?.modelId === modelId && ['unavailable', 'not_run'].includes(answer.status)) {
         if (answer.score !== null || !isText(answer.reason) || answer.turns?.length !== 0
             || !Number.isInteger(answer.attempted) || !inRange(answer.attempted, turns)

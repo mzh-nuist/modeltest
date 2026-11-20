@@ -11,9 +11,24 @@ function collection(batch, model) {
     condition: codex
       ? 'Codex Standard · High · 客户端 ' + batch.clientVersion
         + '。每题独立会话，客户端未设总时限和输出上限，服务端输出上限未知。'
-      : 'CommandCode API · 请求 High · 输出上限 ' + batch.maxOutputTokens
+      : 'CommandCode API · 请求 High · 发送的 max_completion_tokens 为 ' + batch.maxOutputTokens.toLocaleString('zh-CN')
         + ' token。每题独立会话，无客户端总时限，无自动重试。型号与推理档以请求配置为准。'
         + (batch.deliveryNote || ''),
+  };
+}
+
+function answerCollection(metadata, answer) {
+  const followup = answer.followup;
+  if (!followup) return metadata;
+  return {
+    ...metadata,
+    apiModel: 'grok-4.7',
+    provider: 'Grok',
+    checkedAt: followup.date,
+    collectionLabel: 'Grok 订阅 High',
+    condition: 'Grok 订阅 · Responses · High · 正文上限 '
+      + followup.maxVisibleOutputTokens.toLocaleString('zh-CN') + ' token。推理用量另计。',
+    followup: true,
   };
 }
 
@@ -51,15 +66,18 @@ export function publishCodexMain({data, book}, batch, bank) {
         reviewer: 'assistant', criteriaScores,
         measurement: {
           status: 'success', output: answer.turns.at(-1), outputs: answer.turns,
-          ...metadata,
+          ...answerCollection(metadata, answer),
         },
       };
     });
     const pending = items.filter(item => item.score === null).map(item => book.tasks.find(task => task.id === item.taskId).name);
+    const mixed = items.some(item => item.measurement.followup);
     rows.push({modelId: id, selectionFinal: pending.length === 0, items});
     models.push({
       id, name: model.name, family: id === 'grok47' ? 'Grok' : 'GPT',
       highOnly: true, selectedEffort: 'high', ...metadata,
+      ...(mixed ? {collectionLabel: 'High · 含补测',
+        condition: metadata.condition + ' 鹈鹕题由 Grok 订阅 Responses 补测，其余七题沿用原入口。'} : {}),
       pendingReason: pending.length ? pending.join('、') + '缺少完整答卷。总分待评。' : null,
       report: {
         runs: items.slice(0, bank.tasks.length).map(item => ({
@@ -70,7 +88,8 @@ export function publishCodexMain({data, book}, batch, bank) {
     });
   }
   const requests = main.reduce((sum, item) => sum + item.answers.reduce(
-    (total, answer) => total + (answer.attempted ?? item.prompts.length), 0), 0);
+    (total, answer) => total + (answer.attempted ?? item.prompts.length)
+      + (answer.followup && item.id === 'visual' ? 1 : 0), 0), 0);
   const successes = main.reduce((sum, item) => sum + item.answers.filter(answer => answer.score !== null).length * item.prompts.length, 0);
   const counts = batch.route === 'Codex app-server'
     ? {codexRequests: (data.codexRequests || 0) + requests}
@@ -100,7 +119,7 @@ export function publishCodexShort(results, batch, bank) {
         throw new Error('Codex 短题答卷重复');
       }
       return {
-        modelId: id, name: model.name, ...collection(batch, model),
+        modelId: id, name: model.name, ...answerCollection(collection(batch, model), answer),
         taskId: task.id, caseId: example.id, status, output, grade,
       };
     });

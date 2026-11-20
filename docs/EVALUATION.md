@@ -29,7 +29,9 @@ GPT‑6.2 Sol 与 Astra 沿用同一套八题和评分标准，通过 Codex Stan
 - `dist/data/high-expanded.json`：后续五款模型的独立批次与复核记录。
 - `dist/data/codex-gpt62-20261118.json`：两款 GPT‑6.2 的八题答卷、四个短题样例、分数与题目版本摘要。
 - `dist/data/codex-terra-20261118.json`：GPT‑6.1 Terra 的同题答卷，沿用 Codex Standard High 设置。
-- `dist/data/grok47-high-20261118.json`：Grok 4.7 的 CommandCode API High 答卷。缺少完整交付的项目暂缺分数，总分待评。
+- `dist/data/grok47-high-20261118.json`：Grok 4.7 的 CommandCode API High 答卷。鹈鹕首轮返回不完整的流，后续通过 Grok 订阅 High 补测得 5/10，已标明入口。斑马请求发送的 `max_completion_tokens` 为 16,384，接口回报 46,281 个输出 token，其中含 39,390 个推理 token。回报总量超出当次预算预留，四个短题样例未发送。
+
+Grok 4.7 的四个短题样例随后通过 Grok 订阅的 Responses 接口补测，显式 High，正文上限设为 16,384 token。四关成绩依次为 100、100、100、90。最后一关的 JSON 在代码围栏内，只扣格式分。
 - `dist/data/completed-suite.json`：历史补充答卷；由前端合并规则决定适用范围。
 - `dist/data/playful-season.json`：新一期题目、评分与状态，和第一期成绩分开。
 - 其余 `demo`、`offline` 文件是演示或离线夹具；历史批次也不自动进入当前榜单。

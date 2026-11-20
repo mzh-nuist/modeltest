@@ -127,11 +127,17 @@
       "answers": [
         {
           "modelId": "xai/grok-4.7",
-          "score": null,
-          "turns": [],
-          "status": "unavailable",
-          "attempted": 1,
-          "reason": "接口返回流不完整，没有交付正文，本题暂缺分数。"
+          "turns": [
+            "```svg\n<svg width=\"800\" height=\"600\" viewBox=\"0 0 800 600\" xmlns=\"http://www.w3.org/2000/svg\">\n  <!-- Frame rear triangle -->\n  <path d=\"M400 240 L400 380 L220 380 L220 240 L400 240\" fill=\"none\" stroke=\"#333\" stroke-width=\"12\" />\n  <!-- Frame front triangle -->\n  <path d=\"M400 240 L580 200 L580 380 L400 380\" fill=\"none\" stroke=\"#333\" stroke-width=\"12\" />\n  <!-- Saddle -->\n  <ellipse cx=\"400\" cy=\"170\" rx=\"45\" ry=\"18\" fill=\"#555\" stroke=\"#333\" stroke-width=\"4\" />\n  <!-- Body -->\n  <ellipse cx=\"380\" cy=\"280\" rx=\"55\" ry=\"35\" fill=\"white\" stroke=\"#555\" stroke-width=\"4\" />\n  <!-- Head -->\n  <circle cx=\"420\" cy=\"255\" r=\"22\" fill=\"white\" stroke=\"#555\" stroke-width=\"4\" />\n  <!-- Eye -->\n  <circle cx=\"425\" cy=\"252\" r=\"6\" fill=\"black\" />\n  <!-- Beak -->\n  <ellipse cx=\"500\" cy=\"255\" rx=\"55\" ry=\"12\" fill=\"#f4d03f\" stroke=\"#555\" stroke-width=\"3\" />\n  <!-- Pouch -->\n  <ellipse cx=\"500\" cy=\"280\" rx=\"35\" ry=\"18\" fill=\"#e67e22\" stroke=\"#555\" stroke-width=\"3\" />\n  <!-- Left foot -->\n  <ellipse cx=\"370\" cy=\"380\" rx=\"22\" ry=\"16\" fill=\"#e74c3c\" stroke=\"#555\" stroke-width=\"2\" />\n  <!-- Right foot -->\n  <ellipse cx=\"430\" cy=\"355\" rx=\"22\" ry=\"16\" fill=\"#e74c3c\" stroke=\"#555\" stroke-width=\"2\" />\n  <!-- Left toes -->\n  <circle cx=\"365\" cy=\"370\" r=\"7\" fill=\"#c0392b\" />\n  <circle cx=\"372\" cy=\"385\" r=\"6\" fill=\"#c0392b\" />\n  <circle cx=\"375\" cy=\"395\" r=\"8\" fill=\"#c0392b\" />\n  <!-- Right toes -->\n  <circle cx=\"425\" cy=\"345\" r=\"7\" fill=\"#c0392b\" />\n  <circle cx=\"435\" cy=\"355\" r=\"6\" fill=\"#c0392b\" />\n  <circle cx=\"445\" cy=\"365\" r=\"8\" fill=\"#c0392b\" />\n  <!-- Left wing -->\n  <ellipse cx=\"450\" cy=\"220\" rx=\"95\" ry=\"32\" fill=\"#7f8c8d\" stroke=\"#555\" stroke-width=\"5\" transform=\"rotate(-10 450 220)\" />\n  <!-- Right wing -->\n  <ellipse cx=\"550\" cy=\"220\" rx=\"95\" ry=\"32\" fill=\"#7f8c8d\" stroke=\"#555\" stroke-width=\"5\" transform=\"rotate(10 550 220)\" />\n  <!-- Tail -->\n  <polygon points=\"320 290,300 275,320 255,340 275\" fill=\"#7f8c8d\" stroke=\"#555\" stroke-width=\"3\" />\n  <!-- Rear wheel -->\n  <circle cx=\"220\" cy=\"380\" r=\"80\" fill=\"white\" stroke=\"#333\" stroke-width=\"8\" />\n  <!-- Front wheel -->\n  <circle cx=\"580\" cy=\"380\" r=\"80\" fill=\"white\" stroke=\"#333\" stroke-width=\"8\" />\n  <!-- Crank center -->\n  <circle cx=\"400\" cy=\"380\" r=\"6\" fill=\"#333\" />\n  <!-- Left pedal -->\n  <rect x=\"360\" y=\"385\" width=\"45\" height=\"22\" fill=\"#ddd\" stroke=\"#333\" stroke-width=\"3\" transform=\"rotate(150 400 380)\" />\n  <!-- Right pedal -->\n  <rect x=\"395\" y=\"348\" width=\"45\" height=\"22\" fill=\"#ddd\" stroke=\"#333\" stroke-width=\"3\" transform=\"rotate(-30 400 380)\" />\n  <!-- Handlebars left bar -->\n  <line x1=\"580\" y1=\"200\" x2=\"500\" y2=\"155\" stroke=\"#7f8c8d\" stroke-width=\"14\" />\n  <!-- Handlebars right bar -->\n  <line x1=\"580\" y1=\"200\" x2=\"660\" y2=\"155\" stroke=\"#7f8c8d\" stroke-width=\"14\" />\n  <!-- Left grip -->\n  <circle cx=\"500\" cy=\"155\" r=\"9\" fill=\"#bdc3c7\" stroke=\"#333\" stroke-width=\"2\" />\n  <!-- Right grip -->\n  <circle cx=\"660\" cy=\"155\" r=\"9\" fill=\"#bdc3c7\" stroke=\"#333\" stroke-width=\"2\" />\n</svg>\n```"
+          ],
+          "followup": {
+            "route": "Grok subscription Responses",
+            "reasoningEffort": "high",
+            "maxVisibleOutputTokens": 16384,
+            "date": "2026-11-18"
+          },
+          "score": 5,
+          "reason": "浏览器可渲染，轮组和车架可辨。车座悬空，身体没有坐上去；翅膀未握车把，两脚与踏板的接触也不清楚。原回答加了代码围栏。按空间连接部分完成计 5/10。"
         }
       ]
     },
@@ -190,11 +196,19 @@
       "answers": [
         {
           "modelId": "xai/grok-4.7",
-          "score": null,
-          "turns": [],
-          "status": "not_run",
-          "attempted": 0,
-          "reason": "截至本次发布，尚未采集本题。"
+          "turns": [
+            "URULLRDDLU"
+          ],
+          "followup": {
+            "route": "Grok subscription Responses",
+            "reasoningEffort": "high",
+            "maxVisibleOutputTokens": 16384,
+            "date": "2026-11-18"
+          },
+          "score": 100,
+          "content": 80,
+          "format": 10,
+          "delivery": 10
         }
       ]
     },
@@ -209,11 +223,19 @@
       "answers": [
         {
           "modelId": "xai/grok-4.7",
-          "score": null,
-          "turns": [],
-          "status": "not_run",
-          "attempted": 0,
-          "reason": "截至本次发布，尚未采集本题。"
+          "turns": [
+            "RUULULDDURRRUL"
+          ],
+          "followup": {
+            "route": "Grok subscription Responses",
+            "reasoningEffort": "high",
+            "maxVisibleOutputTokens": 16384,
+            "date": "2026-11-18"
+          },
+          "score": 100,
+          "content": 80,
+          "format": 10,
+          "delivery": 10
         }
       ]
     },
@@ -228,11 +250,19 @@
       "answers": [
         {
           "modelId": "xai/grok-4.7",
-          "score": null,
-          "turns": [],
-          "status": "not_run",
-          "attempted": 0,
-          "reason": "截至本次发布，尚未采集本题。"
+          "turns": [
+            "{\"can\":false,\"cut\":[\"BC\"]}"
+          ],
+          "followup": {
+            "route": "Grok subscription Responses",
+            "reasoningEffort": "high",
+            "maxVisibleOutputTokens": 16384,
+            "date": "2026-11-18"
+          },
+          "score": 100,
+          "content": 80,
+          "format": 10,
+          "delivery": 10
         }
       ]
     },
@@ -247,11 +277,19 @@
       "answers": [
         {
           "modelId": "xai/grok-4.7",
-          "score": null,
-          "turns": [],
-          "status": "not_run",
-          "attempted": 0,
-          "reason": "截至本次发布，尚未采集本题。"
+          "turns": [
+            "```json\n{\"can\": true, \"cut\": []}\n```"
+          ],
+          "followup": {
+            "route": "Grok subscription Responses",
+            "reasoningEffort": "high",
+            "maxVisibleOutputTokens": 16384,
+            "date": "2026-11-18"
+          },
+          "score": 90,
+          "content": 80,
+          "format": 0,
+          "delivery": 10
         }
       ]
     }
@@ -263,5 +301,5 @@
     "assets/receipt-chilli-pork.png": "73a513249777e5c4ea4d88545e9c7c0b83344b9284f5b0b29c0f0b5690ccee11"
   },
   "maxOutputTokens": 16384,
-  "deliveryNote": "斑马题的接口用量回报超过请求设置，短题加赛未发送。"
+  "deliveryNote": "斑马题接口报告 46,281 个输出 token，其中 39,390 个是推理 token。合计超出原单次预算预留，原批次未发送短题加赛。"
 }

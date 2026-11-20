@@ -28,7 +28,9 @@
 
 同系列同档位只展示已有完整答卷的最新版本。Terra 是独立档位，[GPT‑6.1 Terra](https://modeltest.cc/#checkup/model/gpt61-terra) 同题得 99 分，四个短题样例均为满分。
 
-[Grok 4.7](https://modeltest.cc/#checkup/model/grok47) 已公开七项答卷，斑马题 13/15。鹈鹕题缺少完整答卷，八题总分待评。
+[Grok 4.7](https://modeltest.cc/#checkup/model/grok47) 八题总分 73 分。鹈鹕题由 Grok 订阅 High 补测，得 5/10；斑马题 13/15。
+
+Grok 订阅 High 补测四个短题，推老板两关都是 100 分，齿轮两关为 100 和 90 分。
 
 ## 新短题实测
 

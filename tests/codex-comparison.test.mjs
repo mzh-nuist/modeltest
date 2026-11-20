@@ -130,6 +130,11 @@ test('Grok shows usable replies but leaves missing delivery unscored and off the
   const projected = projectHighSuite(json('high-suite'), json('daily-measured'), json('completed-suite'), checkup);
   const historical = mergeHighExpanded(projected, json('high-expanded'), checkup);
   const source = json('grok47-high-20261118');
+  const visual = source.cases.find(item => item.id === 'visual');
+  if (visual.answers[0].followup) visual.answers[0] = {
+    modelId:'xai/grok-4.7', score:null, turns:[], status:'unavailable', attempted:1,
+    reason:'首轮接口返回流不完整，未交付正文。',
+  };
   const grok = validateCodexComparison(source, ['xai/grok-4.7'], 'CommandCode API');
   const {data, book} = publishCodexMain(historical, grok, checkup);
   const row = book.models.at(-1);
@@ -145,8 +150,33 @@ test('Grok shows usable replies but leaves missing delivery unscored and off the
   const details = publishedModel(data, checkup, 'grok47', book);
   assert.match(details, /按字面合计是/);
   assert.match(details, /本次请求未取得完整答卷/);
-  assert.match(details, /斑马题的接口用量回报超过请求设置/);
+  assert.match(details, /max_completion_tokens 为 16,384/);
+  assert.match(details, /46,281 个输出 token，其中 39,390 个是推理 token/);
   assert.match(studioWorks(data, book, 'zebra', 'grok47'), /class="work-image"/);
   const shorts = json('short-challenge-results');
-  assert.deepEqual(publishCodexShort(shorts, grok, bank), shorts);
+  const scoredShorts = grok.cases.filter(item => item.suite === 'short' && item.answers[0].score !== null);
+  assert.deepEqual(scoredShorts.map(item => item.answers[0].score), [100,100,100,90]);
+  const merged = publishCodexShort(shorts, grok, bank);
+  assert.deepEqual(merged.records.slice(0, shorts.records.length), shorts.records);
+  assert.equal(merged.modelCalls - shorts.modelCalls, scoredShorts.length);
+  assert.ok(merged.records.slice(shorts.records.length).every(record => record.collectionLabel === 'Grok 订阅 High'));
+});
+
+test('a Grok subscription retest preserves the original request count and identifies its own route', () => {
+  const checkup = json('checkup');
+  const initial = projectHighSuite(json('high-suite'), json('daily-measured'), json('completed-suite'), checkup);
+  const fixture = json('grok47-high-20261118');
+  const visual = fixture.cases.find(item => item.id === 'visual');
+  visual.answers[0] = {
+    modelId:'xai/grok-4.7', score:5, reason:'Synthetic comparison fixture',
+    turns:[evidence.cases.find(item => item.id === 'visual').answers[0].turns[0]],
+    followup:{route:'Grok subscription Responses', reasoningEffort:'high', maxVisibleOutputTokens:16384, date:fixture.date},
+  };
+  const batch = validateCodexComparison(fixture, ['xai/grok-4.7'], 'CommandCode API');
+  const {data, book} = publishCodexMain(initial, batch, checkup);
+  assert.equal(data.totalRequests - initial.data.totalRequests, 14);
+  const detail = publishedModel(data, checkup, 'grok47', book);
+  assert.match(detail, /High · 含补测/);
+  assert.match(detail, /Grok 订阅 · Responses · High · 正文上限 16,384/);
+  assert.equal(weightedSummary(book, book.models.at(-1)).finalScore, 73);
 });
