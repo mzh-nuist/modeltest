@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>周末球场预约</title>
+<link rel="stylesheet" href="style.css">
+<main>
+  <h1>周末球场预约</h1>
+  <p id="intro">每人每周最多预约一场。</p>
+  <section id="reservation" aria-labelledby="available">
+    <h2 id="available">可预约场次</h2>
+    <ul id="slots"></ul>
+    <p id="confirmation" role="status"></p>
+  </section>
+  <section id="rules">
+    <h2>到场须知</h2>
+    <p>请提前十分钟到场。</p>
+    <a href="/rules.html">查看场馆规则</a>
+  </section>
+</main>
+<script src="reservation.js"></script>
+</html>

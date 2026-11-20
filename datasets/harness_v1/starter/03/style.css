@@ -1,0 +1,5 @@
+body { margin: 0; font: 16px/1.6 system-ui, sans-serif; color: #152b3b; background: #edf5fc; }
+main { max-width: 620px; margin: 0 auto; padding: 16px; }
+section { background: white; padding: 16px; margin-block: 12px; border-radius: 12px; }
+li { display: flex; justify-content: space-between; gap: 8px; margin-block: 8px; }
+button { min-height: 36px; }

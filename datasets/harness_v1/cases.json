@@ -1,0 +1,53 @@
+{
+  "id": "harness-v1",
+  "effort": "high",
+  "cases": [
+    {
+      "id": "02",
+      "title": "跨午夜的预约排期",
+      "kind": "后端 · 推理纠错",
+      "editable": ["schedule.mjs"],
+      "prompts": [
+        "现有预约检测偶尔把跨午夜的预约判断错。直接修复工作目录中的 schedule.mjs。保留 findConflicts(appointments, requested) 导出，appointments 为 { id, start, end } 数组。start/end 只接收带显式 UTC 偏移或 Z 的分钟级 ISO 时间（YYYY-MM-DDTHH:MMZ 或 YYYY-MM-DDTHH:MM±HH:MM）。按绝对时间计算，预约区间为左闭右开：上一场结束时下一场可开始。任何时间非法、缺少时区或结束不晚于开始，整次调用抛 RangeError；即使列表为空也校验 requested。返回冲突预约的 ID，按原列表顺序，不能改输入。请编辑文件，可运行本地测试。不要增加依赖。"
+      ],
+      "groups": [
+        ["跨日期跨时区正确重叠", 35],
+        ["刚好接壤不算重叠", 25],
+        ["非法时间与倒置范围", 25],
+        ["顺序和输入保持", 15]
+      ]
+    },
+    {
+      "id": "03",
+      "title": "只改一个前端组件",
+      "kind": "前端 · 定点修改",
+      "editable": ["index.html", "reservation.js", "style.css"],
+      "prompts": [
+        "直接修改现有预约页面。只给预约区增加「仅看有空位」复选框和实时结果计数，默认展示全部，包括无空位。勾选后隐藏无空位日期，取消后恢复原顺序。键盘可切换，筛选状态需要可读的计数；页面从 320px 手机宽度到桌面都能使用。保留页标题、副标题、其他区域的原文字和链接，以及已有日期的「预约」交互。不要新增依赖或请求网络，现有数据为准。"
+      ],
+      "groups": [
+        ["默认与过滤、取消状态", 35],
+        ["可访问键盘操作与可读计数", 25],
+        ["保留文字、链接与预约交互", 25],
+        ["手机布局无横向溢出", 15]
+      ]
+    },
+    {
+      "id": "04",
+      "title": "需求变了，旧约束还在",
+      "kind": "后端 · 多轮需求",
+      "editable": ["booking.mjs"],
+      "prompts": [
+        "这是一个预约服务的小仓库。请编辑 booking.mjs，保留 createDesk() 导出。先实现返回 book({ id, seats, channel }) 和 list() 的服务。总库存 8，单笔最多 3，seats 必须是正整数，预约 id 是非空字符串，渠道只允许 web 或 phone。按下单顺序保存记录，list 返回副本。同 id 同参数重复提交返回原成功记录、不重复占库存；同 id 不同参数返回 conflict。失败返回 { ok:false, code }，校验失败用 invalid，库存不足用 capacity；成功返回 { ok:true, booking:{id,seats,channel} }。不添加依赖。请先完成这部分。",
+        "业务刚改了一点：phone 渠道暂停新增预约，返回 {ok:false,code:'closed'}。参数校验、已成功记录的重放与冲突判定应优先于渠道状态。总库存、单笔限制、返回格式和之前约定继续有效。请编辑同一个文件。",
+        "最终需求再加一条：支持 cancel(id)，首次成功撤销返回 {ok:true}，归还该笔库存并从 list 隐藏。再次撤销同一个 id 仍返回 {ok:true}，无法找到的 id 返回 {ok:false,code:'not_found'}。撤销后相同 id 不能用于新订单，book 返回 conflict，即使参数相同。保留之前全部规则。请完成并自行核对。"
+      ],
+      "groups": [
+        ["首轮库存、最大件数与输入", 25],
+        ["保留幂等与冲突顺序", 25],
+        ["保留电话渠道规则", 20],
+        ["撤销、释放库存和重放", 30]
+      ]
+    }
+  ]
+}
