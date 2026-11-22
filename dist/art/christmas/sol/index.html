@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; media-src 'self'; img-src 'self' data:; object-src 'none'; base-uri 'none'; form-action 'none'; connect-src 'none'">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1715">
+  <title>Noël in Motion · 圣诞树的十九秒</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="tree.js" defer></script>
+</head>
+<body>
+  <main>
+    <header class="masthead">
+      <div class="studio">
+        <span class="seal" aria-hidden="true">✦</span>
+        <span>冬日放映室 <small>WINTER STUDIO</small></span>
+      </div>
+      <span class="edition">CHRISTMAS SPECIAL <b>№ 01</b></span>
+    </header>
+
+    <article class="card" aria-labelledby="title">
+      <div class="intro">
+        <p class="eyebrow">一张会跳舞的圣诞贺卡</p>
+        <h1 id="title">Noël in <em>Motion.</em></h1>
+        <p class="subtitle">圣诞树的十九秒</p>
+        <p class="description">鼓点唤醒松枝，铃声点亮灯饰。<br>请收下这支冬夜里的小舞曲。</p>
+        <div class="movement" aria-label="当前段落">
+          <span id="chapter-no" aria-hidden="true">I</span>
+          <div><span id="chapter-en">OVERTURE</span><span id="chapter-zh">序曲 · 松枝初醒</span></div>
+        </div>
+      </div>
+
+      <div id="stage" data-section="opening">
+        <canvas role="img" aria-label="冬夜里，一棵挂满金色灯串、红色玻璃球和八芒星的圣诞树，树下摆着礼物。"></canvas>
+        <div class="stage-index" aria-hidden="true"><span>FIG. 01</span><span>✧</span></div>
+        <div class="stage-inscription" aria-hidden="true">JOYEUX NOËL</div>
+      </div>
+    </article>
+
+    <audio id="music" preload="auto" src="../music.wav"></audio>
+    <section class="player" aria-label="音乐播放器">
+      <button id="play" type="button" aria-label="播放">
+        <span class="play-disc" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+            <path class="play-glyph" d="M8 4.9v14.2L19 12z"/>
+            <path class="pause-glyph" d="M7 5h3.6v14H7zm6.4 0H17v14h-3.6z"/>
+            <path class="replay-glyph" d="M12 4a8 8 0 1 1-7.8 9.7h2.1A6 6 0 1 0 8 7.55L11.1 11H3V3l3.66 3.03A7.97 7.97 0 0 1 12 4z"/>
+          </svg>
+        </span>
+        <span id="play-label">播放</span>
+      </button>
+      <div class="scrubber">
+        <div class="track">
+          <input id="seek" type="range" min="0" max="19" step="any" value="0" aria-label="播放进度（秒）">
+          <div class="markers" aria-hidden="true"><i></i><i></i><i></i></div>
+        </div>
+        <div class="track-captions" aria-hidden="true"><span>序曲</span><span>快舞</span><span>尾声</span></div>
+      </div>
+      <div class="timecode" aria-hidden="true"><span id="elapsed">0:00</span><span class="time-divider">/</span><span id="duration">0:19</span></div>
+      <button id="mute" type="button" aria-label="静音" aria-pressed="false">
+        <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M4 9h4l5-4v14l-5-4H4z"/>
+          <path class="sound-waves" d="M16 9c2 1.3 2 4.7 0 6m2.5-8.5c3.8 3 3.8 8 0 11"/>
+          <path class="sound-off" d="m16 10 5 5m0-5-5 5"/>
+        </svg>
+      </button>
+      <p id="audio-status" class="audio-status" role="status" hidden></p>
+    </section>
+
+    <footer>
+      <span>✦ <span>愿你的冬夜，有灯也有歌。</span></span>
+      <span>A LITTLE WINTER BALLET</span>
+    </footer>
+  </main>
+</body>
+</html>

@@ -127,7 +127,7 @@ test('light and dark reading tokens meet text contrast targets and public styles
   }
   assert.ok(contrast('ffffff','2457cf')>=4.5);
   const allLinks=[...html.matchAll(/<link rel="stylesheet" href="([^"]+)"/g)].map(m=>m[1]);
-  const featureStyles=['dynamic-challenge.css','short-challenges.css','codex-comparison.css'];
+  const featureStyles=['christmas-challenge.css','dynamic-challenge.css','short-challenges.css','codex-comparison.css'];
   const links=allLinks.filter(x=>!featureStyles.includes(x.split('?')[0]));
   assert.deepEqual(allLinks.slice(-featureStyles.length).map(x=>x.split('?')[0]),featureStyles);
   assert.match(links.at(-4),/^experience\.css/);

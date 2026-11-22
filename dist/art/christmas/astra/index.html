@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; media-src 'self'; img-src 'self' data:; object-src 'none'; base-uri 'none'; form-action 'none'; connect-src 'none'">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#171721"><title>Evergreen Serenade · Northpole Radio</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<svg class="defs" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs>
+<symbol id="record" viewBox="0 0 44 44"><circle cx="22" cy="22" r="20" fill="currentColor"/><g fill="none" stroke="#22202b" stroke-width="1.5"><path d="M7 22a15 15 0 0 1 15-15M11 22a11 11 0 0 1 11-11M37 22a15 15 0 0 1-15 15M33 22a11 11 0 0 1-11 11"/></g><circle cx="22" cy="22" r="6.3" fill="#22202b"/><circle cx="22" cy="22" r="2" fill="currentColor"/></symbol>
+<symbol id="speaker" viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4zM16 9q3 3 0 6m2-9q6 6 0 12"/></symbol>
+<symbol id="silent" viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4zM16 9l6 6m0-6-6 6"/></symbol>
+<symbol id="again" viewBox="0 0 24 24"><path d="M5 10a7.5 7.5 0 1 1 .4 6M5 4v6h6"/></symbol>
+<symbol id="twig" viewBox="0 0 40 40"><path d="m8 33 23-25M16 24Q4 24 4 18q8-1 12 6Zm4-5q-12-1-11-9 8 2 11 9Zm4-5q-8-5-6-12 7 4 6 12Zm2 0q3-13 10-12-1 8-10 12Zm-8 9q7-10 17-8-4 7-17 8Zm-6 6q7-6 16-4-4 6-16 4Z"/></symbol>
+<symbol id="bell" viewBox="0 0 40 40"><g transform="rotate(18 20 20)"><path d="M7 29c6-6 3-18 13-18s7 12 13 18zM8 32h24M17 34q3 6 6 0M17 9q-1-7 4-6 4 1 2 6M16 16q-3 4-3 9"/></g><path d="m31 4 1 3 4 1-4 1-1 4-1-4-3-1 3-1z"/></symbol>
+<symbol id="flare" viewBox="0 0 40 40"><path d="m20 3 2.6 12.7L32 9l-6.4 9L38 20l-12.4 2.5L32 32l-9.6-6.5L20 38l-2.4-12.6L8 32l6.5-9.6L2 20l12.6-2.4L8 8l9.5 7.5Z"/><circle cx="20" cy="20" r="2"/></symbol>
+</defs></svg>
+<main>
+<header><div class="brand"><svg><use href="#record"/></svg>Northpole Radio<span class="reg">®</span></div><div class="station micro"><span class="freq">FM 12.25</span><span class="edition">HOLIDAY EDITION</span></div></header>
+<section class="player" aria-label="Musical Christmas card">
+<div id="stage"><canvas aria-label="An illustrated alpine Christmas tree dancing to the music"></canvas>
+<div class="sleeve"><div class="eyebrow micro"><i></i> THE WINTER SESSIONS</div><h1>Evergreen<br><em>Serenade</em></h1><p>A Christmas dance in three movements.</p><div class="catalog micro"><b>NP—025</b><span></span> STEREO RECORDING</div></div>
+<div class="plate micro">FIG. 01 &nbsp;/&nbsp; PICEA ABIES</div></div>
+<audio id="music" preload="auto" src="../music.wav"></audio>
+<div class="transport">
+<button id="play" type="button" aria-label="Play" title="Play / Pause"><svg viewBox="0 0 24 24"><path id="playGlyph" d="M7 4.5 20 12 7 19.5z"/></svg></button>
+<div class="track"><div class="micro"><i id="led"></i><span id="status">READY TO PLAY</span></div><strong>Evergreen Serenade</strong></div>
+<div class="timeline"><div class="rail"><input id="seek" type="range" min="0" max="19" step="0.01" value="0" aria-label="Playback position in seconds"></div><div class="times micro"><span id="now">00:00</span><span>00:19</span></div></div>
+<div class="extra"><button id="replay" aria-label="Replay from the start" title="Replay"><svg><use href="#again"/></svg></button><button id="mute" aria-label="Mute" title="Mute"><svg><use id="volIcon" href="#speaker"/></svg></button></div></div>
+</section>
+<section class="sheet" aria-label="Cue sheet"><div class="sheethead micro"><span class="bars"><i></i><i></i><i></i><i></i></span>CUE SHEET<span class="rule"></span><small>03 MOVEMENTS</small></div>
+<div class="movements">
+<button data-to="0" class="active"><svg><use href="#twig"/></svg><span><small class="micro">I &nbsp;/&nbsp; PRELUDE</small><strong>First snowfall</strong></span><time>00:00</time></button>
+<button data-to="8.4"><svg><use href="#bell"/></svg><span><small class="micro">II &nbsp;/&nbsp; ALLEGRO</small><strong>Bell dance</strong></span><time>00:08.4</time></button>
+<button data-to="17.35"><svg><use href="#flare"/></svg><span><small class="micro">III &nbsp;/&nbsp; CODA</small><strong>Afterglow</strong></span><time>00:17.35</time></button>
+</div></section>
+<footer class="micro"><span>NORTHPOLE SOUND DEPT.</span><span class="footerline"></span><span>SEASONAL PRESSING &nbsp;✳&nbsp; VOL. 01</span></footer>
+</main><script src="tree.js"></script></body></html>

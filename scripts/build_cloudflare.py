@@ -8,7 +8,7 @@ import subprocess
 import uuid
 
 ROOT = Path(__file__).resolve().parents[1]
-ALLOWED = {'.html', '.css', '.js', '.json', '.svg', '.png', '.jpg', '.jpeg', '.webp', '.ico'}
+ALLOWED = {'.html', '.css', '.js', '.json', '.svg', '.png', '.jpg', '.jpeg', '.webp', '.ico', '.wav'}
 
 
 def public_files():
@@ -69,7 +69,8 @@ def build(out, database_id=None):
     }, indent=2) + '\n', encoding='utf8')
     (upload / '_headers').write_text(
         '/*\n  Cache-Control: public, no-cache, no-transform\n  X-Content-Type-Options: nosniff\n'
-        '  Referrer-Policy: strict-origin-when-cross-origin\n', encoding='utf8'
+        '  Referrer-Policy: strict-origin-when-cross-origin\n'
+        '/art/christmas/*\n  Content-Security-Policy: sandbox allow-scripts\n', encoding='utf8'
     )
     config = {
         'name': 'modeltest-cc',

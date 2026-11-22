@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; media-src 'self'; img-src 'self' data:; object-src 'none'; base-uri 'none'; form-action 'none'; connect-src 'none'">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>圣诞树的十九秒 · A Little Christmas Dance</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="card">
+  <header class="heading">
+    <div><p class="eyebrow"><span>✦</span> A LITTLE CHRISTMAS CARD <span>✦</span></p><h1>圣诞树的十九秒</h1><p class="subtitle">听，灯光正在跟着铃声跳舞。</p></div>
+    <div class="edition">NO. 19<br><span>THE WINTER EDITION</span></div>
+  </header>
+  <div id="stage" aria-label="一棵随音乐起舞、灯饰随铃声闪烁的圣诞树">
+    <canvas id="scene" width="900" height="720"></canvas>
+    <div class="scene-label"><span class="label-line"></span><span id="chapter">序曲 · 雪夜初醒</span></div>
+    <div class="scene-number">✳ &nbsp; A MOMENT OF MAGIC &nbsp; ✳</div>
+  </div>
+  <section class="player" aria-label="音乐播放器">
+    <audio id="music" preload="auto" src="../music.wav"></audio>
+    <button id="play" type="button" aria-label="播放音乐"><span class="play-icon">▶</span></button>
+    <div class="track">
+      <div class="track-title"><span>THE CHRISTMAS DANCE <small> / 圣诞圆舞曲</small></span><span class="sound-mark">♫</span></div>
+      <div class="timeline"><span id="elapsed">0:00</span><input id="seek" aria-label="播放进度，单位为秒" type="range" min="0" max="19" step="0.01" value="0"><span id="duration">0:19</span></div>
+    </div>
+  </section>
+  <footer><span>MADE FOR A LITTLE WONDER</span><span>愿你的冬天闪闪发光 ✦</span></footer>
+</main>
+<script src="tree.js"></script>
+</body>
+</html>

@@ -1,0 +1,265 @@
+{
+  "id": "christmas-cache-v1",
+  "frontendPrompt": "把这个目录里的网页改成一张可播放的圣诞贺卡。请画一棵精美的圣诞树，让它随着同一段 `music.wav` 表演。音乐约 19 秒，开头逐步铺陈，中段加速，最后收束。`cue-sheet.json` 是这段音频的制作时间表，给出重拍、弱拍、铃声和段落。可以用 Canvas、CSS 或 WebGL。画面由你的代码生成，不使用外部图片、包、网络或远程字体。\n\n需要有一个真正的音乐时间轴。重拍适合驱动整棵树的动作，旋律里的高音铃声适合驱动局部灯饰，段落切换应该看得出来。暂停时停在当前位置，拖动进度后立即画出那个时刻的画面，重播从零开始。不靠一条与音乐无关的循环动画。桌面和 390px 手机端都应完整看到树和控制区。请在静音或尚未播放时也给出完整构图。\n\n保留 `#stage` 为可见画面容器，保留 `#music` 为播放 `music.wav` 的 `<audio>`，以及 `#play` 和 `#seek` 两个可键盘操作的控件。`#seek` 的值单位为秒。可添加元素，只修改 `index.html`、`tree.js`、`style.css`。所有操作限在当前题目目录，作品须实际写入文件。制作完可简要说明你的音乐和画面设计。\n\n满分 100。节拍与旋律 45 分，画面完成度 40 分，播放和移动端体验 15 分。会看实际视频、多个时间点的截图和控制行为。",
+  "backendPrompt": "实现 `cache.mjs` 的 `createCache({capacity, ttl, stale, now, load})`。这是一个支持并发合并、过期和后台刷新、失效隔离的 LRU。仅修改 `cache.mjs`，仅使用 Node 标准能力，不安装依赖、不访问网络或父目录。\n\n接口返回 `{ get(key), put(key,value), invalidate(key), stats() }`。`get` 返回 Promise，其他三个为同步方法。`capacity` 是正整数，`ttl` 是正整数毫秒，`stale` 是非负整数毫秒，`now()` 是单调毫秒钟，`load(key)` 可以同步抛错，或返回 Promise。键是任意 JS 字符串，缓存值可以是 `undefined`，也可以是任意 JS 值，按原引用返回。输入配置及调用按所述格式给出。\n\n1. 各 key 的成功 `put` 或当前加载完成时，记录 `writtenAt = now()`。当 `age < ttl` 时为新鲜，直接返回值并更新 LRU。`ttl <= age < ttl + stale` 时返回旧值并更新 LRU，后台刷新。同一键同一代至多一个加载，其他键可以同时加载。完全过期或空缺时等待加载结果。已经启动且仍有效的刷新，在变为完全过期后应供后来 `get` 等待。\n2. 刷新失败保留旧值、原时间戳及原过期规则，下一次可以刷新。调用方因完全过期而等待失败，应收到原错误。任何拒绝都不得让缓存永久卡住或产生未处理的 Promise 拒绝。新值由 `load` 返回时，成功入缓存并更新 LRU。进行中的加载本身不占已缓存值的容量。\n3. `put` 或 `invalidate` 立即切断该 key 的旧加载。已经等待旧请求的调用者仍收到旧请求结果或错误，迟到的结果不得写回缓存、覆盖新值、清除新一代的合并状态，也不得重排 LRU。驱逐一个仍在刷新的旧值有同样的隔离效果。驱逐时优先清走所有完全过期值；仍超容量就驱逐最久未用的有效或可用旧值。访问已有值、成功 `put`、成功加载都会触碰 LRU。失败、`stats` 和未完成的空缺加载不会触碰。\n4. `stats()` 返回 `{ keys, inflight }`。`keys` 是当前未完全过期的已缓存键，按最久未用到最近使用排序。`inflight` 是当前未被切断的在途加载数。外部改返回数组不影响缓存。`stats()` 不清理或改变状态，不能切断刷新。允许成功写入时线性扫过期记录，普通新鲜读取和同键合并须平均 O(1)。不要假设所有 key 的值都是真值。评测会用可控时钟和手动完成的 Promise 控制先后，不依赖真实等待。\n\n满分 100。基础 LRU 20，过期边界和可用旧值 20，合并与跨键并发 20，失效/覆盖/驱逐的竞态 25，失败恢复和状态接口 15。",
+  "runs": [
+    {
+      "name": "GPT-6.2 Astra",
+      "harness": "Codex App Server",
+      "effort": "high",
+      "frontend": {
+        "score": 99,
+        "music": 45,
+        "visual": 39,
+        "utility": 15,
+        "work": "astra",
+        "comment": "强弱拍有可见的摆幅和回弹区别，铃声逐个带动不同挂件与星芒，快段与尾声都有完整过渡。树枝纹理、雪山和日轮层次鲜明，桌面大标题略分散树的视觉重心。"
+      },
+      "backend": {
+        "score": 100,
+        "groups": [
+          {
+            "title": "基础 LRU、原引用与空值",
+            "points": 20,
+            "score": 20
+          },
+          {
+            "title": "TTL 边界和后台刷新",
+            "points": 20,
+            "score": 20
+          },
+          {
+            "title": "同键合并与跨键并发",
+            "points": 20,
+            "score": 20
+          },
+          {
+            "title": "覆盖与失效切代",
+            "points": 15,
+            "score": 15
+          },
+          {
+            "title": "过期优先驱逐、驱逐中刷新隔离",
+            "points": 10,
+            "score": 10
+          },
+          {
+            "title": "失败恢复、原异常和状态接口",
+            "points": 15,
+            "score": 15
+          }
+        ]
+      }
+    },
+    {
+      "name": "GPT-6.2 Sol",
+      "harness": "Codex App Server",
+      "effort": "high",
+      "frontend": {
+        "score": 97,
+        "music": 44,
+        "visual": 38,
+        "utility": 15,
+        "work": "sol",
+        "comment": "前段和提速段均有可见的树体摆动，铃声在不同树枝点亮独立光点，尾声切换冷色并收住。枝叶、光环和礼物层次丰富，较暗的枝梢与背景略融合。"
+      },
+      "backend": {
+        "score": 100,
+        "groups": [
+          {
+            "title": "基础 LRU、原引用与空值",
+            "points": 20,
+            "score": 20
+          },
+          {
+            "title": "TTL 边界和后台刷新",
+            "points": 20,
+            "score": 20
+          },
+          {
+            "title": "同键合并与跨键并发",
+            "points": 20,
+            "score": 20
+          },
+          {
+            "title": "覆盖与失效切代",
+            "points": 15,
+            "score": 15
+          },
+          {
+            "title": "过期优先驱逐、驱逐中刷新隔离",
+            "points": 10,
+            "score": 10
+          },
+          {
+            "title": "失败恢复、原异常和状态接口",
+            "points": 15,
+            "score": 15
+          }
+        ]
+      }
+    },
+    {
+      "name": "GPT-6.1 Terra",
+      "harness": "Codex App Server",
+      "effort": "high",
+      "frontend": {
+        "score": 90,
+        "music": 40,
+        "visual": 35,
+        "utility": 15,
+        "work": "terra",
+        "comment": "重拍有星光放大和轻微侧摆，高音轮流点亮树上不同分组。提速后动作加快，但 8.28 与 8.48 秒的主体风格变化较弱。静态贺卡构图完整，背景与部分树缘明度相近。"
+      },
+      "backend": {
+        "score": 100,
+        "groups": [
+          {
+            "title": "基础 LRU、原引用与空值",
+            "points": 20,
+            "score": 20
+          },
+          {
+            "title": "TTL 边界和后台刷新",
+            "points": 20,
+            "score": 20
+          },
+          {
+            "title": "同键合并与跨键并发",
+            "points": 20,
+            "score": 20
+          },
+          {
+            "title": "覆盖与失效切代",
+            "points": 15,
+            "score": 15
+          },
+          {
+            "title": "过期优先驱逐、驱逐中刷新隔离",
+            "points": 10,
+            "score": 10
+          },
+          {
+            "title": "失败恢复、原异常和状态接口",
+            "points": 15,
+            "score": 15
+          }
+        ]
+      }
+    },
+    {
+      "name": "Claude Haiku 5.5",
+      "harness": "Claude Code · CC Switch GOAT",
+      "effort": "high",
+      "frontend": {
+        "score": 88,
+        "music": 42,
+        "visual": 31,
+        "utility": 15,
+        "work": "haiku",
+        "comment": "铃声有独立灯点和位置变化，提速与结尾都有可见的星光扩散。多层三角形轮廓和螺旋灯带一眼能看懂，树枝与礼物的细节较少。"
+      },
+      "backend": {
+        "score": 90,
+        "groups": [
+          {
+            "title": "基础 LRU、原引用与空值",
+            "points": 20,
+            "score": 20
+          },
+          {
+            "title": "TTL 边界和后台刷新",
+            "points": 20,
+            "score": 20
+          },
+          {
+            "title": "同键合并与跨键并发",
+            "points": 20,
+            "score": 20
+          },
+          {
+            "title": "覆盖与失效切代",
+            "points": 15,
+            "score": 15
+          },
+          {
+            "title": "过期优先驱逐、驱逐中刷新隔离",
+            "points": 10,
+            "score": 0
+          },
+          {
+            "title": "失败恢复、原异常和状态接口",
+            "points": 15,
+            "score": 15
+          }
+        ]
+      }
+    },
+    {
+      "name": "Claude Sonnet 5.5",
+      "harness": "Claude Code · CC Switch GOAT",
+      "effort": "high",
+      "frontend": {
+        "status": "未完成"
+      },
+      "backend": {
+        "status": "未完成"
+      }
+    },
+    {
+      "name": "Kimi K3.1 Pro",
+      "harness": "Kimi Code CLI · GOAT",
+      "effort": "high",
+      "frontend": {
+        "status": "未完成"
+      },
+      "backend": {
+        "score": 100,
+        "groups": [
+          {
+            "title": "基础 LRU、原引用与空值",
+            "points": 20,
+            "score": 20
+          },
+          {
+            "title": "TTL 边界和后台刷新",
+            "points": 20,
+            "score": 20
+          },
+          {
+            "title": "同键合并与跨键并发",
+            "points": 20,
+            "score": 20
+          },
+          {
+            "title": "覆盖与失效切代",
+            "points": 15,
+            "score": 15
+          },
+          {
+            "title": "过期优先驱逐、驱逐中刷新隔离",
+            "points": 10,
+            "score": 10
+          },
+          {
+            "title": "失败恢复、原异常和状态接口",
+            "points": 15,
+            "score": 15
+          }
+        ],
+        "note": "Agent 在收尾时中止，已写入的文件通过了完整测试。"
+      }
+    },
+    {
+      "name": "DeepSeek V4.1 Flash Fast",
+      "harness": "DeepSeek Harness · GOAT",
+      "effort": "high",
+      "frontend": {
+        "status": "未完成"
+      },
+      "backend": {
+        "status": "未完成"
+      }
+    }
+  ]
+}
