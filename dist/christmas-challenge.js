@@ -3,7 +3,7 @@ import {arrowRight} from './ui-icons.js?v=20261101-short1';
 
 const route = '#checkup/agent-challenge';
 const art = 'art/christmas/';
-const assetsVersion = '?v=20261122-christmas1';
+const assetsVersion = '?v=20261122-christmas2';
 const bounds = (value, max) => Number.isInteger(value) && value >= 0 && value <= max;
 
 export function validateChristmasChallenge(data) {
@@ -56,7 +56,7 @@ function player(run) {
     <iframe class="christmas-player" title="${escape(run.name)} 的可播放圣诞树" sandbox="allow-scripts" src="${art+work}/index.html${assetsVersion}"></iframe>
     <dl class="christmas-breakdown"><div><dt>节拍与旋律</dt><dd>${music} <small>/ 45</small></dd></div><div><dt>画面</dt><dd>${visual} <small>/ 40</small></dd></div>
     <div><dt>播放与移动端</dt><dd>${utility} <small>/ 15</small></dd></div></dl>
-    <p class="column-note">${escape(comment)}</p></div>`;
+    <p class="column-note">${escape(comment)}</p><p class="column-note">${escape(run.harness)} · High</p></div>`;
 }
 
 export function renderChristmasChallenge(data, selected) {

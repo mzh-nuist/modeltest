@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; media-src 'self'; img-src 'self' data:; object-src 'none'; base-uri 'none'; form-action 'none'; connect-src 'none'">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>圣诞树的十九秒</title>
+<link rel="stylesheet" href="style.css">
+<main>
+  <h1>圣诞树的十九秒</h1>
+  <div id="stage" aria-label="圣诞树动画"></div>
+  <div class="transport">
+    <button id="play" type="button" aria-pressed="false">播放</button>
+    <label class="seek-label">进度
+      <input id="seek" type="range" min="0" max="19" step="0.01" value="0" aria-valuemin="0" aria-valuemax="19" aria-valuenow="0">
+    </label>
+    <output id="clock" for="seek" aria-hidden="true">0.00</output>
+  </div>
+  <audio id="music" preload="auto" src="../music.wav"></audio>
+</main>
+<script src="tree.js"></script>
+</html>

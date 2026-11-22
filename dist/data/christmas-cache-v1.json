@@ -260,6 +260,54 @@
       "backend": {
         "status": "未完成"
       }
+    },
+    {
+      "name": "Grok 4.7",
+      "harness": "Cursor Agent CLI",
+      "effort": "high",
+      "frontend": {
+        "score": 97,
+        "music": 45,
+        "visual": 37,
+        "utility": 15,
+        "work": "grok",
+        "comment": "重拍时整棵树的弯摆清楚，铃声轮流点亮不同位置的挂灯。提速换成紫色极光，尾奏转暖并浮现祝福。红色缎带、积雪和饰品各有层次，树枝轮廓的重复感稍重。"
+      },
+      "backend": {
+        "score": 100,
+        "groups": [
+          {
+            "title": "基础 LRU、原引用与空值",
+            "points": 20,
+            "score": 20
+          },
+          {
+            "title": "TTL 边界和后台刷新",
+            "points": 20,
+            "score": 20
+          },
+          {
+            "title": "同键合并与跨键并发",
+            "points": 20,
+            "score": 20
+          },
+          {
+            "title": "覆盖与失效切代",
+            "points": 15,
+            "score": 15
+          },
+          {
+            "title": "过期优先驱逐、驱逐中刷新隔离",
+            "points": 10,
+            "score": 10
+          },
+          {
+            "title": "失败恢复、原异常和状态接口",
+            "points": 15,
+            "score": 15
+          }
+        ]
+      }
     }
   ]
 }

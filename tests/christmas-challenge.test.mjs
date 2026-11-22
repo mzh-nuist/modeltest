@@ -30,3 +30,12 @@ test('Christmas previews isolate authored JavaScript and use valid artwork route
   changed.runs.find(run => run.frontend.work).frontend.work = '../outside';
   assert.throws(()=>validateChristmasChallenge(changed),/成绩不一致/);
 });
+
+test('the Grok challenge submission identifies the actual Cursor harness',() => {
+  const grok = data.runs.find(run => run.name === 'Grok 4.7');
+  assert.equal(grok.harness,'Cursor Agent CLI');
+  assert.equal(grok.effort,'high');
+  assert.equal(grok.frontend.score,97);
+  assert.equal(grok.backend.score,100);
+  assert.match(renderChristmasChallenge(data,'grok'),/Cursor Agent CLI · High/);
+});
