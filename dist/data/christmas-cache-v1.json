@@ -365,6 +365,55 @@
           }
         ]
       }
+    },
+    {
+      "modelId": "gemini38-flash",
+      "name": "Gemini 3.8 Flash",
+      "harness": "Antigravity CLI",
+      "effort": "high",
+      "frontend": {
+        "score": 95,
+        "music": 43,
+        "visual": 37,
+        "utility": 15,
+        "work": "gemini",
+        "comment": "前段和提速段的树体晃动与亮度脉冲能对上重拍，铃声会点亮局部挂灯，少数局部跳光容易和全树闪动混在一起。快段出现极光，尾声用星芒和祝福收束。雪景、礼物和分层树冠清楚，桌面画面留有较宽侧边。"
+      },
+      "backend": {
+        "score": 100,
+        "groups": [
+          {
+            "title": "基础 LRU、原引用与空值",
+            "points": 20,
+            "score": 20
+          },
+          {
+            "title": "TTL 边界和后台刷新",
+            "points": 20,
+            "score": 20
+          },
+          {
+            "title": "同键合并与跨键并发",
+            "points": 20,
+            "score": 20
+          },
+          {
+            "title": "覆盖与失效切代",
+            "points": 15,
+            "score": 15
+          },
+          {
+            "title": "过期优先驱逐、驱逐中刷新隔离",
+            "points": 10,
+            "score": 10
+          },
+          {
+            "title": "失败恢复、原异常和状态接口",
+            "points": 15,
+            "score": 15
+          }
+        ]
+      }
     }
   ]
 }

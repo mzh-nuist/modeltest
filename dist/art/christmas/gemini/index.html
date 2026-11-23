@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; media-src 'self'; img-src 'self' data:; object-src 'none'; base-uri 'none'; form-action 'none'; connect-src 'none'">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>圣诞树的十九秒 · 音乐舞蹈贺卡</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="card-container">
+    <header class="card-header">
+      <div class="header-top">
+        <span class="badge-tag">🎄 圣诞贺卡</span>
+        <span id="section-badge" class="section-badge">序幕 · 逐步铺陈</span>
+      </div>
+      <h1 class="title">圣诞树的十九秒</h1>
+      <p class="subtitle">随着音乐节拍起舞的圣诞树 · 19秒音乐时间轴</p>
+    </header>
+
+    <div id="stage" aria-label="圣诞树动画">
+      <!-- 动态挂载高精度 Canvas -->
+    </div>
+
+    <audio id="music" preload="auto" src="../music.wav"></audio>
+
+    <div class="controls-card">
+      <div class="seek-bar-container">
+        <div class="time-row">
+          <span class="label-text">音乐时间轴</span>
+          <span id="time-display" class="time-text">0.00s / 19.00s</span>
+        </div>
+        <div class="slider-wrapper">
+          <input id="seek" type="range" min="0" max="19" step="0.01" value="0" aria-label="音乐播放进度">
+          <div id="seek-fill" class="seek-fill"></div>
+        </div>
+      </div>
+
+      <div class="control-actions">
+        <button id="play" type="button" aria-label="播放音乐与动画">
+          <span id="play-icon" class="btn-icon">▶</span>
+          <span id="play-text" class="btn-text">播放</span>
+        </button>
+
+        <div class="cues-monitor" aria-label="节奏指示器">
+          <div class="cue-item" title="重拍 (Accents)">
+            <span id="cue-accent" class="cue-light accent"></span>
+            <span class="cue-label">重拍</span>
+          </div>
+          <div class="cue-item" title="节拍 (Beats)">
+            <span id="cue-beat" class="cue-light beat"></span>
+            <span class="cue-label">弱拍</span>
+          </div>
+          <div class="cue-item" title="高音铃声 (Bells)">
+            <span id="cue-bell" class="cue-light bell"></span>
+            <span class="cue-label">铃声</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <script src="tree.js"></script>
+</body>
+</html>

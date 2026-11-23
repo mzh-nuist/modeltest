@@ -80,3 +80,13 @@ test('Luna links to both artifacts from the Codex High run',() => {
   assert.match(renderChristmasChallenge(data,'luna'),/圣诞树配乐 89 \/ 100/);
   assert.match(renderChristmasChallenge(data,'cache','gpt6-luna'),/100 \/ 100/);
 });
+
+test('Gemini links to the rendered Antigravity High artwork and cache test groups',() => {
+  const run=data.runs.find(row=>row.modelId==='gemini38-flash');
+  assert.equal(run.harness,'Antigravity CLI');
+  assert.equal(run.frontend.score,95);
+  assert.equal(run.backend.score,100);
+  assert.equal(run.backend.groups.length,6);
+  assert.match(renderChristmasChallenge(data,'gemini'),/圣诞树配乐 95 \/ 100/);
+  assert.match(renderChristmasChallenge(data,'cache','gemini38-flash'),/100 \/ 100/);
+});
