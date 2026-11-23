@@ -15,7 +15,7 @@ const escape=value=>String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;'
 test('three columns expose real identities and results without guessing, voting or score mutation',()=>{
   const {data,book}=load(),before=JSON.stringify({data,book});
   const home=studioHome(data,book),works=studioWorks(data,book),repairs=studioRepairs(data,book,bank),scores=studioArchive(data,book);
-  for(const label of ['模型测评','整活作品','翻车修复'])assert.ok(home.includes(label));
+  for(const label of ['日常八题榜','短题实测','Agent 挑战'])assert.ok(home.includes(label));
   assert.match(home,/日常八题榜/);
   assert.match(works,/href="#checkup\/agent-challenge"[^>]*>圣诞树/);
   assert.doesNotMatch(works,/全部作品/);
@@ -63,13 +63,19 @@ test('controller supports all column routes and old play links show identified w
   try{
     globalThis.location={hash:'#checkup'};globalThis.localStorage={getItem:()=>null};
     globalThis.fetch=async url=>{
-      const payload=read(url.replace('data/','').split('?')[0]);
-      return {ok:true,text:async()=>JSON.stringify(payload),json:async()=>payload};
+      const path=url.replace('data/','').split('?')[0];
+      const payload=fs.readFileSync(new URL('../dist/data/'+path,import.meta.url),'utf8');
+      return {ok:true,text:async()=>payload,json:async()=>JSON.parse(payload)};
     };
     let done;const ready=new Promise(resolve=>done=resolve);
     const main={addEventListener(){},querySelectorAll:()=>[]};
     const controller=createPublishedDailyController({main,rerender:()=>done()});
     controller.render();await ready;
+    const homepage=controller.render();
+    for(const title of ['日常八题榜','短题实测','Agent 挑战'])assert.ok(homepage.includes('<h2>'+title+'</h2>'));
+    assert.match(homepage,/href="#checkup\/season\/boss-sokoban"/);
+    assert.match(homepage,/href="#checkup\/season\/gear-scam"/);
+    assert.match(homepage,/href="#checkup\/agent-challenge\/grok"/);
     for(const route of [[],['results'],['works'],['works','visual'],['works','zebra','kimi-k3'],['repairs'],['play'],['compare']]){
       const html=controller.render(route);
       assert.ok(html.length>100);assert.doesNotMatch(html,/暂时没有读出来|data-blind|data-suite-star|先猜|data-home-warmup/);
@@ -80,9 +86,6 @@ test('controller supports all column routes and old play links show identified w
     assert.doesNotMatch(archive,/href="#checkup\/model\//);
     assert.match(controller.render(['history','model','kimi-k3']),/默认档与当时的补测记录/);
     globalThis.location.hash='#checkup/model/grok47';
-    const challengeReady=new Promise(resolve=>done=resolve);
-    controller.render(['model','grok47']);
-    await challengeReady;
     const grok=controller.render(['model','grok47']);
     assert.match(grok,/日常八题总分[\s\S]*?<strong>73<\/strong>/);
     assert.match(grok,/圣诞树配乐<\/span><strong>97 /);

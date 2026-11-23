@@ -19,7 +19,7 @@ test('card progress explicitly means scored tasks rather than passed tasks',()=>
 
 test('receipt is presented as a playful challenge while scores and evidence stay unchanged',()=>{
  const p=projectHighSuite(h,data,old,bank),before=JSON.stringify(p.book);
- const home=publishedHome(p.data,bank,p.book);assert.match(home,/整活/);assert.match(home,/分数只算这套题/);
+ const home=publishedHome(p.data,bank,p.book);assert.match(home,/整活/);assert.match(home,/八题合计 100 分/);
  const page=receiptView(read('receipt-test.json'),p.data.models,p.book);
  const visible=page.replace(/<details\b[^>]*>[\s\S]*?<\/details>/g,'');
  assert.match(visible,/整活/);assert.match(visible,/出题者/);

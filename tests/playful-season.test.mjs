@@ -43,7 +43,8 @@ test('reference and prompt text remain inert and no arbitrary reference asset ca
 test('home reuses measured work and scores while development questions remain separate',()=>{
   const {data,book}=load(),before=JSON.stringify({data,book});
   const html=studioHome(data,book,{season:bank});
-  assert.match(html,/整活作品/);assert.match(html,/模型测评/);assert.match(html,/翻车修复/);
+  assert.match(html,/日常八题榜/);assert.match(html,/短题实测/);assert.match(html,/Agent 挑战/);
+  assert.match(html,/href="#checkup\/season\/dynamic-pelican"[^>]*>动态鹈鹕题面/);
   assert.doesNotMatch(html,/data-blind|season-teaser|data-home-warmup/);
   assert.equal(JSON.stringify({data,book}),before);
   assert.equal((studioArchive(data,book).match(/class="question-row"/g)||[]).length,8);

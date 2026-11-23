@@ -1,4 +1,4 @@
-import {historicalReading} from './playful-season.js?v=20261123-clarity1';
+import {historicalReading} from './playful-season.js?v=20261123-home1';
 import {modelBadge} from './model-identity.js?v=20261118-models4';
 import {modelPicker} from './model-picker.js?v=20261118-models4';
 import {weightedSummary,points,formatPoints,siteStars,RECEIPT_REVIEW_RULE} from './weighted-score.js?v=20261123-clarity1';

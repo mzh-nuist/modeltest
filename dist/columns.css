@@ -16,11 +16,33 @@ body.published-mode .column-link:hover .ui-icon {transform:translateX(3px)}
 body.published-mode .column-actions {display:flex;flex-wrap:wrap;gap:12px 28px;margin-bottom:24px}
 body.published-mode .column-note {color:var(--muted);font-size:15px;line-height:1.8;margin:12px 0 20px}
 body.published-mode .home-art-grid,body.published-mode .work-grid {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
-body.published-mode .home-quick-links {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:0 0 28px}
-body.published-mode .home-quick-links>a {display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 20px;min-height:68px;background:var(--panel);border:1px solid var(--line);border-radius:8px;color:var(--ink);text-decoration:none}
-body.published-mode .home-quick-links>a:hover {border-color:var(--accent);background:var(--soft)}
-body.published-mode .home-quick-links strong {font-size:19px;font-weight:600;white-space:nowrap}
-body.published-mode .home-quick-links span {display:flex;align-items:center;gap:8px;color:var(--muted);font-size:15px;width:auto;text-align:left;white-space:nowrap;flex-shrink:0}
+body.published-mode .home-intro {padding:clamp(20px,4vw,54px) 0 clamp(22px,3vw,42px)}
+body.published-mode .home-intro h1 {margin:0;color:var(--ink);font-size:clamp(34px,5.5vw,74px);font-weight:700;line-height:1.21;letter-spacing:normal;text-wrap:balance}
+body.published-mode .home-intro p {margin:14px 0 20px;color:var(--muted);font-size:clamp(17px,1.7vw,21px);line-height:1.7;max-width:32em}
+body.published-mode :is(.home-intro-links,.home-suite-links) {display:flex;align-items:center;flex-wrap:wrap;gap:4px 20px}
+body.published-mode .home-intro-links>a.home-primary {display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:0 14px;border-radius:6px;background:#3355cc;color:#fff;text-decoration:none;font-weight:600}
+body.published-mode .home-intro-links>a.home-primary:hover {background:#2844a6}
+body.published-mode .home-suites {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(12px,1.5vw,22px)}
+body.published-mode .home-suite {display:flex;flex-direction:column;min-width:0;padding:clamp(16px,1.6vw,22px);border:1px solid var(--control-line);border-radius:12px;background:var(--panel)}
+body.published-mode .home-suite h2 {margin:0;font-size:clamp(21px,2vw,26px);line-height:1.35;font-weight:650}
+body.published-mode .home-suite header p {margin:7px 0 14px;font-size:15px;line-height:1.6;color:var(--muted)}
+body.published-mode .home-suite>.home-suite-links {margin-top:auto;padding-top:8px}
+body.published-mode .home-result-list {list-style:none;margin:0;padding:0}
+body.published-mode .home-result-list li {border-top:1px solid var(--line)}
+body.published-mode :is(.home-result-list a,.home-agent-feature) {display:flex;align-items:center;gap:8px;min-height:56px;padding:8px 0;color:var(--ink);text-decoration:none;border-radius:3px}
+body.published-mode :is(.home-result-list a,.home-agent-feature):hover {color:var(--accent);background:var(--soft)}
+body.published-mode .home-result-list a>span {flex:1;min-width:0;font-size:16px;font-weight:550;line-height:1.5;overflow-wrap:anywhere}
+body.published-mode .home-suite:first-child .home-result-list a>span {display:flex;align-items:center;gap:8px}
+body.published-mode .home-result-list .model-badge {width:28px;height:28px;flex:0 0 28px}
+body.published-mode .home-result-list .model-badge img {width:20px;height:20px}
+body.published-mode .home-result-list a>strong {font-size:22px;white-space:nowrap;font-variant-numeric:tabular-nums;line-height:1.1}
+body.published-mode .home-result-list span>small,body.published-mode .home-agent-feature small {display:block;font-size:14px;color:var(--muted);font-weight:450;margin:2px 0 0}
+body.published-mode .home-result-list strong>small {color:var(--muted);font-size:14px;font-weight:400}
+body.published-mode .home-agent-feature {border-top:1px solid var(--line);gap:12px}
+body.published-mode .home-agent-feature img {width:72px;height:55px;object-fit:cover;border-radius:5px;background:var(--soft)}
+body.published-mode .home-agent-feature span {flex:1;min-width:0;line-height:1.45}
+body.published-mode :is(.home-result-list a,.home-agent-feature)>.ui-icon {width:17px;height:17px;flex:0 0 17px;color:var(--accent)}
+body.published-mode .home-feature .home-suite-links {margin-top:12px}
 body.published-mode .home-work-card .work-caption {padding-bottom:18px}
 body.published-mode .home-work-card .work-image {height:clamp(230px,20vw,310px)}
 body.published-mode .repair-section-links {display:flex;gap:12px;flex-wrap:wrap}
@@ -128,8 +150,7 @@ body.published-mode .work-detail>.column-link:last-child {margin-top:20px}
 @media(min-width:1650px){body.published-mode .work-grid {grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:1200px){body.published-mode .column-model-grid {grid-template-columns:repeat(3,minmax(0,1fr))}body.published-mode .score-scroll-hint {display:inline-block}}
 @media(max-width:800px){
- body.published-mode .home-quick-links>a {flex-direction:column;align-items:flex-start;gap:4px}
- body.published-mode .home-quick-links strong {font-size:16px}
+ body.published-mode .home-suites {grid-template-columns:1fr}
  body.published-mode .pending-model-grid {grid-template-columns:1fr}
  body.published-mode .column-heading {padding-top:8px;padding-bottom:22px}
  body.published-mode .column-heading h1 {font-size:32px}
@@ -167,12 +188,9 @@ body.published-mode .work-detail>.column-link:last-child {margin-top:20px}
  body.published-mode .edit-pair p {font-size:18px}
  body.published-mode .repair-status {padding:18px;flex-direction:column;gap:12px}
  body.published-mode .issue-observation,body.published-mode .repair-pending {padding-inline:14px}
- body.published-mode .column-home .column-heading {margin-bottom:16px;padding-bottom:18px}
- body.published-mode .home-quick-links {gap:8px;margin-bottom:24px}
- body.published-mode .home-quick-links>a {padding:12px 8px;align-items:flex-start;flex-direction:column;gap:4px;min-height:74px}
- body.published-mode .home-quick-links strong {font-size:16px}
- body.published-mode .home-quick-links span {font-size:14px;gap:3px}
- body.published-mode .home-quick-links .ui-icon {display:none}
+ body.published-mode .home-intro-links {gap:4px 14px}
+ body.published-mode .home-intro-links .column-link {font-size:15px}
+ body.published-mode .home-intro-links .column-link .ui-icon {width:15px;height:15px}
  body.published-mode .home-feature .home-art-grid {grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
  body.published-mode .home-feature .column-section-head h2 {font-size:20px;gap:8px}
  body.published-mode .home-feature .column-section-head {margin-bottom:12px}

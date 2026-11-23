@@ -30,7 +30,7 @@ test('supplement keeps three untested models out of scores and preserves origina
 
 test('home gives immediate navigation and a same-task contrast without changing original drawings',()=>{
  const {data,book}=load(),html=studioHome(data,book),firstArt=html.indexOf('class="home-art-grid"');
- assert.ok(html.indexOf('class="home-quick-links"')<firstArt);
+ assert.ok(html.includes('class="home-intro-links"')&&html.indexOf('class="home-intro-links"')<firstArt);
  const feature=html.slice(firstArt,html.indexOf('class="column-section home-models"'));
  assert.match(feature,/DeepSeek V4.1 Flash/);assert.match(feature,/Kimi K3/);
  assert.match(feature,/works\/visual\/deepseek-v41-flash/);assert.match(feature,/works\/visual\/kimi-k3/);
