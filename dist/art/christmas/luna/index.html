@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; media-src 'self'; img-src 'self' data:; object-src 'none'; base-uri 'none'; form-action 'none'; connect-src 'none'">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#071b20">
+  <title>圣诞树的十九秒</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <header class="greeting">
+      <p class="eyebrow">A LITTLE CHRISTMAS WALTZ · 19 SECONDS</p>
+      <h1>给冬夜，一支舞</h1>
+      <p class="subhead">把声音打开，让每一颗星都找到自己的节拍。</p>
+    </header>
+    <section id="stage" aria-label="随音乐起舞的圣诞树">
+      <canvas id="tree" role="img" aria-label="星光、雪夜与一棵随旋律闪烁的圣诞树"></canvas>
+      <div class="stage-note" aria-hidden="true"><span class="note-dot"></span> A WINTER WISH</div>
+    </section>
+    <section class="player" aria-label="音乐控制">
+      <button id="play" type="button" aria-label="播放音乐"><span class="play-icon" aria-hidden="true">▶</span><span class="play-label">播放</span></button>
+      <div class="timeline">
+        <div class="time-row"><span>圣诞夜的十九秒</span><span id="clock">00:00 <i>/</i> 00:19</span></div>
+        <label class="sr-only" for="seek">音乐进度（秒）</label>
+        <input id="seek" type="range" min="0" max="19" step="0.01" value="0" aria-label="音乐进度，单位秒">
+        <div class="markers" aria-hidden="true"><span>序曲</span><span>起舞</span><span>晚安</span></div>
+      </div>
+    </section>
+    <audio id="music" preload="auto" src="../music.wav"></audio>
+    <footer>愿你今晚，被温柔的光照亮。 <span>✦</span></footer>
+  </main>
+  <script src="tree.js"></script>
+</body>
+</html>

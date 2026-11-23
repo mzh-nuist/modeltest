@@ -1,4 +1,4 @@
-import {analyticsConsent,analyticsDisabled,setAnalyticsConsent} from './traffic.js?v=20261123-suite2';
+import {analyticsConsent,analyticsDisabled,setAnalyticsConsent} from './traffic.js?v=20261123-luna1';
 
 export function bindSiteNotes({root=document,events=window,storage=()=>localStorage,nav=navigator,hostname=location.hostname}={}){
   function refresh(){

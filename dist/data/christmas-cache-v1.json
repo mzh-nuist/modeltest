@@ -316,6 +316,55 @@
           }
         ]
       }
+    },
+    {
+      "modelId": "gpt6-luna",
+      "name": "GPT-6 Luna",
+      "harness": "Codex App Server",
+      "effort": "high",
+      "frontend": {
+        "score": 89,
+        "music": 37,
+        "visual": 37,
+        "utility": 15,
+        "work": "luna",
+        "comment": "两段强拍会带动树体，铃声对应的局部灯饰能移动，但实屏效果偏轻。快段提速和尾奏字幕清楚，主体色彩变化较小。分层树冠、灯带和暖色星顶完整，暗色背景让部分树缘不够突出。"
+      },
+      "backend": {
+        "score": 100,
+        "groups": [
+          {
+            "title": "基础 LRU、原引用与空值",
+            "points": 20,
+            "score": 20
+          },
+          {
+            "title": "TTL 边界和后台刷新",
+            "points": 20,
+            "score": 20
+          },
+          {
+            "title": "同键合并与跨键并发",
+            "points": 20,
+            "score": 20
+          },
+          {
+            "title": "覆盖与失效切代",
+            "points": 15,
+            "score": 15
+          },
+          {
+            "title": "过期优先驱逐、驱逐中刷新隔离",
+            "points": 10,
+            "score": 10
+          },
+          {
+            "title": "失败恢复、原异常和状态接口",
+            "points": 15,
+            "score": 15
+          }
+        ]
+      }
     }
   ]
 }

@@ -70,3 +70,13 @@ test('the two replacement slots convert actual high scores and never borrow a si
   assert.equal(book.models[0].items[1].score,2);
   assert.equal(weightedSummary(projectAgentTasks(book),projectAgentTasks(book).models[0]).finalScore,null);
 });
+
+test('Luna links to both artifacts from the Codex High run',() => {
+  const luna=data.runs.find(run=>run.modelId==='gpt6-luna');
+  assert.equal(luna.harness,'Codex App Server');
+  assert.equal(luna.effort,'high');
+  assert.equal(luna.frontend.score,89);
+  assert.equal(luna.backend.score,100);
+  assert.match(renderChristmasChallenge(data,'luna'),/圣诞树配乐 89 \/ 100/);
+  assert.match(renderChristmasChallenge(data,'cache','gpt6-luna'),/100 \/ 100/);
+});
