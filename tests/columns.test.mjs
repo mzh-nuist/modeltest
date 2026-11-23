@@ -62,16 +62,32 @@ test('controller supports all column routes and old play links show identified w
   const saved={fetch:globalThis.fetch,location:globalThis.location,storage:globalThis.localStorage};
   try{
     globalThis.location={hash:'#checkup'};globalThis.localStorage={getItem:()=>null};
-    globalThis.fetch=async url=>({ok:true,text:async()=>JSON.stringify(read(url.replace('data/','')))});
+    globalThis.fetch=async url=>{
+      const payload=read(url.replace('data/','').split('?')[0]);
+      return {ok:true,text:async()=>JSON.stringify(payload),json:async()=>payload};
+    };
     let done;const ready=new Promise(resolve=>done=resolve);
     const main={addEventListener(){},querySelectorAll:()=>[]};
     const controller=createPublishedDailyController({main,rerender:()=>done()});
     controller.render();await ready;
-    for(const route of [[],['results'],['works'],['works','visual'],['works','zebra','kimi-k3'],['repairs'],['play'],['model','kimi-k3'],['compare']]){
+    for(const route of [[],['results'],['works'],['works','visual'],['works','zebra','kimi-k3'],['repairs'],['play'],['compare']]){
       const html=controller.render(route);
       assert.ok(html.length>100);assert.doesNotMatch(html,/暂时没有读出来|data-blind|data-suite-star|先猜|data-home-warmup/);
     }
     assert.equal(controller.render(['play']),controller.render(['works']));
+    const archive=controller.render(['history']);
+    assert.match(archive,/href="#checkup\/history\/model\/kimi-k3"/);
+    assert.doesNotMatch(archive,/href="#checkup\/model\//);
+    assert.match(controller.render(['history','model','kimi-k3']),/默认档与当时的补测记录/);
+    globalThis.location.hash='#checkup/model/grok47';
+    const challengeReady=new Promise(resolve=>done=resolve);
+    controller.render(['model','grok47']);
+    await challengeReady;
+    const grok=controller.render(['model','grok47']);
+    assert.match(grok,/日常八题总分[\s\S]*?<strong>73<\/strong>/);
+    assert.match(grok,/圣诞树配乐<\/span><strong>97 /);
+    assert.match(grok,/并发缓存<\/span><strong>100 /);
+    assert.doesNotMatch(controller.render(['model','deepseek-v41-flash']),/class="agent-profile"/);
     assert.match(controller.render(['visual']),/5 \/ 10 分 · 部分达成/);
     const method=controller.render(['how']);
     assert.match(method,/日常八题榜、短题和 Agent 专题各有自己的题目与分数/);
@@ -81,7 +97,10 @@ test('controller supports all column routes and old play links show identified w
       assert.doesNotMatch(controller.render(['compare']),new RegExp(id));
     }
     const current=mergeHighExpanded(load(),read('high-expanded.json'),bank);
-    assert.equal((controller.render(['works','visual']).match(/class="work-card"/g)||[]).length,drawingCatalog(current.data,current.book).visual.length);
+    const pelican=controller.render(['works','visual']);
+    for(const {model} of drawingCatalog(current.data,current.book).visual){
+      assert.ok(pelican.includes(`href="#checkup/works/visual/${model.id}"`));
+    }
   }finally{globalThis.fetch=saved.fetch;globalThis.location=saved.location;globalThis.localStorage=saved.storage;}
 });
 
@@ -98,5 +117,8 @@ test('new navigation contains three equal labels and analytics accepts only know
   assert.equal(trafficRoute('#checkup/play'),'checkup/works');
   assert.equal(trafficRoute('#checkup/works/arbitrary'),null);
   assert.equal(trafficRoute('#checkup/agent-challenge/grok'),'checkup/agent-challenge');
+  assert.equal(trafficRoute('#checkup/agent-challenge/cache/grok47'),'checkup/agent-challenge');
+  assert.equal(trafficRoute('#checkup/agent-challenge/cache/arbitrary'),null);
+  assert.equal(trafficRoute('#checkup/history/model/kimi-k3'),'checkup/history');
   assert.equal(trafficRoute('#checkup/agent-challenge/arbitrary'),null);
 });

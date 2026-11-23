@@ -4,6 +4,7 @@
   "backendPrompt": "实现 `cache.mjs` 的 `createCache({capacity, ttl, stale, now, load})`。这是一个支持并发合并、过期和后台刷新、失效隔离的 LRU。仅修改 `cache.mjs`，仅使用 Node 标准能力，不安装依赖、不访问网络或父目录。\n\n接口返回 `{ get(key), put(key,value), invalidate(key), stats() }`。`get` 返回 Promise，其他三个为同步方法。`capacity` 是正整数，`ttl` 是正整数毫秒，`stale` 是非负整数毫秒，`now()` 是单调毫秒钟，`load(key)` 可以同步抛错，或返回 Promise。键是任意 JS 字符串，缓存值可以是 `undefined`，也可以是任意 JS 值，按原引用返回。输入配置及调用按所述格式给出。\n\n1. 各 key 的成功 `put` 或当前加载完成时，记录 `writtenAt = now()`。当 `age < ttl` 时为新鲜，直接返回值并更新 LRU。`ttl <= age < ttl + stale` 时返回旧值并更新 LRU，后台刷新。同一键同一代至多一个加载，其他键可以同时加载。完全过期或空缺时等待加载结果。已经启动且仍有效的刷新，在变为完全过期后应供后来 `get` 等待。\n2. 刷新失败保留旧值、原时间戳及原过期规则，下一次可以刷新。调用方因完全过期而等待失败，应收到原错误。任何拒绝都不得让缓存永久卡住或产生未处理的 Promise 拒绝。新值由 `load` 返回时，成功入缓存并更新 LRU。进行中的加载本身不占已缓存值的容量。\n3. `put` 或 `invalidate` 立即切断该 key 的旧加载。已经等待旧请求的调用者仍收到旧请求结果或错误，迟到的结果不得写回缓存、覆盖新值、清除新一代的合并状态，也不得重排 LRU。驱逐一个仍在刷新的旧值有同样的隔离效果。驱逐时优先清走所有完全过期值；仍超容量就驱逐最久未用的有效或可用旧值。访问已有值、成功 `put`、成功加载都会触碰 LRU。失败、`stats` 和未完成的空缺加载不会触碰。\n4. `stats()` 返回 `{ keys, inflight }`。`keys` 是当前未完全过期的已缓存键，按最久未用到最近使用排序。`inflight` 是当前未被切断的在途加载数。外部改返回数组不影响缓存。`stats()` 不清理或改变状态，不能切断刷新。允许成功写入时线性扫过期记录，普通新鲜读取和同键合并须平均 O(1)。不要假设所有 key 的值都是真值。评测会用可控时钟和手动完成的 Promise 控制先后，不依赖真实等待。\n\n满分 100。基础 LRU 20，过期边界和可用旧值 20，合并与跨键并发 20，失效/覆盖/驱逐的竞态 25，失败恢复和状态接口 15。",
   "runs": [
     {
+      "modelId": "gpt62-astra",
       "name": "GPT-6.2 Astra",
       "harness": "Codex App Server",
       "effort": "high",
@@ -52,6 +53,7 @@
       }
     },
     {
+      "modelId": "gpt62-sol",
       "name": "GPT-6.2 Sol",
       "harness": "Codex App Server",
       "effort": "high",
@@ -100,6 +102,7 @@
       }
     },
     {
+      "modelId": "gpt61-terra",
       "name": "GPT-6.1 Terra",
       "harness": "Codex App Server",
       "effort": "high",
@@ -148,6 +151,7 @@
       }
     },
     {
+      "modelId": "claude-haiku55",
       "name": "Claude Haiku 5.5",
       "harness": "Claude Code · CC Switch GOAT",
       "effort": "high",
@@ -196,6 +200,7 @@
       }
     },
     {
+      "modelId": "claude-sonnet55",
       "name": "Claude Sonnet 5.5",
       "harness": "Claude Code · CC Switch GOAT",
       "effort": "high",
@@ -207,6 +212,7 @@
       }
     },
     {
+      "modelId": "kimi-k31-pro",
       "name": "Kimi K3.1 Pro",
       "harness": "Kimi Code CLI · GOAT",
       "effort": "high",
@@ -251,6 +257,7 @@
       }
     },
     {
+      "modelId": "deepseek-v41-flash-fast",
       "name": "DeepSeek V4.1 Flash Fast",
       "harness": "DeepSeek Harness · GOAT",
       "effort": "high",
@@ -262,6 +269,7 @@
       }
     },
     {
+      "modelId": "grok47",
       "name": "Grok 4.7",
       "harness": "Cursor Agent CLI",
       "effort": "high",

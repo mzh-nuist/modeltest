@@ -3,19 +3,20 @@ import {arrowRight} from './ui-icons.js?v=20261101-short1';
 
 const route = '#checkup/agent-challenge';
 const art = 'art/christmas/';
-const assetsVersion = '?v=20261122-christmas2';
+const assetsVersion = '?v=20261123-profile1';
 const bounds = (value, max) => Number.isInteger(value) && value >= 0 && value <= max;
 
 export function validateChristmasChallenge(data) {
   if (data?.id !== 'christmas-cache-v1' || !data.frontendPrompt || !data.backendPrompt || !data.runs?.length)
     throw Error('挑战数据不完整');
-  const names = new Set();
+  const modelIds = new Set();
   const works = new Set();
   for (const run of data.runs) {
     const {frontend,backend} = run;
-    if (!run.name || !run.harness || run.effort !== 'high' || names.has(run.name) || !frontend || !backend)
+    if (!run.name || !run.harness || run.effort !== 'high' || typeof run.modelId !== 'string'
+        || !/^[a-z0-9-]+$/.test(run.modelId) || modelIds.has(run.modelId) || !frontend || !backend)
       throw Error('挑战答卷条件不一致');
-    names.add(run.name);
+    modelIds.add(run.modelId);
     if (frontend.score !== undefined) {
       const {score,music,visual,utility,work} = frontend;
       if (!bounds(music,45) || !bounds(visual,40) || !bounds(utility,15) || score !== music+visual+utility
@@ -32,12 +33,26 @@ export function validateChristmasChallenge(data) {
   return data;
 }
 
-function scoreDetails(run) {
+function cacheBreakdown(run) {
   const check = run.backend;
-  return `<details class="column-disclosure"><summary><span>${escape(run.name)}</span><strong>${check.score ?? '未完成'}${check.score === undefined ? '' : ' / 100'}</strong></summary>
-    <p class="column-note">${escape(run.harness)} · High</p>
+  return `<p class="column-note">${escape(run.harness)} · High</p>
     ${check.groups ? `<ul>${check.groups.map(group => `<li>${escape(group.title)} · ${group.score} / ${group.points}</li>`).join('')}</ul>` : ''}
-    ${check.note ? `<p>${escape(check.note)}</p>` : ''}</details>`;
+    ${check.note ? `<p>${escape(check.note)}</p>` : ''}`;
+}
+
+function scoreDetails(run) {
+  const {score} = run.backend;
+  return `<details class="column-disclosure"><summary><span>${escape(run.name)}</span><strong>${score ?? '未完成'}${score === undefined ? '' : ' / 100'}</strong></summary>
+    ${cacheBreakdown(run)}<a class="column-link" href="${route}/cache/${run.modelId}">打开并发缓存答卷 ${arrowRight}</a></details>`;
+}
+
+function cachePage(data, run) {
+  const {score} = run.backend;
+  return `<div class="column-page studio-home christmas-challenge"><header class="column-heading">
+    <a class="column-link" href="${route}">← 圣诞树与并发缓存</a><h1>${escape(run.name)} 的并发缓存</h1>
+    <p><strong>${score === undefined ? '未完成' : score+' / 100'}</strong></p></header>
+    <section class="column-section"><h2>测试结果</h2>${cacheBreakdown(run)}
+    <details class="column-disclosure"><summary>后端题面与计分</summary><p class="christmas-prompt">${escape(data.backendPrompt)}</p></details></section></div>`;
 }
 
 function cover(run) {
@@ -52,18 +67,24 @@ function player(run) {
   const {work,music,visual,utility,comment} = run.frontend;
   return `<div class="column-page studio-home christmas-challenge"><header class="column-heading">
     <a class="column-link" href="${route}">← 圣诞树与并发缓存</a><h1>${escape(run.name)} 的圣诞树</h1>
-    <p>点作品里的播放按钮，听听树怎么跟上铃声。</p></header>
+    <p>点作品里的播放按钮，听听树怎么跟上铃声。</p><p><strong>圣诞树配乐 ${run.frontend.score} / 100</strong></p></header>
     <iframe class="christmas-player" title="${escape(run.name)} 的可播放圣诞树" sandbox="allow-scripts" src="${art+work}/index.html${assetsVersion}"></iframe>
     <dl class="christmas-breakdown"><div><dt>节拍与旋律</dt><dd>${music} <small>/ 45</small></dd></div><div><dt>画面</dt><dd>${visual} <small>/ 40</small></dd></div>
     <div><dt>播放与移动端</dt><dd>${utility} <small>/ 15</small></dd></div></dl>
     <p class="column-note">${escape(comment)}</p><p class="column-note">${escape(run.harness)} · High</p></div>`;
 }
 
-export function renderChristmasChallenge(data, selected) {
+export function renderChristmasChallenge(data, selected, modelId) {
   const runs = data.runs;
   const pieces = runs.filter(run => run.frontend.work);
+  if (selected === 'cache') {
+    const run = runs.find(row => row.modelId === modelId);
+    if (run) return cachePage(data,run);
+  }
   const found = selected && pieces.find(run => run.frontend.work === selected);
   if (found) return player(found);
+  if (selected) return `<div class="column-page studio-home christmas-challenge"><header class="column-heading">
+    <a class="column-link" href="${route}">← 圣诞树与并发缓存</a><h1>未找到这份挑战答卷</h1></header></div>`;
   return `<div class="column-page studio-home christmas-challenge"><header class="column-heading">
     <p class="column-kicker">Agent 双题实测</p><h1>一段配乐，${pieces.length} 棵圣诞树</h1>
     <p>同一段 19 秒配乐，看看谁能让圣诞树跟着音乐动起来。</p><p class="column-note">圣诞树和并发缓存各 100 分，独立于<a class="column-link" href="#checkup/results">日常八题榜</a>。</p></header>
@@ -79,7 +100,7 @@ export function renderChristmasChallenge(data, selected) {
 export function createChristmasChallenge(onChange) {
   let state = 'idle';
   let data;
-  return selected => {
+  function load() {
     if (state === 'idle') {
       state = 'loading';
       fetch('data/christmas-cache-v1.json'+assetsVersion).then(response => {
@@ -88,7 +109,16 @@ export function createChristmasChallenge(onChange) {
       }).then(raw => { data = validateChristmasChallenge(raw); state = 'ready'; })
         .catch(() => { state = 'error'; }).finally(onChange);
     }
-    if (state === 'ready') return renderChristmasChallenge(data,selected);
-    return state === 'error' ? '<p>挑战成绩暂时无法读取，请刷新重试。</p>' : '<p>正在加载挑战成绩…</p>';
+  }
+  return {
+    render(selected, modelId) {
+      load();
+      if (state === 'ready') return renderChristmasChallenge(data,selected,modelId);
+      return state === 'error' ? '<p>挑战成绩暂时无法读取，请刷新重试。</p>' : '<p>正在加载挑战成绩…</p>';
+    },
+    forModel(modelId) {
+      load();
+      return data?.runs.find(run => run.modelId === modelId);
+    },
   };
 }

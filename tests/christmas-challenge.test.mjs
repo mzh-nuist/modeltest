@@ -32,10 +32,18 @@ test('Christmas previews isolate authored JavaScript and use valid artwork route
 });
 
 test('the Grok challenge submission identifies the actual Cursor harness',() => {
-  const grok = data.runs.find(run => run.name === 'Grok 4.7');
+  const grok = data.runs.find(run => run.modelId === 'grok47');
+  assert.equal(grok.name,'Grok 4.7');
   assert.equal(grok.harness,'Cursor Agent CLI');
   assert.equal(grok.effort,'high');
   assert.equal(grok.frontend.score,97);
   assert.equal(grok.backend.score,100);
   assert.match(renderChristmasChallenge(data,'grok'),/Cursor Agent CLI · High/);
+  assert.match(renderChristmasChallenge(data,'grok'),/圣诞树配乐 97 \/ 100/);
+  assert.match(renderChristmasChallenge(data,'cache','grok47'),/Grok 4\.7 的并发缓存[\s\S]*100 \/ 100/);
+  assert.match(renderChristmasChallenge(data,'cache','claude-sonnet55'),/未完成/);
+  assert.match(renderChristmasChallenge(data,'cache','deepseek-v41-flash'),/未找到这份挑战答卷/);
+  const duplicate=structuredClone(data);
+  duplicate.runs[0].modelId=grok.modelId;
+  assert.throws(()=>validateChristmasChallenge(duplicate),/条件不一致/);
 });
