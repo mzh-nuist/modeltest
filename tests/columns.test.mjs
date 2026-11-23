@@ -16,6 +16,9 @@ test('three columns expose real identities and results without guessing, voting 
   const {data,book}=load(),before=JSON.stringify({data,book});
   const home=studioHome(data,book),works=studioWorks(data,book),repairs=studioRepairs(data,book,bank),scores=studioArchive(data,book);
   for(const label of ['模型测评','整活作品','翻车修复'])assert.ok(home.includes(label));
+  assert.match(home,/日常八题榜/);
+  assert.match(works,/href="#checkup\/agent-challenge"[^>]*>圣诞树/);
+  assert.doesNotMatch(works,/全部作品/);
   assert.equal((home.match(/class="work-card home-work-card"/g)||[]).length,2);
   assert.equal((works.match(/class="work-card"/g)||[]).length,10);
   for(const model of data.models)assert.ok(works.includes(model.name));
@@ -43,12 +46,14 @@ test('gallery preserves exact safe SVGs, never substitutes examples or executes 
   assert.doesNotMatch(studioWorks(data,book,'zebra','<img src=x>'),/<img src=x>/);
 });
 
-test('repairs separates uncorrected drawings, exact text editing and unmeasured code repair',()=>{
+test('repairs distinguishes missing pelican retries from published code repair tests',()=>{
   const {data,book}=load(),html=studioRepairs(data,book,bank);
   assert.equal((html.match(/class="work-card issue-card"/g)||[]).length,2);
   assert.equal((html.match(/class="edit-result"/g)||[]).length,5);
   assert.equal((html.match(/尚无返工答卷/g)||[]).length,3);
-  assert.match(html,/不属于代码修复/);assert.match(html,/还没有代码修 bug 或作品返工记录/);
+  assert.match(html,/不属于代码修复/);assert.match(html,/鹈鹕返工待测/);
+  assert.match(html,/href="#checkup\/harness"[^>]*>看已发布的代码修复实测/);
+  assert.doesNotMatch(html,/还没有代码修/);
   for(const model of data.models)for(const output of model.report.runs[2].outputs)assert.ok(html.includes(escape(output)));
   assert.doesNotMatch(html,/修复成功率|修好了|返工成功|机器人/);
 });
@@ -67,6 +72,10 @@ test('controller supports all column routes and old play links show identified w
       assert.ok(html.length>100);assert.doesNotMatch(html,/暂时没有读出来|data-blind|data-suite-star|先猜|data-home-warmup/);
     }
     assert.equal(controller.render(['play']),controller.render(['works']));
+    assert.match(controller.render(['visual']),/5 \/ 10 分 · 部分达成/);
+    const method=controller.render(['how']);
+    assert.match(method,/日常八题榜、短题和 Agent 专题各有自己的题目与分数/);
+    assert.match(method,/href="#checkup\/agent-challenge"/);
     for(const id of ['qwen38-max','gpt61-sol']){
       assert.match(controller.render(['model',id]),/没有找到这份答卷/);
       assert.doesNotMatch(controller.render(['compare']),new RegExp(id));
@@ -81,11 +90,13 @@ test('new navigation contains three equal labels and analytics accepts only know
   const nav=html.match(/<nav aria-label="实测主导航">([\s\S]*?)<\/nav>/)[1];
   assert.equal((nav.match(/<a /g)||[]).length,3);
   assert.doesNotMatch(nav,/play|猜|旧成绩/);
-  for(const route of ['results','works','repairs']){
+  for(const route of ['results','works','repairs','agent-challenge','harness']){
     assert.equal(trafficRoute('#checkup/'+route),'checkup/'+route);
     assert.ok(validateTrafficEvent({eventId:crypto.randomUUID(),visitorId:crypto.randomUUID(),kind:'qa',route:'checkup/'+route,source:'direct',device:'desktop'}));
   }
   assert.equal(trafficRoute('#checkup/works/visual/kimi-k3'),'checkup/works');
   assert.equal(trafficRoute('#checkup/play'),'checkup/works');
   assert.equal(trafficRoute('#checkup/works/arbitrary'),null);
+  assert.equal(trafficRoute('#checkup/agent-challenge/grok'),'checkup/agent-challenge');
+  assert.equal(trafficRoute('#checkup/agent-challenge/arbitrary'),null);
 });

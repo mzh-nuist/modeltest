@@ -1,5 +1,5 @@
 import {esc as escape} from './lib.js?v=20261101-short1';
-import {extractDrawing} from './completed-suite.js?v=20261118-models4';
+import {extractDrawing} from './completed-suite.js?v=20261123-clarity1';
 import {previewableCheckupSVG} from './checkup-data.js?v=20261101-short1';
 import {arrowRight} from './ui-icons.js?v=20261101-short1';
 

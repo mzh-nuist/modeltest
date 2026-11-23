@@ -45,8 +45,8 @@ function resultRows(runs) {
 
 export function renderHarnessEval(data) {
   return `<div class="column-page studio-home" data-harness-eval>
-    <header class="column-heading"><p class="column-kicker">工程实测</p><h1>让模型亲手改代码</h1>
-      <p>同一份起始代码，各自请求 High。实际检查文件改动、前端交互和后端行为。</p></header>
+    <header class="column-heading"><p class="column-kicker">Agent 工程练习</p><h1>让模型亲手改代码</h1>
+      <p>同一份起始代码，各自请求 High。实际检查文件改动、前端交互和后端行为。<a class="column-link" href="#checkup/agent-challenge">查看圣诞树与并发缓存</a></p></header>
     ${data.cases.map((task, i) => `<section class="column-section">
       <div class="column-section-head"><h2><span>${escape(task.id)}</span>${escape(task.title)}</h2>
         <a class="column-link" href="#checkup/${originalRoutes[i]}">原日常题 ${arrowRight}</a></div>

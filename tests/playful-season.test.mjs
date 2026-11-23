@@ -25,6 +25,8 @@ test('new route exposes prompts and rubric but never fabricates model grades or 
   assert.equal((html.match(/class="season-task(?: [^"]*)?"/g)||[]).length,6);
   assert.match(html,/内容80 \/ 格式10 \/ 交付10/);assert.match(html,/待实测/);
   assert.match(html,/公开开发题/);assert.match(html,/参考解 · 不是模型答卷/);
+  assert.match(html,/href="#checkup\/agent-challenge"/);
+  assert.doesNotMatch(html,/Agent[^\n]+尚未接入|模型调用 0 次/);
   assert.doesNotMatch(html,/第一名|获胜模型|总分排名|模型得分|data-suite-star/);
   for(const model of read('high-suite.json').models)assert.ok(!html.includes(model.name));
   assert.equal((html.match(/data-season-copy=/g)||[]).length,8);

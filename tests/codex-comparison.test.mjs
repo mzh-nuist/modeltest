@@ -177,6 +177,6 @@ test('a Grok subscription retest preserves the original request count and identi
   assert.equal(data.totalRequests - initial.data.totalRequests, 14);
   const detail = publishedModel(data, checkup, 'grok47', book);
   assert.match(detail, /High · 含补测/);
-  assert.match(detail, /Grok 订阅 · Responses · High · 正文上限 16,384/);
+  assert.match(detail, /Grok 订阅 · Responses · High · 请求参数 max_output_tokens = 16,384/);
   assert.equal(weightedSummary(book, book.models.at(-1)).finalScore, 73);
 });

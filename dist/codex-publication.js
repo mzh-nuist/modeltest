@@ -26,8 +26,8 @@ function answerCollection(metadata, answer) {
     provider: 'Grok',
     checkedAt: followup.date,
     collectionLabel: 'Grok 订阅 High',
-    condition: 'Grok 订阅 · Responses · High · 正文上限 '
-      + followup.maxVisibleOutputTokens.toLocaleString('zh-CN') + ' token。推理用量另计。',
+    condition: 'Grok 订阅 · Responses · High · 请求参数 max_output_tokens = '
+      + followup.maxVisibleOutputTokens.toLocaleString('zh-CN') + '。该参数与接口回报的实际用量分别记录。',
     followup: true,
   };
 }

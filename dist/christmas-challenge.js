@@ -51,7 +51,7 @@ function cover(run) {
 function player(run) {
   const {work,music,visual,utility,comment} = run.frontend;
   return `<div class="column-page studio-home christmas-challenge"><header class="column-heading">
-    <a class="column-link" href="${route}">← 全部作品</a><h1>${escape(run.name)} 的圣诞树</h1>
+    <a class="column-link" href="${route}">← 圣诞树与并发缓存</a><h1>${escape(run.name)} 的圣诞树</h1>
     <p>点作品里的播放按钮，听听树怎么跟上铃声。</p></header>
     <iframe class="christmas-player" title="${escape(run.name)} 的可播放圣诞树" sandbox="allow-scripts" src="${art+work}/index.html${assetsVersion}"></iframe>
     <dl class="christmas-breakdown"><div><dt>节拍与旋律</dt><dd>${music} <small>/ 45</small></dd></div><div><dt>画面</dt><dd>${visual} <small>/ 40</small></dd></div>
@@ -66,7 +66,7 @@ export function renderChristmasChallenge(data, selected) {
   if (found) return player(found);
   return `<div class="column-page studio-home christmas-challenge"><header class="column-heading">
     <p class="column-kicker">Agent 双题实测</p><h1>一段配乐，${pieces.length} 棵圣诞树</h1>
-    <p>同一段 19 秒配乐，看看谁能让圣诞树跟着音乐动起来。</p></header>
+    <p>同一段 19 秒配乐，看看谁能让圣诞树跟着音乐动起来。</p><p class="column-note">圣诞树和并发缓存各 100 分，独立于<a class="column-link" href="#checkup/results">日常八题榜</a>。</p></header>
     <section class="column-section"><div class="column-section-head"><h2>圣诞树跟着音乐跳舞</h2></div>
     <div class="christmas-works">${pieces.slice().sort((a,b) => b.frontend.score-a.frontend.score).map(cover).join('')}</div>
     <details class="column-disclosure"><summary>前端题面与计分</summary><p class="christmas-prompt">${escape(data.frontendPrompt)}</p></details></section>
