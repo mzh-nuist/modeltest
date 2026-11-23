@@ -1,6 +1,6 @@
 import {arrowUpRight,arrowRight} from './ui-icons.js?v=20261101-short1';
-import {weightedSummary,points,formatPoints,siteStars} from './weighted-score.js?v=20261123-clarity1';
-import {extractDrawing} from './completed-suite.js?v=20261123-clarity1';
+import {weightedSummary,points,formatPoints,siteStars} from './weighted-score.js?v=20261123-suite2';
+import {extractDrawing} from './completed-suite.js?v=20261123-suite2';
 import {previewableCheckupSVG} from './checkup-data.js?v=20261101-short1';
 import {modelBadge} from './model-identity.js?v=20261118-models4';
 
@@ -8,6 +8,8 @@ const e=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;',
 const url=(route='')=>'#checkup'+(route?'/'+route:'');
 const shortNames=['理解需求','推理纠错','定点改字','多轮记忆','不乱编','画图连接','账单整活','斑马绘画'];
 const titles=['洗车店只有 50 米，要开车吗？','9:40 出门，35 分钟后是 10:05？','只改时间，其他字一字不动','聊了几轮，还记得出游条件吗？','会议没说的，能不能不乱补？','鹈鹕骑车，脚和踏板要接对','辣椒炒肉，到底有几份？','在非洲草原上，画一只奔跑的斑马'];
+const taskLabel=(task,i)=>task.agentKey?task.name:shortNames[i];
+const taskHref=task=>task.destination||url(task.id);
 const artTasks={zebra:{name:'斑马奔跑',title:'草原上，谁的斑马跑起来了？',prompt:'画一只在非洲稀树草原上奔跑的斑马。'},visual:{name:'鹈鹕骑车',title:'会画鸟，也要会骑车。',prompt:'画鹈鹕骑自行车：脚踩踏板、翅膀扶把、坐在车座上。'}};
 const link=(route,label)=>`<a class="column-link" href="${url(route)}">${label} ${arrowRight}</a>`;
 const christmasLink=()=>link('agent-challenge','圣诞树与并发缓存');
@@ -54,24 +56,30 @@ function modelCards(data,book){
   }).join('');
 }
 function pendingModels(data,book){
-  const models=data.models.filter(model=>!weightedSummary(book,book.models.find(r=>r.modelId===model.id)).complete);
+  const models=data.models.map(model=>({model,row:book.models.find(r=>r.modelId===model.id)}))
+    .filter(({row})=>!weightedSummary(book,row).complete);
   if(!models.length)return '';
-  return `<section class="pending-models" aria-label="待测与待复核模型"><h2>待测 / 待复核模型 <span>${models.length}</span></h2><div class="pending-model-grid">${models.map(model=>`<a class="pending-model-card" href="${url('model/'+model.id)}"><span class="column-model">${modelBadge(model.id)}<span>${e(model.name)}</span></span><span class="pending-model-note">${e(model.pendingReason||'答卷尚未完成，暂不排名。')}</span><span class="pending-open">${model.report.runs.some(run=>run.status!=='not_run')?'待复核':'待测'} ${arrowRight}</span></a>`).join('')}</div></section>`;
+  return `<section class="pending-models" aria-label="待测与待复核模型"><h2>待测 / 待复核模型 <span>${models.length}</span></h2><div class="pending-model-grid">${models.map(({model,row})=>{
+    const names=book.tasks.filter((_,i)=>row.items[i].score===null).map(task=>task.name);
+    const note=book.agentTasks?'待补齐或复核：'+names.join('、'):(model.pendingReason||'答卷尚未完成，暂不排名。');
+    return `<a class="pending-model-card" href="${url('model/'+model.id)}"><span class="column-model">${modelBadge(model.id)}<span>${e(model.name)}</span></span><span class="pending-model-note">${e(note)}</span><span class="pending-open">${book.agentTasks?'看进度':model.report.runs.some(run=>run.status!=='not_run')?'待复核':'待测'} ${arrowRight}</span></a>`;
+  }).join('')}</div></section>`;
 }
 export function studioScores(data,book,{filter='all'}={}){
   const rows=data.models.map(m=>({m,row:book.models.find(r=>r.modelId===m.id)})).filter(({row})=>weightedSummary(book,row).complete).sort((a,b)=>weightedSummary(book,b.row).earned-weightedSummary(book,a.row).earned).filter(x=>filter!=='passed'||weightedSummary(book,x.row).qualified);
-  return `<table class="studio-score-table" aria-label="八项百分制成绩"><thead><tr><th class="rank-col">#</th><th>模型</th><th class="total-col">总分</th>${shortNames.map((n,j)=>`<th class="metric-col">${n}<small>满分 ${book.tasks[j].weight}</small></th>`).join('')}<th class="stars-col">本站星级</th><th><span class="sr-only">答卷</span></th></tr></thead><tbody>${rows.map(({m,row},i)=>{const s=weightedSummary(book,row);return `<tr><td class="rank-col">${String(i+1).padStart(2,'0')}</td><th scope="row">${modelLink(m)}</th><td class="total-col"><strong>${s.finalScore===null?'—':formatPoints(s.finalScore)}</strong></td>${row.items.map((x,j)=>`<td class="metric-col"><a class="metric ${statusClass(x)}" href="${url(x.taskId)}" aria-label="${e(shortNames[j])} ${x.score===null?'待评':formatPoints(points(x.score,book.tasks[j].weight))+' / '+book.tasks[j].weight+'分'}">${x.score===null?'—':formatPoints(points(x.score,book.tasks[j].weight))}</a></td>`).join('')}<td class="stars-col">${siteStars(book,row)}</td><td class="row-link"><a href="${url('model/'+m.id)}" aria-label="查看${e(m.name)}答卷">${arrowUpRight}</a></td></tr>`;}).join('')}${rows.length?'':'<tr><td colspan="13">当前筛选下暂无模型。</td></tr>'}</tbody></table>`;
+  return `<table class="studio-score-table" aria-label="八项百分制成绩"><thead><tr><th class="rank-col">#</th><th>模型</th><th class="total-col">总分</th>${book.tasks.map((task,j)=>`<th class="metric-col">${e(taskLabel(task,j))}<small>满分 ${task.weight}</small></th>`).join('')}<th class="stars-col">本站星级</th><th><span class="sr-only">答卷</span></th></tr></thead><tbody>${rows.map(({m,row},i)=>{const s=weightedSummary(book,row);return `<tr><td class="rank-col">${String(i+1).padStart(2,'0')}</td><th scope="row">${modelLink(m)}</th><td class="total-col"><strong>${s.finalScore===null?'—':formatPoints(s.finalScore)}</strong></td>${row.items.map((x,j)=>`<td class="metric-col"><a class="metric ${statusClass(x)}" href="${taskHref(book.tasks[j])}" aria-label="${e(taskLabel(book.tasks[j],j))} ${x.score===null?'待评':formatPoints(points(x.score,book.tasks[j].weight))+' / '+book.tasks[j].weight+'分'}">${x.score===null?'—':formatPoints(points(x.score,book.tasks[j].weight))}</a></td>`).join('')}<td class="stars-col">${siteStars(book,row)}</td><td class="row-link"><a href="${url('model/'+m.id)}" aria-label="查看${e(m.name)}答卷">${arrowUpRight}</a></td></tr>`;}).join('')}${rows.length?'':'<tr><td colspan="13">当前筛选下暂无模型。</td></tr>'}</tbody></table>`;
 }
 export function studioQuestions(book){
-  return book.tasks.map((t,i)=>`<a class="question-row" href="${url(t.id)}"><span class="q-num">0${i+1}</span><div><span class="q-category">${e(shortNames[i])}</span><h3>${e(titles[i])}</h3></div><span class="q-weight">${t.weight}<small>分</small></span><span class="q-arrow" aria-hidden="true">${arrowRight}</span></a>`).join('');
+  return book.tasks.map((t,i)=>`<a class="question-row" href="${taskHref(t)}"><span class="q-num">0${i+1}</span><div><span class="q-category">${e(taskLabel(t,i))}</span><h3>${e(t.agentKey?t.title:titles[i])}</h3></div><span class="q-weight">${t.weight}<small>分</small></span><span class="q-arrow" aria-hidden="true">${arrowRight}</span></a>`).join('');
 }
 function measurementOverview(data,book){
   const graded=book.models.filter(r=>weightedSummary(book,r).complete).length;
+  if(book.agentTasks)return `${graded} 款已完成八题 · ${data.models.length-graded} 款待补齐或复核`;
   const measured=book.highSource?book.models.filter(row=>row.items.some(item=>item.measurement?.attempts?.length||(item.measurement?.collectionLabel&&item.measurement.status!=='not_run'))).length:graded;
   return measured===graded?`${measured} 款已测${data.models.length>measured?' · '+(data.models.length-measured)+' 款待测':''}`:`${measured} 款已实测 · ${graded} 款已评分 · ${measured-graded} 款待复核 · ${data.models.length-measured} 款待测`;
 }
 export function studioArchive(data,book,preferences={}){
-  return `<div class="studio-home column-page">${pageHead('01 / 模型测评','八道日常题，看看谁更靠谱。',`${measurementOverview(data,book)} · 满分 100`)}<div class="column-actions">${link('compare','模型对比')}${link('how','题目与评分')}${christmasLink()}${link('harness','三道工程实测')}${link('season/dynamic-pelican','新题 · 动态鹈鹕')}${link('season/boss-sokoban','新实测 · 推老板')}${link('season/gear-scam','新实测 · 齿轮诈骗')}${codexLink()}</div><div class="column-model-grid">${modelCards(data,book)}</div>${pendingModels(data,book)}<section class="column-section">${sectionHead('01','八项成绩')}<div class="score-scroll" tabindex="0" role="region" aria-label="八项成绩，可横向滚动">${studioScores(data,book,preferences)}</div><p class="column-note">日常榜总分只计下列八题。80 分合格，90 分优秀。Agent 专题每题单独计分。</p><details class="column-disclosure"><summary>评分说明</summary><p>原答卷与原分保留。除逐字改写外默认由助手初评，站长确认的单项另有标注。账单整活题按出题者约定的“1份”计分，票据层级与参考依据仍待核实，不代表整体图像能力。</p>${link('how','查看完整评分标准')}</details></section><section class="column-section">${sectionHead('02','这次测了什么？')}<div id="question-list">${studioQuestions(book)}</div></section></div>`;
+  return `<div class="studio-home column-page">${pageHead('01 / 模型测评',book.agentTasks?'八题实测榜':'八道日常题，看看谁更靠谱。',`${measurementOverview(data,book)} · 满分 100`)}<div class="column-actions">${link('compare','模型对比')}${link('how','题目与评分')}${christmasLink()}${book.agentTasks?'':link('harness','三道工程实测')+codexLink()}</div><section class="column-section">${sectionHead('01','八项成绩')}<div class="score-scroll" tabindex="0" role="region" aria-label="八项成绩，可横向滚动">${studioScores(data,book,preferences)}</div><p class="column-note">${book.agentTasks?'前端和后端各按原始分 ÷ 10 折算。八题都出分才列入排名。':'日常榜总分只计下列八题。'}80 分合格，90 分优秀。</p><details class="column-disclosure"><summary>评分说明</summary><p>原答卷与原分保留。除逐字改写外默认由助手初评，站长确认的单项另有标注。账单整活题按出题者约定的“1份”计分，票据层级与参考依据仍待核实，不代表整体图像能力。</p>${link('how','查看完整评分标准')}</details></section><div class="column-model-grid">${modelCards(data,book)}</div>${pendingModels(data,book)}<section class="column-section">${sectionHead('02','这次测了什么？','season/dynamic-pelican','动态鹈鹕题面')}<div id="question-list">${studioQuestions(book)}</div></section></div>`;
 }
 export function studioHome(data,book,{shortHighlights=[],agentRun}={}){
   const catalog=drawingCatalog(data,book);
@@ -85,7 +93,7 @@ export function studioHome(data,book,{shortHighlights=[],agentRun}={}){
       <div class="home-intro-links"><a class="home-primary" href="${url('results')}">看模型成绩 ${arrowRight}</a>${link('how','测试方法')}</div>
     </header>
     <div class="home-suites">
-      <section class="home-suite"><header><h2>日常八题榜</h2><p>八题合计 100 分 · ${leaders.length} 款已评分</p></header>
+      <section class="home-suite"><header><h2>${book.agentTasks?'八题实测榜':'日常八题榜'}</h2><p>八题合计 100 分 · ${leaders.length} 款已评分</p></header>
         <ul class="home-result-list">${leaders.slice(0,3).map(({model,score:s})=>`<li><a href="${url('model/'+model.id)}"><span>${modelBadge(model.id)}${e(model.name)}</span>${score(s.finalScore)}</a></li>`).join('')}</ul>
         <div class="home-suite-links">${link('results','完整榜单')}${link('compare','对比模型')}</div>
       </section>
@@ -93,7 +101,7 @@ export function studioHome(data,book,{shortHighlights=[],agentRun}={}){
         <ul class="home-result-list">${shortHighlights.map(({id,title,best,tied})=>`<li><a href="${url('season/'+id)}"><span>${e(title)}${Number.isFinite(best)?`<small>本题最高${tied>1?' · '+tied+' 款并列':''}</small>`:''}</span>${score(best)}${arrowRight}</a></li>`).join('')}</ul>
         <div class="home-suite-links">${link('season','短题与开发题')}</div>
       </section>
-      <section class="home-suite home-suite-agent"><header><h2>Agent 挑战</h2><p>前端做作品，后端跑测试</p></header>
+      <section class="home-suite home-suite-agent"><header><h2>Agent 挑战</h2><p>${book.agentTasks?'主榜第 2、3 题 · 原始百分制成绩':'前端做作品，后端跑测试'}</p></header>
         ${work?`<a class="home-agent-feature" href="${url('agent-challenge/'+work)}">
             <img src="art/christmas/${e(work)}.webp" alt="" width="760" height="570" decoding="async">
             <span><strong>圣诞树配乐</strong><small>${e(agentRun.name)} · ${agentRun.frontend.score} / 100</small></span>${arrowRight}</a>
@@ -105,7 +113,7 @@ export function studioHome(data,book,{shortHighlights=[],agentRun}={}){
       <div class="home-art-grid">${featured.map(entry=>artCard(entry,{compact:true})).join('')}</div>
       <div class="home-suite-links">${link('season/dynamic-pelican','动态鹈鹕题面')}</div>
     </section>
-    <section class="column-section home-models">${sectionHead('','全部模型 · 日常八题','results','看各题得分')}
+    <section class="column-section home-models">${sectionHead('',book.agentTasks?'全部模型 · 八题实测':'全部模型 · 日常八题','results','看各题得分')}
       <div class="column-model-grid">${modelCards(data,book)}</div>${pendingModels(data,book)}
       <div class="home-suite-links">${link('receipt','账单整活题')}</div>
     </section>
@@ -121,10 +129,10 @@ export function studioWorks(data,book,taskId='',modelId=''){
   const selected=valid?[taskId]:Object.keys(artTasks);
   return `<div class="column-page">${pageHead('02 / 整活作品','模型的脑洞，直接上图。','看斑马和鹈鹕原画，也能播放模型的圣诞树。')}<nav class="column-tabs" aria-label="作品分类">${[['','斑马与鹈鹕'],['zebra','斑马奔跑'],['visual','鹈鹕骑车']].map(([id,name])=>`<a href="${url('works'+(id?'/'+id:''))}" ${id===(valid?taskId:'')?'aria-current="page"':''}>${name}</a>`).join('')}${link('agent-challenge','圣诞树')}</nav>${selected.map((id,i)=>`<section class="column-section work-collection">${sectionHead(String(i+1).padStart(2,'0'),artTasks[id].title,id,'题目与答卷')}<p class="column-note">${e(artTasks[id].prompt)}</p><div class="work-grid">${catalog[id].map(entry=>artCard(entry)).join('')||'<p>这道题暂时没有可展示的原作。</p>'}</div></section>`).join('')}</div>`;
 }
-export function studioRepairs(data,book,bank){
+export function studioRepairs(data,book,bank,{historicalEdit=false}={}){
   const catalog=drawingCatalog(data,book),issues=catalog.visual.filter(x=>x.item.score!==null&&x.item.score<2);
   const editIndex=book.tasks.findIndex(t=>t.id==='edit'),editTask=bank.tasks.find(t=>t.id==='edit');
-  return `<div class="column-page">${pageHead('03 / 翻车修复','翻车现场，修改前后。','看鹈鹕画错在哪里，也看模型能不能按要求改字。')}<nav class="repair-section-links" aria-label="本页内容"><button type="button" data-repair-jump="repair-scenes">翻车现场 ${arrowRight}</button><button type="button" data-repair-jump="repair-edits">修改前后 ${arrowRight}</button></nav><section class="column-section repair-section" id="repair-scenes" tabindex="-1">${sectionHead('01','翻车现场','works/visual','同题作品')}<p class="column-note">画出来了，连接却没对上。以下原作尚无返工答卷。</p><div class="home-art-grid">${issues.map(entry=>artCard(entry,{issue:true})).join('')||'<p>本批没有已评分的绘画失误记录。</p>'}</div></section><section class="column-section repair-section" id="repair-edits" tabindex="-1">${sectionHead('02','修改前后','edit','完整题目与答卷')}<p class="column-note">只改时间，其他字别动 · 文字修改，不属于代码修复</p><div class="edit-brief"><span>修改要求</span><p>${e(editTask.prompts.at(-1))}</p></div><div class="edit-results">${data.models.filter(model=>model.report.runs[editIndex]?.outputs?.every(x=>typeof x==='string'&&x.trim())).map(model=>{
+  return `<div class="column-page">${pageHead('03 / 翻车修复','翻车现场，修改前后。','看鹈鹕画错在哪里，也看模型能不能按要求改字。')}<nav class="repair-section-links" aria-label="本页内容"><button type="button" data-repair-jump="repair-scenes">翻车现场 ${arrowRight}</button><button type="button" data-repair-jump="repair-edits">修改前后 ${arrowRight}</button></nav><section class="column-section repair-section" id="repair-scenes" tabindex="-1">${sectionHead('01','翻车现场','works/visual','同题作品')}<p class="column-note">画出来了，连接却没对上。以下原作尚无返工答卷。</p><div class="home-art-grid">${issues.map(entry=>artCard(entry,{issue:true})).join('')||'<p>本批没有已评分的绘画失误记录。</p>'}</div></section><section class="column-section repair-section" id="repair-edits" tabindex="-1">${sectionHead('02','修改前后','edit','完整题目与答卷')}<p class="column-note">${historicalEdit?'历史样例 · 旧版改字题':'只改时间，其他字别动 · 文字修改，不属于代码修复'}</p><div class="edit-brief"><span>修改要求</span><p>${e(editTask.prompts.at(-1))}</p></div><div class="edit-results">${data.models.filter(model=>model.report.runs[editIndex]?.outputs?.every(x=>typeof x==='string'&&x.trim())).map(model=>{
     const run=model.report.runs[editIndex],item=book.models.find(r=>r.modelId===model.id).items[editIndex];
     return `<article class="edit-result"><header>${modelLink(model)}<span class="result-label ${statusClass(item)}">${e(status(item))} · ${item.score===null?'待评':formatPoints(points(item.score,book.tasks[editIndex].weight))} / ${book.tasks[editIndex].weight}</span></header><div class="edit-pair"><div><span>修改前 · 模型第一轮回答</span><p>${e(run.outputs[0])}</p></div><div><span>修改后 · 模型第二轮回答</span><p>${e(run.outputs.at(-1))}</p></div></div><details class="work-evidence"><summary>判分依据</summary><p>${e(item.weightedNote||item.reason)}</p>${link('model/'+model.id,'查看完整答卷')}</details></article>`;
   }).join('')}</div></section><aside class="repair-status"><span class="result-label pending">待实测</span><div><h2>鹈鹕返工待测</h2><p>本栏的鹈鹕原作还没有同一模型的返工答卷。</p>${link('harness','看已发布的代码修复实测')}</div></aside></div>`;

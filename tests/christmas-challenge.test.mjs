@@ -1,7 +1,8 @@
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import test from 'node:test';
-import {renderChristmasChallenge,validateChristmasChallenge} from '../dist/christmas-challenge.js';
+import {projectAgentTasks,renderChristmasChallenge,validateChristmasChallenge} from '../dist/christmas-challenge.js';
+import {weightedSummary} from '../dist/weighted-score.js';
 
 const read = name => readFileSync(new URL(name,import.meta.url));
 const data = validateChristmasChallenge(JSON.parse(read('../dist/data/christmas-cache-v1.json')));
@@ -46,4 +47,26 @@ test('the Grok challenge submission identifies the actual Cursor harness',() => 
   const duplicate=structuredClone(data);
   duplicate.runs[0].modelId=grok.modelId;
   assert.throws(()=>validateChristmasChallenge(duplicate),/条件不一致/);
+});
+
+test('the two replacement slots convert actual high scores and never borrow a sibling model score',() => {
+  const ids=['purpose','reasoning','edit','memory','honesty','visual','receipt','zebra'];
+  const weights=[10,10,10,10,15,10,20,15];
+  const book={
+    tasks:ids.map((id,i)=>({id,weight:weights[i]})),
+    models:['grok47','kimi-k31-pro','deepseek-v41-flash'].map(modelId=>({
+      modelId,selectionFinal:true,items:ids.map(taskId=>({taskId,score:2})),
+    })),
+  };
+  const current=projectAgentTasks(book,data);
+  assert.deepEqual(current.tasks.map(task=>task.id),['purpose','christmas','cache','memory','honesty','visual','receipt','zebra']);
+  assert.deepEqual(current.tasks.map(task=>task.weight),weights);
+  assert.equal(weightedSummary(current,current.models[0]).finalScore,99.7);
+  assert.equal(current.models[1].items[1].score,null);
+  assert.equal(current.models[1].items[2].score,2);
+  assert.equal(weightedSummary(current,current.models[1]).finalScore,null);
+  assert.deepEqual(current.models[2].items.slice(1,3).map(item=>item.score),[null,null]);
+  assert.deepEqual(book.tasks.map(task=>task.id),ids);
+  assert.equal(book.models[0].items[1].score,2);
+  assert.equal(weightedSummary(projectAgentTasks(book),projectAgentTasks(book).models[0]).finalScore,null);
 });

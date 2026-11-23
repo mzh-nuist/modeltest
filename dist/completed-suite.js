@@ -1,7 +1,7 @@
 import {modelBadge} from './model-identity.js?v=20261118-models4';
 import {previewableCheckupSVG} from './checkup-data.js?v=20261101-short1';
 import {checkupSVG} from './checkup-view.js?v=20261101-short1';
-import {weightedGrade,weightedSummary,formatPoints,taskName} from './weighted-score.js?v=20261123-clarity1';
+import {weightedGrade,weightedSummary,formatPoints,taskName} from './weighted-score.js?v=20261123-suite2';
 const e=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 export function extractDrawing(output){const text=String(output||''),matches=text.match(/<svg\b[\s\S]*?<\/svg>/gi);const svg=matches?.length===1?matches[0]:text;return {svg,fenced:svg.trim()!==text.trim()};}
 export function validateCompletedSuite(suite,data,old,bank){

@@ -6,6 +6,44 @@ const art = 'art/christmas/';
 const assetsVersion = '?v=20261123-profile1';
 const bounds = (value, max) => Number.isInteger(value) && value >= 0 && value <= max;
 
+export function projectAgentTasks(book, evidence) {
+  const replacements = [
+    {replace:'reasoning', id:'christmas', name:'圣诞树配乐', title:'让圣诞树跟着音乐跳舞',
+      key:'frontend', destination:route+'/christmas', prompt:evidence?.frontendPrompt,
+      summary:'用代码画一棵圣诞树，让它跟着同一段 19 秒配乐动起来。',
+      partial:'按节拍与旋律 45 分、画面 40 分、播放与移动端 15 分核算原分，再除以 10。'},
+    {replace:'edit', id:'cache', name:'并发缓存', title:'写一个扛得住并发和过期的缓存',
+      key:'backend', destination:route+'/cache', prompt:evidence?.backendPrompt,
+      summary:'用 JavaScript 实现缓存，让同一个键的并发请求共享加载，并防止迟到的旧结果覆盖新值。',
+      partial:'自动测试按基础 LRU、过期、并发、竞态和故障恢复逐组计分，原分再除以 10。'},
+  ];
+  const tasks = book.tasks.map(task=>{
+    const replacement = replacements.find(entry=>entry.replace===task.id);
+    if (!replacement) return task;
+    const {id,name,title,key,destination,prompt,summary,partial} = replacement;
+    return {id,name,title,weight:task.weight,agentKey:key,destination,summary,prompts:[prompt||summary],
+      allowPartial:true,full:'原始评分满分 100，折算得 10 分。',partial,zero:'已取得可计分结果且原始评分为 0。'};
+  });
+  const byModel = new Map(evidence?.runs.map(run=>[run.modelId,run]));
+  const models = book.models.map(row=>{
+    const run = byModel.get(row.modelId);
+    const items = row.items.map((item,i)=>{
+      const task = tasks[i];
+      if (!task.agentKey) return item;
+      const result = run?.[task.agentKey];
+      const score = result?.score;
+      const evidenceLink = task.agentKey==='frontend'
+        ? (result?.work ? route+'/'+result.work : task.destination)
+        : (run ? task.destination+'/'+run.modelId : task.destination);
+      const unavailable = !evidence?'暂时无法读取 Agent 成绩。':run?'尚无可评分的完整交付。':'没有此型号的公开 Agent 答卷。';
+      return {taskId:task.id,score:score===undefined?null:score/50,agentScore:score,harness:run?.harness,evidenceLink,
+        reason:score===undefined?unavailable:`原始评分 ${score} / 100，计入本榜 ${score/10} / 10。`};
+    });
+    return {...row,items,selectionFinal:items.every(item=>item.score!==null)};
+  });
+  return {...book,agentTasks:true,tasks,models};
+}
+
 export function validateChristmasChallenge(data) {
   if (data?.id !== 'christmas-cache-v1' || !data.frontendPrompt || !data.backendPrompt || !data.runs?.length)
     throw Error('挑战数据不完整');
@@ -83,34 +121,41 @@ export function renderChristmasChallenge(data, selected, modelId) {
   }
   const found = selected && pieces.find(run => run.frontend.work === selected);
   if (found) return player(found);
-  if (selected) return `<div class="column-page studio-home christmas-challenge"><header class="column-heading">
+  if (selected && selected!=='christmas' && !(selected==='cache'&&!modelId)) return `<div class="column-page studio-home christmas-challenge"><header class="column-heading">
     <a class="column-link" href="${route}">← 圣诞树与并发缓存</a><h1>未找到这份挑战答卷</h1></header></div>`;
   return `<div class="column-page studio-home christmas-challenge"><header class="column-heading">
-    <p class="column-kicker">Agent 双题实测</p><h1>一段配乐，${pieces.length} 棵圣诞树</h1>
-    <p>同一段 19 秒配乐，看看谁能让圣诞树跟着音乐动起来。</p><p class="column-note">圣诞树和并发缓存各 100 分，独立于<a class="column-link" href="#checkup/results">日常八题榜</a>。</p></header>
-    <section class="column-section"><div class="column-section-head"><h2>圣诞树跟着音乐跳舞</h2></div>
+    <a class="column-link" href="#checkup/results">← 八题实测榜</a>
+    <h1>${selected==='cache'?'并发缓存':`一段配乐，${pieces.length} 棵圣诞树`}</h1>
+    <p>这里展示原始百分制成绩，两题各折算为 10 分计入八题实测榜。</p></header>
+    ${selected==='cache'?'':`<section class="column-section"><div class="column-section-head"><h2>圣诞树跟着音乐跳舞</h2></div>
     <div class="christmas-works">${pieces.slice().sort((a,b) => b.frontend.score-a.frontend.score).map(cover).join('')}</div>
-    <details class="column-disclosure"><summary>前端题面与计分</summary><p class="christmas-prompt">${escape(data.frontendPrompt)}</p></details></section>
-    <section class="column-section"><div class="column-section-head"><h2>并发缓存怎么扛</h2></div>
+    <details class="column-disclosure"><summary>前端题面与计分</summary><p class="christmas-prompt">${escape(data.frontendPrompt)}</p></details></section>`}
+    ${selected==='christmas'?'':`<section class="column-section"><div class="column-section-head"><h2>并发缓存怎么扛</h2></div>
     <p class="column-note">独立脚本检查同键合并、过期刷新和旧请求回写。点模型看各项得分。</p>
     ${runs.slice().sort((a,b) => (b.backend.score ?? -1)-(a.backend.score ?? -1)).map(scoreDetails).join('')}
-    <details class="column-disclosure"><summary>后端题面与计分</summary><p class="christmas-prompt">${escape(data.backendPrompt)}</p></details></section></div>`;
+    <details class="column-disclosure"><summary>后端题面与计分</summary><p class="christmas-prompt">${escape(data.backendPrompt)}</p></details></section>`}</div>`;
 }
 
 export function createChristmasChallenge(onChange) {
   let state = 'idle';
   let data;
+  let loading;
   function load() {
     if (state === 'idle') {
       state = 'loading';
-      fetch('data/christmas-cache-v1.json'+assetsVersion).then(response => {
+      loading = fetch('data/christmas-cache-v1.json'+assetsVersion).then(response => {
         if (!response.ok) throw Error('成绩下载失败');
         return response.json();
       }).then(raw => { data = validateChristmasChallenge(raw); state = 'ready'; })
         .catch(() => { state = 'error'; }).finally(onChange);
     }
+    return loading;
   }
   return {
+    async evidence() {
+      await load();
+      return data;
+    },
     render(selected, modelId) {
       load();
       if (state === 'ready') return renderChristmasChallenge(data,selected,modelId);

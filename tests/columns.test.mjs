@@ -72,7 +72,7 @@ test('controller supports all column routes and old play links show identified w
     const controller=createPublishedDailyController({main,rerender:()=>done()});
     controller.render();await ready;
     const homepage=controller.render();
-    for(const title of ['日常八题榜','短题实测','Agent 挑战'])assert.ok(homepage.includes('<h2>'+title+'</h2>'));
+    for(const title of ['八题实测榜','短题实测','Agent 挑战'])assert.ok(homepage.includes('<h2>'+title+'</h2>'));
     assert.match(homepage,/href="#checkup\/season\/boss-sokoban"/);
     assert.match(homepage,/href="#checkup\/season\/gear-scam"/);
     assert.match(homepage,/href="#checkup\/agent-challenge\/grok"/);
@@ -87,13 +87,20 @@ test('controller supports all column routes and old play links show identified w
     assert.match(controller.render(['history','model','kimi-k3']),/默认档与当时的补测记录/);
     globalThis.location.hash='#checkup/model/grok47';
     const grok=controller.render(['model','grok47']);
-    assert.match(grok,/日常八题总分[\s\S]*?<strong>73<\/strong>/);
-    assert.match(grok,/圣诞树配乐<\/span><strong>97 /);
-    assert.match(grok,/并发缓存<\/span><strong>100 /);
-    assert.doesNotMatch(controller.render(['model','deepseek-v41-flash']),/class="agent-profile"/);
+    assert.match(grok,/八题总分[\s\S]*?<strong>72\.7<\/strong>/);
+    assert.match(grok,/id="answer-christmas"[\s\S]*?计入本榜 9\.7 \/ 10/);
+    assert.match(grok,/id="answer-cache"[\s\S]*?计入本榜 10 \/ 10/);
+    assert.doesNotMatch(grok,/answer-reasoning|answer-edit/);
+    const mainBoard=controller.render(['results']);
+    for(const name of ['圣诞树配乐','并发缓存'])assert.ok(mainBoard.includes(name+'<small>满分 10'));
+    assert.doesNotMatch(mainBoard,/推理纠错|定点改字/);
+    assert.match(controller.render(['edit']),/旧版题目 · 历史答卷/);
+    const missing=controller.render(['model','deepseek-v41-flash']);
+    assert.match(missing,/暂无|没有此型号的公开 Agent 答卷/);
+    assert.match(missing,/暂得/);
     assert.match(controller.render(['visual']),/5 \/ 10 分 · 部分达成/);
     const method=controller.render(['how']);
-    assert.match(method,/日常八题榜、短题和 Agent 专题各有自己的题目与分数/);
+    assert.match(method,/第 2、3 题已换成圣诞树配乐与并发缓存/);
     assert.match(method,/href="#checkup\/agent-challenge"/);
     for(const id of ['qwen38-max','gpt61-sol']){
       assert.match(controller.render(['model',id]),/没有找到这份答卷/);
@@ -120,6 +127,8 @@ test('new navigation contains three equal labels and analytics accepts only know
   assert.equal(trafficRoute('#checkup/play'),'checkup/works');
   assert.equal(trafficRoute('#checkup/works/arbitrary'),null);
   assert.equal(trafficRoute('#checkup/agent-challenge/grok'),'checkup/agent-challenge');
+  assert.equal(trafficRoute('#checkup/agent-challenge/christmas'),'checkup/agent-challenge');
+  assert.equal(trafficRoute('#checkup/agent-challenge/cache'),'checkup/agent-challenge');
   assert.equal(trafficRoute('#checkup/agent-challenge/cache/grok47'),'checkup/agent-challenge');
   assert.equal(trafficRoute('#checkup/agent-challenge/cache/arbitrary'),null);
   assert.equal(trafficRoute('#checkup/history/model/kimi-k3'),'checkup/history');

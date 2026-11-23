@@ -17,6 +17,7 @@ export function validateWeightedSuite(suite,data,legacy,bank){
 export function weightedSummary(suite,row){
   let earned=0,evaluated=0,passed=0,graded=0;
   row.items.forEach((x,i)=>{if(x.score!==null){earned+=points(x.score,suite.tasks[i].weight);evaluated+=suite.tasks[i].weight;graded++;if(x.score===2)passed++;}});
+  earned=Number(earned.toFixed(4));
   const remaining=100-evaluated,complete=graded===suite.tasks.length&&row.selectionFinal!==false;
   return {earned,evaluated,remaining,graded,passed,complete,qualified:complete&&earned>=suite.passingScore,finalScore:complete?earned:null,grade:!complete?'待测完':earned>=90?'优秀':earned>=80?'合格':earned>=60?'需改进':'未合格',pendingReview:row.items.some(x=>x.score===null&&x.measurement?.status==='success'),possibleMax:row.selectionFinal===false&&!suite.highOnly?100:earned+remaining};
 }

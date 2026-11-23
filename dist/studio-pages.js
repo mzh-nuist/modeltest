@@ -1,8 +1,8 @@
-import {historicalReading} from './playful-season.js?v=20261123-home1';
+import {historicalReading} from './playful-season.js?v=20261123-suite2';
 import {modelBadge} from './model-identity.js?v=20261118-models4';
 import {modelPicker} from './model-picker.js?v=20261118-models4';
-import {weightedSummary,points,formatPoints,siteStars,RECEIPT_REVIEW_RULE} from './weighted-score.js?v=20261123-clarity1';
-import {extractDrawing} from './completed-suite.js?v=20261123-clarity1';
+import {weightedSummary,points,formatPoints,siteStars,RECEIPT_REVIEW_RULE} from './weighted-score.js?v=20261123-suite2';
+import {extractDrawing} from './completed-suite.js?v=20261123-suite2';
 import {checkupSVG} from './checkup-view.js?v=20261101-short1';
 import {previewableCheckupSVG} from './checkup-data.js?v=20261101-short1';
 import {arrowRight,arrowUpRight} from './ui-icons.js?v=20261101-short1';
@@ -10,6 +10,7 @@ import {arrowRight,arrowUpRight} from './ui-icons.js?v=20261101-short1';
 const e=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const names=['理解需求','推理纠错','定点改字','多轮记忆','不乱编','画图连接','账单整活','斑马绘画'];
 const titles=['洗车店只有 50 米，要开车吗？','9:40 出门，35 分钟后是 10:05？','只改时间，其他字一字不动','聊了几轮，还记得出游条件吗？','会议没说的，能不能不乱补？','鹈鹕骑车，脚和踏板要接对','辣椒炒肉，到底有几份？','在非洲草原上，画一只奔跑的斑马'];
+const taskLabel=(task,i)=>task.agentKey?task.name:names[i];
 const number=i=>String(i+1).padStart(2,'0');
 const inline=value=>e(value).replace(/\*\*([^*\n]+)\*\*/g,'<strong>$1</strong>');
 const raw=value=>`<pre class="source-answer">${e(value||'本轮没有正文回答。')}</pre>`;
@@ -61,44 +62,32 @@ function taskPrompt(task,bankTask){
   return `<p>${e(task.title)}</p><details class="answer-disclosure"><summary>查看完整${prompts.length>1?' '+prompts.length+' 轮':''}提问</summary>${prompts.map((p,j)=>`${prompts.length>1?'<h4>第 '+(j+1)+' 轮</h4>':''}${raw(p)}`).join('')}</details>`;
 }
 function answerContent(model,book,row,i,bank){
+  const task=book.tasks[i],item=row.items[i];
+  if(task.agentKey)return `<p>${e(item.reason)}</p>${item.harness?`<p class="format-note">${e(item.harness)} · High</p>`:''}
+    <a class="page-action" href="${e(item.evidenceLink)}">${item.score===null?'查看题面与测试记录':'打开作品或评分明细'} ${arrowRight}</a>`;
   return actualAnswer(model,book,row,i,bank)+historicalReading(book.tasks[i],row.items[i])+scoringNotes(book,row,i)+(i>=6||row.items[i].measurement?.followup?measurementNotes(row.items[i]):'');
 }
 function taskSection(models,book,bank,i){
   const task=book.tasks[i],compare=models.length===2;
-  const heading=`<div class="case-heading"><span class="case-number">${number(i)}</span><div><p>${e(i===6?'账单整活题':names[i])}</p><h2>${e(titles[i])}</h2></div>${compare?`<span class="case-weight">满分 ${task.weight} 分</span>`:itemScore(book,book.models.find(r=>r.modelId===models[0].id),i)}</div>`;
-  const question=`${taskPrompt(task,bank.tasks[i])}<details class="answer-disclosure"><summary>评分标准</summary>${rubric(task)}</details>`;
-  const answers=models.map(model=>{const row=book.models.find(r=>r.modelId===model.id);return `<article class="answer-pane" aria-label="${e(model.name)} · ${e(names[i])}">${compare?`<header class="answer-author"><a href="#checkup/model/${e(model.id)}">${modelBadge(model.id)}<span>${e(model.name)}</span></a>${itemScore(book,row,i)}</header>`:`<p class="answer-kind">${row.items[i].measurement?.status==='success'||row.items[i].measurement?.attempts?.length?'模型原回答 · AI 生成':row.items[i].measurement?.status==='incomplete'?'答卷未完整交付':'等待实测'}</p>`}${answerContent(model,book,row,i,bank)}</article>`;}).join('');
+  const heading=`<div class="case-heading"><span class="case-number">${number(i)}</span><div><p>${e(i===6?'账单整活题':taskLabel(task,i))}</p><h2>${e(task.agentKey?task.title:titles[i])}</h2></div>${compare?`<span class="case-weight">满分 ${task.weight} 分</span>`:itemScore(book,book.models.find(r=>r.modelId===models[0].id),i)}</div>`;
+  const question=`${task.agentKey?`<p>${e(task.summary)}</p><details class="answer-disclosure"><summary>完整题面</summary>${raw(task.prompts[0])}</details>`:taskPrompt(task,bank.tasks[i])}<details class="answer-disclosure"><summary>评分标准</summary>${rubric(task)}</details>`;
+  const answers=models.map(model=>{const row=book.models.find(r=>r.modelId===model.id);return `<article class="answer-pane" aria-label="${e(model.name)} · ${e(taskLabel(task,i))}">${compare?`<header class="answer-author"><a href="#checkup/model/${e(model.id)}">${modelBadge(model.id)}<span>${e(model.name)}</span></a>${itemScore(book,row,i)}</header>`:`<p class="answer-kind">${task.agentKey?(row.items[i].score===null?'等待实测或复核':'Agent 工程实测'):row.items[i].measurement?.status==='success'||row.items[i].measurement?.attempts?.length?'模型原回答 · AI 生成':row.items[i].measurement?.status==='incomplete'?'答卷未完整交付':'等待实测'}</p>`}${answerContent(model,book,row,i,bank)}</article>`;}).join('');
   return `<section class="answer-section" id="answer-${e(task.id)}" tabindex="-1">${heading}${compare?`<details class="shared-question"><summary>查看题目与评分标准</summary><div class="question-content">${question}</div></details><div class="answer-columns">${answers}</div>`:`<div class="detail-answer-layout"><aside class="question-content"><span class="question-label">测试题目</span>${question}</aside>${answers}</div>`}</section>`;
 }
 
-function totalScore(book,row){const score=weightedSummary(book,row);if(!score.graded)return '<div class="page-total pending-total"><p class="page-total-label">日常八题总分</p><div><strong>待测</strong></div><p>暂无成绩 · 不参与排名</p></div>';return `<div class="page-total"><p class="page-total-label">日常八题总分</p><div><strong>${formatPoints(score.earned)}</strong><span>/ 100${score.complete?'':' 暂得'}</span></div><p>${e(score.grade)}${score.complete?'':' · 已评 '+score.graded+' / '+book.tasks.length+' 项'}</p></div>`;}
-function navigation(book,row=null){return `<nav class="task-score-nav${row?' has-scores':''}" aria-label="跳到本页测试答卷">${book.tasks.map((t,i)=>`<button type="button" data-answer-jump="${e(t.id)}" aria-label="跳到${e(names[i])}${row?'，'+(row.items[i].score===null?'待测':formatPoints(points(row.items[i].score,t.weight))+' / '+t.weight+'分'):''}"><span class="jump-title"><small>${number(i)}</small>${e(names[i])}</span>${row?itemScore(book,row,i):''}</button>`).join('')}</nav>`;}
-const breadcrumb=label=>`<div class="page-breadcrumb"><a href="#checkup/results">日常八题榜</a><span aria-hidden="true">/</span><span>${label}</span></div>`;
-
-function agentProfile(run) {
-  if (!run) return '';
-  const route = '#checkup/agent-challenge';
-  const tasks = [
-    ['圣诞树配乐', run.frontend, run.frontend.work && route+'/'+run.frontend.work],
-    ['并发缓存', run.backend, route+'/cache/'+run.modelId],
-  ];
-  return `<section class="agent-profile" aria-label="Agent 挑战"><div class="agent-profile-heading">
-    <h2>Agent 挑战</h2><p>${e(run.harness)} · High</p></div>
-    <div class="agent-profile-scores">${tasks.map(([name,result,href])=>{
-      const label = `<span>${name}</span><strong>${result.score === undefined ? '未完成' : result.score+' <small>/ 100</small>'}</strong>`;
-      return href ? `<a href="${e(href)}">${label}${arrowRight}</a>` : `<div>${label}</div>`;
-    }).join('')}</div></section>`;
-}
+function totalScore(book,row){const score=weightedSummary(book,row);if(!score.graded)return '<div class="page-total pending-total"><p class="page-total-label">八题总分</p><div><strong>待测</strong></div><p>暂无成绩 · 不参与排名</p></div>';return `<div class="page-total"><p class="page-total-label">八题总分</p><div><strong>${formatPoints(score.earned)}</strong><span>/ 100${score.complete?'':' 暂得'}</span></div><p>${e(score.grade)}${score.complete?'':' · 已评 '+score.graded+' / '+book.tasks.length+' 项'}</p></div>`;}
+function navigation(book,row=null){return `<nav class="task-score-nav${row?' has-scores':''}" aria-label="跳到本页测试答卷">${book.tasks.map((t,i)=>`<button type="button" data-answer-jump="${e(t.id)}" aria-label="跳到${e(taskLabel(t,i))}${row?'，'+(row.items[i].score===null?'待测':formatPoints(points(row.items[i].score,t.weight))+' / '+t.weight+'分'):''}"><span class="jump-title"><small>${number(i)}</small>${e(taskLabel(t,i))}</span>${row?itemScore(book,row,i):''}</button>`).join('')}</nav>`;}
+const breadcrumb=label=>`<div class="page-breadcrumb"><a href="#checkup/results">八题实测榜</a><span aria-hidden="true">/</span><span>${label}</span></div>`;
 
 export function studioModelPage(data,bank,book,id,preferences={},evidence=''){
   const model=data.models.find(m=>m.id===id),row=book.models.find(r=>r.modelId===id),other=data.models.find(m=>m.id!==id&&model?.collectionLabel&&m.collectionLabel===model.collectionLabel)||data.models.find(m=>m.id!==id);
   if(!model||!row)return '';
-  return `<div class="studio-pages model-profile">${breadcrumb('模型详情')}<section class="model-overview"><div class="model-intro"><h1>${modelBadge(id)}<span>${e(model.name)}</span></h1><div class="model-overview-meta">${siteStars(book,row)}<span>日常八题榜</span>${collection(model)}</div><div class="page-actions"><a class="page-action primary" href="#checkup/compare/${e(id)}/${e(other.id)}">和其他模型比一比 ${arrowRight}</a></div></div>${totalScore(book,row)}</section>${agentProfile(preferences.agentRun)}${model.pendingReason?`<p class="model-pending-reason">${e(model.pendingReason)}</p>`:''}${navigation(book,row)}<div class="answers-intro"><h2>${weightedSummary(book,row).graded?'它到底怎么答的？':'准备测哪些题？'}</h2><span>${weightedSummary(book,row).graded?'原回答 · 得分 · 判分依据':'同一套题目与评分标准'}</span></div>${book.tasks.map((_,i)=>taskSection([model],book,bank,i)).join('')}${model.collectionLabel?`<section class="page-evidence"><h2>独立加赛</h2><div class="page-actions"><a class="page-action" href="#checkup/agent-challenge">圣诞树与并发缓存 ${arrowRight}</a><a class="page-action" href="#checkup/season/boss-sokoban">推老板进工位 ${arrowRight}</a><a class="page-action" href="#checkup/season/gear-scam">齿轮诈骗 ${arrowRight}</a></div></section>`:''}<section class="page-evidence"><h2>测试记录</h2>${evidence}</section></div>`;
+  return `<div class="studio-pages model-profile">${breadcrumb('模型详情')}<section class="model-overview"><div class="model-intro"><h1>${modelBadge(id)}<span>${e(model.name)}</span></h1><div class="model-overview-meta">${siteStars(book,row)}<span>八题实测榜</span>${collection(model)}</div><div class="page-actions"><a class="page-action primary" href="#checkup/compare/${e(id)}/${e(other.id)}">和其他模型比一比 ${arrowRight}</a></div></div>${totalScore(book,row)}</section>${!book.agentTasks&&model.pendingReason?`<p class="model-pending-reason">${e(model.pendingReason)}</p>`:''}${navigation(book,row)}<div class="answers-intro"><h2>${weightedSummary(book,row).graded?'它到底怎么答的？':'准备测哪些题？'}</h2><span>${weightedSummary(book,row).graded?'原回答 · 得分 · 判分依据':'同一套题目与评分标准'}</span></div>${book.tasks.map((_,i)=>taskSection([model],book,bank,i)).join('')}${model.collectionLabel?`<section class="page-evidence"><h2>短题实测</h2><div class="page-actions"><a class="page-action" href="#checkup/season/boss-sokoban">推老板进工位 ${arrowRight}</a><a class="page-action" href="#checkup/season/gear-scam">齿轮诈骗 ${arrowRight}</a></div></section>`:''}<section class="page-evidence"><h2>测试记录</h2>${evidence}</section></div>`;
 }
 
 export function studioComparePage(data,bank,book,one,two,evidence=''){
   const models=[one,two];
-  return `<div class="studio-pages model-comparison">${breadcrumb('模型对比')}<section class="compare-intro"><div><h1>两个模型，同一套日常题。</h1><p>并排看日常八题的得分与原回答。查看 Agent 成绩可打开模型详情。${(one.condition||one.provider)!==(two.condition||two.provider)?' 两边的测试入口与输出设置不同。':''}</p></div><a class="page-action" href="#checkup/results">日常八题榜 ${arrowUpRight}</a></section><div class="compare-overview">${models.map((model,i)=>{const row=book.models.find(r=>r.modelId===model.id);return `<section class="compare-model-summary" aria-label="模型 ${i===0?'A':'B'} 概览">${modelPicker(data.models,model.id,i)}<div class="compare-model-score">${totalScore(book,row)}<div>${siteStars(book,row)}${collection(model)}<a class="page-text-link" href="#checkup/model/${e(model.id)}">完整答卷 ${arrowUpRight}</a></div></div></section>`;}).join('')}</div>${navigation(book)}${book.tasks.map((_,i)=>taskSection(models,book,bank,i)).join('')}<section class="page-evidence"><h2>测试记录</h2>${evidence}</section></div>`;
+  return `<div class="studio-pages model-comparison">${breadcrumb('模型对比')}<section class="compare-intro"><div><h1>两个模型，同一套实测题。</h1><p>并排看同一套八题的得分与原答卷。${(one.condition||one.provider)!==(two.condition||two.provider)?' 两边的测试入口与输出设置不同。':''}</p></div><a class="page-action" href="#checkup/results">八题实测榜 ${arrowUpRight}</a></section><div class="compare-overview">${models.map((model,i)=>{const row=book.models.find(r=>r.modelId===model.id);return `<section class="compare-model-summary" aria-label="模型 ${i===0?'A':'B'} 概览">${modelPicker(data.models,model.id,i)}<div class="compare-model-score">${totalScore(book,row)}<div>${siteStars(book,row)}${collection(model)}<a class="page-text-link" href="#checkup/model/${e(model.id)}">完整答卷 ${arrowUpRight}</a></div></div></section>`;}).join('')}</div>${navigation(book)}${book.tasks.map((_,i)=>taskSection(models,book,bank,i)).join('')}<section class="page-evidence"><h2>测试记录</h2>${evidence}</section></div>`;
 }
 
 export function bindAnswerNavigation(main){
