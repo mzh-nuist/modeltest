@@ -75,7 +75,7 @@ test('Codex results use the normal model, paper and artwork pages without changi
     studioWorks(data, book), studioRepairs(data, book, checkup),
     publishedTask(data, checkup, 'visual', book)]) {
     for (const id of expected) assert.ok(markup.includes('#checkup/model/' + id));
-    assert.match(markup, /Codex High/);
+    assert.match(markup, /思考强度 High/);
   }
   const detail = publishedModel(data, checkup, 'gpt62-astra', book);
   assert.match(detail, /72\.5/);
@@ -119,7 +119,7 @@ test('GPT-6.1 Terra extends the catalogue as a distinct tier while Sol and Astra
     ['gpt62-sol', 'gpt62-astra', 'gpt61-terra']);
   const details = publishedModel(data, checkup, 'gpt61-terra', book);
   assert.match(details, /<strong>99<\/strong>/);
-  assert.match(details, /Codex High/);
+  assert.match(details, /思考强度 High/);
   const shorts = publishCodexShort(publishCodexShort(json('short-challenge-results'), evidence, bank), terra, bank);
   assert.equal(shorts.codexCalls, 12);
   assert.ok(shorts.records.filter(record => record.modelId === 'gpt61-terra').every(record => record.grade.total === 100));

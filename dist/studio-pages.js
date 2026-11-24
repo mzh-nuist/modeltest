@@ -1,8 +1,9 @@
+import {answerEffort,effortBadge} from './thinking-effort.js?v=20261125-effort1';
 import {historicalReading} from './playful-season.js?v=20261123-suite2';
 import {modelBadge} from './model-identity.js?v=20261118-models4';
 import {modelPicker} from './model-picker.js?v=20261118-models4';
 import {weightedSummary,points,formatPoints,siteStars,RECEIPT_REVIEW_RULE} from './weighted-score.js?v=20261123-suite2';
-import {extractDrawing} from './completed-suite.js?v=20261123-suite2';
+import {extractDrawing} from './completed-suite.js?v=20261125-effort1';
 import {checkupSVG} from './checkup-view.js?v=20261101-short1';
 import {previewableCheckupSVG} from './checkup-data.js?v=20261101-short1';
 import {arrowRight,arrowUpRight} from './ui-icons.js?v=20261101-short1';
@@ -15,7 +16,6 @@ const number=i=>String(i+1).padStart(2,'0');
 const inline=value=>e(value).replace(/\*\*([^*\n]+)\*\*/g,'<strong>$1</strong>');
 const raw=value=>`<pre class="source-answer">${e(value||'本轮没有正文回答。')}</pre>`;
 const scoreClass=item=>item.score===null?'pending':item.score===2?'pass':item.score===0?'fail':'partial';
-const collection=model=>model.collectionLabel?`<small class="collection-label">${e(model.collectionLabel)}</small>`:'';
 const itemScore=(book,row,i)=>{const value=points(row.items[i].score,book.tasks[i].weight);return `<span class="item-score ${scoreClass(row.items[i])}"><strong>${value===null?'—':formatPoints(value)}</strong><small>/ ${book.tasks[i].weight}</small></span>`;};
 
 // Only inert, escaped text formatting is supported. Exact text remains in the disclosure.
@@ -63,7 +63,7 @@ function taskPrompt(task,bankTask){
 }
 function answerContent(model,book,row,i,bank){
   const task=book.tasks[i],item=row.items[i];
-  if(task.agentKey)return `<p>${e(item.reason)}</p>${item.harness?`<p class="format-note">${e(item.harness)} · High</p>`:''}
+  if(task.agentKey)return `<p>${e(item.reason)}</p>${item.harness?`<p class="format-note">${e(item.harness)}</p>`:''}
     <a class="page-action" href="${e(item.evidenceLink)}">${item.score===null?'查看题面与测试记录':'打开作品或评分明细'} ${arrowRight}</a>`;
   return actualAnswer(model,book,row,i,bank)+historicalReading(book.tasks[i],row.items[i])+scoringNotes(book,row,i)+(i>=6||row.items[i].measurement?.followup?measurementNotes(row.items[i]):'');
 }
@@ -71,7 +71,7 @@ function taskSection(models,book,bank,i){
   const task=book.tasks[i],compare=models.length===2;
   const heading=`<div class="case-heading"><span class="case-number">${number(i)}</span><div><p>${e(i===6?'账单整活题':taskLabel(task,i))}</p><h2>${e(task.agentKey?task.title:titles[i])}</h2></div>${compare?`<span class="case-weight">满分 ${task.weight} 分</span>`:itemScore(book,book.models.find(r=>r.modelId===models[0].id),i)}</div>`;
   const question=`${task.agentKey?`<p>${e(task.summary)}</p><details class="answer-disclosure"><summary>完整题面</summary>${raw(task.prompts[0])}</details>`:taskPrompt(task,bank.tasks[i])}<details class="answer-disclosure"><summary>评分标准</summary>${rubric(task)}</details>`;
-  const answers=models.map(model=>{const row=book.models.find(r=>r.modelId===model.id);return `<article class="answer-pane" aria-label="${e(model.name)} · ${e(taskLabel(task,i))}">${compare?`<header class="answer-author"><a href="#checkup/model/${e(model.id)}">${modelBadge(model.id)}<span>${e(model.name)}</span></a>${itemScore(book,row,i)}</header>`:`<p class="answer-kind">${task.agentKey?(row.items[i].score===null?'等待实测或复核':'Agent 工程实测'):row.items[i].measurement?.status==='success'||row.items[i].measurement?.attempts?.length?'模型原回答 · AI 生成':row.items[i].measurement?.status==='incomplete'?'答卷未完整交付':'等待实测'}</p>`}${answerContent(model,book,row,i,bank)}</article>`;}).join('');
+  const answers=models.map(model=>{const row=book.models.find(r=>r.modelId===model.id);return `<article class="answer-pane" aria-label="${e(model.name)} · ${e(taskLabel(task,i))}">${compare?`<header class="answer-author"><a href="#checkup/model/${e(model.id)}">${modelBadge(model.id)}<span>${e(model.name)}</span></a>${itemScore(book,row,i)}</header>`:`<p class="answer-kind">${task.agentKey?(row.items[i].score===null?'等待实测或复核':'Agent 工程实测'):row.items[i].measurement?.status==='success'||row.items[i].measurement?.attempts?.length?'模型原回答 · AI 生成':row.items[i].measurement?.status==='incomplete'?'答卷未完整交付':'等待实测'}</p>`}${effortBadge(answerEffort(row.items[i]))}${answerContent(model,book,row,i,bank)}</article>`;}).join('');
   return `<section class="answer-section" id="answer-${e(task.id)}" tabindex="-1">${heading}${compare?`<details class="shared-question"><summary>查看题目与评分标准</summary><div class="question-content">${question}</div></details><div class="answer-columns">${answers}</div>`:`<div class="detail-answer-layout"><aside class="question-content"><span class="question-label">测试题目</span>${question}</aside>${answers}</div>`}</section>`;
 }
 
@@ -89,12 +89,12 @@ const breadcrumb=label=>`<div class="page-breadcrumb"><a href="#checkup/results"
 export function studioModelPage(data,bank,book,id,preferences={},evidence=''){
   const model=data.models.find(m=>m.id===id),row=book.models.find(r=>r.modelId===id),other=data.models.find(m=>m.id!==id&&model?.collectionLabel&&m.collectionLabel===model.collectionLabel)||data.models.find(m=>m.id!==id);
   if(!model||!row)return '';
-  return `<div class="studio-pages model-profile">${breadcrumb('模型详情')}<section class="model-overview"><div class="model-intro"><h1>${modelBadge(id)}<span>${e(model.name)}</span></h1><div class="model-overview-meta">${siteStars(book,row)}<span>八题实测榜</span>${collection(model)}</div><div class="page-actions"><a class="page-action primary" href="#checkup/compare/${e(id)}/${e(other.id)}">和其他模型比一比 ${arrowRight}</a></div></div>${totalScore(book,row)}</section>${!book.agentTasks&&model.pendingReason?`<p class="model-pending-reason">${e(model.pendingReason)}</p>`:''}${navigation(book,row)}<div class="answers-intro"><h2>${weightedSummary(book,row).graded?'它到底怎么答的？':'准备测哪些题？'}</h2><span>${weightedSummary(book,row).graded?'原回答 · 得分 · 判分依据':'同一套题目与评分标准'}</span></div>${book.tasks.map((_,i)=>taskSection([model],book,bank,i)).join('')}${model.collectionLabel?`<section class="page-evidence"><h2>短题实测</h2><div class="page-actions"><a class="page-action" href="#checkup/season/boss-sokoban">推老板进工位 ${arrowRight}</a><a class="page-action" href="#checkup/season/gear-scam">齿轮诈骗 ${arrowRight}</a></div></section>`:''}<section class="page-evidence"><h2>测试记录</h2>${evidence}</section></div>`;
+  return `<div class="studio-pages model-profile">${breadcrumb('模型详情')}<section class="model-overview"><div class="model-intro"><h1>${modelBadge(id)}<span>${e(model.name)}</span></h1><div class="model-overview-meta">${siteStars(book,row)}<span>八题实测榜</span>${effortBadge(...row.items.map(answerEffort))}</div><div class="page-actions"><a class="page-action primary" href="#checkup/compare/${e(id)}/${e(other.id)}">和其他模型比一比 ${arrowRight}</a></div></div>${totalScore(book,row)}</section>${!book.agentTasks&&model.pendingReason?`<p class="model-pending-reason">${e(model.pendingReason)}</p>`:''}${navigation(book,row)}<div class="answers-intro"><h2>${weightedSummary(book,row).graded?'它到底怎么答的？':'准备测哪些题？'}</h2><span>${weightedSummary(book,row).graded?'原回答 · 得分 · 判分依据':'同一套题目与评分标准'}</span></div>${book.tasks.map((_,i)=>taskSection([model],book,bank,i)).join('')}${model.collectionLabel?`<section class="page-evidence"><h2>短题实测</h2><div class="page-actions"><a class="page-action" href="#checkup/season/boss-sokoban">推老板进工位 ${arrowRight}</a><a class="page-action" href="#checkup/season/gear-scam">齿轮诈骗 ${arrowRight}</a></div></section>`:''}<section class="page-evidence"><h2>测试记录</h2>${evidence}</section></div>`;
 }
 
 export function studioComparePage(data,bank,book,one,two,evidence=''){
   const models=[one,two];
-  return `<div class="studio-pages model-comparison">${breadcrumb('模型对比')}<section class="compare-intro"><div><h1>两个模型，同一套实测题。</h1><p>并排看同一套八题的得分与原答卷。${(one.condition||one.provider)!==(two.condition||two.provider)?' 两边的测试入口与输出设置不同。':''}</p></div><a class="page-action" href="#checkup/results">八题实测榜 ${arrowUpRight}</a></section><div class="compare-overview">${models.map((model,i)=>{const row=book.models.find(r=>r.modelId===model.id);return `<section class="compare-model-summary" aria-label="模型 ${i===0?'A':'B'} 概览">${modelPicker(data.models,model.id,i)}<div class="compare-model-score">${totalScore(book,row)}<div>${siteStars(book,row)}${collection(model)}<a class="page-text-link" href="#checkup/model/${e(model.id)}">完整答卷 ${arrowUpRight}</a></div></div></section>`;}).join('')}</div>${navigation(book)}${book.tasks.map((_,i)=>taskSection(models,book,bank,i)).join('')}<section class="page-evidence"><h2>测试记录</h2>${evidence}</section></div>`;
+  return `<div class="studio-pages model-comparison">${breadcrumb('模型对比')}<section class="compare-intro"><div><h1>两个模型，同一套实测题。</h1><p>并排看同一套八题的得分与原答卷。${(one.condition||one.provider)!==(two.condition||two.provider)?' 两边的测试入口与输出设置不同。':''}</p></div><a class="page-action" href="#checkup/results">八题实测榜 ${arrowUpRight}</a></section><div class="compare-overview">${models.map((model,i)=>{const row=book.models.find(r=>r.modelId===model.id);return `<section class="compare-model-summary" aria-label="模型 ${i===0?'A':'B'} 概览">${modelPicker(data.models,model.id,i)}<div class="compare-model-score">${totalScore(book,row)}<div>${siteStars(book,row)}${effortBadge(...row.items.map(answerEffort))}<a class="page-text-link" href="#checkup/model/${e(model.id)}">完整答卷 ${arrowUpRight}</a></div></div></section>`;}).join('')}</div>${navigation(book)}${book.tasks.map((_,i)=>taskSection(models,book,bank,i)).join('')}<section class="page-evidence"><h2>测试记录</h2>${evidence}</section></div>`;
 }
 
 export function bindAnswerNavigation(main){

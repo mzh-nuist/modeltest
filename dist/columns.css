@@ -215,3 +215,5 @@ body.published-mode .work-detail>.column-link:last-child {margin-top:20px}
  body.published-mode .model-card-score strong {font-size:30px}
 }
 @media(prefers-reduced-motion:reduce){body.published-mode .column-page * {transition:none!important;animation:none!important}}
+body.published-mode .effort-label {display:block;color:var(--muted);font-size:14px;font-weight:500;line-height:1.45}
+body.published-mode .answer-pane>.effort-label {margin-block:4px 10px}

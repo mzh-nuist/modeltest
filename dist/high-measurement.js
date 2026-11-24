@@ -1,4 +1,4 @@
-import {extractDrawing} from './completed-suite.js?v=20261123-suite2';
+import {extractDrawing} from './completed-suite.js?v=20261125-effort1';
 import {previewableCheckupSVG} from './checkup-data.js?v=20261101-short1';
 export function validateHighMeasurement(doc,book,bank,registry,schema){
  const fail=()=>{throw Error('补测答卷与本期 high 协议不一致');};

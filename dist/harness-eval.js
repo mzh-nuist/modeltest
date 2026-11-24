@@ -1,3 +1,4 @@
+import {effortBadge} from './thinking-effort.js?v=20261125-effort1';
 import {esc as escape} from './lib.js?v=20261101-short1';
 import {arrowRight} from './ui-icons.js?v=20261101-short1';
 
@@ -37,7 +38,7 @@ function resultRows(runs) {
   if (!runs.length) return '<p>本题暂无已核验答卷。</p>';
   return runs.map(run => `
     <details class="column-disclosure">
-      <summary>${escape(run.model)} · ${escape(run.harness)} · ${run.status === 'complete' ? run.score + ' / 100' : '待测'}</summary>
+      <summary>${escape(run.model)} · ${escape(run.harness)} · ${run.status === 'complete' ? run.score + ' / 100' : '待测'}${effortBadge(run.status === 'complete' ? run.effort : null)}</summary>
       ${run.status === 'complete' ? `<ul>${run.groups.map(group => `<li>${escape(group.name)} · ${group.score} / ${group.points}${group.passed ? ' · 通过' : ' · 未通过'}</li>`).join('')}</ul>`
         : `<p>${escape(run.reason || '尚未完成采集。')}</p>`}
     </details>`).join('');

@@ -1,3 +1,4 @@
+import {effortBadge,effortText} from './thinking-effort.js?v=20261125-effort1';
 import {gradeShort} from './short-challenge-grading.js?v=20261101-short1';
 import {gradeShort as previousGrade,parseBoard,simulateBoss,gearFeasible} from './short-challenge-engine.js?v=20261101-short1';
 const e=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -27,7 +28,10 @@ export function shortOverview(bank,results){
   return `<section class="short-overview"><p class="season-eyebrow">短题实测 · 独立计分</p><h2>这次，把老板推到岗，把齿轮修到能转。</h2><p>${(results?.modelCalls??0)+(results?.codexCalls??0)} 次实际请求 · 每题2个样例 · 程序按动作和约束判分，旧成绩保留。</p><div class="short-cards">${bank.tasks.map(t=>`<a href="#checkup/season/${e(t.id)}"><h3>${e(t.title)}</h3><p>${e(t.hook)}</p><strong>看题面、回放与实际答卷 →</strong></a>`).join('')}</div></section>`;
 }
 function modelsFor(results,task){
-  const map=new Map();for(const r of results?.records||[])if(r.taskId===task.id&&!map.has(r.modelId))map.set(r.modelId,{id:r.modelId,name:r.name,collectionLabel:r.collectionLabel});return [...map.values()];
+  const map=new Map();for(const r of results?.records||[])if(r.taskId===task.id){
+    if(!map.has(r.modelId))map.set(r.modelId,{id:r.modelId,name:r.name,efforts:[],collectionLabel:r.collectionLabel});
+    map.get(r.modelId).efforts.push(r.effort);
+  }return [...map.values()];
 }
 function modelScore(results,task,id){
   const rows=task.cases.map(c=>results?.records.find(r=>r.modelId===id&&r.caseId===c.id));
@@ -50,10 +54,10 @@ function answers(task,results){
   const models=modelsFor(results,task);
   if(!models.length)return '<p>模型答卷尚未采集；示意内容不参与成绩。</p>';
   return `<div class="short-table-wrap" tabindex="0" role="region" aria-label="${e(task.title)}独立成绩"><table class="short-table"><thead><tr><th>模型</th><th>内容 /80</th><th>格式 /10</th><th>交付 /10</th><th>本题 /100</th></tr></thead><tbody>${models.map(m=>{
-    const s=modelScore(results,task,m.id);return `<tr><th scope="row">${e(m.name)}${m.collectionLabel?`<small class="collection-label">${e(m.collectionLabel)}</small>`:''}</th>${s?`<td>${s.content}</td><td>${s.format}</td><td>${s.delivery}</td><td><strong>${s.total}</strong><br><small>${s.passed?'内容全过':'内容未全过'}</small></td>`:'<td colspan="4">未完成采集，不补零</td>'}</tr>`;
-  }).join('')}</tbody></table></div><p class="season-muted">每列为两个样例的平均分。内容全过要求两例均通过；每例仅一次采样，不是稳定性排名。接口错误或输出耗尽按本条件的交付失败记录，不能据此认定规划内容错误。</p>${models.map(m=>`<details class="short-model-answer"><summary>${e(m.name)}${m.collectionLabel?' · '+e(m.collectionLabel):''} · 原始回答与判分</summary>${task.cases.map(c=>{
+    const s=modelScore(results,task,m.id);return `<tr><th scope="row">${e(m.name)}${effortBadge(...m.efforts)}</th>${s?`<td>${s.content}</td><td>${s.format}</td><td>${s.delivery}</td><td><strong>${s.total}</strong><br><small>${s.passed?'内容全过':'内容未全过'}</small></td>`:'<td colspan="4">未完成采集，不补零</td>'}</tr>`;
+  }).join('')}</tbody></table></div><p class="season-muted">每列为两个样例的平均分。内容全过要求两例均通过；每例仅一次采样，不是稳定性排名。接口错误或输出耗尽按本条件的交付失败记录，不能据此认定规划内容错误。</p>${models.map(m=>`<details class="short-model-answer"><summary>${e(m.name)} · 原始回答与判分</summary>${task.cases.map(c=>{
     const r=results.records.find(r=>r.modelId===m.id&&r.caseId===c.id);if(!r)return `<p>${e(c.label)}：未发送</p>`;
-    return `<section><h4>${e(c.label)} · ${r.grade.total}/100</h4><p>内容 ${r.grade.content}/80 · 格式 ${r.grade.format}/10 · 交付 ${r.grade.delivery}/10 · ${e(r.status)}${r.error?' · '+e(r.error):''}</p><pre>${e(r.output||'正文为空')}</pre><p>${e(gradeExplanation(task,r.grade))}</p>${r.previousGrade&&r.previousGrade.total!==r.grade.total?`<p>初版试评分 ${r.previousGrade.total} → 当前 ${r.grade.total}；仅修订判分，未重新采样。</p>`:''}<button type="button" data-short-view="${e(m.id)}" data-short-case-id="${e(c.id)}">在上方回放这份答卷 ↑</button><details><summary>本次请求与核验信息</summary>${requestDetails(r)}</details></section>`;
+    return `<section><h4>${e(c.label)} · ${r.grade.total}/100</h4>${effortBadge(r.effort)}<p>内容 ${r.grade.content}/80 · 格式 ${r.grade.format}/10 · 交付 ${r.grade.delivery}/10 · ${e(r.status)}${r.error?' · '+e(r.error):''}</p><pre>${e(r.output||'正文为空')}</pre><p>${e(gradeExplanation(task,r.grade))}</p>${r.previousGrade&&r.previousGrade.total!==r.grade.total?`<p>初版试评分 ${r.previousGrade.total} → 当前 ${r.grade.total}；仅修订判分，未重新采样。</p>`:''}<button type="button" data-short-view="${e(m.id)}" data-short-case-id="${e(c.id)}">在上方回放这份答卷 ↑</button><details><summary>本次请求与核验信息</summary>${requestDetails(r)}</details></section>`;
   }).join('')}</details>`).join('')}`;
 }
 function gradeExplanation(task,g){
@@ -98,7 +102,7 @@ export function bindShortChallenges(main,getBank,getResults){
   function draw(){
     if(!root?.isConnected)return stop();const s=current();if(!s)return;
     root.querySelector('[data-short-prompt]').textContent=s.c.prompt;root.querySelector('[data-short-output]').textContent=s.output||'本样例尚未发送，没有模型答卷。';
-    root.querySelector('[data-short-source]').textContent=s.id==='reference'?'出题方示意 · 非模型答卷':`${s.r?.name||s.id}${s.r?.collectionLabel?' · '+s.r.collectionLabel:''} · 真实模型答卷 · ${s.r?.status||'未发送'}${s.r?.error?' · '+s.r.error:''}`;
+    root.querySelector('[data-short-source]').textContent=s.id==='reference'?'出题方示意 · 非模型答卷':`${s.r?.name||s.id} · ${effortText(s.r?s.r.effort:null)} · ${s.r?.status||'未发送'}${s.r?.error?' · '+s.r.error:''}`;
     root.querySelector('[data-short-grade]').textContent=s.id==='reference'?'出题方示意不参与模型成绩。':s.r?`本例 ${s.g.total}/100：内容${s.g.content}、格式${s.g.format}、交付${s.g.delivery}。${gradeExplanation(s.t,s.g)}`:'未发送不计0分。';
     const stage=root.querySelector('[data-short-stage]'),progress=root.querySelector('[data-short-progress]');
     if(s.t.id==='boss-sokoban'){

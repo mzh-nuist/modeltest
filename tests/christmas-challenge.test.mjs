@@ -39,7 +39,7 @@ test('the Grok challenge submission identifies the actual Cursor harness',() => 
   assert.equal(grok.effort,'high');
   assert.equal(grok.frontend.score,97);
   assert.equal(grok.backend.score,100);
-  assert.match(renderChristmasChallenge(data,'grok'),/Cursor Agent CLI · High/);
+  assert.match(renderChristmasChallenge(data,'grok'),/思考强度 High[\s\S]*Cursor Agent CLI/);
   assert.match(renderChristmasChallenge(data,'grok'),/圣诞树配乐 97 \/ 100/);
   assert.match(renderChristmasChallenge(data,'cache','grok47'),/Grok 4\.7 的并发缓存[\s\S]*100 \/ 100/);
   assert.match(renderChristmasChallenge(data,'cache','claude-sonnet55'),/未完成/);

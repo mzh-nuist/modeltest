@@ -1,7 +1,8 @@
 import {esc as escape} from './lib.js?v=20261101-short1';
-import {extractDrawing} from './completed-suite.js?v=20261123-suite2';
+import {extractDrawing} from './completed-suite.js?v=20261125-effort1';
 import {previewableCheckupSVG} from './checkup-data.js?v=20261101-short1';
 import {arrowRight} from './ui-icons.js?v=20261101-short1';
+import {effortBadge} from './thinking-effort.js?v=20261125-effort1';
 
 const evidenceFile = 'data/codex-gpt62-20261118.json';
 const terraFile = 'data/codex-terra-20261118.json';
@@ -122,6 +123,7 @@ export function renderCodexComparison(data) {
       <h2 class="column-model">${modelName(model)}</h2>
       <p>${points(total(index), 100)}</p>
       <span>八题总分</span>
+      ${effortBadge(data.reasoningEffort)}
     </section>`).join('')}</div>
     <section class="column-section">
       ${heading('01', '差在这道账单题')}

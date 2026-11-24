@@ -1,5 +1,6 @@
 import {esc as escape} from './lib.js?v=20261101-short1';
 import {arrowRight} from './ui-icons.js?v=20261101-short1';
+import {effortBadge} from './thinking-effort.js?v=20261125-effort1';
 
 const route = '#checkup/agent-challenge';
 const art = 'art/christmas/';
@@ -36,7 +37,7 @@ export function projectAgentTasks(book, evidence) {
         ? (result?.work ? route+'/'+result.work : task.destination)
         : (run ? task.destination+'/'+run.modelId : task.destination);
       const unavailable = result?.note || (!evidence?'暂时无法读取 Agent 成绩。':run?'尚无可评分的完整交付。':'没有此型号的公开 Agent 答卷。');
-      return {taskId:task.id,score:score===undefined?null:score/50,agentScore:score,harness:run?.harness,evidenceLink,
+      return {taskId:task.id,score:score===undefined?null:score/50,agentScore:score,harness:run?.harness,effort:run?.effort,evidenceLink,
         reason:score===undefined?unavailable:`原始评分 ${score} / 100，计入本榜 ${score/10} / 10。`};
     });
     return {...row,items,selectionFinal:items.every(item=>item.score!==null)};
@@ -73,14 +74,14 @@ export function validateChristmasChallenge(data) {
 
 function cacheBreakdown(run) {
   const check = run.backend;
-  return `<p class="column-note">${escape(run.harness)} · High</p>
+  return `<p class="column-note">${escape(run.harness)}</p>
     ${check.groups ? `<ul>${check.groups.map(group => `<li>${escape(group.title)} · ${group.score} / ${group.points}</li>`).join('')}</ul>` : ''}
     ${check.note ? `<p>${escape(check.note)}</p>` : ''}`;
 }
 
 function scoreDetails(run) {
   const {score} = run.backend;
-  return `<details class="column-disclosure"><summary><span>${escape(run.name)}</span><strong>${score ?? '未完成'}${score === undefined ? '' : ' / 100'}</strong></summary>
+  return `<details class="column-disclosure"><summary><span>${escape(run.name)}${effortBadge(run.effort)}</span><strong>${score ?? '未完成'}${score === undefined ? '' : ' / 100'}</strong></summary>
     ${cacheBreakdown(run)}<a class="column-link" href="${route}/cache/${run.modelId}">打开并发缓存答卷 ${arrowRight}</a></details>`;
 }
 
@@ -88,7 +89,7 @@ function cachePage(data, run) {
   const {score} = run.backend;
   return `<div class="column-page studio-home christmas-challenge"><header class="column-heading">
     <a class="column-link" href="${route}">← 圣诞树与并发缓存</a><h1>${escape(run.name)} 的并发缓存</h1>
-    <p><strong>${score === undefined ? '未完成' : score+' / 100'}</strong></p></header>
+    <p><strong>${score === undefined ? '未完成' : score+' / 100'}</strong></p>${effortBadge(run.effort)}</header>
     <section class="column-section"><h2>测试结果</h2>${cacheBreakdown(run)}
     <details class="column-disclosure"><summary>后端题面与计分</summary><p class="christmas-prompt">${escape(data.backendPrompt)}</p></details></section></div>`;
 }
@@ -97,7 +98,7 @@ function cover(run) {
   const {score,work} = run.frontend;
   return `<a class="christmas-work" href="${route}/${work}">
     <div class="christmas-thumbnail"><img src="${art+work}.webp${assetsVersion}" alt="${escape(run.name)} 画的圣诞树" decoding="async" width="760" height="570"></div>
-    <span class="christmas-work-body"><strong>${escape(run.name)}</strong><span class="christmas-score">${score}<small> / 100</small></span></span>
+    <span class="christmas-work-body"><span><strong>${escape(run.name)}</strong>${effortBadge(run.effort)}</span><span class="christmas-score">${score}<small> / 100</small></span></span>
     <span class="christmas-play-label">播放作品 ${arrowRight}</span></a>`;
 }
 
@@ -105,11 +106,11 @@ function player(run) {
   const {work,music,visual,utility,comment} = run.frontend;
   return `<div class="column-page studio-home christmas-challenge"><header class="column-heading">
     <a class="column-link" href="${route}">← 圣诞树与并发缓存</a><h1>${escape(run.name)} 的圣诞树</h1>
-    <p>点作品里的播放按钮，听听树怎么跟上铃声。</p><p><strong>圣诞树配乐 ${run.frontend.score} / 100</strong></p></header>
+    <p>点作品里的播放按钮，听听树怎么跟上铃声。</p><p><strong>圣诞树配乐 ${run.frontend.score} / 100</strong></p>${effortBadge(run.effort)}</header>
     <iframe class="christmas-player" title="${escape(run.name)} 的可播放圣诞树" sandbox="allow-scripts" src="${art+work}/index.html${assetsVersion}"></iframe>
     <dl class="christmas-breakdown"><div><dt>节拍与旋律</dt><dd>${music} <small>/ 45</small></dd></div><div><dt>画面</dt><dd>${visual} <small>/ 40</small></dd></div>
     <div><dt>播放与移动端</dt><dd>${utility} <small>/ 15</small></dd></div></dl>
-    <p class="column-note">${escape(comment)}</p><p class="column-note">${escape(run.harness)} · High</p></div>`;
+    <p class="column-note">${escape(comment)}</p><p class="column-note">${escape(run.harness)}</p></div>`;
 }
 
 export function renderChristmasChallenge(data, selected, modelId) {

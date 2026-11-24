@@ -5,6 +5,7 @@ import {mergeHighExpanded} from '../dist/high-expanded.js';
 import {projectHighSuite} from '../dist/high-suite.js';
 import {studioHome,studioArchive,studioWorks,studioRepairs,drawingCatalog} from '../dist/studio-home.js';
 import {createPublishedDailyController} from '../dist/published-daily.js';
+import {answerEffort,effortText} from '../dist/thinking-effort.js';
 import {trafficRoute} from '../dist/traffic.js';
 import {validateTrafficEvent} from '../worker/index.js';
 const read=n=>JSON.parse(fs.readFileSync(new URL('../dist/data/'+n,import.meta.url),'utf8'));
@@ -89,6 +90,7 @@ test('controller supports all column routes and old play links show identified w
     assert.match(controller.render(['history','model','kimi-k3']),/默认档与当时的补测记录/);
     globalThis.location.hash='#checkup/model/grok47';
     const grok=controller.render(['model','grok47']);
+    assert.equal((grok.match(/思考强度 High/g)||[]).length,9);
     assert.match(grok,/八题总分[\s\S]*?<strong>72\.7<\/strong>/);
     assert.match(grok,/id="answer-christmas"[\s\S]*?计入本榜 9\.7 \/ 10/);
     assert.match(grok,/id="answer-cache"[\s\S]*?计入本榜 10 \/ 10/);
@@ -104,6 +106,7 @@ test('controller supports all column routes and old play links show identified w
     assert.match(mainBoard,/href="#checkup\/agent-challenge\/kimi-pro"[^>]*aria-label="圣诞树配乐 9\.2 \/ 10分"/);
     assert.match(controller.render(['edit']),/旧版题目 · 历史答卷/);
     const missing=controller.render(['model','minimax-m31-flash']);
+    assert.equal((missing.match(/思考强度 未实测/g)||[]).length,2);
     assert.match(missing,/暂无|没有此型号的公开 Agent 答卷/);
     assert.match(missing,/已测得分[\s\S]*?<span>\/ 80<\/span>[\s\S]*?已评 6 \/ 8 题 · 总分待定/);
     assert.match(controller.render(['visual']),/5 \/ 10 分 · 部分达成/);
@@ -120,6 +123,17 @@ test('controller supports all column routes and old play links show identified w
       assert.ok(pelican.includes(`href="#checkup/works/visual/${model.id}"`));
     }
   }finally{globalThis.fetch=saved.fetch;globalThis.location=saved.location;globalThis.localStorage=saved.storage;}
+});
+
+test('effort labels preserve mixed settings and distinguish unknown from unmeasured',()=>{
+  const items=[
+    {score:2,measurement:{effort:'high',status:'success'}},
+    {score:0,measurement:{effort:'low',status:'error'}},
+    {score:null,measurement:{effort:'medium',status:'not_run'}},
+    {score:1,measurement:{status:'success'}},
+  ];
+  assert.equal(effortText(...items.map(answerEffort)),'思考强度 High / Low / 未记录');
+  assert.equal(effortText(answerEffort(items[2])),'思考强度 未实测');
 });
 
 test('direct entry to the results page does not wait for short challenges or the season',{timeout:2000},async()=>{

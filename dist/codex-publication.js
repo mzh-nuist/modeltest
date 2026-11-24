@@ -5,7 +5,7 @@ const modelId = model => model.id === 'xai/grok-4.7' ? 'grok47'
 function collection(batch, model) {
   const codex = batch.route === 'Codex app-server';
   return {
-    apiModel: model.id, checkedAt: batch.date, collectionFile: batch.file,
+    apiModel: model.id, checkedAt: batch.date, collectionFile: batch.file, effort: batch.reasoningEffort,
     collectionLabel: codex ? 'Codex High' : 'API High',
     provider: codex ? 'OpenAI' : 'CommandCode',
     condition: codex
@@ -25,6 +25,7 @@ function answerCollection(metadata, answer) {
     apiModel: 'grok-4.7',
     provider: 'Grok',
     checkedAt: followup.date,
+    effort: followup.reasoningEffort,
     collectionLabel: 'Grok 订阅 High',
     condition: 'Grok 订阅 · Responses · High · 请求参数 max_output_tokens = '
       + followup.maxVisibleOutputTokens.toLocaleString('zh-CN') + '。该参数与接口回报的实际用量分别记录。',
