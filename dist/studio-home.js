@@ -56,18 +56,28 @@ function modelCards(data,book){
   }).join('');
 }
 function pendingModels(data,book){
-  const models=data.models.map(model=>({model,row:book.models.find(r=>r.modelId===model.id)}))
-    .filter(({row})=>!weightedSummary(book,row).complete);
+  const models=data.models.map(model=>{
+    const row=book.models.find(r=>r.modelId===model.id);
+    return {model,row,score:weightedSummary(book,row)};
+  }).filter(({score})=>!score.complete);
   if(!models.length)return '';
-  return `<section class="pending-models" aria-label="待测与待复核模型"><h2>待测 / 待复核模型 <span>${models.length}</span></h2><div class="pending-model-grid">${models.map(({model,row})=>{
-    const names=book.tasks.filter((_,i)=>row.items[i].score===null).map(task=>task.name);
-    const note=book.agentTasks?'待补齐或复核：'+names.join('、'):(model.pendingReason||'答卷尚未完成，暂不排名。');
-    return `<a class="pending-model-card" href="${url('model/'+model.id)}"><span class="column-model">${modelBadge(model.id)}<span>${e(model.name)}</span></span><span class="pending-model-note">${e(note)}</span><span class="pending-open">${book.agentTasks?'看进度':model.report.runs.some(run=>run.status!=='not_run')?'待复核':'待测'} ${arrowRight}</span></a>`;
+  if(book.agentTasks)models.sort((a,b)=>b.score.graded-a.score.graded);
+  return `<section class="pending-models" aria-label="待测与待复核模型"><h2>${book.agentTasks?'尚未排入主榜':'待测 / 待复核模型'} <span>${models.length} 款</span></h2><div class="pending-model-grid">${models.map(({model,row,score})=>{
+    const note=book.agentTasks?book.tasks.filter((task,i)=>!task.agentKey&&row.items[i].score===null).map(task=>task.name).join('、'):(model.pendingReason||'答卷尚未完成，暂不排名。');
+    const taskStatus=book.agentTasks?book.tasks.map((task,i)=>{
+      if(!task.agentKey)return '';
+      const value=points(row.items[i].score,task.weight);
+      return `<span><span>${e(task.name)}</span><strong>${value===null?'待测':formatPoints(value)+' / '+task.weight}</strong></span>`;
+    }).join(''):'';
+    return `<a class="pending-model-card" href="${url('model/'+model.id)}">
+      <span class="column-model">${modelBadge(model.id)}<span>${e(model.name)}</span></span>
+      ${taskStatus?`<span class="pending-agent-scores">${taskStatus}</span><span class="pending-model-note">已评 ${score.graded} / ${book.tasks.length} 题${note?' · 待补或复核 '+e(note):''}</span>`:`<span class="pending-model-note">${e(note)}</span>`}
+      <span class="pending-open">${book.agentTasks?'看答卷':model.report.runs.some(run=>run.status!=='not_run')?'待复核':'待测'} ${arrowRight}</span></a>`;
   }).join('')}</div></section>`;
 }
 export function studioScores(data,book,{filter='all'}={}){
   const rows=data.models.map(m=>({m,row:book.models.find(r=>r.modelId===m.id)})).filter(({row})=>weightedSummary(book,row).complete).sort((a,b)=>weightedSummary(book,b.row).earned-weightedSummary(book,a.row).earned).filter(x=>filter!=='passed'||weightedSummary(book,x.row).qualified);
-  return `<table class="studio-score-table" aria-label="八项百分制成绩"><thead><tr><th class="rank-col">#</th><th>模型</th><th class="total-col">总分</th>${book.tasks.map((task,j)=>`<th class="metric-col">${e(taskLabel(task,j))}<small>满分 ${task.weight}</small></th>`).join('')}<th class="stars-col">本站星级</th><th><span class="sr-only">答卷</span></th></tr></thead><tbody>${rows.map(({m,row},i)=>{const s=weightedSummary(book,row);return `<tr><td class="rank-col">${String(i+1).padStart(2,'0')}</td><th scope="row">${modelLink(m)}</th><td class="total-col"><strong>${s.finalScore===null?'—':formatPoints(s.finalScore)}</strong></td>${row.items.map((x,j)=>`<td class="metric-col"><a class="metric ${statusClass(x)}" href="${taskHref(book.tasks[j])}" aria-label="${e(taskLabel(book.tasks[j],j))} ${x.score===null?'待评':formatPoints(points(x.score,book.tasks[j].weight))+' / '+book.tasks[j].weight+'分'}">${x.score===null?'—':formatPoints(points(x.score,book.tasks[j].weight))}</a></td>`).join('')}<td class="stars-col">${siteStars(book,row)}</td><td class="row-link"><a href="${url('model/'+m.id)}" aria-label="查看${e(m.name)}答卷">${arrowUpRight}</a></td></tr>`;}).join('')}${rows.length?'':'<tr><td colspan="13">当前筛选下暂无模型。</td></tr>'}</tbody></table>`;
+  return `<table class="studio-score-table" aria-label="八项百分制成绩"><thead><tr><th class="rank-col">#</th><th>模型</th><th class="total-col">总分</th>${book.tasks.map((task,j)=>`<th class="metric-col">${e(taskLabel(task,j))}<small>满分 ${task.weight}</small></th>`).join('')}<th class="stars-col">本站星级</th><th><span class="sr-only">答卷</span></th></tr></thead><tbody>${rows.map(({m,row},i)=>{const s=weightedSummary(book,row);return `<tr><td class="rank-col">${String(i+1).padStart(2,'0')}</td><th scope="row">${modelLink(m)}</th><td class="total-col"><strong>${s.finalScore===null?'—':formatPoints(s.finalScore)}</strong></td>${row.items.map((x,j)=>`<td class="metric-col"><a class="metric ${statusClass(x)}" href="${x.score!==null&&x.evidenceLink?e(x.evidenceLink):taskHref(book.tasks[j])}" aria-label="${e(taskLabel(book.tasks[j],j))} ${x.score===null?'待评':formatPoints(points(x.score,book.tasks[j].weight))+' / '+book.tasks[j].weight+'分'}">${x.score===null?'—':formatPoints(points(x.score,book.tasks[j].weight))}</a></td>`).join('')}<td class="stars-col">${siteStars(book,row)}</td><td class="row-link"><a href="${url('model/'+m.id)}" aria-label="查看${e(m.name)}答卷">${arrowUpRight}</a></td></tr>`;}).join('')}${rows.length?'':'<tr><td colspan="13">当前筛选下暂无模型。</td></tr>'}</tbody></table>`;
 }
 export function studioQuestions(book){
   return book.tasks.map((t,i)=>`<a class="question-row" href="${taskHref(t)}"><span class="q-num">0${i+1}</span><div><span class="q-category">${e(taskLabel(t,i))}</span><h3>${e(t.agentKey?t.title:titles[i])}</h3></div><span class="q-weight">${t.weight}<small>分</small></span><span class="q-arrow" aria-hidden="true">${arrowRight}</span></a>`).join('');

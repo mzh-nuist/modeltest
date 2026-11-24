@@ -75,7 +75,14 @@ function taskSection(models,book,bank,i){
   return `<section class="answer-section" id="answer-${e(task.id)}" tabindex="-1">${heading}${compare?`<details class="shared-question"><summary>查看题目与评分标准</summary><div class="question-content">${question}</div></details><div class="answer-columns">${answers}</div>`:`<div class="detail-answer-layout"><aside class="question-content"><span class="question-label">测试题目</span>${question}</aside>${answers}</div>`}</section>`;
 }
 
-function totalScore(book,row){const score=weightedSummary(book,row);if(!score.graded)return '<div class="page-total pending-total"><p class="page-total-label">八题总分</p><div><strong>待测</strong></div><p>暂无成绩 · 不参与排名</p></div>';return `<div class="page-total"><p class="page-total-label">八题总分</p><div><strong>${formatPoints(score.earned)}</strong><span>/ 100${score.complete?'':' 暂得'}</span></div><p>${e(score.grade)}${score.complete?'':' · 已评 '+score.graded+' / '+book.tasks.length+' 项'}</p></div>`;}
+function totalScore(book,row){
+  const score=weightedSummary(book,row);
+  if(!score.graded)return '<div class="page-total pending-total"><p class="page-total-label">八题总分</p><div><strong>待测</strong></div><p>暂无成绩 · 不参与排名</p></div>';
+  const label=score.complete?'八题总分':'已测得分';
+  const max=score.complete?100:score.evaluated;
+  const status=score.complete?score.grade:'已评 '+score.graded+' / '+book.tasks.length+' 题 · 总分待定';
+  return `<div class="page-total"><p class="page-total-label">${label}</p><div><strong>${formatPoints(score.earned)}</strong><span>/ ${max}</span></div><p>${e(status)}</p></div>`;
+}
 function navigation(book,row=null){return `<nav class="task-score-nav${row?' has-scores':''}" aria-label="跳到本页测试答卷">${book.tasks.map((t,i)=>`<button type="button" data-answer-jump="${e(t.id)}" aria-label="跳到${e(taskLabel(t,i))}${row?'，'+(row.items[i].score===null?'待测':formatPoints(points(row.items[i].score,t.weight))+' / '+t.weight+'分'):''}"><span class="jump-title"><small>${number(i)}</small>${e(taskLabel(t,i))}</span>${row?itemScore(book,row,i):''}</button>`).join('')}</nav>`;}
 const breadcrumb=label=>`<div class="page-breadcrumb"><a href="#checkup/results">八题实测榜</a><span aria-hidden="true">/</span><span>${label}</span></div>`;
 

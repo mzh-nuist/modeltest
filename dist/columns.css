@@ -91,6 +91,9 @@ body.published-mode .pending-model-grid {display:grid;grid-template-columns:repe
 body.published-mode .pending-model-card {display:grid;grid-template-columns:1fr auto;gap:8px 16px;padding:18px;border:1px dashed var(--control-line);border-radius:8px;color:var(--ink);text-decoration:none;background:var(--panel)}
 body.published-mode .pending-model-card:hover {border-style:solid;border-color:var(--accent);background:var(--soft)}
 body.published-mode .pending-model-card .column-model {font-size:16px;grid-column:1/-1}
+body.published-mode .pending-agent-scores {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-column:1/-1;gap:8px;border-top:1px solid var(--line);padding-top:10px;font-size:14px;color:var(--muted)}
+body.published-mode .pending-agent-scores>span {display:flex;flex-direction:column;gap:3px}
+body.published-mode .pending-agent-scores strong {color:var(--ink);font-size:16px;font-variant-numeric:tabular-nums}
 body.published-mode .pending-model-note {font-size:15px;line-height:1.7;color:var(--muted)}
 body.published-mode .pending-open {display:inline-flex;align-items:center;gap:4px;font-size:15px;color:var(--accent);white-space:nowrap;align-self:end}
 body.published-mode .model-pending-reason {font-size:17px;line-height:1.8;margin:0 0 24px;padding:16px 20px;border-left:3px solid var(--control-line);background:var(--soft);color:var(--ink)}
