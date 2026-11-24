@@ -2,12 +2,12 @@ import {validateShortBank,validateShortResults,shortTaskPage,shortOverview,short
 import {mergeHighExpanded} from './high-expanded.js?v=20261123-suite2';
 import {validatePlayfulSeason,seasonPage,bindSeason} from './playful-season.js?v=20261123-suite2';
 import {studioModelPage,studioComparePage,bindAnswerNavigation} from './studio-pages.js?v=20261124-progress1';
-import {siteNotesPage} from './site-notes.js?v=20261123-gemini1';
+import {siteNotesPage} from './site-notes.js?v=20261124-goat1';
 import {modelBadge} from './model-identity.js?v=20261118-models4';
 import {studioHome,studioArchive,studioWorks,studioRepairs} from './studio-home.js?v=20261124-progress1';
 import {createCodexComparison,loadComparisonBatches} from './codex-comparison.js?v=20261123-suite2';
 import {publishCodexMain,publishCodexShort} from './codex-publication.js?v=20261123-clarity1';
-import {createChristmasChallenge,projectAgentTasks} from './christmas-challenge.js?v=20261123-gemini1';
+import {createChristmasChallenge,projectAgentTasks} from './christmas-challenge.js?v=20261124-goat1';
 import {createHarnessEval} from './harness-eval.js?v=20261123-clarity1';
 import {modelPicker,bindModelPickers} from './model-picker.js?v=20261118-models4';
 import {validateHighSuite,projectHighSuite,highPanel} from './high-suite.js?v=20261123-suite2';
@@ -15,7 +15,7 @@ import {EFFORTS,validateEffortMatrix,projectEffortMatrix,effortPanel,effortOverv
 import {extractDrawing,validateCompletedSuite,completionCard,completionComparison,zebraPage} from './completed-suite.js?v=20261123-suite2';
 import {validateWeightedSuite,weightedScoreboard,weightedSummary,weightedModelSummary,weightedDetails,weightedRubric,weightedGrade,points,formatPoints} from './weighted-score.js?v=20261123-suite2';
 import {receiptTeaser,createReceiptController} from './receipt-test.js?v=20261123-suite2';
-import {createAudienceController} from './traffic.js?v=20261123-gemini1';
+import {createAudienceController} from './traffic.js?v=20261124-goat1';
 import {validateCheckupBank,validateCheckupReport,previewableCheckupSVG,parseCheckupJSON} from './checkup-data.js?v=20261101-short1';
 import {checkupSVG} from './checkup-view.js?v=20261101-short1';
 import {validateDailyScores,suiteScoreboard,suiteScoreDetails,suiteSummary,personalStars,readRatings,saveRatings,suiteRubric} from './daily-score.js?v=20261101-short1';

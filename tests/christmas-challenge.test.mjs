@@ -12,8 +12,8 @@ test('Christmas artwork is scored independently and reuses the exact task soundt
   assert.equal(publicScore.frontend.score,99);
   assert.equal(publicScore.backend.score,100);
   assert.deepEqual(read('../dist/art/christmas/music.wav'),read('../datasets/christmas_cache_v1/frontend/music.wav'));
-  const incomplete = data.runs.find(run => run.name === 'Claude Sonnet 5.5');
-  assert.equal(incomplete.backend.score,undefined);
+  const incomplete = data.runs.find(run => run.modelId === 'deepseek-v41-flash');
+  assert.equal(incomplete.frontend.score,undefined);
 });
 
 test('Christmas previews isolate authored JavaScript and use valid artwork routes',() => {
@@ -43,7 +43,7 @@ test('the Grok challenge submission identifies the actual Cursor harness',() => 
   assert.match(renderChristmasChallenge(data,'grok'),/圣诞树配乐 97 \/ 100/);
   assert.match(renderChristmasChallenge(data,'cache','grok47'),/Grok 4\.7 的并发缓存[\s\S]*100 \/ 100/);
   assert.match(renderChristmasChallenge(data,'cache','claude-sonnet55'),/未完成/);
-  assert.match(renderChristmasChallenge(data,'cache','deepseek-v41-flash'),/未找到这份挑战答卷/);
+  assert.match(renderChristmasChallenge(data,'cache','unknown-model'),/未找到这份挑战答卷/);
   const duplicate=structuredClone(data);
   duplicate.runs[0].modelId=grok.modelId;
   assert.throws(()=>validateChristmasChallenge(duplicate),/条件不一致/);
@@ -62,10 +62,11 @@ test('the two replacement slots convert actual high scores and never borrow a si
   assert.deepEqual(current.tasks.map(task=>task.id),['purpose','christmas','cache','memory','honesty','visual','receipt','zebra']);
   assert.deepEqual(current.tasks.map(task=>task.weight),weights);
   assert.equal(weightedSummary(current,current.models[0]).finalScore,99.7);
-  assert.equal(current.models[1].items[1].score,null);
+  assert.equal(current.models[1].items[1].score,92/50);
   assert.equal(current.models[1].items[2].score,2);
-  assert.equal(weightedSummary(current,current.models[1]).finalScore,null);
-  assert.deepEqual(current.models[2].items.slice(1,3).map(item=>item.score),[null,null]);
+  assert.equal(weightedSummary(current,current.models[1]).finalScore,99.2);
+  const fastOnly={...data,runs:data.runs.filter(run=>run.modelId!=='deepseek-v41-flash')};
+  assert.deepEqual(projectAgentTasks(book,fastOnly).models[2].items.slice(1,3).map(item=>item.score),[null,null]);
   assert.deepEqual(book.tasks.map(task=>task.id),ids);
   assert.equal(book.models[0].items[1].score,2);
   assert.equal(weightedSummary(projectAgentTasks(book),projectAgentTasks(book).models[0]).finalScore,null);
@@ -89,4 +90,16 @@ test('Gemini links to the rendered Antigravity High artwork and cache test group
   assert.equal(run.backend.groups.length,6);
   assert.match(renderChristmasChallenge(data,'gemini'),/圣诞树配乐 95 \/ 100/);
   assert.match(renderChristmasChallenge(data,'cache','gemini38-flash'),/100 \/ 100/);
+});
+
+test('GOAT results retain verified model identities and original specialized scores',() => {
+  const row=id=>data.runs.find(item=>item.modelId===id);
+  assert.equal(row('glm53-flash').harness,'ZCode · GOAT');
+  assert.deepEqual([row('glm53-flash').frontend.score,row('glm53-flash').backend.score],[93,100]);
+  assert.deepEqual([row('claude-sonnet55').frontend.score,row('claude-sonnet55').backend.score],[97,100]);
+  assert.equal(row('deepseek-v41-flash').frontend.score,undefined);
+  assert.match(row('deepseek-v41-flash').frontend.note,/65,536 token/);
+  assert.match(row('deepseek-v41-flash').backend.note,/通过独立脚本复核/);
+  assert.equal(row('deepseek-v41-flash').backend.score,100);
+  assert.equal(row('deepseek-v41-flash-fast').backend.score,100);
 });

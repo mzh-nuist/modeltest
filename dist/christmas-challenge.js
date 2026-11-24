@@ -3,7 +3,7 @@ import {arrowRight} from './ui-icons.js?v=20261101-short1';
 
 const route = '#checkup/agent-challenge';
 const art = 'art/christmas/';
-const assetsVersion = '?v=20261123-gemini1';
+const assetsVersion = '?v=20261124-goat1';
 const bounds = (value, max) => Number.isInteger(value) && value >= 0 && value <= max;
 
 export function projectAgentTasks(book, evidence) {
@@ -35,7 +35,7 @@ export function projectAgentTasks(book, evidence) {
       const evidenceLink = task.agentKey==='frontend'
         ? (result?.work ? route+'/'+result.work : task.destination)
         : (run ? task.destination+'/'+run.modelId : task.destination);
-      const unavailable = !evidence?'暂时无法读取 Agent 成绩。':run?'尚无可评分的完整交付。':'没有此型号的公开 Agent 答卷。';
+      const unavailable = result?.note || (!evidence?'暂时无法读取 Agent 成绩。':run?'尚无可评分的完整交付。':'没有此型号的公开 Agent 答卷。');
       return {taskId:task.id,score:score===undefined?null:score/50,agentScore:score,harness:run?.harness,evidenceLink,
         reason:score===undefined?unavailable:`原始评分 ${score} / 100，计入本榜 ${score/10} / 10。`};
     });

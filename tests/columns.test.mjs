@@ -96,12 +96,12 @@ test('controller supports all column routes and old play links show identified w
     assert.doesNotMatch(mainBoard,/推理纠错|定点改字/);
     assert.match(mainBoard,/href="#checkup\/agent-challenge\/grok"[^>]*aria-label="圣诞树配乐 9\.7 \/ 10分"/);
     assert.match(mainBoard,/href="#checkup\/agent-challenge\/cache\/grok47"[^>]*aria-label="并发缓存 10 \/ 10分"/);
-    const kimiCard=mainBoard.match(/<a class="pending-model-card" href="#checkup\/model\/kimi-k31-pro">([\s\S]*?)<\/a>/)?.[1];
-    assert.match(kimiCard,/圣诞树配乐<\/span><strong>待测/);
-    assert.match(kimiCard,/并发缓存<\/span><strong>10 \/ 10/);
-    assert.match(kimiCard,/已评 7 \/ 8 题/);
+    const kimi=controller.render(['model','kimi-k31-pro']);
+    assert.match(kimi,/计入本榜 9\.2 \/ 10/);
+    assert.match(kimi,/计入本榜 10 \/ 10/);
+    assert.match(mainBoard,/href="#checkup\/agent-challenge\/kimi-pro"[^>]*aria-label="圣诞树配乐 9\.2 \/ 10分"/);
     assert.match(controller.render(['edit']),/旧版题目 · 历史答卷/);
-    const missing=controller.render(['model','deepseek-v41-flash']);
+    const missing=controller.render(['model','minimax-m31-flash']);
     assert.match(missing,/暂无|没有此型号的公开 Agent 答卷/);
     assert.match(missing,/已测得分[\s\S]*?<span>\/ 80<\/span>[\s\S]*?已评 6 \/ 8 题 · 总分待定/);
     assert.match(controller.render(['visual']),/5 \/ 10 分 · 部分达成/);

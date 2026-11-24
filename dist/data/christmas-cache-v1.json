@@ -205,10 +205,47 @@
       "harness": "Claude Code · CC Switch GOAT",
       "effort": "high",
       "frontend": {
-        "status": "未完成"
+        "score": 97,
+        "music": 45,
+        "visual": 37,
+        "utility": 15,
+        "work": "sonnet",
+        "comment": "前段和快段的主树响应清楚，高音逐个带动不同挂灯。快段光环与配色变化明显，尾奏收为暖光和祝福。枝叶、积雪、灯饰有层次，背景细节较少。"
       },
       "backend": {
-        "status": "未完成"
+        "score": 100,
+        "groups": [
+          {
+            "title": "基础 LRU、原引用与空值",
+            "points": 20,
+            "score": 20
+          },
+          {
+            "title": "TTL 边界和后台刷新",
+            "points": 20,
+            "score": 20
+          },
+          {
+            "title": "同键合并与跨键并发",
+            "points": 20,
+            "score": 20
+          },
+          {
+            "title": "覆盖与失效切代",
+            "points": 15,
+            "score": 15
+          },
+          {
+            "title": "过期优先驱逐、驱逐中刷新隔离",
+            "points": 10,
+            "score": 10
+          },
+          {
+            "title": "失败恢复、原异常和状态接口",
+            "points": 15,
+            "score": 15
+          }
+        ]
       }
     },
     {
@@ -217,7 +254,12 @@
       "harness": "Kimi Code CLI · GOAT",
       "effort": "high",
       "frontend": {
-        "status": "未完成"
+        "score": 92,
+        "music": 40,
+        "visual": 37,
+        "utility": 15,
+        "work": "kimi-pro",
+        "comment": "前后两段的重拍会带动树体弹动和树顶星芒，铃声在不同挂饰上出现局部光圈。中段能看出提速，但主色和尾声变化较轻。枝层、灯饰、礼物有清楚的层次，雪地上的浅色祝福对比稍弱。"
       },
       "backend": {
         "score": 100,
@@ -265,7 +307,39 @@
         "status": "未完成"
       },
       "backend": {
-        "status": "未完成"
+        "score": 100,
+        "groups": [
+          {
+            "title": "基础 LRU、原引用与空值",
+            "points": 20,
+            "score": 20
+          },
+          {
+            "title": "TTL 边界和后台刷新",
+            "points": 20,
+            "score": 20
+          },
+          {
+            "title": "同键合并与跨键并发",
+            "points": 20,
+            "score": 20
+          },
+          {
+            "title": "覆盖与失效切代",
+            "points": 15,
+            "score": 15
+          },
+          {
+            "title": "过期优先驱逐、驱逐中刷新隔离",
+            "points": 10,
+            "score": 10
+          },
+          {
+            "title": "失败恢复、原异常和状态接口",
+            "points": 15,
+            "score": 15
+          }
+        ]
       }
     },
     {
@@ -378,6 +452,150 @@
         "utility": 15,
         "work": "gemini",
         "comment": "前段和提速段的树体晃动与亮度脉冲能对上重拍，铃声会点亮局部挂灯，少数局部跳光容易和全树闪动混在一起。快段出现极光，尾声用星芒和祝福收束。雪景、礼物和分层树冠清楚，桌面画面留有较宽侧边。"
+      },
+      "backend": {
+        "score": 100,
+        "groups": [
+          {
+            "title": "基础 LRU、原引用与空值",
+            "points": 20,
+            "score": 20
+          },
+          {
+            "title": "TTL 边界和后台刷新",
+            "points": 20,
+            "score": 20
+          },
+          {
+            "title": "同键合并与跨键并发",
+            "points": 20,
+            "score": 20
+          },
+          {
+            "title": "覆盖与失效切代",
+            "points": 15,
+            "score": 15
+          },
+          {
+            "title": "过期优先驱逐、驱逐中刷新隔离",
+            "points": 10,
+            "score": 10
+          },
+          {
+            "title": "失败恢复、原异常和状态接口",
+            "points": 15,
+            "score": 15
+          }
+        ]
+      }
+    },
+    {
+      "modelId": "glm53-flash",
+      "name": "GLM-5.3 Flash",
+      "harness": "ZCode · GOAT",
+      "effort": "high",
+      "frontend": {
+        "score": 93,
+        "music": 42,
+        "visual": 36,
+        "utility": 15,
+        "work": "glm",
+        "comment": "两段强拍都能看见树身回弹和亮度抬升，铃声在枝头轮流出现独立光圈。中段背景转紫，尾声收暖，树体本身的收束较轻。树冠层次和配色清楚，山丘、礼物与枝叶细节偏简洁。"
+      },
+      "backend": {
+        "score": 100,
+        "groups": [
+          {
+            "title": "基础 LRU、原引用与空值",
+            "points": 20,
+            "score": 20
+          },
+          {
+            "title": "TTL 边界和后台刷新",
+            "points": 20,
+            "score": 20
+          },
+          {
+            "title": "同键合并与跨键并发",
+            "points": 20,
+            "score": 20
+          },
+          {
+            "title": "覆盖与失效切代",
+            "points": 15,
+            "score": 15
+          },
+          {
+            "title": "过期优先驱逐、驱逐中刷新隔离",
+            "points": 10,
+            "score": 10
+          },
+          {
+            "title": "失败恢复、原异常和状态接口",
+            "points": 15,
+            "score": 15
+          }
+        ]
+      }
+    },
+    {
+      "modelId": "deepseek-v41-flash",
+      "name": "DeepSeek V4.1 Flash",
+      "harness": "DeepSeek Harness · GOAT",
+      "effort": "high",
+      "frontend": {
+        "status": "未完成",
+        "note": "本次响应在服务商报告输出 65,536 token 时截断，缺少可评分的交付。"
+      },
+      "backend": {
+        "score": 100,
+        "groups": [
+          {
+            "title": "基础 LRU、原引用与空值",
+            "points": 20,
+            "score": 20
+          },
+          {
+            "title": "TTL 边界和后台刷新",
+            "points": 20,
+            "score": 20
+          },
+          {
+            "title": "同键合并与跨键并发",
+            "points": 20,
+            "score": 20
+          },
+          {
+            "title": "覆盖与失效切代",
+            "points": 15,
+            "score": 15
+          },
+          {
+            "title": "过期优先驱逐、驱逐中刷新隔离",
+            "points": 10,
+            "score": 10
+          },
+          {
+            "title": "失败恢复、原异常和状态接口",
+            "points": 15,
+            "score": 15
+          }
+        ],
+        "note": "收尾响应未取得完成标记。已写入的缓存文件通过独立脚本复核，计入实测分。"
+      }
+    },
+    {
+      "modelId": "kimi-k3",
+      "name": "Kimi K3",
+      "harness": "Kimi Code CLI · GOAT",
+      "effort": "high",
+      "frontend": {
+        "score": 93,
+        "music": 42,
+        "visual": 36,
+        "utility": 15,
+        "work": "kimi",
+        "comment": "重拍前后能看见树身和树顶星芒的变化，铃声会轮流点亮挂饰，个别时刻局部灯光被整体闪光盖住。提速加快光环，尾奏背景转暖。树冠与灯饰有层次，桌面画面较窄，雪地上的祝词略浅。"
       },
       "backend": {
         "score": 100,
