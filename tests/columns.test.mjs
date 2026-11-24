@@ -69,7 +69,9 @@ test('controller supports all column routes and old play links show identified w
     };
     let done;const ready=new Promise(resolve=>done=resolve);
     const main={addEventListener(){},querySelectorAll:()=>[]};
-    const controller=createPublishedDailyController({main,rerender:()=>done()});
+    const controller=createPublishedDailyController({main,rerender:()=>{
+      if(controller.render().includes('href="#checkup/season/boss-sokoban"'))done();
+    }});
     controller.render();await ready;
     const homepage=controller.render();
     for(const title of ['八题实测榜','短题实测','Agent 挑战'])assert.ok(homepage.includes('<h2>'+title+'</h2>'));
@@ -117,6 +119,34 @@ test('controller supports all column routes and old play links show identified w
     for(const {model} of drawingCatalog(current.data,current.book).visual){
       assert.ok(pelican.includes(`href="#checkup/works/visual/${model.id}"`));
     }
+  }finally{globalThis.fetch=saved.fetch;globalThis.location=saved.location;globalThis.localStorage=saved.storage;}
+});
+
+test('direct entry to the results page does not wait for short challenges or the season',{timeout:2000},async()=>{
+  const saved={fetch:globalThis.fetch,location:globalThis.location,storage:globalThis.localStorage};
+  const requested=[];
+  const detached=new Set(['short-challenges.json','short-challenge-results.json','playful-season.json']);
+  try{
+    globalThis.location={hash:'#checkup/results'};
+    globalThis.localStorage={getItem:()=>null};
+    globalThis.fetch=async url=>{
+      const file=url.replace('data/','').split('?')[0];
+      requested.push(file);
+      if(detached.has(file))return new Promise(()=>{});
+      const payload=fs.readFileSync(new URL('../dist/data/'+file,import.meta.url),'utf8');
+      return {ok:true,text:async()=>payload,json:async()=>JSON.parse(payload)};
+    };
+    let done;
+    const ready=new Promise(resolve=>done=resolve);
+    const controller=createPublishedDailyController({main:{addEventListener(){}},rerender:()=>done()});
+    controller.render(['results']);
+    assert.deepEqual(requested.filter(file=>detached.has(file)),[]);
+    assert.ok(requested.includes('daily-measured.json'));
+    assert.ok(requested.includes('high-expanded.json'));
+    await ready;
+    const result=controller.render(['results']);
+    assert.match(result,/studio-score-table/);
+    assert.match(result,/<strong>89\.3<\/strong>/);
   }finally{globalThis.fetch=saved.fetch;globalThis.location=saved.location;globalThis.localStorage=saved.storage;}
 });
 

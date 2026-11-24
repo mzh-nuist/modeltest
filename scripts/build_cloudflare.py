@@ -70,7 +70,8 @@ def build(out, database_id=None):
     (upload / '_headers').write_text(
         '/*\n  Cache-Control: public, no-cache, no-transform\n  X-Content-Type-Options: nosniff\n'
         '  Referrer-Policy: strict-origin-when-cross-origin\n'
-        '/art/christmas/*\n  Content-Security-Policy: sandbox allow-scripts\n', encoding='utf8'
+        '/data/*\n  ! Cache-Control\n  Cache-Control: public, no-cache\n'
+        '/art/christmas/*\n  Content-Security-Policy: sandbox allow-scripts\n', encoding='utf8', newline='\n'
     )
     config = {
         'name': 'modeltest-cc',

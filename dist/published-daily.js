@@ -118,14 +118,106 @@ export function createPublishedDailyController({main,rerender}){
   const harnessEval=createHarnessEval(()=>{if(location.hash==='#checkup/harness')rerender();});
   bindAnswerNavigation(main);
   main.addEventListener('click',event=>{const jump=event.target.closest('[data-repair-jump]');if(!jump)return;const target=main.querySelector('#'+jump.dataset.repairJump);if(target){target.scrollIntoView({block:'start',behavior:'instant'});target.focus({preventScroll:true});}});
-  let shorts=null,shortResults=null,shortError='',data=null,bank=null,book=null,previousBook=null,season=null,matrix=null,historyData=null,historyBook=null,error='',loading=false,ratings={},filter='all',saved=true;
+  let shorts=null,shortResults=null,shortError='',shortLoading,seasonLoading,batchLoading,data=null,bank=null,book=null,previousBook=null,season=null,matrix=null,historyData=null,historyBook=null,error='',loading=false,ratings={},filter='all',saved=true;
   bindSeason(main,()=>season);
   bindShortChallenges(main,()=>shorts,()=>shortResults);
   const ratingKey='zhufeng-daily-six-personal-stars-v1';const audience=createAudienceController({main,rerender});const receipt=createReceiptController({main,rerender});
   const active=()=>!location.hash||location.hash.startsWith('#checkup');
   bindModelPickers(main,{getModels:()=>data?.models||[],onPick:(values,side)=>{location.hash='checkup/compare/'+values.join('/');globalThis.requestAnimationFrame?.(()=>main.querySelector('[data-model-picker="'+side+'"] > summary')?.focus({preventScroll:true}));}});
-  async function load(){if(loading)return;loading=true;const agentEvidence=christmasChallenge.evidence();const supplementalBatches=loadComparisonBatches();try{const rs=await Promise.all([fetch('data/short-challenges.json'),fetch('data/short-challenge-results.json')]);if(rs.some(r=>!r.ok))throw Error('短题文件暂时未读取');const [bt,rt]=await Promise.all(rs.map(x=>x.text())),b=JSON.parse(bt),r=JSON.parse(rt);if(globalThis.crypto?.subtle){const hash=[...new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(bt)))].map(x=>x.toString(16).padStart(2,'0')).join('');if(hash!==r.bankSha256)throw Error('题面与采集版本不一致');}shorts=validateShortBank(b);shortResults=validateShortResults(r,shorts);}catch{shortError='短题实测文件暂时未读取或未通过核验';}const batches=await supplementalBatches;if(shorts&&shortResults)for(const batch of batches){try{shortResults=publishCodexShort(shortResults,batch,shorts);}catch{shortError='Codex 短题与当前版本不一致';}}try{const response=await fetch('data/playful-season.json');if(!response.ok)throw Error('新题文件未读取');season=validatePlayfulSeason(parseCheckupJSON(await response.text()));}catch{season=null;}try{const agent=await agentEvidence;const responses=await Promise.all([fetch('data/daily-measured.json'),fetch('data/checkup.json'),fetch('data/daily-scores.json'),fetch('data/completed-suite.json'),fetch('data/high-suite.json'),fetch('data/high-model-limits.json')]);if(responses.some(r=>!r.ok))throw Error('实测文件没有读到');const [a,b,c,d,f,g]=await Promise.all(responses.map(async r=>parseCheckupJSON(await r.text())));bank=validateCheckupBank(b);data=validatePublishedDaily(a,bank);const legacy=validateDailyScores(c,data,bank);book=validateCompletedSuite(d,data,legacy,bank);data={...data,totalRequests:data.totalRequests+book.newRequests,successfulRequests:data.successfulRequests+book.newSuccesses,publishedAt:book.updatedAt};historyData=data;historyBook=book;matrix=null;const high=validateHighSuite(f,book,bank,g);({data,book}=projectHighSuite(high,data,book,bank));const expandedResponse=await fetch('data/high-expanded.json');if(!expandedResponse.ok)throw Error('新增实测批次未读取');({data,book}=mergeHighExpanded({data,book},parseCheckupJSON(await expandedResponse.text()),bank));for(const batch of batches){try{({data,book}=publishCodexMain({data,book},batch,bank));}catch{/* Keep existing results if a supplemental batch does not match. */}}previousBook=book;book=projectAgentTasks(previousBook,agent);try{ratings=readRatings(localStorage,ratingKey,data);}catch{saved=false;}}catch(err){error=err.message;}if(active())rerender();}
-  function render(parts=[]){if(parts[0]==='codex-gpt62')return codexComparison();if(parts[0]==='harness')return harnessEval();if(parts[0]==='agent-challenge')return christmasChallenge.render(parts[1],parts[2]);if(parts[0]==='privacy')return siteNotesPage();if((!data||!book?.agentTasks)&&!error){load();return '<p>正在读取已发布的真实答卷…</p>';}if(error)return header('实测答卷暂时没有读出来',error,'<a href="#selftest">使用手动自测工具</a>');const [page,id,other]=parts;if(page==='season'&&['boss-sokoban','gear-scam'].includes(id))return shorts&&shortResults?shortTaskPage(shorts,shortResults,id):header('短题实测暂时未读取',shortError,'<a href="#checkup/results">查看第一期旧成绩 →</a>');if(page==='season'&&!id&&season)return seasonPage(season,'',shorts&&shortResults?shortOverview(shorts,shortResults):'');if(page==='season')return season?seasonPage(season,id):header('新一期题面暂时未读取','旧答卷仍可正常查看，请稍后刷新。','<a href="#checkup/results">查看第一期旧成绩 →</a>');if(page==='play'||page==='works')return studioWorks(data,book,page==='play'?'':id,other);if(page==='repairs')return studioRepairs(data,previousBook,bank,{historicalEdit:true});if(page==='reasoning'||page==='edit')return '<p class="checkup-warning">旧版题目 · 历史答卷</p>'+publishedTask(data,bank,page,previousBook);if(page==='model'&&book.highOnly&&other&&other!=='high')return header('本轮只测HIGH','其他档位已停止，不参与本轮成绩。','<a href="#checkup/model/'+e(id)+'">查看本轮HIGH答卷 →</a>');if(page==='history')return historyPage(historyData,bank,historyBook,id,other,ratings);if(page==='efforts'&&book.highOnly)return publishedHome(data,bank,book,{ratings,filter,saved});if(page==='efforts')return effortOverview(book);if(page==='model'&&matrix&&EFFORTS.includes(other)){const shown=projectEffortMatrix(matrix,historyData,historyBook,bank,{[id]:other});return publishedModel(shown.data,bank,id,shown.book,{rating:ratings[id]||0});}if(page==='zebra')return zebraPage(book,data);if(page==='audience')return audience.render();if(page==='receipt')return receipt.render(data.models,book);if(page==='results')return studioArchive(data,book,{ratings,filter,saved});if(!page)return publishedHome(data,bank,book,{ratings,filter,saved,shortHighlights:shortHighlights(shorts,shortResults),agentRun:christmasChallenge.forModel('grok47')});if(page==='model'&&book.schemaVersion.startsWith('daily-weighted-'))return publishedModel(data,bank,id,book,{rating:ratings[id]||0});if(page==='model'){const m=data.models.find(x=>x.id===id),row=book.models.find(x=>x.modelId===id);if(!m||!row)return missing();const s=suiteSummary(row);return publishedModel(data,bank,id,book).replace(condition(m),`<section class="panel"><div class="panel-body"><h2>六项测试集 · ${s.complete?s.total+' / 12 分':'待评完'}</h2><p>${s.passed} / 6 项通过 · ${s.fullPass?'整套通过':'未全部通过'} · 助手初评</p>${personalStars(m,ratings[id]||0)}<p class="evidence-meta">${saved?'星评仅保存在当前浏览器，不改变测试成绩。':'浏览器未允许保存；星评仅在当前页面有效。'}</p>${suiteScoreDetails(row)}</div></section>`+condition(m));}if(page==='compare')return comparison(data,bank,id,other,book);if(page==='how')return method(data)+(book.schemaVersion.startsWith('daily-weighted-')?weightedRubric(book):suiteRubric());if(page==='contact')return contact();return publishedTask(data,bank,page,book);}
+  function loadBatches() {
+    return batchLoading ??= loadComparisonBatches();
+  }
+  async function loadShorts() {
+    if (shortLoading) return;
+    shortLoading = true;
+    try {
+      const [bankText,resultsText,batches] = await Promise.all([
+        fetchText('short-challenges.json'), fetchText('short-challenge-results.json'), loadBatches(),
+      ]);
+      const results = JSON.parse(resultsText);
+      if (globalThis.crypto?.subtle) {
+        const bytes = await crypto.subtle.digest('SHA-256',new TextEncoder().encode(bankText));
+        const hash = Array.from(new Uint8Array(bytes),value=>value.toString(16).padStart(2,'0')).join('');
+        if (hash !== results.bankSha256) throw Error('题面与采集版本不一致');
+      }
+      shorts = validateShortBank(JSON.parse(bankText));
+      shortResults = validateShortResults(results,shorts);
+      for (const batch of batches) {
+        try { shortResults = publishCodexShort(shortResults,batch,shorts); }
+        catch { shortError = 'Codex 短题与当前版本不一致'; }
+      }
+    } catch {
+      shortError = '短题实测文件暂时未读取或未通过核验';
+    }
+    if (['','#checkup','#checkup/'].includes(location.hash) ? book?.agentTasks :
+        location.hash.split('/')[1] === 'season') rerender();
+  }
+  async function loadSeason() {
+    if (seasonLoading) return;
+    seasonLoading = true;
+    try { season = validatePlayfulSeason(parseCheckupJSON(await fetchText('playful-season.json'))); }
+    catch { season = false; }
+    if (location.hash.split('/')[1] === 'season') rerender();
+  }
+  async function fetchText(file) {
+    const response = await fetch('data/'+file);
+    if (!response.ok) throw Error('实测文件没有读到');
+    return response.text();
+  }
+  async function load() {
+    if (loading) return;
+    loading = true;
+    const files = [
+      'daily-measured.json','checkup.json','daily-scores.json','completed-suite.json',
+      'high-suite.json','high-model-limits.json','high-expanded.json',
+    ];
+    try {
+      const [published,agent,batches] = await Promise.all([
+        Promise.all(files.map(async file=>parseCheckupJSON(await fetchText(file)))),
+        christmasChallenge.evidence(),
+        loadBatches(),
+      ]);
+      const [daily,questions,scores,completed,highRuns,limits,expanded] = published;
+      bank = validateCheckupBank(questions);
+      data = validatePublishedDaily(daily,bank);
+      const legacy = validateDailyScores(scores,data,bank);
+      book = validateCompletedSuite(completed,data,legacy,bank);
+      data = {...data,totalRequests:data.totalRequests+book.newRequests,
+        successfulRequests:data.successfulRequests+book.newSuccesses,publishedAt:book.updatedAt};
+      historyData = data;
+      historyBook = book;
+      matrix = null;
+      const high = validateHighSuite(highRuns,book,bank,limits);
+      ({data,book} = projectHighSuite(high,data,book,bank));
+      ({data,book} = mergeHighExpanded({data,book},expanded,bank));
+      for (const batch of batches) {
+        try { ({data,book} = publishCodexMain({data,book},batch,bank)); }
+        catch { /* Keep existing results if a supplemental batch does not match. */ }
+      }
+      previousBook = book;
+      book = projectAgentTasks(previousBook,agent);
+      try { ratings = readRatings(localStorage,ratingKey,data); }
+      catch { saved = false; }
+    } catch (err) {
+      error = err.message;
+    }
+    if (active() && !['season','codex-gpt62','harness','agent-challenge','privacy'].includes(location.hash.split('/')[1])) rerender();
+  }
+  function renderSeason(id) {
+    if (['boss-sokoban','gear-scam'].includes(id)) {
+      loadShorts();
+      if (shorts && shortResults) return shortTaskPage(shorts,shortResults,id);
+      if (shortError) return header('短题实测暂时未读取',shortError,'<a href="#checkup/results">查看八题实测榜 →</a>');
+      return '<p role="status">正在读取短题实测…</p>';
+    }
+    loadSeason();
+    if (season === null) return '<p role="status">正在读取题目…</p>';
+    if (!season) return header('新一期题面暂时未读取','请稍后刷新。','<a href="#checkup/results">查看八题实测榜 →</a>');
+    if (id) return seasonPage(season,id);
+    loadShorts();
+    return seasonPage(season,'',shorts&&shortResults?shortOverview(shorts,shortResults):'');
+  }
+  function render(parts=[]){if(parts[0]==='codex-gpt62')return codexComparison();if(parts[0]==='harness')return harnessEval();if(parts[0]==='agent-challenge')return christmasChallenge.render(parts[1],parts[2]);if(parts[0]==='privacy')return siteNotesPage();const [page,id,other]=parts;if(page==='season')return renderSeason(id);if((!data||!book?.agentTasks)&&!error){load();if(!page)loadShorts();return '<p role="status">正在读取已发布的真实答卷…</p>';}if(error)return header('实测答卷暂时没有读出来',error,'<a href="#selftest">使用手动自测工具</a>');if(page==='play'||page==='works')return studioWorks(data,book,page==='play'?'':id,other);if(page==='repairs')return studioRepairs(data,previousBook,bank,{historicalEdit:true});if(page==='reasoning'||page==='edit')return '<p class="checkup-warning">旧版题目 · 历史答卷</p>'+publishedTask(data,bank,page,previousBook);if(page==='model'&&book.highOnly&&other&&other!=='high')return header('本轮只测HIGH','其他档位已停止，不参与本轮成绩。','<a href="#checkup/model/'+e(id)+'">查看本轮HIGH答卷 →</a>');if(page==='history')return historyPage(historyData,bank,historyBook,id,other,ratings);if(page==='efforts'&&book.highOnly)return publishedHome(data,bank,book,{ratings,filter,saved});if(page==='efforts')return effortOverview(book);if(page==='model'&&matrix&&EFFORTS.includes(other)){const shown=projectEffortMatrix(matrix,historyData,historyBook,bank,{[id]:other});return publishedModel(shown.data,bank,id,shown.book,{rating:ratings[id]||0});}if(page==='zebra')return zebraPage(book,data);if(page==='audience')return audience.render();if(page==='receipt')return receipt.render(data.models,book);if(page==='results')return studioArchive(data,book,{ratings,filter,saved});if(!page){loadShorts();return publishedHome(data,bank,book,{ratings,filter,saved,shortHighlights:shortHighlights(shorts,shortResults),agentRun:christmasChallenge.forModel('grok47')});}if(page==='model'&&book.schemaVersion.startsWith('daily-weighted-'))return publishedModel(data,bank,id,book,{rating:ratings[id]||0});if(page==='model'){const m=data.models.find(x=>x.id===id),row=book.models.find(x=>x.modelId===id);if(!m||!row)return missing();const s=suiteSummary(row);return publishedModel(data,bank,id,book).replace(condition(m),`<section class="panel"><div class="panel-body"><h2>六项测试集 · ${s.complete?s.total+' / 12 分':'待评完'}</h2><p>${s.passed} / 6 项通过 · ${s.fullPass?'整套通过':'未全部通过'} · 助手初评</p>${personalStars(m,ratings[id]||0)}<p class="evidence-meta">${saved?'星评仅保存在当前浏览器，不改变测试成绩。':'浏览器未允许保存；星评仅在当前页面有效。'}</p>${suiteScoreDetails(row)}</div></section>`+condition(m));}if(page==='compare')return comparison(data,bank,id,other,book);if(page==='how')return method(data)+(book.schemaVersion.startsWith('daily-weighted-')?weightedRubric(book):suiteRubric());if(page==='contact')return contact();return publishedTask(data,bank,page,book);}
   main.addEventListener('click',ev=>{const button=ev.target.closest('[data-suite-star]');if(!button||!active()||!data)return;const id=button.dataset.suiteStar,n=Number(button.dataset.rating);if(!data.models.some(m=>m.id===id)||!Number.isInteger(n)||n<1||n>5)return;if(ratings[id]===n)delete ratings[id];else ratings[id]=n;try{saved=saveRatings(localStorage,ratingKey,data,ratings);}catch{saved=false;}rerender();const star=main.querySelector(`[data-suite-star="${id}"][data-rating="${n}"]`),disclosure=star?.closest('.reader-rating');if(disclosure)disclosure.open=true;star?.focus({preventScroll:true});});
   main.addEventListener('change',ev=>{if(active()&&ev.target.hasAttribute('data-suite-filter')){filter=ev.target.value;rerender();main.querySelector('[data-suite-filter]')?.focus({preventScroll:true});}});
   main.addEventListener('change',ev=>{if(!active()||!data||!ev.target.hasAttribute('data-pub-compare'))return;const selects=[...main.querySelectorAll('[data-pub-compare]')];const values=selects.map(s=>s.value);if(values[0]===values[1])values[1-Number(ev.target.dataset.pubCompare)]=data.models.find(m=>m.id!==ev.target.value).id;location.hash='checkup/compare/'+values.join('/');});
