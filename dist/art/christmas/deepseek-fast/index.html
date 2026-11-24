@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; media-src 'self'; img-src 'self' data:; object-src 'none'; base-uri 'none'; form-action 'none'; connect-src 'none'">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#04080e">
+<title>圣诞树的十九秒 · 一张会跳舞的圣诞贺卡</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <div id="stage" role="region" aria-label="夜色里一棵发光的圣诞树，随着音乐轻轻摇摆，雪花、星光和灯火围绕着它。">
+    <canvas id="scene" aria-hidden="true"></canvas>
+
+    <header class="hud">
+      <div class="title-block">
+        <p class="kicker">A MUSICAL CHRISTMAS CARD</p>
+        <h1>圣诞树的十九秒</h1>
+        <p class="sub">Merry Christmas · 愿你被光与旋律围绕</p>
+      </div>
+      <div class="status">
+        <p class="phase">
+          <span class="phase-num" id="phaseNum">I</span>
+          <span class="phase-name" id="phaseName">序章 · 初雪</span>
+        </p>
+        <p class="beatline">
+          <i class="beat-dot" id="beatDot"></i>
+          <span id="beatText">等待第一拍</span>
+        </p>
+      </div>
+    </header>
+
+    <div class="player" role="group" aria-label="播放控制">
+      <button id="play" type="button" aria-label="播放">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path id="playIcon" d="M8.2 5.4v13.2L19 12z"></path>
+        </svg>
+      </button>
+      <div class="rail">
+        <div class="rail-top">
+          <span id="timeNow">0:00</span>
+          <span class="rail-note">19″ · 一段旋律</span>
+          <span id="timeTotal">0:19</span>
+        </div>
+        <div class="seek-wrap">
+          <span class="mark" style="left:44.21%"></span>
+          <span class="mark" style="left:91.32%"></span>
+          <input id="seek" type="range" min="0" max="19" step="0.01" value="0" aria-label="播放进度，单位秒">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <audio id="music" preload="auto" src="../music.wav"></audio>
+</main>
+<script src="tree.js"></script>
+</body>
+</html>

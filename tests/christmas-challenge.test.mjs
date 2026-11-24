@@ -101,5 +101,7 @@ test('GOAT results retain verified model identities and original specialized sco
   assert.match(row('deepseek-v41-flash').frontend.note,/65,536 token/);
   assert.match(row('deepseek-v41-flash').backend.note,/通过独立脚本复核/);
   assert.equal(row('deepseek-v41-flash').backend.score,100);
+  assert.equal(row('deepseek-v41-flash-fast').frontend.score,94);
+  assert.equal(row('deepseek-v41-flash-fast').frontend.work,'deepseek-fast');
   assert.equal(row('deepseek-v41-flash-fast').backend.score,100);
 });

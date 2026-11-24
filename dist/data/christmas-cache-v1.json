@@ -304,7 +304,12 @@
       "harness": "DeepSeek Harness · GOAT",
       "effort": "high",
       "frontend": {
-        "status": "未完成"
+        "score": 94,
+        "music": 41,
+        "visual": 38,
+        "utility": 15,
+        "work": "deepseek-fast",
+        "comment": "强拍时树顶星与灯串同步提亮，主旋律沿枝头游走，中段极光变紫、尾声回暖。树冠、雪地和礼物都能看清，几处弱拍和段落收束的变化较轻。"
       },
       "backend": {
         "score": 100,

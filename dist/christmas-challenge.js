@@ -3,7 +3,7 @@ import {arrowRight} from './ui-icons.js?v=20261101-short1';
 
 const route = '#checkup/agent-challenge';
 const art = 'art/christmas/';
-const assetsVersion = '?v=20261124-goat1';
+const assetsVersion = '?v=20261124-goat2';
 const bounds = (value, max) => Number.isInteger(value) && value >= 0 && value <= max;
 
 export function projectAgentTasks(book, evidence) {
