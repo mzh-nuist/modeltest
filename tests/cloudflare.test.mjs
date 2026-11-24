@@ -55,7 +55,11 @@ test('standalone upload preserves every public source asset and excludes hosting
     assert.deepEqual(routes,{version:1,include:['/api/*'],exclude:[]});
     const headers=fs.readFileSync(path.join(upload,'_headers'),'utf8');
     assert.match(headers,/\/\*\n  Cache-Control: public, no-cache, no-transform/,'Keep HTML out of proxy transformations');
-    assert.match(headers,/\/data\/\*\n  ! Cache-Control\n  Cache-Control: public, no-cache\n/,'Allow compression without serving stale scores');
+    for(const pattern of ['/data/*','/*.js','/*.css']){
+      assert.ok(headers.includes(pattern+'\n  ! Cache-Control\n  Cache-Control: public, no-cache\n'),
+        'Allow text compression while retaining revalidation');
+    }
+    assert.match(headers,/\/art\/christmas\/\*\n  ! Cache-Control\n  Cache-Control: public, no-cache, no-transform\n  Content-Security-Policy: sandbox allow-scripts/);
     const source=fs.readFileSync(path.join(upload,'_worker.js'),'utf8');
     assert.doesNotMatch(source,/chatgpt\.site|fetch\(['"]https?:\/\//);
     const built=await import(pathToFileURL(path.join(upload,'_worker.js')).href);
