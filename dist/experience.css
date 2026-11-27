@@ -28,7 +28,6 @@ body.published-mode .editorial-header nav a {font-size:16px;line-height:1.5;padd
 body.published-mode .editorial-header nav a:hover {color:var(--accent)}
 body.published-mode .editorial-header nav a.active {color:var(--ink);font-weight:600}
 body.published-mode .editorial-header-end {gap:16px;font-size:15px}
-body.published-mode .editorial-header-end .personal-home-link {font-size:15px;text-decoration:underline;text-underline-offset:5px}
 body.published-mode .editorial-header-end button {width:44px;height:44px;border:1px solid var(--line);border-radius:10px;background:var(--panel);font-size:22px}
 body.published-mode h1,body.published-mode h2,body.published-mode h3 {letter-spacing:normal;font-weight:600;text-wrap:pretty}
 body.published-mode h2 {font-size:26px;line-height:1.45}
@@ -513,7 +512,6 @@ body.published-mode .skip:focus {top:10px}
 body.published-mode .editorial-header {background:var(--bg);padding-block:24px;gap:32px}
 body.published-mode .editorial-header nav {margin-left:auto;margin-right:32px}
 body.published-mode .editorial-header nav a {font-weight:400}
-body.published-mode .editorial-header-end .personal-home-link {text-decoration:none;font-size:16px}
 body.published-mode .editorial-header-end button {border:0;background:transparent;border-radius:4px}
 body.published-mode .wordmark {display:flex;align-items:center;gap:12px;font-size:25px;font-weight:600;letter-spacing:-.5px}
 body.published-mode .wordmark .domain {font-weight:400;color:var(--muted)}
@@ -598,7 +596,6 @@ body.published-mode footer {margin-top:24px}
  body.published-mode .editorial-header {padding-block:18px;gap:12px}
  body.published-mode .wordmark {font-size:22px}
  body.published-mode .editorial-header-end {gap:8px}
- body.published-mode .editorial-header-end .personal-home-link {display:inline;font-size:15px}
  body.published-mode .editorial-header nav {gap:24px}
  body.published-mode .editorial-header nav a {font-size:15px}
  body.published-mode .studio-home .studio-score-tools {display:block}

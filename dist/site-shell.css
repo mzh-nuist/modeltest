@@ -7,8 +7,6 @@ body.published-mode .editorial-header nav {display:flex;justify-self:center;just
 body.published-mode .editorial-header nav a {font-size:16px;line-height:1.5;min-height:44px;padding:10px 0;white-space:nowrap}
 body.published-mode .editorial-header nav a.active {font-weight:600}
 body.published-mode .editorial-header-end {display:flex;align-items:center;gap:20px}
-body.published-mode .editorial-header-end .personal-home-link {display:inline-flex;align-items:center;gap:8px;min-height:40px;font-size:15px;line-height:1.5;white-space:nowrap;text-decoration:none}
-body.published-mode .editorial-header-end .personal-home-link:hover {color:var(--accent)}
 body.published-mode .editorial-header-end .theme-toggle {display:grid;place-items:center;width:40px;height:36px;min-height:36px;padding:0;border:1px solid var(--control-line);border-radius:7px;background:var(--panel);color:var(--ink)}
 body.published-mode .editorial-header-end .theme-toggle:hover {background:var(--soft);border-color:var(--accent);color:var(--accent)}
 body.published-mode .theme-sun,body.published-mode.dark .theme-moon {display:none}
@@ -77,7 +75,6 @@ body.published-mode .policy-content #analytics-choice-status {font-size:15px;lin
  body.published-mode .editorial-header nav {grid-column:1/-1;grid-row:2;justify-self:start;gap:clamp(12px,3.5vw,28px)}
  body.published-mode .editorial-header nav a {min-height:40px;padding:8px 0;font-size:15px}
  body.published-mode .editorial-header-end {gap:12px}
- body.published-mode .editorial-header-end .personal-home-link {font-size:14px;gap:6px}
  body.published-mode .wordmark {font-size:22px}
  body.published-mode .workspace {min-height:calc(100svh - 96px)}
  body.published-mode .site-footer {flex-wrap:wrap;gap:4px 24px;padding-block:16px}
